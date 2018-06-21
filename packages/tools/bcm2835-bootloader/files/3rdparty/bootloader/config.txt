@@ -27,6 +27,9 @@ force_turbo=0
 # rebooting.
 hdmi_ignore_cec_init=1
 
+# Enable the onboard ALSA audio interface
+dtparam=audio=on
+
 ################################################################################
 # End of default configuration
 ################################################################################
