@@ -26,6 +26,12 @@ post_makeinstall_target() {
   rm -rf $INSTALL/usr/share/sounds
   rm -rf $INSTALL/usr/lib/systemd/system
 
+# install sample asound.conf
+  if [ $PROJECT != "RPi" ]; then
+    mkdir -p $INSTALL/usr/config
+    cp $PKG_DIR/config/* $INSTALL/usr/config/
+  fi
+
 # remove default udev rule to restore mixer configs, we install our own.
 # so we avoid resetting our soundconfig
   rm -rf $INSTALL/usr/lib/udev/rules.d/90-alsa-restore.rules
