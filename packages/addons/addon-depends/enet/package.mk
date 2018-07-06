@@ -10,6 +10,7 @@ PKG_URL="https://github.com/cgutman/enet/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_LONGDESC="A network communication layer on top of UDP (User Datagram Protocol)."
 PKG_TOOLCHAIN="autotools"
+PKG_BUILD_FLAGS="+pic"
 
 PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared"
 
