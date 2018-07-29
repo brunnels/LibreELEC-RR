@@ -19,6 +19,17 @@ make_target() {
 }
 
 makeinstall_target() {
+  if [ ! "$OEM_EMU" = "no" ]; then
+    #create Retroarch Playlist
+    mkdir -p $INSTALL/usr/config
+    mkdir -p $INSTALL/usr/config/retroarch
+    mkdir -p $INSTALL/usr/config/retroarch/playlists
+    cp $PKG_DIR/files/* $INSTALL/usr/config/retroarch/playlists
+
+    mkdir -p $INSTALL/usr/lib/libretro
+    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  fi
+
   mkdir -p $SYSROOT_PREFIX/usr/lib/cmake/$PKG_NAME
   cp $PKG_LIBPATH $SYSROOT_PREFIX/usr/lib/$PKG_LIBNAME
   echo "set($PKG_LIBVAR $SYSROOT_PREFIX/usr/lib/$PKG_LIBNAME)" > $SYSROOT_PREFIX/usr/lib/cmake/$PKG_NAME/$PKG_NAME-config.cmake

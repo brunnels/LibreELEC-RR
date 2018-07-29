@@ -9,6 +9,7 @@ PKG_SITE="https://github.com/libretro/mupen64plus-libretro"
 PKG_URL="https://github.com/libretro/mupen64plus-libretro/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_LONGDESC="game.libretro.mupen64plus: Mupen64Plus for Kodi"
+PKG_TOOLCHAIN="manual"
 
 PKG_LIBNAME="mupen64plus_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
@@ -46,6 +47,11 @@ make_target() {
 }
 
 makeinstall_target() {
+  if [ ! "$OEM_EMU" = "no" ]; then
+    mkdir -p $INSTALL/usr/lib/libretro
+    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  fi
+
   mkdir -p $SYSROOT_PREFIX/usr/lib/cmake/$PKG_NAME
   cp $PKG_LIBPATH $SYSROOT_PREFIX/usr/lib/$PKG_LIBNAME
   echo "set($PKG_LIBVAR $SYSROOT_PREFIX/usr/lib/$PKG_LIBNAME)" > $SYSROOT_PREFIX/usr/lib/cmake/$PKG_NAME/$PKG_NAME-config.cmake

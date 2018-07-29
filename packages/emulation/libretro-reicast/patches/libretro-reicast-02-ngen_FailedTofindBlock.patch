@@ -1,0 +1,12 @@
+--- a/core/rec-ARM/rec_arm.cpp
++++ b/core/rec-ARM/rec_arm.cpp
+@@ -333,6 +333,9 @@
+ extern "C" void ngen_LinkBlock_cond_Branch_stub();
+ extern "C" void ngen_LinkBlock_cond_Next_stub();
+ 
++extern "C" void ngen_FailedToFindBlock_();
++void (*ngen_FailedToFindBlock)()=&ngen_FailedToFindBlock_;  // in asm
++
+ #include <map>
+ 
+ map<shilop,ConditionCode> ccmap;
