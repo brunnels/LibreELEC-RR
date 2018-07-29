@@ -1,0 +1,62 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) Originally created by Escalade (https://github.com/escalade)
+# Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
+
+. /etc/profile
+
+ICON=/usr/config/google-chrome/icon.png
+CHROME_HOME=/storage/.cache/app.chrome
+CHROME_VERSION=$CHROME_HOME/chrome.version
+CHROME_PKGVER=`curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }' | grep ^stable | awk '{ print $2; }'`
+
+install_chrome() {
+  kodi-send --action="Notification(Chrome,This is the first time you are starting Chrome. It is being downloaded in the background...,13000,${ICON})"
+  mkdir -p /tmp/chrome ; cd /tmp/chrome
+  wget -q http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_$CHROME_PKGVER-1_amd64.deb || exit 1
+  kodi-send --action="Notification(Chrome,Download finished. Installing Chrome...,8000,${ICON})"
+  ar -x *.deb && tar -Jxf data.tar.xz
+  mv opt/google/chrome $CHROME_HOME
+  echo $CHROME_PKGVER > $CHROME_VERSION 2>&1
+  cp usr/share/applications/google-chrome.desktop $CHROME_HOME/
+  cd ~ ; rm -rf /tmp/chrome
+}
+
+update_chrome() {
+  kodi-send --action="Notification(Chrome,Updating Chrome. It is being downloaded in the background.,10000,${ICON})"
+  mkdir -p /tmp/chrome ; cd /tmp/chrome
+  wget -q http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_$CHROME_PKGVER-1_amd64.deb || exit 1
+  kodi-send --action="Notification(Chrome,Download finished. Updating Chrome.,8000,${ICON})"
+  ar -x *.deb && tar -Jxf data.tar.xz
+  rm -rf $CHROME_HOME
+  mv opt/google/chrome $CHROME_HOME
+  echo $CHROME_PKGVER > $CHROME_VERSION 2>&1
+  cp usr/share/applications/google-chrome.desktop $CHROME_HOME/
+  cd ~ ; rm -rf /tmp/chrome
+}
+
+run_chrome() {
+  CHROME_USER_FLAGS="$(cat ~/.config/google-chrome/chrome-flags.conf)"
+  /opt/google/chrome/chrome $CHROME_USER_FLAGS "$@"
+}
+
+if [ ! -x $CHROME_HOME ]; then
+  install_chrome $CHROME_PKGVER > /var/log/chrome.log 2>&1
+fi
+
+if [ "$CHROME_PKGVER" != "$(cat $CHROME_VERSION)" ]; then
+  update_chrome $CHROME_PKGVER > /var/log/chrome.log 2>&1
+fi
+
+if [ -S /var/run/pulse/native -a ! -f /storage/.config/usepulse ]; then
+  kodifreeze.sh freeze muteonly
+  systemctl stop pulseaudio
+  NOPULSE=1
+fi
+
+run_chrome "$@" > /var/log/chrome.log 2>&1
+
+if [ "$NOPULSE" = "1" ]; then
+  systemctl start pulseaudio
+  kodifreeze.sh unfreeze muteonly
+fi
