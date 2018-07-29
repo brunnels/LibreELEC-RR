@@ -9,3 +9,91 @@ PKG_URL=""
 PKG_DEPENDS_TARGET="toolchain $PROJECT"
 PKG_SECTION="virtual"
 PKG_LONGDESC="OEM: Metapackage for various OEM packages"
+
+PKG_TOOLCHAIN="manual"
+
+OEM_APPS_COMMON=" \
+  ds4drv \
+  htop \
+  mc \
+  sdl-jstest"
+
+OEM_APPS_GENERIC=" \
+  dmidecode \
+  google-chrome \
+  smartmontools \
+  spotify"
+
+OEM_APPS_RPI=" \
+  librespot"
+
+OEM_EMU_COMMON=" \
+  emulationstation-retropie \
+  retroarch \
+  dosbox-sdl2 \
+  moonlight-embedded \
+  libretro-2048 \
+  libretro-beetle-wswan \
+  libretro-fbalpha \
+  libretro-fuse \
+  libretro-genplus \
+  libretro-mame2003-plus \
+  libretro-mgba \
+  libretro-mrboom \
+  libretro-mupen64plus \
+  libretro-pcsx-rearmed \
+  libretro-prboom \
+  libretro-quicknes \
+  libretro-samples \
+  libretro-scummvm \
+  libretro-tyrquake"
+
+OEM_EMU_GENERIC=" \
+  dolphin \
+  fs-uae \
+  ppsspp \
+  vice \
+  libretro-beetle-psx \
+  libretro-beetle-saturn \
+  libretro-citra \
+  libretro-desmume \
+  libretro-dolphin \
+  libretro-mame2016 \
+  libretro-parallel-n64 \
+  libretro-reicast \
+  libretro-snes9x"
+
+OEM_EMU_RPI=" \
+  amiberry \
+  libretro-snes9x2010 \
+  libretro-vice \
+  libretro-yabause"
+
+if [ ! "$OEM_APPS" = "no" ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_APPS_COMMON"
+  case $PROJECT in
+    Generic)
+      PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_APPS_GENERIC"
+      ;;
+    RPi*)
+      PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_APPS_RPI"
+      ;;
+  esac
+fi
+
+if [ ! "$OEM_EMU" = "no" ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_EMU_COMMON"
+  case $PROJECT in
+    Generic)
+      PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_EMU_GENERIC"
+      ;;
+    RPi*)
+      PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_EMU_RPI"
+      ;;
+  esac
+fi
+
+makeinstall_target() {
+  mkdir -p $INSTALL
+  cp -PR $PKG_DIR/files/* $INSTALL
+}
