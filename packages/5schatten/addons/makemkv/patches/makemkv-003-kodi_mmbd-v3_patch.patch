@@ -1,0 +1,196 @@
+diff '--color=auto' -urN makemkv-oss-1.12.0/libmmbd/src/aacs.cpp makemkv-oss-1.12.0-v3/libmmbd/src/aacs.cpp
+--- makemkv-oss-1.12.0/libmmbd/src/aacs.cpp	2018-02-03 18:00:47.000000000 -0500
++++ makemkv-oss-1.12.0-v3/libmmbd/src/aacs.cpp	2018-04-14 17:11:13.519200910 -0400
+@@ -23,6 +23,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <string>
+ 
+ /*
+     WARNING!
+@@ -97,6 +98,8 @@
+     return (AACS*)mmbd;
+ }
+ 
++static std::string *cxx_string_pointer;  // declare a persistent file scope variable
++
+ AACS_PUBLIC int __cdecl aacs_open_device(AACS *aacs, const char *path, const char *keyfile_path)
+ {
+     if (keyfile_path) {
+@@ -110,6 +113,7 @@
+         }
+     }
+ 
++    if (!path) path = (*cxx_string_pointer).c_str();
+     if (mmbd_open((MMBD*)aacs,path)) {
+         return AACS_ERROR_CORRUPTED_DISC;
+     }
+@@ -189,8 +193,11 @@
+     return (const uint8_t *)"mmbd_fake_aacs_get_bdj_root_cert_hash";
+ }
+ 
+-AACS_PUBLIC void __cdecl aacs_set_fopen(AACS *aacs, void *handle, void* p)
++AACS_PUBLIC void __cdecl aacs_set_fopen(AACS *aacs, void *bd_disc_structure_pointer, void* p)
+ {
++   BD_DISC bd_disc_structure = *reinterpret_cast<BD_DISC*>(bd_disc_structure_pointer); // Copy the BD_DISC structure
++
++   cxx_string_pointer = reinterpret_cast<std::string*>(bd_disc_structure.fs_handle); // Copy the C++ string object pointer of interest
+ }
+ 
+ static void* file_open = NULL;
+diff '--color=auto' -urN makemkv-oss-1.12.0/libmmbd/src/aacs.h makemkv-oss-1.12.0-v3/libmmbd/src/aacs.h
+--- makemkv-oss-1.12.0/libmmbd/src/aacs.h	2018-02-03 18:00:47.000000000 -0500
++++ makemkv-oss-1.12.0-v3/libmmbd/src/aacs.h	2018-04-14 17:11:14.490210081 -0400
+@@ -197,11 +197,112 @@
+ 
+ AACS_PUBLIC struct aacs_basic_cci * __cdecl aacs_get_basic_cci(AACS *, uint32_t title);
+ 
+-AACS_PUBLIC void __cdecl aacs_set_fopen(AACS *aacs, void *handle, void* p);
++AACS_PUBLIC void __cdecl aacs_set_fopen(AACS *aacs, void *bd_disc_structure_pointer, void* p);
+ AACS_PUBLIC void* __cdecl aacs_register_file(void* p);
+ 
+ #ifdef __cplusplus
+ }
+ #endif
+ 
++typedef struct bd_mutex_s BD_MUTEX;
++struct bd_mutex_s {
++    void *impl;
++};
++
++
++typedef void    (*fptr_void)(...);
++typedef int     (*fptr_int)(...);
++typedef int32_t (*fptr_int32)(...);
++typedef void*   (*fptr_p_void)(...);
++
++typedef struct bd_aacs BD_AACS;
++
++struct bd_aacs {
++    void           *h_libaacs;   /* library handle from dlopen */
++    void           *aacs;        /* aacs handle from aacs_open() */
++
++    const uint8_t *disc_id;
++    uint32_t       mkbv;
++
++    /* function pointers */
++    fptr_int       decrypt_unit;
++    fptr_int       decrypt_bus;
++
++    int            impl_id;
++};
++
++typedef struct bd_bdplus BD_BDPLUS;
++
++struct bd_bdplus {
++    void           *h_libbdplus; /* library handle from dlopen */
++
++    void           *bdplus;      /* bdplus handle from bdplus_open() */
++
++    /* functions */
++    fptr_int32     event;
++    fptr_p_void    m2ts;
++    fptr_int32     m2ts_close;
++    fptr_int32     seek;
++    fptr_int32     fixup;
++
++    /* old API */
++    fptr_p_void    title;
++
++    int impl_id;
++};
++
++typedef struct bd_dec BD_DEC;
++struct bd_dec {
++    int        use_menus;
++    BD_AACS   *aacs;
++    BD_BDPLUS *bdplus;
++};
++
++typedef struct bd_file_s BD_FILE_H;
++struct bd_file_s
++{
++    void* internal;
++    void    (*close) (BD_FILE_H *file);
++    int64_t (*seek)  (BD_FILE_H *file, int64_t offset, int32_t origin);
++    int64_t (*tell)  (BD_FILE_H *file);
++    int     (*eof)   (BD_FILE_H *file);
++    int64_t (*read)  (BD_FILE_H *file, uint8_t *buf, int64_t size);
++    int64_t (*write) (BD_FILE_H *file, const uint8_t *buf, int64_t size);
++};
++
++typedef struct
++{
++    char    d_name[256];
++} BD_DIRENT;
++
++typedef struct bd_dir_s BD_DIR_H;
++struct bd_dir_s
++{
++    void* internal;
++    void (*close)(BD_DIR_H *dir);
++    int (*read)(BD_DIR_H *dir, BD_DIRENT *entry);
++};
++
++typedef struct bd_disc BD_DISC;
++
++struct bd_disc {
++    BD_MUTEX  ovl_mutex;     /* protect access to overlay root */
++    BD_MUTEX  properties_mutex; /* protect access to properties file */
++
++    char     *disc_root;     /* disc filesystem root (if disc is mounted) */
++    char     *overlay_root;  /* overlay filesystem root (if set) */
++
++    BD_DEC   *dec;
++
++    void         *fs_handle;
++    BD_FILE_H * (*pf_file_open_bdrom)(void *, const char *);
++    BD_DIR_H *  (*pf_dir_open_bdrom)(void *, const char *);
++    void        (*pf_fs_close)(void *);
++
++    const char   *udf_volid;
++    char         *properties_file;  /* NULL if not yet used */
++
++    int8_t        avchd;  /* -1 - unknown. 0 - no. 1 - yes */
++};
++
+ #endif /* AACS_H_ */
+diff '--color=auto' -urN makemkv-oss-1.12.0/libmmbd/src/bdplus.cpp makemkv-oss-1.12.0-v3/libmmbd/src/bdplus.cpp
+--- makemkv-oss-1.12.0/libmmbd/src/bdplus.cpp	2018-02-03 18:00:47.000000000 -0500
++++ makemkv-oss-1.12.0-v3/libmmbd/src/bdplus.cpp	2018-04-08 16:58:25.000000000 -0400
+@@ -44,6 +44,12 @@
+     uint64_t    offset;
+ } BDPLUS_CTX;
+ 
++// provide a minimal bdplus_set_fopen()
++AACS_PUBLIC BDPLUS_CTX* __cdecl bdplus_set_fopen(BDPLUS_CTX* ctx, void *bd_disc_structure_pointer, void* p)
++{
++    return ctx;
++}
++
+ /*
+     This function requires aacs_vid value produced by aacs_get_vid, not an actual disc VID.
+ */
+diff '--color=auto' -urN makemkv-oss-1.12.0/libmmbd/src/bdplus.h makemkv-oss-1.12.0-v3/libmmbd/src/bdplus.h
+--- makemkv-oss-1.12.0/libmmbd/src/bdplus.h	2018-02-03 18:00:47.000000000 -0500
++++ makemkv-oss-1.12.0-v3/libmmbd/src/bdplus.h	2018-04-08 16:58:25.000000000 -0400
+@@ -29,6 +29,7 @@
+ extern "C" {
+ #endif
+ 
++AACS_PUBLIC BDPLUS_CTX* __cdecl bdplus_set_fopen(BDPLUS_CTX* ctx, void *bd_disc_structure_pointer, void* p);
+ AACS_PUBLIC BDPLUS_CTX* __cdecl bdplus_init(const char *path, const char *keyfile_path,const uint8_t* aacs_vid);
+ AACS_PUBLIC int __cdecl bdplus_free(BDPLUS_CTX* ctx);
+ 
+diff '--color=auto' -urN makemkv-oss-1.12.0/libmmbd/src/libmmbd.vers makemkv-oss-1.12.0-v3/libmmbd/src/libmmbd.vers
+--- makemkv-oss-1.12.0/libmmbd/src/libmmbd.vers	2018-02-03 18:00:46.000000000 -0500
++++ makemkv-oss-1.12.0-v3/libmmbd/src/libmmbd.vers	2018-04-08 16:58:25.000000000 -0400
+@@ -33,6 +33,7 @@
+   aacs_get_device_nonce;
+   aacs_get_bus_encryption;
+   aacs_register_file;
++  bdplus_set_fopen;
+   bdplus_init;
+   bdplus_free;
+   bdplus_set_title;
