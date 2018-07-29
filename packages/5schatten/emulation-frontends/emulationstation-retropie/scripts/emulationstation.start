@@ -1,0 +1,19 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 0riginally created by Escalade (https://github.com/escalade)
+# Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
+
+. /storage/.config/emulationstation/emulationstation.conf
+. /etc/profile
+
+if [ ! -L /storage/.emulationstation ]; then
+  ln -s /storage/.config/emulationstation /storage/.emulationstation
+fi
+
+export SDL_AUDIODRIVER=alsa
+
+kodifreeze.sh freeze
+
+emulationstation $EMULATIONSTATION_OPTS "$@" > /var/log/emulationstation.log 2>&1
+
+kodifreeze.sh unfreeze
