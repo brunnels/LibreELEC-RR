@@ -1,0 +1,31 @@
+--- a/Makefile
++++ b/Makefile
+@@ -145,9 +145,6 @@
+ endif
+ 
+ RM     = rm -f
+-CC     = gcc
+-CXX    = g++
+-STRIP  = strip
+ PROG   = $(NAME)
+ 
+ #
+@@ -166,7 +163,7 @@
+ ifdef USE_SDL2
+ all: guisan $(PROG)
+ 
+-SDL_CFLAGS = `sdl2-config --cflags --libs`
++SDL_CFLAGS = `$(SYSROOT_PREFIX)/usr/bin/sdl2-config --cflags --libs`
+ CPPFLAGS += -Iguisan-dev/include
+ LDFLAGS += -lSDL2 -lSDL2_image -lSDL2_ttf -lguisan -Lguisan-dev/lib
+ endif
+@@ -208,7 +205,7 @@
+     CFLAGS += -fsanitize=leak -fsanitize-recover=address
+ endif
+ 
+-LDFLAGS += -lpthread -lz -lpng -lrt -lxml2 -lFLAC -lmpg123 -ldl -lmpeg2convert -lmpeg2
++LDFLAGS += -lpthread -lz -lpng -lrt -lxml2 -lFLAC -lmpg123 -ldl -lmpeg2convert -lmpeg2 -logg
+ 
+ ASFLAGS += $(CPU_FLAGS)
+ 
+
