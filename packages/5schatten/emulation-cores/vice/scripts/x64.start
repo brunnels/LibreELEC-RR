@@ -1,0 +1,19 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 0riginally created by Escalade (https://github.com/escalade)
+# Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
+
+. /etc/profile
+
+export SDL_AUDIODRIVER=alsa
+
+if [ ! -f /storage/.vice/sdl-vicerc ]; then
+  mkdir -p /storage/.vice
+  cp /etc/sdl-vicerc /storage/.vice/
+fi
+
+kodifreeze.sh freeze
+[ -x /usr/bin/tvservice ] && tvservice -e "CEA 31" || xrandr -r 50
+x64 "$@" > /var/log/x64.log 2>&1
+[ -x /usr/bin/tvservice ] && tvservice -e "CEA 16" || xrandr -r 60
+pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
