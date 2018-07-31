@@ -16,9 +16,9 @@ PKG_TOOLCHAIN="manual"
 make_target() {
  make -C input/button_test
  make -C tests/test
- make -C tests/test_advanced
 
  if [ "$ARCH" == "x86_64" ]; then
+   make -C tests/test_advanced
    make -C video/opengl/libretro_test_gl_fixedfunction
    make -C video/opengl/libretro_test_gl_shaders
    make -C video/vulkan/vk_rendering
@@ -30,11 +30,10 @@ makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/libretro
 
   cp input/button_test/*.so $INSTALL/usr/lib/libretro/
-
   cp tests/test/*.so $INSTALL/usr/lib/libretro/
-  cp tests/test_advanced/*.so $INSTALL/usr/lib/libretro/
 
   if [ "$ARCH" == "x86_64" ]; then
+    cp tests/test_advanced/*.so $INSTALL/usr/lib/libretro/
     cp video/opengl/libretro_test_gl_fixedfunction/*.so $INSTALL/usr/lib/libretro/
     cp video/opengl/libretro_test_gl_shaders/*.so $INSTALL/usr/lib/libretro/
     cp video/vulkan/vk_rendering/*.so $INSTALL/usr/lib/libretro/
