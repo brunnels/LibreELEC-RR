@@ -11,29 +11,8 @@ cd /storage/.config/amiberry
 
 kodifreeze.sh freeze
 
-# Change refresh rate to 50Hz if CEA 60Hz and 720p/1080p/1080i
-TV_HDMI_GROUP="`tvservice -s | cut -c21-24`"
-TV_HDMI_MODE="`tvservice -s | cut -c27-28`"
-
-if [ $TV_HDMI_GROUP = "CEA" ]; then
-  
-  #720p	60Hz -> 720p 50Hz
-  if [ $TV_HDMI_MODE = "4)" ]; then
-    tvservice -e "CEA 19"
-    TV_HDMI_MODE="19"
-  fi
-  #1080p 60Hz -> 1080p 50Hz
-  if [ $TV_HDMI_MODE = "16" ]; then
-    tvservice -e "CEA 31"
-    TV_HDMI_MODE="31"
-  fi
-  #1080i 60Hz -> 1080i 50Hz
-  if [ $TV_HDMI_MODE = "5)" ]; then
-    tvservice -e "CEA 20"
-    TV_HDMI_MODE="20"
-  fi
-
-fi
+# Change refresh rate to 50Hz
+set_refresh_rate_50
 
 # Copy over the default configuration
 TMP_DIR=/tmp/amiberry
@@ -73,22 +52,7 @@ else
   amiberry -f "$TMP_DIR"/amiberry.uae > /var/log/amiberry.log 2>&1
 fi
 
-# Restore refresh rate of 60Hz
-if [ $TV_HDMI_GROUP = "CEA" ]; then
-
-  #720p	50Hz -> 720p 60Hz
-  if [ $TV_HDMI_MODE = "19)" ]; then
-    tvservice -e "CEA 4"
-  fi
-  #1080p 50Hz -> 1080p 60Hz
-  if [ $TV_HDMI_MODE = "31" ]; then
-    tvservice -e "CEA 16"
-  fi
-  #1080i 50Hz -> 1080i 60Hz
-  if [ $TV_HDMI_MODE = "20" ]; then
-    tvservice -e "CEA 5"
-  fi
-
-fi
+# Change refresh rate to 60Hz
+set_refresh_rate_60
 
 pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
