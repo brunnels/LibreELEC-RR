@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="libretro-mame2003-plus"
-PKG_VERSION="659b179"
-PKG_SHA256="a93f4a1686ba12cecaf0cab5aa829c55083c3d75110536c4fb4ca21badde82cf"
+PKG_VERSION="9bc6908"
+PKG_SHA256="dc8216467b410c6e05ab28acc8b93ff4e8715a45ec6bbbd741024ec25c50332e"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/mame2003-plus-libretro"
