@@ -263,6 +263,7 @@
 "Bandai - WonderSwan.lpl;"\
 "Cave Story.lpl;"\
 "Coleco - ColecoVision.lpl;"\
+"Commodore - 64.lpl;"\
 "DOOM.lpl;"\
 "FB Alpha - Arcade Games.lpl;"\
 "GCE - Vectrex.lpl;"\
@@ -295,10 +296,13 @@
 "ScummVM.lpl;"\
 "Sega - 32X.lpl;"\
 "Sega - Game Gear.lpl;"\
+"Sega - Dreamcast.lpl;"\
+"Sega - NAOMI.lpl;"\
 "Sega - Master System - Mark III.lpl;"\
 "Sega - Mega Drive - Genesis.lpl;"\
 "Sega - PICO.lpl;"\
 "Sega - SG-1000.lpl;"\
+"Sega - Saturn.lpl;"\
 "Sinclair - ZX Spectrum +3.lpl;"\
 "SNK - Neo Geo Pocket Color.lpl;"\
 "SNK - Neo Geo Pocket.lpl;"\
@@ -316,6 +320,7 @@
 "/tmp/cores/mednafen_wswan_libretro.so;"\
 "/tmp/cores/nxengine_libretro.so;"\
 "/tmp/cores/bluemsx_libretro.so;"\
+"/tmp/cores/vice_x64_libretro.so;"\
 "/tmp/cores/prboom_libretro.so;"\
 "/tmp/cores/fbalpha_libretro.so;"\
 "/tmp/cores/vecx_libretro.so;"\
@@ -348,8 +353,11 @@
 "/tmp/cores/scummvm_libretro.so;"\
 "/tmp/cores/picodrive_libretro.so;"\
 "/tmp/cores/genesis_plus_gx_libretro.so;"\
+"/tmp/cores/reicast_libretro.so;"\
+"/tmp/cores/reicast_libretro.so;"\
 "/tmp/cores/genesis_plus_gx_libretro.so;"\
 "/tmp/cores/genesis_plus_gx_libretro.so;"\
+"/tmp/cores/yabause_libretro.so;"\
 "/tmp/cores/picodrive_libretro.so;"\
 "/tmp/cores/genesis_plus_gx_libretro.so;"\
 "/tmp/cores/fuse_libretro.so;"\
