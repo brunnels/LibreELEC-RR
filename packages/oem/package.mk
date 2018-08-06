@@ -59,6 +59,7 @@ OEM_EMU_GENERIC=" \
   libretro-citra \
   libretro-desmume \
   libretro-dolphin \
+  libretro-ishiiruka \
   libretro-mame2016 \
   libretro-parallel-n64 \
   libretro-reicast \
