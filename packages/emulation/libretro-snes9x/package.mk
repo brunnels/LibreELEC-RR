@@ -16,7 +16,7 @@ PKG_LIBPATH="libretro/$PKG_LIBNAME"
 PKG_LIBVAR="SNES9X_LIB"
 
 make_target() {
-  make -C libretro/
+  make -C libretro GIT_VERSION=$PKG_VERSION
 }
 
 makeinstall_target() {
