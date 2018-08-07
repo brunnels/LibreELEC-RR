@@ -15,6 +15,10 @@ PKG_LIBNAME="mupen64plus_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 PKG_LIBVAR="MUPEN64PLUS_LIB"
 
+pre_build_target() {
+  export GIT_VERSION=$PKG_VERSION
+}
+
 make_target() {
 
   if target_has_feature neon; then
