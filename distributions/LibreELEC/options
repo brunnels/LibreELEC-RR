@@ -265,6 +265,7 @@
 "Coleco - ColecoVision.lpl;"\
 "Commodore - 64.lpl;"\
 "DOOM.lpl;"\
+"DOS.lpl;"\
 "FB Alpha - Arcade Games.lpl;"\
 "GCE - Vectrex.lpl;"\
 "Lutro.lpl;"\
@@ -322,6 +323,7 @@
 "/tmp/cores/bluemsx_libretro.so;"\
 "/tmp/cores/vice_x64_libretro.so;"\
 "/tmp/cores/prboom_libretro.so;"\
+"/tmp/cores/dosbox_libretro.so;"\
 "/tmp/cores/fbalpha_libretro.so;"\
 "/tmp/cores/vecx_libretro.so;"\
 "/tmp/cores/lutro_libretro.so;"\

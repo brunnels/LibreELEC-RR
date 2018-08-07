@@ -34,6 +34,7 @@ OEM_EMU_COMMON=" \
   moonlight-embedded \
   libretro-2048 \
   libretro-beetle-wswan \
+  libretro-dosbox \
   libretro-fbalpha \
   libretro-fuse \
   libretro-genplus \
