@@ -15,7 +15,7 @@ PKG_LIBPATH="$PKG_LIBNAME"
 PKG_LIBVAR="BEETLE-SATURN_LIB"
 
 make_target() {
-  make
+  make GIT_VERSION=$PKG_VERSION
 }
 
 makeinstall_target() {
