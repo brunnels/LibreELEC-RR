@@ -333,7 +333,7 @@
 "/tmp/cores/bluemsx_libretro.so;"\
 "/tmp/cores/mednafen_supergrafx_libretro.so;"\
 "/tmp/cores/mednafen_pce_fast_libretro.so;"\
-"/tmp/cores/nestopia_libretro.so;"\
+"/tmp/cores/fceumm_libretro.so;"\
 "/tmp/cores/mgba_libretro.so;"\
 "/tmp/cores/mgba_libretro.so;"\
 "/tmp/cores/gambatte_libretro.so;"\
@@ -346,7 +346,7 @@
 "/tmp/cores/desmume_libretro.so;"\
 "/tmp/cores/desmume_libretro.so;"\
 "/tmp/cores/citra_libretro.so;"\
-"/tmp/cores/nestopia_libretro.so;"\
+"/tmp/cores/fceumm_libretro.so;"\
 "/tmp/cores/snes9x2010_libretro.so;"\
 "/tmp/cores/snes9x2010_libretro.so;"\
 "/tmp/cores/mednafen_vb_libretro.so;"\
