@@ -44,7 +44,7 @@ OEM_EMU_COMMON=" \
   libretro-mupen64plus \
   libretro-pcsx-rearmed \
   libretro-prboom \
-  libretro-quicknes \
+  libretro-fceumm \
   libretro-samples \
   libretro-scummvm \
   libretro-tyrquake"
@@ -62,6 +62,7 @@ OEM_EMU_GENERIC=" \
   libretro-dolphin \
   libretro-ishiiruka \
   libretro-mame2016 \
+  libretro-mesen \
   libretro-parallel-n64 \
   libretro-reicast \
   libretro-snes9x"
