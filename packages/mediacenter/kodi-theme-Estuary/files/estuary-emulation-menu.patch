@@ -7,14 +7,14 @@
 +						<item>
 +							<label>Emulationstation</label>
 +							<onclick>XBMC.RunScript(/usr/bin/emulationstation-frontend.py)</onclick>
-+							<thumb>DefaultAddonGame.png</thumb>
++							<thumb>DefaultAddonGameES.png</thumb>
 +							<property name="id">emulationstation</property>
 +							<visible>!Skin.HasSetting(HomeMenuNoEmulationstationButton)</visible>
 +						</item>
 +						<item>
 +							<label>Retroarch</label>
 +							<onclick>XBMC.RunScript(/usr/bin/retroarch-frontend.py)</onclick>
-+							<thumb>DefaultAddonGame.png</thumb>
++							<thumb>DefaultAddonGameRA.png</thumb>
 +							<property name="id">retroarch</property>
 +							<visible>!Skin.HasSetting(HomeMenuNoRetroarchButton)</visible>
 +						</item>
