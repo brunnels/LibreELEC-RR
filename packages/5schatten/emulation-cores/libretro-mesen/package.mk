@@ -2,12 +2,12 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="libretro-mesen"
-PKG_VERSION="4475442"
-PKG_SHA256="86ea740ca063f501331e04ca68ca98f7054b5bff7d648927a04dae3289a5d67c"
+PKG_VERSION="434a023"
+PKG_SHA256="7d0caed5328ee368e9f2d3be90f5f1238c5ef2ad5829abc3b13d57b85906ae96"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
-PKG_SITE="https://github.com/libretro/Mesen"
-PKG_URL="https://github.com/libretro/Mesen/archive/$PKG_VERSION.tar.gz"
+PKG_SITE="https://github.com/SourMesen/Mesen"
+PKG_URL="https://github.com/SourMesen/Mesen/archive/$PKG_VERSION.tar.gz"
 PKG_SOURCE_DIR="Mesen-$PKG_VERSION*"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_SECTION="emulation"
