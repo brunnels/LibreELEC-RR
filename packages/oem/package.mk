@@ -16,7 +16,8 @@ OEM_APPS_COMMON=" \
   ds4drv \
   htop \
   mc \
-  sdl-jstest"
+  sdl-jstest \
+  spectre-meltdown-checker"
 
 OEM_APPS_GENERIC=" \
   dmidecode \
