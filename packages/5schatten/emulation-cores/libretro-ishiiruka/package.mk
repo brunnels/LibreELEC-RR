@@ -2,8 +2,8 @@
 # Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="libretro-ishiiruka"
-PKG_VERSION="617ba3d"
-PKG_SHA256="9b737e5cab84f59dda850c04d0c5ee0539535a8960737515a7041e634d7e7d3f"
+PKG_VERSION="da73ee5"
+PKG_SHA256="5f893e8548b31c983f07f906fd44041f2679f06563073fb57f7d7595a5719c5b"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/Ishiiruka"
