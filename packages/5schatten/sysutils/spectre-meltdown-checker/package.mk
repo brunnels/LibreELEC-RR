@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="spectre-meltdown-checker"
-PKG_VERSION="b2f64e1"
-PKG_SHA256="a8a3dd77fa78412ffeea3c82e1d1cbfc94e4cc9b0229ece7917878147325b953"
+PKG_VERSION="80e0db7"
+PKG_SHA256="76ee530db7b3770a1e7a0fabea1e30c3737ee8ceb8bc085f18e7e59ea5e1772c"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/speed47/spectre-meltdown-checker"
