@@ -16,5 +16,5 @@ PKG_TOOLCHAIN="manual"
 makeinstall_target() {
  mkdir -p $INSTALL/usr/bin
  chmod +x $PKG_BUILD/spectre-meltdown-checker.sh
- cp $PKG_BUILD/spectre-meltdown-checker.sh $INSTALL/usr/bin/spectre-meltdown-checker
+ cp $PKG_BUILD/spectre-meltdown-checker.sh $INSTALL/usr/bin/sm-checker
 }
