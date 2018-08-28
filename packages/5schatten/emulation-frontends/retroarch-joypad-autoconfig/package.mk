@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch-joypad-autoconfig"
-PKG_VERSION="081088a"
-PKG_SHA256="d9a5ee8afbfe5e9df3733b838032861f650ba855319156437b96b082820c4d04"
+PKG_VERSION="7e3ca00"
+PKG_SHA256="26196bc6ade928cae5a2f0b86052219638d54bacdd1a891349d41143261aadd5"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/retroarch-joypad-autoconfig.git"
