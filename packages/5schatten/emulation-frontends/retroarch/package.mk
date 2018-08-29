@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="b2ceb50"
+PKG_VERSION="a157f2e"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
@@ -46,15 +46,21 @@ if [[ "$TARGET_FPU" =~ "neon" ]]; then
   RETROARCH_NEON="--enable-neon"
 fi
 
+if [[ "$PROJECT" =~ "Generic" ]]; then
+  RETROARCH_QT="--enable-qt"
+else
+  RETROARCH_QT="--disable-qt"
+fi
+
 TARGET_CONFIGURE_OPTS=""
 PKG_CONFIGURE_OPTS_TARGET="--disable-vg \
                            --disable-sdl \
                            --disable-xvideo \
                            --disable-al \
                            --disable-oss \
-                           --disable-qt \
                            $RETROARCH_GL \
                            $RETROARCH_NEON \
+                           $RETROARCH_QT \
                            --enable-zlib \
                            --host=$TARGET_NAME \
                            --enable-freetype"
@@ -80,6 +86,11 @@ makeinstall_target() {
     cp $PKG_BUILD/gfx/video_filters/*.so $INSTALL/usr/share/retroarch/video_filters
     cp $PKG_BUILD/gfx/video_filters/*.filt $INSTALL/usr/share/retroarch/video_filters
     cp $PKG_DIR/scripts/* $INSTALL/usr/bin
+
+  if [[ "$PROJECT" =~ "Generic" ]]; then
+    mkdir -p $INSTALL/usr/config/retroarch
+    cp -PR $PKG_DIR/config/* $INSTALL/usr/config/retroarch/
+  fi
   
   # General configuration
   sed -i -e "s/# savefile_directory =/savefile_directory = \/storage\/.config\/retroarch\/saves/" $INSTALL/etc/retroarch.cfg
