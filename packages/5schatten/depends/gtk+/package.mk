@@ -27,6 +27,12 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_path_GLIB_GENMARSHAL=$TOOLCHAIN/bin/glib-genmar
                            --disable-gtk-doc-html \
                            --with-xinput"
 
+pre_configure_target() {
+  LIBS="$LIBS -lXcursor"
+  export PKG_CONFIG_PATH="$(get_build_dir pango)/.$TARGET_NAME"
+  export CFLAGS="$CFLAGS -I$(get_build_dir pango) -L$(get_build_dir pango)/.$TARGET_NAME/pango"
+}
+
 make_target() {
   make SRC_SUBDIRS="gdk gtk modules"
   $MAKEINSTALL SRC_SUBDIRS="gdk gtk modules"
