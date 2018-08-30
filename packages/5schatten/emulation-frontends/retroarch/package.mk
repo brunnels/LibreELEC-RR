@@ -47,6 +47,7 @@ if [[ "$TARGET_FPU" =~ "neon" ]]; then
 fi
 
 if [[ "$PROJECT" =~ "Generic" ]]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET qt-everywhere"
   RETROARCH_QT="--enable-qt"
 else
   RETROARCH_QT="--disable-qt"
