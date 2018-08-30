@@ -22,4 +22,5 @@ makeinstall_target() {
   cp -R $PKG_BUILD/* $INSTALL/usr/share/retroarch/shaders
   rm -r $INSTALL/usr/share/retroarch/shaders/configure
   rm -r $INSTALL/usr/share/retroarch/shaders/Makefile
+  rm -r $INSTALL/usr/share/retroarch/shaders/README.md
 }
