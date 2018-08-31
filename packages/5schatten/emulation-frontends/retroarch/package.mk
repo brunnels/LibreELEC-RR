@@ -3,12 +3,12 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="a157f2e"
+PKG_VERSION="02e23be"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
-PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa freetype zlib ffmpeg retroarch-assets retroarch-joypad-autoconfig libretro-common-shaders libretro-slang-shaders libretro-glsl-shaders libretro-core-info libretro-database"
+PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa freetype zlib ffmpeg retroarch-assets retroarch-common-overlays retroarch-overlay-borders retroarch-joypad-autoconfig libretro-common-shaders libretro-slang-shaders libretro-glsl-shaders libretro-core-info libretro-database"
 PKG_SECTION="emulation"
 PKG_SHORTDESC="Reference frontend for the libretro API."
 PKG_LONGDESC="RetroArch is the reference frontend for the libretro API. Popular examples of implementations for this API includes videogame system emulators and game engines, but also more generalized 3D programs. These programs are instantiated as dynamic libraries. We refer to these as libretro cores."
@@ -76,17 +76,21 @@ pre_configure_target() {
 make_target() {
   make V=1
   make -C gfx/video_filters compiler=$CC extra_flags="$CFLAGS"
+  make -C libretro-common/audio/dsp_filters compiler=$CC extra_flags="$CFLAGS"
 }
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/bin
   mkdir -p $INSTALL/etc
     cp $PKG_BUILD/retroarch $INSTALL/usr/bin
+    cp $PKG_DIR/scripts/* $INSTALL/usr/bin
     cp $PKG_BUILD/retroarch.cfg $INSTALL/etc
   mkdir -p $INSTALL/usr/share/retroarch/video_filters
     cp $PKG_BUILD/gfx/video_filters/*.so $INSTALL/usr/share/retroarch/video_filters
     cp $PKG_BUILD/gfx/video_filters/*.filt $INSTALL/usr/share/retroarch/video_filters
-    cp $PKG_DIR/scripts/* $INSTALL/usr/bin
+  mkdir -p $INSTALL/usr/share/retroarch/audio_filters
+    cp $PKG_BUILD/libretro-common/audio/dsp_filters/*.so $INSTALL/usr/share/retroarch/audio_filters
+    cp $PKG_BUILD/libretro-common/audio/dsp_filters/*.dsp $INSTALL/usr/share/retroarch/audio_filters
 
   if [[ "$PROJECT" =~ "Generic" ]]; then
     mkdir -p $INSTALL/usr/config/retroarch
@@ -104,6 +108,7 @@ makeinstall_target() {
   sed -i -e "s/# video_shader_dir =/video_shader_dir =\/tmp\/shaders/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# rgui_show_start_screen = true/rgui_show_start_screen = false/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# assets_directory =/assets_directory =\/tmp\/assets/" $INSTALL/etc/retroarch.cfg
+  sed -i -e "s/# overlay_directory =/overlay_directory = \"\/tmp\/overlay\"/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# menu_driver = \"rgui\"/menu_driver = \"xmb\"/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# video_shared_context = false/video_shared_context = true/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# menu_show_core_updater = true/# menu_show_core_updater = false/" $INSTALL/etc/retroarch.cfg
@@ -157,9 +162,10 @@ makeinstall_target() {
 }
 
 post_install() {  
-  enable_service tmp-cores.mount
-  enable_service tmp-autoconfig.mount
-  enable_service tmp-database.mount
   enable_service tmp-assets.mount
+  enable_service tmp-autoconfig.mount
+  enable_service tmp-cores.mount
+  enable_service tmp-database.mount
+  enable_service tmp-overlay.mount
   enable_service tmp-shaders.mount
 }
