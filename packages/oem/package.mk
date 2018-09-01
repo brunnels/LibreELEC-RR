@@ -54,6 +54,7 @@ OEM_EMU_COMMON=" \
 OEM_EMU_GENERIC=" \
   dolphin \
   fs-uae \
+  PCSX2 \
   ppsspp \
   vice \
   libretro-beetle-psx \
