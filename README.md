@@ -131,11 +131,11 @@ PROJECT=RPi DEVICE=RPi2 ARCH=arm tools/download-tool
 
 For generic x86-64 Intel & AMD CPU use:
 ```
-PROJECT=Generic ARCH=x86_64 BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
+PROJECT=Generic ARCH=x86_64 BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
 ```
 For Raspberry Pi (RPi2 & RPi3) use:
 ```
-PROJECT=RPi DEVICE=RPi2 ARCH=arm BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
+PROJECT=RPi DEVICE=RPi2 ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
 ```
 To build single packages use:
 ```
