@@ -132,7 +132,11 @@ makeinstall_target() {
   if [ "$PROJECT" == "OdroidXU3" ]; then # workaround the 55fps bug
     sed -i -e "s/# audio_out_rate = 48000/audio_out_rate = 44100/" $INSTALL/etc/retroarch.cfg
   fi
-  
+  sed -i -e "s/# audio_filter_dir =/audio_filter_dir =\/usr\/share\/retroarch\/audio_filters/" $INSTALL/etc/retroarch.cfg
+  if [ "$PROJECT" == "RPi" ]; then # set default audio device for RPi
+    sed -i -e "s/# audio_device =/audio_device = \"sysdefault:CARD=ALSA\"/" $INSTALL/etc/retroarch.cfg
+  fi
+
   # Input
   sed -i -e "s/# input_driver = sdl/input_driver = udev/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# input_max_users = 16/input_max_users = 5/" $INSTALL/etc/retroarch.cfg
