@@ -26,4 +26,5 @@ makeinstall_init() {
  
   mkdir -p $INSTALL/usr/lib
     cp -a $(get_build_dir libpng)/.install_pkg/usr/lib/libpng*so* $INSTALL/usr/lib/
+    cp -a $(get_build_dir zlib)/.install_pkg/usr/lib/libz*so* $INSTALL/usr/lib/
 }
