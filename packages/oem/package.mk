@@ -38,6 +38,7 @@ OEM_EMU_COMMON=" \
   libretro-dosbox \
   libretro-fbalpha \
   libretro-fuse \
+  libretro-gambatte \
   libretro-genplus \
   libretro-mame2003-plus \
   libretro-mgba \
