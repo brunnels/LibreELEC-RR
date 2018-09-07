@@ -33,6 +33,7 @@ OEM_EMU_COMMON=" \
   retroarch \
   dosbox-sdl2 \
   moonlight-embedded \
+  ppsspp \
   libretro-2048 \
   libretro-beetle-wswan \
   libretro-dosbox \
@@ -56,7 +57,6 @@ OEM_EMU_GENERIC=" \
   dolphin \
   fs-uae \
   PCSX2 \
-  ppsspp \
   vice \
   libretro-beetle-psx \
   libretro-beetle-saturn \
