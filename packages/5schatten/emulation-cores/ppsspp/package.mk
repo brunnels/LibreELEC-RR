@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="ppsspp"
-PKG_VERSION="9a610c8"
+PKG_VERSION="fd6c314"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/hrydgard/ppsspp"
@@ -18,7 +18,17 @@ PKG_LIBNAME="ppsspp_libretro.so"
 PKG_LIBPATH="lib/$PKG_LIBNAME"
 PKG_LIBVAR="PPSSPP_LIB"
 
-PKG_CMAKE_OPTS_TARGET="-DLIBRETRO=ON"
+if [ "$DEVICE" == "RPi2" ]; then
+  ARCH_ARM="-DARMV7=ON \
+            -DUSING_FBDEV=ON \
+            -DUSING_EGL=ON \
+            -DUSING_GLES2=ON \
+            -DUSING_X11_VULKAN=OFF \
+            -DUSE_SYSTEM_FFMPEG=ON"
+fi
+
+PKG_CMAKE_OPTS_TARGET="-DLIBRETRO=ON \
+                       $ARCH_ARM"
 
 pre_make_target() {
   find . -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
