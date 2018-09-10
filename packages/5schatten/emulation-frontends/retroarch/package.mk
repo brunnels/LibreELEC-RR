@@ -40,6 +40,12 @@ elif [ "$OPENGLES" == "sunxi-mali" ] || [ "$OPENGLES" == "odroidc1-mali" ] || [ 
 elif [ "$OPENGLES" == "gpu-viv-bin-mx6q" ]; then
   RETROARCH_GL="--enable-opengles --disable-kms --enable-vivante_fbdev"
   CFLAGS="$CFLAGS -DLINUX -DEGL_API_FB"
+elif [ "$OPENGLES" == "mali-rockchip" ]; then
+  RETROARCH_GL="--enable-opengles --enable-kms --disable-wayland"
+elif [ "$OPENGLES" == "allwinner-fb-mali" ]; then
+   RETROARCH_GL="--enable-opengles --disable-kms --enable-mali_fbdev"
+elif [ "$OPENGLES" == "allwinner-mali" ] || [ "$OPENGLES" == "odroidxu3-mali" ]; then
+   RETROARCH_GL="--enable-opengles --enable-kms"
 fi
 
 if [[ "$TARGET_FPU" =~ "neon" ]]; then
