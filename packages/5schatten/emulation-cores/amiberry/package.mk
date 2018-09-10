@@ -25,10 +25,19 @@ make_target() {
   #build amiberry
   export SYSROOT_PREFIX=$SYSROOT_PREFIX
 
-  if [ "$DEVICE" = "RPi" ]; then
-       make all PLATFORM=rpi1-sdl2
-     elif [ "$DEVICE" = "RPi2" ]; then
+  if [ "$PROJECT" == "Amlogic" ]; then
+    make all PLATFORM=aml
+  fi
+
+  if [ "$PROJECT" == "RPi" ]; then
+    case $DEVICE in
+      RPi)
+        make all PLATFORM=rpi1-sdl2
+        ;;
+      RPi2)
        make all PLATFORM=rpi2-sdl2
+        ;;
+    esac
   fi
 }
 
@@ -48,7 +57,7 @@ makeinstall_target() {
   cp -R whdboot $INSTALL/usr/config/amiberry/
 
   #copy binary, scripts & lib
-  cp amiberry-rpi?-sdl2 $INSTALL/usr/bin/amiberry
+  cp amiberry-*-sdl2 $INSTALL/usr/bin/amiberry
   cp $PKG_DIR/scripts/* $INSTALL/usr/bin
   cp capsimg/capsimg.so $INSTALL/usr/lib
 }
