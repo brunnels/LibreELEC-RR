@@ -15,21 +15,34 @@ PKG_LONGDESC="A Fork of Emulation Station for RetroPie. Emulation Station is a f
 PKG_BUILD_FLAGS="-gold"
 GET_HANDLER_SUPPORT="git"
 
+if [ "$PROJECT" == "Amlogic" ]; then
+  PKG_CMAKE_OPTS_TARGET=-DGLES=ON
+fi
+
 post_makeinstall_target() {  
-    mkdir -p $INSTALL/etc/emulationstation
-    mkdir -p $INSTALL/usr/config/emulationstation
-    mkdir -p $INSTALL/usr/lib/tmpfiles.d
-    ln -s /storage/.config/emulationstation/es_systems.cfg $INSTALL/etc/emulationstation/
-    cp $PKG_DIR/scripts/* $INSTALL/usr/bin
-    cp $PKG_DIR/files/emulationstation.conf $INSTALL/usr/config/emulationstation/
-    cp $PKG_DIR/files/es_input.cfg $INSTALL/usr/config/emulationstation/
-    cp $PKG_DIR/files/es_settings.cfg $INSTALL/usr/config/emulationstation/
-    cp -a ../resources $INSTALL/usr/config/emulationstation/
-    if [[ "$PROJECT" =~ "RPi" ]]; then
-      cp $PKG_DIR/files/es_systems-rpi.cfg $INSTALL/usr/config/emulationstation/es_systems.cfg
-      cp $PKG_DIR/files/emulationstation-userdirs-rpi.conf $INSTALL/usr/lib/tmpfiles.d/emulationstation-userdirs.conf
-    else
-      cp $PKG_DIR/files/es_systems-generic.cfg $INSTALL/usr/config/emulationstation/es_systems.cfg
-      cp $PKG_DIR/files/emulationstation-userdirs-generic.conf $INSTALL/usr/lib/tmpfiles.d/emulationstation-userdirs.conf
-    fi
+  mkdir -p $INSTALL/etc/emulationstation
+  mkdir -p $INSTALL/usr/config/emulationstation
+  mkdir -p $INSTALL/usr/lib/tmpfiles.d
+  ln -s /storage/.config/emulationstation/es_systems.cfg $INSTALL/etc/emulationstation/
+  
+  cp $PKG_DIR/scripts/* $INSTALL/usr/bin
+  cp $PKG_DIR/config/emulationstation.conf $INSTALL/usr/config/emulationstation/
+  cp $PKG_DIR/config/es_input.cfg $INSTALL/usr/config/emulationstation/
+  cp $PKG_DIR/config/es_settings.cfg $INSTALL/usr/config/emulationstation/
+  cp -a ../resources $INSTALL/usr/config/emulationstation/
+
+  case $PROJECT in
+    Amlogic)
+      cp $PKG_DIR/config/$PROJECT/es_systems-$PROJECT.cfg $INSTALL/usr/config/emulationstation/es_systems.cfg
+      cp $PKG_DIR/config/$PROJECT/emulationstation-userdirs-$PROJECT.conf $INSTALL/usr/lib/tmpfiles.d/emulationstation-userdirs.conf
+      ;;
+    Generic)
+      cp $PKG_DIR/config/$PROJECT/es_systems-$PROJECT.cfg $INSTALL/usr/config/emulationstation/es_systems.cfg
+      cp $PKG_DIR/config/$PROJECT/emulationstation-userdirs-$PROJECT.conf $INSTALL/usr/lib/tmpfiles.d/emulationstation-userdirs.conf
+      ;;
+    RPi*)
+      cp $PKG_DIR/config/$PROJECT/es_systems-$PROJECT.cfg $INSTALL/usr/config/emulationstation/es_systems.cfg
+      cp $PKG_DIR/config/$PROJECT/emulationstation-userdirs-$PROJECT.conf $INSTALL/usr/lib/tmpfiles.d/emulationstation-userdirs.conf
+      ;;
+  esac
 }
