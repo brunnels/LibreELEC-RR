@@ -18,7 +18,7 @@ PKG_LIBNAME="ppsspp_libretro.so"
 PKG_LIBPATH="lib/$PKG_LIBNAME"
 PKG_LIBVAR="PPSSPP_LIB"
 
-if [ "$DEVICE" == "RPi2" ]; then
+if [ "$DEVICE" == "KVIM" ] || [ "$DEVICE" == "RPi2" ]; then
   ARCH_ARM="-DARMV7=ON \
             -DUSING_FBDEV=ON \
             -DUSING_EGL=ON \
