@@ -1,0 +1,8 @@
+102
+- updated MakeMKV config path
+
+101
+- fixed addon name
+
+100
+- Initial Release
