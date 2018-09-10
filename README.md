@@ -81,6 +81,7 @@
 *  [libretro-fbalpha](https://github.com/libretro/fbalpha) - git 9d1b3af | Multiple Arcade Machine Emulator
 *  [libretro-fceumm](https://github.com/libretro/libretro-fceumm) - git a37c3bc | Nintendo Entertainment System
 *  [libretro-fuse](https://github.com/libretro/fuse-libretro) - git fa6ecc4 | ZX Spectrum
+*  [libretro-gambatte](https://github.com/libretro/gambatte-libretro) - git 7722012 | Nintendo Game Boy (Color)
 *  [libretro-genplus](https://github.com/libretro/Genesis-Plus-GX) - git 5ae12e7 | Sega Mega Drive
 *  [libretro-mame2003-plus](https://github.com/libretro/mame2003-plus-libretro) - git 7fefa76 | Romset 0.78 | Multiple Arcade Machine Emulator
 *  [libretro-mgba](https://github.com/libretro/mgba) - git abf712f | Nintendo Game Boy Advance
