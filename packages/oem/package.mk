@@ -19,6 +19,9 @@ OEM_APPS_COMMON=" \
   sdl-jstest \
   spectre-meltdown-checker"
 
+OEM_APPS_AMLOGIC=" \
+  librespot"
+
 OEM_APPS_GENERIC=" \
   dmidecode \
   google-chrome \
@@ -38,6 +41,7 @@ OEM_EMU_COMMON=" \
   libretro-beetle-wswan \
   libretro-dosbox \
   libretro-fbalpha \
+  libretro-fceumm \
   libretro-fuse \
   libretro-gambatte \
   libretro-genplus \
@@ -47,11 +51,16 @@ OEM_EMU_COMMON=" \
   libretro-mupen64plus \
   libretro-pcsx-rearmed \
   libretro-prboom \
-  libretro-fceumm \
   libretro-reicast \
   libretro-samples \
   libretro-scummvm \
   libretro-tyrquake"
+
+OEM_EMU_AMLOGIC=" \
+  amiberry \
+  libretro-snes9x2010 \
+  libretro-vice \
+  libretro-yabause"
 
 OEM_EMU_GENERIC=" \
   dolphin \
@@ -76,9 +85,12 @@ OEM_EMU_RPI=" \
   libretro-vice \
   libretro-yabause"
 
-if [ ! "$OEM_APPS" = "no" ]; then
+if [ "$OEM_APPS" == "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_APPS_COMMON"
   case $PROJECT in
+    Amlogic)
+      PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_APPS_AMLOGIC"
+      ;;
     Generic)
       PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_APPS_GENERIC"
       ;;
@@ -88,9 +100,12 @@ if [ ! "$OEM_APPS" = "no" ]; then
   esac
 fi
 
-if [ ! "$OEM_EMU" = "no" ]; then
+if [ "$OEM_EMU" == "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_EMU_COMMON"
   case $PROJECT in
+    Amlogic)
+      PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_EMU_AMLOGIC"
+      ;;
     Generic)
       PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_EMU_GENERIC"
       ;;
