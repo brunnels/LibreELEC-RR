@@ -5,4 +5,4 @@
 import xbmcgui
 
 dialog = xbmcgui.Dialog()
-dialog.ok('', 'This is a console-only addon')
+dialog.ok('', 'This is a console-only addon. Run makemkvcon or makemkv-key-update in a terminal first.')

@@ -1,3 +1,8 @@
+103
+- added dedicated makemkv-key-update script
+- removed key-update functions from makemkvcon 
+- exported it to external script
+
 102
 - updated MakeMKV config path
 

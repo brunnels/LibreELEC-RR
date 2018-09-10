@@ -1,0 +1,37 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
+
+. /etc/profile
+
+MAKEMKV_KEY=$(curl "https://www.makemkv.com/forum/viewtopic.php?f=5&t=1053" -s | awk 'FNR == 269 {print $13}'| cut -c 23-90)
+SETTINGS_FILE=$HOME/.config/MakeMKV/settings.conf
+
+echo "Latest MakeMKV key:" $MAKEMKV_KEY > /var/log/MakeMKV.log 2>&1
+
+if [ -d /storage/.MakeMKV ] && [ ! -L /storage/.MakeMKV ]; then
+  echo "Old MakeMKV config files found -> moving them to new directory." >> /var/log/MakeMKV.log 2>&1
+  mkdir -p $HOME/.config/MakeMKV
+  cp -R /storage/.MakeMKV/* /storage/.config/MakeMKV
+  rm -rf /storage/.MakeMKV
+fi
+
+if [ ! -f $SETTINGS_FILE ]; then
+  echo "No MakeMKV settings.conf found -> creating new settings.conf in ~/.config/MakeMKV" >> /var/log/MakeMKV.log 2>&1
+  mkdir -p $HOME/.config/MakeMKV
+  echo "app_Key=\"$MAKEMKV_KEY\"" > $SETTINGS_FILE
+fi
+
+if [ -d /storage/.config/MakeMKV ] && [ ! -L /storage/.MakeMKV ]; then
+  echo "No symlink to MakeMKV config directory found -> creating link from ~/.config/MakeMKV to ~/.MakeMKV" >> /var/log/MakeMKV.log 2>&1
+  ln -s /storage/.config/MakeMKV /storage/.MakeMKV
+fi
+
+if [ "$MAKEMKV_KEY" != "$(cat $SETTINGS_FILE| grep app_Key="*" | cut -c10-77)" ]; then
+  echo "MakeMKV key outdated -> updating stettings.conf" >> /var/log/MakeMKV.log 2>&1
+  sed -i '/app_Key=/d' $SETTINGS_FILE
+  echo -e "\napp_Key=\"$MAKEMKV_KEY\"" >> $SETTINGS_FILE
+  sed -i '/^\s*$/d' $SETTINGS_FILE
+else
+  echo "Latest MakeMKV key in settings.conf found -> nothing to do :-)" >> /var/log/MakeMKV.log 2>&1
+fi
