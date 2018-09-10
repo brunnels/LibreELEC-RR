@@ -1,14 +1,35 @@
 ## LibreELEC 9.0 Reborn Remix
 ---
-**Project thread**
+**Project threads**
 
-* [LibreELEC 9.0 Reborn Remix [Emulationstation|Retroarch|DolphinQT |Chrome|Spotify]](https://forum.libreelec.tv/thread/12662-libreelec-9-0-reborn-remix-emulationstation-retroarch-dolphinqt-chrome-spotify-w/)
+*English*
+
+* [LibreELEC 9.0 Reborn Remix [ Emulationstation | Retroarch | DolphinQT | Moonlight | Chrome | Spotify | MakeMKV ]](https://forum.libreelec.tv/thread/12662-libreelec-9-0-reborn-remix-emulationstation-retroarch-dolphinqt-chrome-spotify-w/)
+
+*German*
+
+* [LibreELEC 9.0 Reborn Remix [ Emulationstation | Retroarch | DolphinQT | Moonlight | Chrome | Spotify | MakeMKV ]](https://www.kodinerds.net/index.php/Thread/62933-LibreELEC-9-0-Reborn-Remix-Emulationstation-Retroarch-DolphinQT-Moonlight-Chrome/)
 
 ---
+**Currently supported & unsupported devices**
+
+*Supported:*
+
+* Generic AMD & Intel systems with IGP and/or discrete AMD or Nvidia GPU
+* Raspberry Pi 2B, 3B, 3B+
+
+*Currently unsupported:*
+
+* Amlogic based devices so S905X and others -> WIP! Once I get my test device in the hands I start to test and probably upload AML builds too. The code has already been changed and updated to build these images but real world testing is needed.
+* Rockchip based devices -> need a testing device first
+
+---
+**Basics**
+
 * [LibreELEC 9.0-devel](https://github.com/LibreELEC/LibreELEC.tv)
-* [Kodi 18](https://github.com/xbmc/xbmc) - git f21b477 | Beta 1
-* [Linux 4.18.5](https://www.kernel.org/) - generic x86-64 builds
-* [Linux 4.14.62](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
+* [Kodi 18](https://github.com/xbmc/xbmc) - git 7868a27 | Beta 1v2
+* [Linux 4.18.6](https://www.kernel.org/) - generic x86-64 builds
+* [Linux 4.18.6](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
 ---
 **Addons & tools**
 
@@ -35,7 +56,7 @@
 * [GCC](https://gcc.gnu.org/gcc-8/changes.html) - v8.2
 * [glibc](https://sourceware.org/glibc/wiki/Release/2.28) - v2.28
 * [LLVM](https://llvm.org/) - v6.0.1
-* [Mesa 3D](https://www.mesa3d.org/) - v18.2.0-rc4
+* [Mesa 3D](https://www.mesa3d.org/) - v18.2.0
 * [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.83
 * [openssl](https://www.openssl.org/source/) - v1.0.2p
 * [PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) - 12.2
@@ -47,12 +68,13 @@
 **Emulator Frontends**
 
 * [Emulationstation-Retropie](https://github.com/RetroPie/EmulationStation) - v2.8-DEV + [Steven Selph's Scraper](https://github.com/sselph/scraper) - v1.4.6
-* [RetroArch](https://github.com/libretro/RetroArch) - v1.7.3
+* [RetroArch](https://github.com/libretro/RetroArch) - v1.7.4
 ---
 **Emulators included in generic x86-64 & RPi builds**
 
 *  [dosbox-sdl2](https://github.com/duganchen/dosbox) - git 8f8d0c5 | DOS
 *  [moonlight-embedded](https://github.com/irtimmer/moonlight-embedded) - git 9b0b2d4 | v2.4.6 | NVIDIA GameStream client
+*  [PPSSPP](https://github.com/hrydgard/ppsspp) - git 9a610c8 | v1.6.3 | Sony PSP
 *  [libretro-2048](https://github.com/libretro/libretro-2048) - git 45655d3 | 2048
 *  [libretro-beetle-wswan](https://github.com/libretro/beetle-wswan-libretro) - git bdaeae6 | Bandai WonderSwan
 *  [libretro-dosbox](https://github.com/libretro/dosbox-libretro) - git c35d4cc | DOS
@@ -74,7 +96,7 @@
 
 *  [Dolphin](https://de.dolphin-emu.org/?cr=de) - git 3d56063 | r5.0-8704 | [Qt GUI](https://de.dolphin-emu.org/blog/2018/02/03/dolphin-progress-report-january-2018/) | Nintendo Wii / Gamecube
 *  [fs-uae](https://fs-uae.net/) - git 3d6a8dc | 2.9.7dev4 | Commodore Amiga
-*  [PPSSPP](https://github.com/hrydgard/ppsspp) - git 9a610c8 | v1.6.3 | Sony PSP
+*  [PCSX2 ](https://github.com/PCSX2/pcsx2) - git 5b9e93c | v1.5.0-dev | Docker addon needed | Sony PlayStation 2
 *  [Vice](http://vice-emu.sourceforge.net/amigaos.html) - v3.2-release | Commodore C64
 *  [libretro-beetle-psx](https://github.com/libretro/beetle-psx-libretro) - git b1487b0 | Sony Playstation
 *  [libretro-beetle-saturn](https://github.com/libretro/beetle-saturn-libretro) - git 1983713 | Sega Saturn
@@ -105,7 +127,7 @@
 ---
 **Builds systems**
 
-I use VirtualBox v5.2.12 to run a Linux Mint 19 Mate VM as building system. So this distribution should be suitable for you too. For further information see [LibreELEC Wiki / Compile](https://wiki.libreelec.tv/compile).
+I use VirtualBox v5.2.18 to run a Linux Mint 19 Mate VM as building system. So this distribution should be suitable for you too. For further information see [LibreELEC Wiki / Compile](https://wiki.libreelec.tv/compile).
 
 ---
 **Build dependencies**
@@ -137,6 +159,10 @@ For Raspberry Pi (RPi2 & RPi3) use:
 ```
 PROJECT=RPi DEVICE=RPi2 ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
 ```
+For Khadas VIM use:
+```
+PROJECT=Amlogic DEVICE=KVIM ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
+```
 To build single packages use:
 ```
 scripts/build "package"
@@ -145,8 +171,6 @@ In example for package linux:
 ```
 PROJECT=Generic ARCH=x86_64 scripts/build linux
 ```
-
-
 ---
 
 **Clean up**
