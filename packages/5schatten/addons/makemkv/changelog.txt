@@ -1,7 +1,13 @@
+104
+- updated makemkv-key-update logging
+- added key update by starting the addon
+- added correct pkg version
+- added correct pkg maintainer
+- updated addon description
+
 103
-- added dedicated makemkv-key-update script
 - removed key-update functions from makemkvcon 
-- exported it to external script
+- added dedicated makemkv-key-update script
 
 102
 - updated MakeMKV config path
