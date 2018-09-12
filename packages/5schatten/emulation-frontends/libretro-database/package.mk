@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="libretro-database"
-PKG_VERSION="aa0f093"
-PKG_SHA256="e0d6e439412fcd667c55fdc73a50e99018537aa23480411605d91b9b14844657"
+PKG_VERSION="559d643"
+PKG_SHA256="f88c3d227060fb8ca3c625296e6114321482f1b731f70554bbf2036e9f921861"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/libretro-database"
@@ -26,7 +26,4 @@ makeinstall_target() {
 
 post_makeinstall_target() {
   mv $INSTALL/usr/share/libretro $INSTALL/usr/share/retroarch
-  rm $INSTALL/usr/share/retroarch/database/rdb/MAME.rdb
-  rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2000.rdb
-  rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2010.rdb
 }
