@@ -49,6 +49,7 @@ OEM_EMU_COMMON=" \
   libretro-mgba \
   libretro-mrboom \
   libretro-mupen64plus \
+  libretro-nestopia \
   libretro-pcsx-rearmed \
   libretro-prboom \
   libretro-reicast \
