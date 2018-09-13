@@ -35,7 +35,7 @@ make_target() {
         make all PLATFORM=rpi1-sdl2
         ;;
       RPi2)
-       make all PLATFORM=rpi2-sdl2
+        make all PLATFORM=rpi2-sdl2
         ;;
     esac
   fi
@@ -51,7 +51,7 @@ makeinstall_target() {
   #copy ressources
   cp -R $PKG_DIR/config/* $INSTALL/usr/config/amiberry
   cp -R data $INSTALL/usr/config/amiberry/
-  ln -s /storage/roms/bios $INSTALL/usr/config/amiberry/kickstarts
+  ln -s /storage/roms/bios/Kickstarts $INSTALL/usr/config/amiberry/kickstarts
   cp -R savestates $INSTALL/usr/config/amiberry/
   cp -R screenshots $INSTALL/usr/config/amiberry/
   cp -R whdboot $INSTALL/usr/config/amiberry/
