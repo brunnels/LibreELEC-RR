@@ -3,35 +3,50 @@
 # Copyright (C) 0riginally created by Escalade (https://github.com/escalade)
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
+. /etc/profile
+
+#Set vars
+AMIBERRY_DIR=/storage/.config/amiberry
+AMIBERRY_TMP_DIR=/tmp/amiberry
+AMIBERRY_LOG=/var/log/amiberry.log
 MAX_DRIVES=4
 i=0
 
-. /etc/profile
-cd /storage/.config/amiberry
-
+# Freeze Kodi / stop audio
 kodifreeze.sh freeze
 
 # Change refresh rate to 50Hz
 set_refresh_rate_50
 
-# Copy over the default configuration
-TMP_DIR=/tmp/amiberry
-mkdir -p "$TMP_DIR"
-cp conf/amiberry.uae "$TMP_DIR"/
+# Set SDL audio driver to ALSA
+export SDL_AUDIODRIVER=alsa
 
-# Check if we are loading a zip file
-if [ `echo $1 | grep -i .zip | wc -l` -eq 1 ]; then
-  unzip -q -o "$1" -d "$TMP_DIR"
-  # Check for AGA/CD32 game and set configuration options equal to that of an Amiga 1200
-  if [ `echo $1 | egrep 'AGA|CD32' | wc -l` -eq 1 -o `echo "$TMP_DIR"/* | egrep 'AGA|CD32' | wc -l` -eq 1 ]; then
-    ARGS="chipset=aga \n
-          cachesize=0 \n
-          finegrain_cpu_speed=1024 \n
-          cpu_type=68ec020 \n
-          cpu_model=68020 \n
-          kickstart_rom_file=/storage/.config/amiberry/kickstarts/kick31.rom"
+# Change working directory cause amiberry loads assets from there
+cd $AMIBERRY_DIR
+
+# Copy over the default configuration
+mkdir -p "$AMIBERRY_TMP_DIR"
+
+# Check if the file is an Amiga 1200/CD32 game and set configuration options for an Amiga 1200
+AMIBERRY_SET_CONF() {
+  if [ `echo $1 | egrep 'AGA|CD32' | wc -l` -eq 1 -o `echo "$AMIBERRY_TMP_DIR"/* | egrep 'AGA|CD32' | wc -l` -eq 1 ]; then
+    cp $AMIBERRY_DIR/conf/amiberry-A1200.uae "$AMIBERRY_TMP_DIR"/amiberry.uae
+  else
+    cp $AMIBERRY_DIR/conf/amiberry-default.uae "$AMIBERRY_TMP_DIR"/amiberry.uae
   fi
-  for FILE in "$TMP_DIR"/*
+}
+
+# Check if we are loading a .zip file
+if [ `echo $1 | grep -i .zip | wc -l` -eq 1 ]; then
+
+  #unpack the zip file
+  unzip -q -o "$1" -d "$AMIBERRY_TMP_DIR"
+  
+  # Set default config
+  AMIBERRY_SET_CONF
+  
+  # Assign files to floppy0-3
+  for FILE in "$AMIBERRY_TMP_DIR"/*
   do
     ARGS="$ARGS\nfloppy$i="$FILE""
     i=$(($i+1))
@@ -40,19 +55,49 @@ if [ `echo $1 | grep -i .zip | wc -l` -eq 1 ]; then
       break;
     fi
   done
-  echo -e $ARGS >> "$TMP_DIR"/amiberry.uae
-  amiberry -f "$TMP_DIR"/amiberry.uae > /var/log/amiberry.log 2>&1
-  rm -rf "$TMP_DIR"
+
+  # Add game files as floppies 0-3 to amiberry.uae & start amiberry
+  echo -e ";" >> "$AMIBERRY_TMP_DIR"/amiberry.uae
+  echo -e "; *** temporary added Floppy Drives" >> "$AMIBERRY_TMP_DIR"/amiberry.uae
+  echo -e ";" >> "$AMIBERRY_TMP_DIR"/amiberry.uae
+  echo -e $ARGS >> "$AMIBERRY_TMP_DIR"/amiberry.uae
+  amiberry -f "$AMIBERRY_TMP_DIR"/amiberry.uae > $AMIBERRY_LOG 2>&1
+  rm -rf "$AMIBERRY_TMP_DIR"
 else
-  # Check for AGA game
-  if [ `echo $1 | egrep 'AGA|CD32' | wc -l` -eq 1 -o `echo "$TMP_DIR"/* | egrep 'AGA|CD32' | wc -l` -eq 1 ]; then
-    ARGS="chipset=aga\ncachesize=0\nchipmem_size=4\nfinegrain_cpu_speed=1024\ncpu_type=68ec020\ncpu_model=68020\nkickstart_rom_file=/storage/.config/amiberry/kickstarts/kick31.rom"
+  # Check for WHDload files (.lha)
+  if [ `echo $1 | grep -i .lha | wc -l` -eq 1 ]; then
+    # Set default config
+    AMIBERRY_SET_CONF
+
+    # Add amiberry.uae conf & start amiberry with WHDLoad
+    amiberry -f "$AMIBERRY_TMP_DIR"/amiberry.uae -autowhdload=$1 > $AMIBERRY_LOG 2>&1
+    rm -rf "$AMIBERRY_TMP_DIR"
+
+  # All other files (.uae .adf .adz)
+  else
+    if [ `echo $1 | grep -i .uae | wc -l` -eq 1 ]; then
+
+      # Load .uae config file
+      amiberry -f "$1" > $AMIBERRY_LOG 2>&1
+      rm -rf "$AMIBERRY_TMP_DIR"
+
+    else
+      # Set default config
+      AMIBERRY_SET_CONF
+
+      # Add game file as floppy0 to amiberry.uae & start amiberry
+      echo -e ";" >> "$AMIBERRY_TMP_DIR"/amiberry.uae
+      echo -e "; *** temporary added Floppy Drives" >> "$AMIBERRY_TMP_DIR"/amiberry.uae
+      echo -e ";" >> "$AMIBERRY_TMP_DIR"/amiberry.uae
+      echo -e "\nfloppy0=$1" >> "$AMIBERRY_TMP_DIR"/amiberry.uae
+      amiberry -f "$AMIBERRY_TMP_DIR"/amiberry.uae > $AMIBERRY_LOG 2>&1
+      rm -rf "$AMIBERRY_TMP_DIR"
+    fi
   fi
-  echo -e "$ARGS\nfloppy0=$1" >> "$TMP_DIR"/amiberry.uae
-  amiberry -f "$TMP_DIR"/amiberry.uae > /var/log/amiberry.log 2>&1
 fi
 
 # Change refresh rate to 60Hz
 set_refresh_rate_60
 
+# Switch back to ES or unfreeze Kodi
 pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
