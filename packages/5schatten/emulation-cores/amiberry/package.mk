@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="amiberry"
-PKG_VERSION="ea3908c"
+PKG_VERSION="b6e62ba"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/midwan/amiberry"
@@ -59,5 +59,5 @@ makeinstall_target() {
   #copy binary, scripts & lib
   cp amiberry-*-sdl2 $INSTALL/usr/bin/amiberry
   cp $PKG_DIR/scripts/* $INSTALL/usr/bin
-  cp capsimg/capsimg.so $INSTALL/usr/lib
+  cp capsimg/capsimg.so $INSTALL/usr/config/amiberry/
 }
