@@ -26,4 +26,23 @@ makeinstall_target() {
 
 post_makeinstall_target() {
   mv $INSTALL/usr/share/libretro $INSTALL/usr/share/retroarch
+
+  #remove oldest & unneeded MAME 2000 database use mame2003-plus instead
+  rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2000.rdb
+
+  #remove unneeded MAME databases for SBC based systems
+  if [ "$PROJECT" == "Amlogic" ] || [ "$PROJECT" == "RPi" ]; then
+    rm $INSTALL/usr/share/retroarch/database/rdb/MAME.rdb
+    rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2014.rdb
+  fi
+
+  #workaround until a MAME 2003-Plus database for romset 0.78+ is included
+  if [ ! -f "$INSTALL/usr/share/retroarch/database/rdb/MAME 2003-Plus.rdb" ]; then
+    ln -sf "/usr/share/retroarch/database/rdb/MAME 2003.rdb" "$INSTALL/usr/share/retroarch/database/rdb/MAME 2003-Plus.rdb"
+  fi
+
+  #workaround until a MAME 2016 database for romset 0.174 is included
+  if [ ! -f "$INSTALL/usr/share/retroarch/database/rdb/MAME 2016.rdb" ] && [ "$PROJECT" == "Generic" ]; then
+    ln -sf /usr/share/retroarch/database/rdb/MAME.rdb "$INSTALL/usr/share/retroarch/database/rdb/MAME 2016.rdb"
+  fi
 }
