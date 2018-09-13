@@ -70,7 +70,7 @@ else
     AMIBERRY_SET_CONF
 
     # Add amiberry.uae conf & start amiberry with WHDLoad
-    amiberry -f "$AMIBERRY_TMP_DIR"/amiberry.uae -autowhdload=$1 > $AMIBERRY_LOG 2>&1
+    amiberry -f "$AMIBERRY_TMP_DIR"/amiberry.uae -autowhdload="$1" > $AMIBERRY_LOG 2>&1
     rm -rf "$AMIBERRY_TMP_DIR"
 
   # All other files (.uae .adf .adz)
