@@ -27,7 +27,7 @@ post_makeinstall_target() {
   # set up default config directory
   mkdir -p $INSTALL/usr/config
   cp -R $PKG_DIR/config $INSTALL/usr/config/fs-uae
-  ln -s /storage/roms/bios $INSTALL/usr/config/fs-uae/Kickstarts
+  ln -s /storage/roms/bios/Kickstarts $INSTALL/usr/config/fs-uae/Kickstarts
 
   # clean up
   rm -rf $INSTALL/usr/share/applications
