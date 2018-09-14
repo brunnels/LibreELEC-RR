@@ -20,6 +20,6 @@ make_target() {
 }
 
 makeinstall_target() {
-  mkdir -p $INSTALL/usr/config/fs-uae/Plugins/CAPSImg/Linux/x86-64
-  cp capsimg.so $INSTALL/usr/config/fs-uae/Plugins/CAPSImg/Linux/x86-64
+  mkdir -p $INSTALL/usr/config/fs-uae/Plugins
+  cp capsimg.so $INSTALL/usr/config/fs-uae/Plugins
 }
