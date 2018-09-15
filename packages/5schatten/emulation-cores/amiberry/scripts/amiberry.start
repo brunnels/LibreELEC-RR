@@ -55,7 +55,7 @@ if [ `echo $1 | grep -i .zip | wc -l` -eq 1 ]; then
   
   if [ -f "$AMIBERRY_TMP_DIR"/*.*nfo ] && [ -f "$AMIBERRY_TMP_DIR"/*/*.*lave ]; then
 
-    #.lha file detcted
+    #WHDLoad file detcted
     echo "Loading a WHDLoad (.zip) file..." >> $AMIBERRY_LOG
 
     # Set default config
@@ -87,7 +87,7 @@ if [ `echo $1 | grep -i .zip | wc -l` -eq 1 ]; then
     echo -e "; *** temporary added Floppy Drives" >> "$AMIBERRY_TMP_CONFIG"
     echo -e ";" >> "$AMIBERRY_TMP_CONFIG"
     echo -e $ARGS >> "$AMIBERRY_TMP_CONFIG"
-    echo -e "Assigned floppy drives:" $ARGS >> "$AMIBERRY_LOG"
+    echo -e "\nAssigned floppy drives:" $ARGS "\n" >> "$AMIBERRY_LOG"
     amiberry -f "$AMIBERRY_TMP_CONFIG" >> $AMIBERRY_LOG 2>&1
   fi
 
@@ -126,7 +126,7 @@ else
   echo -e "; *** temporary added Floppy Drives" >> "$AMIBERRY_TMP_CONFIG"
   echo -e ";" >> "$AMIBERRY_TMP_CONFIG"
   echo -e "\nfloppy0=$1" >> "$AMIBERRY_TMP_CONFIG"
-  echo -e "Assigned floppy drive:\nfloppy0=$1" >> "$AMIBERRY_LOG"
+  echo -e "\nAssigned floppy drive:\nfloppy0=$1\n" >> "$AMIBERRY_LOG"
   amiberry -f "$AMIBERRY_TMP_CONFIG" >> $AMIBERRY_LOG 2>&1
 fi
 
