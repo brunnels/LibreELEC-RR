@@ -1,4 +1,4 @@
-config_description=UAE Amiga 1200/ Amiga CD32 configuration
+config_description=UAE Amiga 1200/ Amiga CD32 default configuration
 config_hardware=true
 config_host=true
 config_version=3.6.0
