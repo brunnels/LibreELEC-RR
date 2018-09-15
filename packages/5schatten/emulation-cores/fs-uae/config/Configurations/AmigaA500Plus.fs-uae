@@ -19,8 +19,8 @@
 # for a complete list of configuration options with documentation
 
 [config]
-amiga_model = A500
-kickstart_file = kick13.rom
+amiga_model = A500+
+kickstart_file = kick37175.A500.rom
 assume_refresh_rate = 50
 video_sync = auto
 fullscreen = 1
