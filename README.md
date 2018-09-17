@@ -85,7 +85,7 @@
 *  [libretro-genplus](https://github.com/libretro/Genesis-Plus-GX) - git 7856b72 | Sega Mega Drive
 *  [libretro-mame2003-plus](https://github.com/libretro/mame2003-plus-libretro) - git d8f7372 | Romset 0.78 | Multiple Arcade Machine Emulator
 *  [libretro-mgba](https://github.com/libretro/mgba) - git 144dbd2 | Nintendo Game Boy Advance
-*  [libretro-mrboom](https://github.com/libretro/mrboom-libretro) - git v4.5| Bomberman clone
+*  [libretro-mrboom](https://github.com/libretro/mrboom-libretro) - git 2865840 | v4.5 | Bomberman clone
 *  [libretro-mupen64plus](https://github.com/libretro/mupen64plus-libretro) - git 4ca2fa8 | Nintendo N64
 *  [libretro-nestopia](https://github.com/libretro/nestopia) - git faf19f8 | Nintendo Entertainment System
 *  [libretro-pcsx-rearmed](https://github.com/libretro/pcsx_rearmed) - git 0370856 | Sony Playstation
@@ -107,7 +107,7 @@
 *  [libretro-desmume](https://github.com/libretro/desmume) - git 07162f4 | Nintendo DS
 *  [libretro-dolphin](https://github.com/libretro/dolphin) - git a5bce7d | Nintendo Wii / Gamecube
 *  [libretro-ishiiruka](https://github.com/libretro/Ishiiruka) - git ede0713 | Nintendo Wii / Gamecube
-*  [libretro-mame2016](https://github.com/libretro/mame2016-libretro) - git 45e85dd | Romset 0.174 | Multiple Arcade Machine Emulator
+*  [libretro-mame2016](https://github.com/libretro/mame2016-libretro) - git e06d731 | Romset 0.174 | Multiple Arcade Machine Emulator
 *  [libretro-mesen](https://github.com/SourMesen/Mesen) - git e72f837 | Nintendo Entertainment System
 *  [libretro-parallel-n64](https://github.com/libretro/parallel-n64) - git ab155da | Nintendo N64
 *  [libretro-snes9x](https://github.com/libretro/snes9x) - git 4432700 | Nintendo Super Nintendo Entertainment System
