@@ -71,6 +71,7 @@ OEM_EMU_GENERIC=" \
   libretro-beetle-psx \
   libretro-beetle-saturn \
   libretro-bsnes-mercury-accuracy \
+  libretro-chailove \
   libretro-citra \
   libretro-desmume \
   libretro-dolphin \
@@ -82,6 +83,7 @@ OEM_EMU_GENERIC=" \
 
 OEM_EMU_RPI=" \
   amiberry \
+  libretro-chailove \
   libretro-snes9x2010 \
   libretro-vice \
   libretro-yabause"
