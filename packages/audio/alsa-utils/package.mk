@@ -28,7 +28,17 @@ post_makeinstall_target() {
 
 # install sample asound.conf
   mkdir -p $INSTALL/usr/config
-  cp $PKG_DIR/config/* $INSTALL/usr/config/
+  if [ "$PROJECT" == "Amlogic" ];then
+    if [ "$DEVICE" == "KVIM" ];then
+      cp $PKG_DIR/config/asound.conf.$DEVICE $INSTALL/usr/config/asound.conf
+    else
+      cp $PKG_DIR/config/asound.conf.sample $INSTALL/usr/config  
+    fi
+  elif [ "$PROJECT" == "RPi" ]; then
+    cp $PKG_DIR/config/asound.conf.$PROJECT $INSTALL/usr/config/asound.conf
+  else
+    cp $PKG_DIR/config/asound.conf.sample $INSTALL/usr/config
+  fi
 
 # remove default udev rule to restore mixer configs, we install our own.
 # so we avoid resetting our soundconfig
