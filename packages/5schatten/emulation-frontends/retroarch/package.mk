@@ -28,24 +28,18 @@ if [ "$AVAHI_DAEMON" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET avahi nss-mdns"
 fi
 
+# Project Generic OpenGL
 if [ "$OPENGLES" == "no" ]; then
   RETROARCH_GL="--enable-kms --enable-vulkan"
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET mesa vulkan-loader"
+# Project RPi OpenGLES
 elif [[ "$PROJECT" =~ "RPi" ]]; then
   RETROARCH_GL="--enable-opengles --disable-kms --enable-dispmanx"
   CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads \
                   -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux"
-elif [ "$OPENGLES" == "sunxi-mali" ] || [ "$OPENGLES" == "odroidc1-mali" ] || [ "$OPENGLES" == "odroidxu3-mali" ] || [ "$OPENGLES" == "opengl-meson6" ] || [ "$OPENGLES" == "opengl-meson8" ]; then
+# Project Amlogic OpenGLES
+elif [ "$OPENGLES" == "opengl-meson" ] || [ "$OPENGLES" == "opengl-meson-t82x" ]; then
   RETROARCH_GL="--enable-opengles --disable-kms --enable-mali_fbdev"
-elif [ "$OPENGLES" == "gpu-viv-bin-mx6q" ]; then
-  RETROARCH_GL="--enable-opengles --disable-kms --enable-vivante_fbdev"
-  CFLAGS="$CFLAGS -DLINUX -DEGL_API_FB"
-elif [ "$OPENGLES" == "mali-rockchip" ]; then
-  RETROARCH_GL="--enable-opengles --enable-kms --disable-wayland"
-elif [ "$OPENGLES" == "allwinner-fb-mali" ]; then
-   RETROARCH_GL="--enable-opengles --disable-kms --enable-mali_fbdev"
-elif [ "$OPENGLES" == "allwinner-mali" ] || [ "$OPENGLES" == "odroidxu3-mali" ]; then
-   RETROARCH_GL="--enable-opengles --enable-kms"
 fi
 
 if [[ "$TARGET_FPU" =~ "neon" ]]; then
