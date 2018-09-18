@@ -45,6 +45,7 @@ PKG_CMAKE_OPTS_TARGET="-DSDL_STATIC=ON \
                        -DMIR_SHARED=OFF \
                        -DVIDEO_COCOA=OFF \
                        -DVIDEO_DIRECTFB=OFF \
+                       -DVIDEO_VIVANTE=OFF \
                        -DDIRECTFB_SHARED=OFF \
                        -DFUSIONSOUND=OFF \
                        -DFUSIONSOUND_SHARED=OFF \
@@ -76,6 +77,7 @@ else
                          -DVIDEO_X11=OFF"
 fi
 
+# Project Generic OpenGL
 if [ ! "$OPENGL" = "no" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGL"
 
@@ -87,6 +89,28 @@ else
                          -DVIDEO_OPENGL=OFF \
                          -DVIDEO_OPENGLES=ON"
 fi
+
+# Project RPi OpenGLES
+if [ "$OPENGLES" == "bcm2835-driver" ]; then
+  PKG_CMAKE_OPTS_TARGET="$PKG_CMAKE_OPTS_TARGET \
+                         -DVIDEO_RPI=ON \
+                         -DVIDEO_VULKAN=OFF"
+else
+  PKG_CMAKE_OPTS_TARGET="$PKG_CMAKE_OPTS_TARGET \
+                         -DVIDEO_RPI=OFF"
+fi
+
+# Project Amlogic OpenGLES
+if [ "$OPENGLES" == "opengl-meson" ] || [ "$OPENGLES" == "opengl-meson-t82x" ]; then
+  PKG_CMAKE_OPTS_TARGET="$PKG_CMAKE_OPTS_TARGET \
+                         -DVIDEO_MALI=ON \
+                         -DVIDEO_VULKAN=OFF \
+                         -DVIDEO_KMSDRM=OFF"
+else
+  PKG_CMAKE_OPTS_TARGET="$PKG_CMAKE_OPTS_TARGET \
+                         -DVIDEO_MALI=OFF"
+fi
+
 
 if [ "$PULSEAUDIO_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET pulseaudio"
