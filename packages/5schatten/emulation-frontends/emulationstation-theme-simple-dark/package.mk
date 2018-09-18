@@ -24,10 +24,20 @@ makeinstall_target() {
   cp -a $PKG_DIR/files/2048 $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
   cp -a $PKG_DIR/files/mrboom $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
   cp -a $PKG_DIR/files/moonlight $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
-  cp -a $PKG_DIR/files/n3ds $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
   cp -a $PKG_DIR/files/prboom $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
   cp -a $PKG_DIR/files/tyrquake $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
 
+  #adding additional themes for generic
+  if [ "$PROJECT" == "Generic" ]; then
+    cp -a $PKG_DIR/files/n3ds $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
+  fi
+
+  #adding additional themes for generic || RPi
+  if [ "$PROJECT" == "Generic" ] || [ "$PROJECT" == "RPi" ]; then
+    cp -a $PKG_DIR/files/chailove $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
+  fi
+
+  #adding click sounds
   cp $PKG_DIR/files/scroll.wav $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/art/
   cp $PKG_DIR/files/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/back.wav
   cp $PKG_DIR/files/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/click.wav
