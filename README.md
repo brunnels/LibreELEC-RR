@@ -16,11 +16,11 @@
 *Supported:*
 
 * Generic AMD & Intel systems with IGP and/or discrete AMD or Nvidia GPU
+* Khadas Vim (Amlogic S905X) - Testbuilds available
 * Raspberry Pi 2B, 3B, 3B+
 
 *Currently unsupported:*
 
-* Amlogic based devices so S905X and others -> WIP! Once I get my test device in the hands I start to test and probably upload AML builds too. The code has already been changed and updated to build these images but real world testing is needed.
 * Rockchip based devices -> need a testing device first
 
 ---
@@ -29,6 +29,7 @@
 * [LibreELEC 9.0-devel](https://github.com/LibreELEC/LibreELEC.tv)
 * [Kodi 18](https://github.com/xbmc/xbmc) - git 7868a27 | Beta 2
 * [Linux 4.18.8](https://www.kernel.org/) - generic x86-64 builds
+* [Linux 3.14.29](https://www.kernel.org/) - Khadas Vim builds
 * [Linux 4.18.7](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
 ---
 **Addons & tools**
@@ -62,15 +63,15 @@
 * [PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) - 12.2
 * [Samba](https://www.samba.org/samba/history/samba-4.8.2.html) - v4.9.0
 * [systemd](https://github.com/systemd/systemd) - v239
-* [Qt](https://blog.qt.io/blog/2018/06/19/qt-5-11-1-released/) - v5.11.1
+* [Qt](https://wiki.qt.io/Qt_5.11_Release/) - v5.11.2
 * [Xorg-Server](https://cgit.freedesktop.org/xorg/xserver/log/) - v1.20.1
 ---
 **Emulator Frontends**
 
 * [Emulationstation-Retropie](https://github.com/RetroPie/EmulationStation) - v2.8-DEV + [Steven Selph's Scraper](https://github.com/sselph/scraper) - v1.4.6
-* [RetroArch](https://github.com/libretro/RetroArch) - v1.7.4
+* [RetroArch](https://github.com/libretro/RetroArch) - v1.7.5-dev
 ---
-**Emulators included in generic x86-64 & RPi builds**
+**Emulators included in all builds**
 
 *  [dosbox-sdl2](https://github.com/duganchen/dosbox) - git 8f8d0c5 | DOS
 *  [moonlight-embedded](https://github.com/irtimmer/moonlight-embedded) - git 9b0b2d4 | v2.4.6 | NVIDIA GameStream client
@@ -83,7 +84,7 @@
 *  [libretro-fuse](https://github.com/libretro/fuse-libretro) - git 69a4442 | ZX Spectrum
 *  [libretro-gambatte](https://github.com/libretro/gambatte-libretro) - git 7722012 | Nintendo Game Boy (Color)
 *  [libretro-genplus](https://github.com/libretro/Genesis-Plus-GX) - git 7856b72 | Sega Mega Drive
-*  [libretro-mame2003-plus](https://github.com/libretro/mame2003-plus-libretro) - git d8f7372 | Romset 0.78 | Multiple Arcade Machine Emulator
+*  [libretro-mame2003-plus](https://github.com/libretro/mame2003-plus-libretro) - git 92e4d7b | Romset 0.78 | Multiple Arcade Machine Emulator
 *  [libretro-mgba](https://github.com/libretro/mgba) - git 144dbd2 | Nintendo Game Boy Advance
 *  [libretro-mrboom](https://github.com/libretro/mrboom-libretro) - git 2865840 | v4.5 | Bomberman clone
 *  [libretro-mupen64plus](https://github.com/libretro/mupen64plus-libretro) - git 4ca2fa8 | Nintendo N64
@@ -96,7 +97,7 @@
 ---
 **Emulators included in generic x86-64 builds**
 
-*  [Dolphin](https://de.dolphin-emu.org/?cr=de) - git 755ae5d8 | r5.0-8718 | [Qt GUI](https://de.dolphin-emu.org/blog/2018/02/03/dolphin-progress-report-january-2018/) | Nintendo Wii / Gamecube
+*  [Dolphin](https://de.dolphin-emu.org/?cr=de) - git a61036a | r5.0-8743 | [Qt GUI](https://de.dolphin-emu.org/blog/2018/02/03/dolphin-progress-report-january-2018/) | Nintendo Wii / Gamecube
 *  [fs-uae](https://fs-uae.net/) - git 3d6a8dc | 2.9.7dev4 | Commodore Amiga
 *  [PCSX2 ](https://github.com/PCSX2/pcsx2) - git 5b9e93c | v1.5.0-dev | Docker addon needed | Sony PlayStation 2
 *  [Vice](http://vice-emu.sourceforge.net/amigaos.html) - v3.2-release | Commodore C64
@@ -112,11 +113,18 @@
 *  [libretro-parallel-n64](https://github.com/libretro/parallel-n64) - git ab155da | Nintendo N64
 *  [libretro-snes9x](https://github.com/libretro/snes9x) - git 4432700 | Nintendo Super Nintendo Entertainment System
 ---
+**Emulators included in Khadas Vim builds**
+
+*  [amiberry](https://github.com/midwan/amiberry) - git b6e62ba | v2.21+ | Commodore Amiga
+*  [libretro-snes9x2010](https://github.com/libretro/snes9x2010) - git 1b5ec5b | Nintendo Super Nintendo Entertainment System
+*  [libretro-vice](https://github.com/libretro/vice-libretro) - git 0fc467f | Commodore C64
+*  [libretro-yabause](https://github.com/libretro/yabause)  - git fae9682 | Sega Saturn
+---
 **Emulators included in RPi2 & RPi3 builds**
 
 *  [amiberry](https://github.com/midwan/amiberry) - git b6e62ba | v2.21+ | Commodore Amiga
 *  [libretro-snes9x2010](https://github.com/libretro/snes9x2010) - git 1b5ec5b | Nintendo Super Nintendo Entertainment System
-*  [libretro-vice](https://github.com/libretro/vice-libretro) - git b419dd8 | Commodore C64
+*  [libretro-vice](https://github.com/libretro/vice-libretro) - git 0fc467f | Commodore C64
 *  [libretro-yabause](https://github.com/libretro/yabause)  - git fae9682 | Sega Saturn
 
 ---
@@ -124,6 +132,7 @@
 
 *  [LibreELEC 9.0-RR files](https://goo.gl/UcMon6)
 *  [Generic x86-64 builds](https://goo.gl/GXda1W)
+*  [Khadas Vim builds (S905X)](https://goo.gl/8hNpJS)
 *  [RaspberryPi (RPi2 | RPi3) builds](https://goo.gl/ESZVGd)
 
 ---
@@ -208,7 +217,7 @@ path to config file:
 
 ```
 /storage/roms/...
-(amiga|c64|dos|dreamcast|fba|gamecube|gba|genesis|mame|n3ds|n64|nes|nds|psp|psx|snes|saturn|wii|wonderswan|zxspectrum)
+(amiga|c64|dos|dreamcast|fba|gamecube|gb|gba|genesis|mame|n3ds|n64|nes|nds|ps2|psp|psx|snes|saturn|wii|wonderswan|zxspectrum)
 ```
 
 **BIOS files should be put in**
