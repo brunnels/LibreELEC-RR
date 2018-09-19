@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="qt-everywhere"
-PKG_VERSION="5.11.1"
-PKG_SHA256="39602cb08f9c96867910c375d783eed00fc4a244bffaa93b801225d17950fb2b"
+PKG_VERSION="5.11.2"
+PKG_SHA256="c6104b840b6caee596fa9a35bc5f57f67ed5a99d6a36497b6fe66f990a53ca81"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://qt-project.org"
