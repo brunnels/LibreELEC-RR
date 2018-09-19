@@ -83,7 +83,6 @@ OEM_EMU_GENERIC=" \
 
 OEM_EMU_RPI=" \
   amiberry \
-  libretro-chailove \
   libretro-snes9x2010 \
   libretro-vice \
   libretro-yabause"
