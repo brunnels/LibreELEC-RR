@@ -28,11 +28,11 @@
 
 * [LibreELEC 9.0-devel](https://github.com/LibreELEC/LibreELEC.tv)
 * [Kodi 18](https://github.com/xbmc/xbmc) - git 7868a27 | Beta 2
-* [Linux 4.18.8](https://www.kernel.org/) - generic x86-64 builds
+* [Linux 4.18.9](https://www.kernel.org/) - generic x86-64 builds
 * [Linux 3.14.29](https://www.kernel.org/) - Khadas Vim builds
-* [Linux 4.18.7](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
+* [Linux 4.18.8](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
 ---
-**Addons & tools**
+**Addons & tools for generic builds**
 
 * [Google Chrome](https://www.google.de/chrome/index.html) - latest | autoupdate script
 * [Spotify](https://www.spotify.com/nl/download/linux/) - latest | autoupdate script
@@ -56,7 +56,7 @@
 
 * [GCC](https://gcc.gnu.org/gcc-8/changes.html) - v8.2
 * [glibc](https://sourceware.org/glibc/wiki/Release/2.28) - v2.28
-* [LLVM](https://llvm.org/) - v6.0.1
+* [LLVM](https://llvm.org/) - v7.0.0
 * [Mesa 3D](https://www.mesa3d.org/) - v18.2.0
 * [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.84
 * [openssl](https://www.openssl.org/source/) - v1.0.2p
@@ -104,6 +104,7 @@
 *  [libretro-beetle-psx](https://github.com/libretro/beetle-psx-libretro) - git 6a804da | Sony Playstation
 *  [libretro-beetle-saturn](https://github.com/libretro/beetle-saturn-libretro) - git 1983713 | Sega Saturn
 *  [libretro-bsnes-mercury](https://github.com/libretro/bsnes-mercury) git 4e221df | Nintendo Super Nintendo Entertainment System
+*  [libretro-chailove](https://github.com/libretro/libretro-chailove) - git 14a66ea | 2D Game Framework with ChaiScript
 *  [libretro-citra](https://github.com/libretro/citra) - git 5d8e36a | Nintendo 3DS
 *  [libretro-desmume](https://github.com/libretro/desmume) - git 07162f4 | Nintendo DS
 *  [libretro-dolphin](https://github.com/libretro/dolphin) - git a5bce7d | Nintendo Wii / Gamecube
