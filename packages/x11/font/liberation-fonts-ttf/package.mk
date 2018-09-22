@@ -17,7 +17,7 @@ makeinstall_target() {
   
   #create a symlink to fonts folder for qt-everywhere
   mkdir -p $INSTALL/usr/lib
-  ln -sf $INSTALL/usr/share/fonts/liberation $INSTALL/usr/lib/fonts
+  ln -s /usr/share/fonts/liberation $INSTALL/usr/lib/fonts
 }
 
 post_install() {
