@@ -23,3 +23,7 @@ makeinstall_target() {
   mkdir -p $INSTALL/usr/share/retroarch/autoconfig
   cp -r * $INSTALL/usr/share/retroarch/autoconfig
 }
+
+post_makeinstall_target () {
+  cp -r $PKG_DIR/config/* $INSTALL/usr/share/retroarch/autoconfig
+}
