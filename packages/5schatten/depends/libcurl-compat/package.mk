@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="libcurl-compat"
-PKG_VERSION="7.58.0"
-PKG_SHA256="1cb081f97807c01e3ed747b6e1c9fee7a01cb10048f1cd0b5f56cfe0209de731"
+PKG_VERSION="7.61.1"
+PKG_SHA256="a308377dbc9a16b2e994abd55455e5f9edca4e31666f8f8fcfe7a1a4aea419b9"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://curl.haxx.se"
@@ -83,6 +83,9 @@ pre_configure_target() {
 }
 
 post_makeinstall_target() {
+  rm -rf $INSTALL/usr/bin/curl-config
+  rm -rf $INSTALL/usr/bin/curl
+  
   mv $INSTALL/usr/lib/libcurl{,-gnutls}.so.4.5.0
   rm $INSTALL/usr/lib/libcurl.*
   for version in 3 4 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0; do
