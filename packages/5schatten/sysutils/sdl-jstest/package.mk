@@ -17,5 +17,12 @@ GET_HANDLER_SUPPORT="git"
 PKG_CMAKE_OPTS_TARGET="-DBUILD_SDL_JSTEST=off"
 
 post_makeinstall_target() {
- ln -sf sdl2-jstest $INSTALL/usr/bin/sdl-jstest
+  mv $INSTALL/usr/bin/sdl2-jstest $INSTALL/usr/bin/sdl2-jstest.bin
+  cp $PKG_DIR/scripts/* $INSTALL/usr/bin/
+  ln -sf /usr/bin/sdl2-jstest $INSTALL/usr/bin/sdl-jstest
+    
+  mkdir -p $INSTALL/usr/share/SDL_GameControllerDB
+  cp $PKG_BUILD/SDL_GameControllerDB/gamecontrollerdb.txt $INSTALL/usr/share/SDL_GameControllerDB/
 }
+
+
