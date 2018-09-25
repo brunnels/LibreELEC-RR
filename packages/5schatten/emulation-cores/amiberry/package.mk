@@ -7,7 +7,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/midwan/amiberry"
 PKG_URL="https://github.com/midwan/amiberry.git"
-PKG_DEPENDS_TARGET="toolchain zlib SDL2 SDL2_image SDL2_ttf libxml2 flac mpg123 libpng libmpeg2"
+PKG_DEPENDS_TARGET="toolchain zlib SDL2 SDL2_image SDL2_ttf libxml2 flac mpg123 libpng libmpeg2 retroarch-joypad-autoconfig"
 PKG_SECTION="emulation"
 PKG_SHORTDESC="Amiga emulator for the Raspberry Pi and other ARM SoC"
 GET_HANDLER_SUPPORT="git"
@@ -47,11 +47,13 @@ makeinstall_target() {
   mkdir -p $INSTALL/usr/bin
   mkdir -p $INSTALL/usr/lib
   mkdir -p $INSTALL/usr/config/amiberry
+  mkdir -p $INSTALL/usr/config/amiberry/controller
 
   #copy ressources
   cp -R $PKG_DIR/config/* $INSTALL/usr/config/amiberry
   cp -R data $INSTALL/usr/config/amiberry/
   ln -s /storage/roms/bios/Kickstarts $INSTALL/usr/config/amiberry/kickstarts
+  ln -s /usr/share/retroarch/autoconfig/udev/8Bitdo_Pro_SF30_BT_B.cfg "$INSTALL/usr/config/amiberry/controller/8Bitdo SF30 Pro.cfg"
   cp -R savestates $INSTALL/usr/config/amiberry/
   cp -R screenshots $INSTALL/usr/config/amiberry/
   cp -R whdboot $INSTALL/usr/config/amiberry/
