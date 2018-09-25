@@ -15,14 +15,14 @@ PKG_TOOLCHAIN="manual"
 
 make_target() {
 
-  #build capsimg.so
+  # build capsimg.so for .ipf file support
   cd capsimg
   ./bootstrap
   ./configure $options --host=$TARGET_NAME
   make -j 4
   cd ..
   
-  #build amiberry
+  # build amiberry
   export SYSROOT_PREFIX=$SYSROOT_PREFIX
 
   if [ "$PROJECT" == "Amlogic" ]; then
@@ -43,22 +43,25 @@ make_target() {
 
 makeinstall_target() {
 
-  #create directories
+  # create directories
   mkdir -p $INSTALL/usr/bin
   mkdir -p $INSTALL/usr/lib
   mkdir -p $INSTALL/usr/config/amiberry
   mkdir -p $INSTALL/usr/config/amiberry/controller
 
-  #copy ressources
+  # copy ressources
   cp -R $PKG_DIR/config/* $INSTALL/usr/config/amiberry
   cp -R data $INSTALL/usr/config/amiberry/
   ln -s /storage/roms/bios/Kickstarts $INSTALL/usr/config/amiberry/kickstarts
-  ln -s /usr/share/retroarch/autoconfig/udev/8Bitdo_Pro_SF30_BT_B.cfg "$INSTALL/usr/config/amiberry/controller/8Bitdo SF30 Pro.cfg"
   cp -R savestates $INSTALL/usr/config/amiberry/
   cp -R screenshots $INSTALL/usr/config/amiberry/
   cp -R whdboot $INSTALL/usr/config/amiberry/
 
-  #copy binary, scripts & lib
+  # create links to Retroarch controller files
+  ln -s /usr/share/retroarch/autoconfig/udev/8Bitdo_Pro_SF30_BT_B.cfg "$INSTALL/usr/config/amiberry/controller/8Bitdo SF30 Pro.cfg"
+  ln -s "/usr/share/retroarch/autoconfig/udev/Pro Controller.cfg" "$INSTALL/usr/config/amiberry/controller/Pro Controller.cfg"
+
+  # copy binary, scripts & lib
   cp amiberry-*-sdl2 $INSTALL/usr/bin/amiberry
   cp $PKG_DIR/scripts/* $INSTALL/usr/bin
   cp capsimg/capsimg.so $INSTALL/usr/config/amiberry/
