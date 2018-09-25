@@ -21,8 +21,8 @@ post_makeinstall_target() {
   cp $PKG_DIR/scripts/* $INSTALL/usr/bin/
   ln -sf /usr/bin/sdl2-jstest $INSTALL/usr/bin/sdl-jstest
     
-  mkdir -p $INSTALL/usr/share/SDL_GameControllerDB
-  cp $PKG_BUILD/SDL_GameControllerDB/gamecontrollerdb.txt $INSTALL/usr/share/SDL_GameControllerDB/
+  mkdir -p $INSTALL/usr/config/SDL-GameControllerDB
+  cp $PKG_BUILD/SDL_GameControllerDB/gamecontrollerdb.txt $INSTALL/usr/config/SDL-GameControllerDB
 }
 
 
