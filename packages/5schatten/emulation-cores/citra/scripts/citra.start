@@ -1,0 +1,28 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
+
+. /etc/profile
+
+kodifreeze.sh freeze
+
+# create link to config directory
+if [ ! -L /storage/.local/share/citra-emu ]; then
+  cp -r /storage/.local/share/citra-emu/* /storage/.config/citra-emu/
+  rm -rf /storage/.local/share/citra-emu
+  ln -s /storage/.config/citra-emu /storage/.local/share/citra-emu
+fi
+
+# Set SDL audio driver to ALSA
+export SDL_AUDIODRIVER=alsa
+
+# Change refresh rate to 60Hz if PAL60=True
+set_refresh_rate_60
+
+# force fullscreen on startup
+sed -i -e "s/fullscreen=.*/fullscreen=true/" /storage/.config/citra-emu/qt-config.ini
+sed -i -e "s/fullscreen\\\default=.*/fullscreen\\\default=false/" /storage/.config/citra-emu/qt-config.ini
+
+citra-qt "$@"> /var/log/citra-qt.log 2>&1
+
+pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
