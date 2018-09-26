@@ -42,7 +42,7 @@ PKG_CONFIGURE_OPTS_TARGET="-prefix /usr
                            -no-icu
                            -no-strip
                            -no-dbus
-                           -no-opengl
+                           -opengl
                            -no-libudev
                            -no-libinput
                            -no-eglfs
@@ -60,7 +60,6 @@ PKG_CONFIGURE_OPTS_TARGET="-prefix /usr
                            -skip qtimageformats
                            -skip qtlocation
                            -skip qtmacextras
-                           -skip qtmultimedia
                            -skip qtnetworkauth
                            -skip qtpurchasing
                            -skip qtquickcontrols
@@ -115,41 +114,54 @@ configure_target() {
 }
 
 post_makeinstall_target() {
-  #install QT5 libs
+  # install QT5 libs
   mkdir -p $INSTALL/usr/lib
   mkdir -p $INSTALL/usr/plugins
   mkdir -p $INSTALL/usr/plugins/platforms
 
-  #libQt5Concurrent.so.5
+  # libQt5Concurrent.so.5
    cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Concurrent.so.$PKG_VERSION $INSTALL/usr/lib
      ln -sf libQt5Concurrent.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Concurrent.so.${PKG_VERSION:0:4}
      ln -sf libQt5Concurrent.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Concurrent.so.${PKG_VERSION:0:1}
 
-  #libQt5Core.so.5
+  # libQt5Core.so.5
    cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Core.so.$PKG_VERSION $INSTALL/usr/lib
      ln -sf libQt5Core.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Core.so.${PKG_VERSION:0:4}
      ln -sf libQt5Core.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Core.so.${PKG_VERSION:0:1}
 
-  #libQt5Gui.so.5
+  # libQt5Gui.so.5
    cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Gui.so.$PKG_VERSION $INSTALL/usr/lib
      ln -sf libQt5Gui.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Gui.so.${PKG_VERSION:0:4}
      ln -sf libQt5Gui.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Gui.so.${PKG_VERSION:0:1}
 
-  #libQt5Network.so.5
+  # libQt5Multimedia.so.5 
+   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Multimedia.so.$PKG_VERSION $INSTALL/usr/lib
+     ln -sf libQt5Multimedia.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Multimedia.so.${PKG_VERSION:0:4}
+     ln -sf libQt5Multimedia.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Multimedia.so.${PKG_VERSION:0:1}
+
+  # libQt5Network.so.5
    cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Network.so.$PKG_VERSION $INSTALL/usr/lib
      ln -sf libQt5Network.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Network.so.${PKG_VERSION:0:4}
      ln -sf libQt5Network.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Network.so.${PKG_VERSION:0:1}
 
-  #libQt5Widgets.so.5
+  # libQt5OpenGL.so.5
+   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5OpenGL.so.$PKG_VERSION $INSTALL/usr/lib
+     ln -sf libQt5OpenGL.so.$PKG_VERSION $INSTALL/usr/lib/libQt5OpenGL.so.${PKG_VERSION:0:4}
+     ln -sf libQt5OpenGL.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5OpenGL.so.${PKG_VERSION:0:1}
+
+  # libQt5Widgets.so.5
    cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Widgets.so.$PKG_VERSION $INSTALL/usr/lib
      ln -sf libQt5Widgets.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Widgets.so.${PKG_VERSION:0:4}
      ln -sf libQt5Widgets.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Widgets.so.${PKG_VERSION:0:1}
 
-  #libQt5XcbQpa.so.5
+  # libQt5XcbQpa.so.5
    cp -PR $SYSROOT_PREFIX/usr/lib/libQt5XcbQpa.so.$PKG_VERSION $INSTALL/usr/lib
      ln -sf libQt5XcbQpa.so.$PKG_VERSION $INSTALL/usr/lib/libQt5XcbQpa.so.${PKG_VERSION:0:4}
      ln -sf libQt5XcbQpa.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5XcbQpa.so.${PKG_VERSION:0:1}
 
-  #libqxcb.so
+  # plugin libqxcb.so
    cp -PR $SYSROOT_PREFIX/usr/plugins/platforms/libqxcb.so $INSTALL/usr/plugins/platforms/libqxcb.so
+
+  # plugins xcbglintegrations
+   cp -PR $SYSROOT_PREFIX/usr/plugins/xcbglintegrations $INSTALL/usr/plugins
 }
