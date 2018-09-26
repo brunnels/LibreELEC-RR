@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="libretro-mesen"
-PKG_VERSION="e72f837"
-PKG_SHA256="4b2dd0e19a89963878ed1ee20c6c4a345662dc913afaf3eb56f5ab31c1c44a7e"
+PKG_VERSION="f2af2ba" # 0.9.7
+PKG_SHA256="cdd3968a94538816af785159d8ddaa30323ec5b337ec4f1ff88a318a2c3955ed"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/SourMesen/Mesen"
