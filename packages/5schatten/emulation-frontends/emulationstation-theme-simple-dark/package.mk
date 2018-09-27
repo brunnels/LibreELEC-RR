@@ -9,36 +9,31 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/RetroPie/es-theme-simple-dark.git"
 PKG_URL="https://github.com/RetroPie/es-theme-simple-dark/archive/$PKG_VERSION.tar.gz"
-PKG_SOURCE_DIR="es-theme-simple-dark-$PKG_VERSION*"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_SECTION="emulation"
 PKG_SHORTDESC="Simple dark theme for Emulationstation"
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-  mkdir -p $INSTALL/etc/emulationstation/themes/es-theme-simple-dark
   mkdir -p $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources
-  cp -r * $INSTALL/etc/emulationstation/themes/es-theme-simple-dark
+  mkdir -p $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark
+  cp -r * $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark
 
   #adding additional themes
-  cp -a $PKG_DIR/files/2048 $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
-  cp -a $PKG_DIR/files/mrboom $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
-  cp -a $PKG_DIR/files/moonlight $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
-  cp -a $PKG_DIR/files/prboom $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
-  cp -a $PKG_DIR/files/tyrquake $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
+  cp -a $PKG_DIR/files/2048 $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
+  cp -a $PKG_DIR/files/mrboom $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
+  cp -a $PKG_DIR/files/moonlight $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
+  cp -a $PKG_DIR/files/prboom $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
+  cp -a $PKG_DIR/files/tyrquake $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
 
   #adding additional themes for generic
   if [ "$PROJECT" == "Generic" ]; then
-    cp -a $PKG_DIR/files/n3ds $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
-  fi
-
-  #adding additional themes for generic || RPi
-  if [ "$PROJECT" == "Generic" ] || [ "$PROJECT" == "RPi" ]; then
-    cp -a $PKG_DIR/files/chailove $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/
+    cp -a $PKG_DIR/files/n3ds $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
+    cp -a $PKG_DIR/files/chailove $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
   fi
 
   #adding click sounds
-  cp $PKG_DIR/files/scroll.wav $INSTALL/etc/emulationstation/themes/es-theme-simple-dark/art/
+  cp $PKG_DIR/files/scroll.wav $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/art/
   cp $PKG_DIR/files/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/back.wav
   cp $PKG_DIR/files/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/click.wav
   cp $PKG_DIR/files/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/cursor.wav
