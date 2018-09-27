@@ -9,7 +9,7 @@ PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/RetroPie/EmulationStation"
 PKG_URL="https://github.com/RetroPie/EmulationStation.git"
 PKG_SOURCE_DIR="EmulationStation-$PKG_VERSION*"
-PKG_DEPENDS_TARGET="toolchain SDL2 freetype curl cmake:host freeimage emulationstation-theme-simple-dark vlc"
+PKG_DEPENDS_TARGET="toolchain SDL2 freetype curl cmake:host freeimage emulationstation-theme-carbon emulationstation-theme-simple-dark vlc"
 PKG_SECTION="emulation"
 PKG_LONGDESC="A Fork of Emulation Station for RetroPie. Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
 PKG_BUILD_FLAGS="-gold"
@@ -24,7 +24,8 @@ post_makeinstall_target() {
   mkdir -p $INSTALL/etc/emulationstation
   mkdir -p $INSTALL/usr/config/emulationstation
   mkdir -p $INSTALL/usr/lib/tmpfiles.d
-  ln -s /storage/.config/emulationstation/es_systems.cfg $INSTALL/etc/emulationstation/
+  ln -s /usr/config/emulationstation/es_systems.cfg $INSTALL/etc/emulationstation/
+  ln -s /usr/config/emulationstation/themes $INSTALL/etc/emulationstation/themes
   
   #copy scripts
   cp $PKG_DIR/scripts/* $INSTALL/usr/bin
