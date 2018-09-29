@@ -35,7 +35,7 @@ index 8f1e828d15..dd5e712991 100644
 +++ b/CMakeLists.txt
 @@ -329,6 +329,7 @@ endforeach()
  set_option(DIRECTX             "Use DirectX for Windows audio/video" ${WINDOWS})
- dep_option(WASAPI              "Use the Windows WASAPI audio driver" ON "DIRECTX" OFF)
+ set_option(WASAPI              "Use the Windows WASAPI audio driver" ${WINDOWS})
  set_option(RENDER_D3D          "Enable the Direct3D render driver" ${WINDOWS})
 +set_option(VIDEO_MALI          "Use Mali EGL video driver" ${UNIX_SYS})
  set_option(VIDEO_VIVANTE       "Use Vivante EGL video driver" ${UNIX_SYS})
