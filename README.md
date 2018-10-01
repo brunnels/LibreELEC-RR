@@ -16,7 +16,7 @@
 *Supported:*
 
 * Generic AMD & Intel systems with IGP and/or discrete AMD or Nvidia GPU
-* Khadas Vim (Amlogic S905X) - Testbuilds available
+* Khadas Vim (Amlogic S905X) - your mileage may vary but works on [other devices](https://forum.libreelec.tv/thread/12662-libreelec-9-0-reborn-remix-emulationstation-retroarch-dolphinqt-moonlight-chrome/?postID=100346#post100346) too
 * Raspberry Pi 2B, 3B, 3B+
 
 *Currently unsupported:*
