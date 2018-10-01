@@ -73,6 +73,7 @@ OEM_EMU_GENERIC=" \
   libretro-beetle-saturn \
   libretro-bsnes-mercury-accuracy \
   libretro-chailove \
+  libretro-citra \
   libretro-desmume \
   libretro-dolphin \
   libretro-ishiiruka \
