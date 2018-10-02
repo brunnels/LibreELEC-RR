@@ -30,7 +30,7 @@
 * [Kodi 18](https://github.com/xbmc/xbmc) - git 7868a27 | Beta 2
 * [Linux 4.18.11](https://www.kernel.org/) - generic x86-64 builds
 * [Linux 3.14.29](https://www.kernel.org/) - Khadas Vim builds
-* [Linux 4.18.10](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
+* [Linux 4.18.11](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
 ---
 **Addons & tools for generic builds**
 
