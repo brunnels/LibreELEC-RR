@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="dolphin"
-PKG_VERSION="58b0a284a85637a2a0f1f6e896fdc3a596487c36"
-PKG_SHA256="ea57cccfbb0c02ba000c750dc33f30a0a22231fe5d0a3295c6542f757f4c7888"
+PKG_VERSION="d741c239d277e5c0e331995bea6b3e9a3ae63422"
+PKG_SHA256="c505c9fc96d63698a5d3af9a5a03380684488b29c34834f169bf21b4e5ede7e5"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/dolphin-emu/dolphin"
@@ -27,7 +27,7 @@ pre_make_target() {
   export Qt5Gui_DIR=$SYSROOT_PREFIX/usr/lib
 
   #ugly version hack
-  PKG_DOLPHIN_RELEASE="5.0-8783"
+  PKG_DOLPHIN_RELEASE="5.0-8785"
   PKG_DOLPHIN_BRANCH="Master"
   printf "#define SCM_REV_STR \""$PKG_VERSION"\"\n""#define SCM_DESC_STR \""$PKG_DOLPHIN_RELEASE"\"\n""#define SCM_BRANCH_STR \""$PKG_DOLPHIN_BRANCH"\"\n""#define SCM_IS_MASTER 0\n""#define SCM_DISTRIBUTOR_STR \"None\"\n""#define SCM_UPDATE_TRACK_STR \"\"\n" > Source/Core/Common/scmrev.h
 }
