@@ -7,7 +7,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/midwan/amiberry"
 PKG_URL="https://github.com/midwan/amiberry.git"
-PKG_DEPENDS_TARGET="toolchain zlib SDL2 SDL2_image SDL2_ttf libxml2 flac mpg123 libpng libmpeg2 retroarch-joypad-autoconfig"
+PKG_DEPENDS_TARGET="toolchain zlib SDL2 SDL2_image SDL2_ttf capsimg libxml2 flac mpg123 libpng libmpeg2 retroarch-joypad-autoconfig"
 PKG_SECTION="emulation"
 PKG_SHORTDESC="Amiga emulator for the Raspberry Pi and other ARM SoC"
 GET_HANDLER_SUPPORT="git"
@@ -15,13 +15,6 @@ PKG_TOOLCHAIN="manual"
 
 make_target() {
 
-  # build capsimg.so for .ipf file support
-  cd capsimg
-  ./bootstrap
-  ./configure $options --host=$TARGET_NAME
-  make -j 4
-  cd ..
-  
   # build amiberry
   export SYSROOT_PREFIX=$SYSROOT_PREFIX
 
@@ -61,8 +54,9 @@ makeinstall_target() {
   ln -s /usr/share/retroarch/autoconfig/udev/8Bitdo_Pro_SF30_BT_B.cfg "$INSTALL/usr/config/amiberry/controller/8Bitdo SF30 Pro.cfg"
   ln -s "/usr/share/retroarch/autoconfig/udev/Pro Controller.cfg" "$INSTALL/usr/config/amiberry/controller/Pro Controller.cfg"
 
-  # copy binary, scripts & lib
+  # copy binary, scripts & capsimg lib
   cp amiberry-*-sdl2 $INSTALL/usr/bin/amiberry
   cp $PKG_DIR/scripts/* $INSTALL/usr/bin
-  cp capsimg/capsimg.so $INSTALL/usr/config/amiberry/
+
+  ln -sf /usr/lib/libcapsimage.so.5.1 $INSTALL/usr/config/amiberry/capsimg.so
 }
