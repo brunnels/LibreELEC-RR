@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="libretro-common-shaders"
-PKG_VERSION="3e434c9934f6f19db17a7238c8d2289b4fcf1e93"
-PKG_SHA256="c63e5b97fb2f59c992f179e8ad1fd508509a9d94d876bf91a3b1f17cc0e9da64"
+PKG_VERSION="5e14fb8"
+PKG_SHA256="3a972f4c44ae625a4901a5a752f8a4668791de5e48167293683898e82e9bd41d"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/libretro/common-shaders"
