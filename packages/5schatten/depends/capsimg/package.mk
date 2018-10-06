@@ -20,6 +20,8 @@ make_target() {
 }
 
 makeinstall_target() {
-  mkdir -p $INSTALL/usr/config/fs-uae/Plugins
-  cp capsimg.so $INSTALL/usr/config/fs-uae/Plugins
+  mkdir -p $INSTALL/usr/lib
+  mv capsimg.so libcapsimage.so.5.1
+  cp -f libcapsimage.so.5.1 $INSTALL/usr/lib/
+  ln -sf libcapsimage.so.5.1 $INSTALL/usr/lib/libcapsimage.so.5
 }
