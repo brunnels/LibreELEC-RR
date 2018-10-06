@@ -29,6 +29,10 @@ post_makeinstall_target() {
   cp -R $PKG_DIR/config $INSTALL/usr/config/fs-uae
   ln -s /storage/roms/bios/Kickstarts $INSTALL/usr/config/fs-uae/Kickstarts
 
+  # create symlink to capsimg for IPF support
+  mkdir -p $INSTALL/usr/config/fs-uae/Plugins
+  ln -sf /usr/lib/libcapsimage.so.5.1 $INSTALL/usr/config/fs-uae/Plugins/capsimg.so
+
   # clean up
   rm -rf $INSTALL/usr/share/applications
   rm -rf $INSTALL/usr/share/icons
