@@ -14,20 +14,11 @@ PKG_LIBNAME="quicknes_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 PKG_LIBVAR="QUICKNES_LIB"
 
-pre_build_target() {
-  export GIT_VERSION=$PKG_VERSION
-}
-
 make_target() {
   make
 }
 
 makeinstall_target() {
-  if [ ! "$OEM_EMU" = "no" ]; then
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
-  fi
-
   mkdir -p $SYSROOT_PREFIX/usr/lib/cmake/$PKG_NAME
   cp $PKG_LIBPATH $SYSROOT_PREFIX/usr/lib/$PKG_LIBNAME
   echo "set($PKG_LIBVAR $SYSROOT_PREFIX/usr/lib/$PKG_LIBNAME)" > $SYSROOT_PREFIX/usr/lib/cmake/$PKG_NAME/$PKG_NAME-config.cmake
