@@ -38,32 +38,32 @@ OEM_EMU_COMMON=" \
   hatari \
   moonlight-embedded \
   ppsspp \
-  libretro-2048 \
-  libretro-beetle-wswan \
-  libretro-dosbox \
-  libretro-fbalpha \
-  libretro-fceumm \
-  libretro-fuse \
-  libretro-gambatte \
-  libretro-genplus \
-  libretro-mame2003-plus \
-  libretro-mgba \
-  libretro-mrboom \
-  libretro-mupen64plus \
-  libretro-nestopia \
-  libretro-pcsx-rearmed \
-  libretro-prboom \
-  libretro-reicast \
-  libretro-samples \
-  libretro-scummvm \
-  libretro-tyrquake"
+  lr-2048 \
+  lr-beetle-wswan \
+  lr-dosbox \
+  lr-fbalpha \
+  lr-fceumm \
+  lr-fuse \
+  lr-gambatte \
+  lr-genplus \
+  lr-mame2003-plus \
+  lr-mgba \
+  lr-mrboom \
+  lr-mupen64plus \
+  lr-nestopia \
+  lr-pcsx-rearmed \
+  lr-prboom \
+  lr-reicast \
+  lr-samples \
+  lr-scummvm \
+  lr-tyrquake"
 
 OEM_EMU_AMLOGIC=" \
   amiberry \
-  libretro-mame2010 \
-  libretro-snes9x2010 \
-  libretro-vice \
-  libretro-yabause"
+  lr-mame2010 \
+  lr-snes9x2010 \
+  lr-vice \
+  lr-yabause"
 
 OEM_EMU_GENERIC=" \
   citra \
@@ -71,25 +71,25 @@ OEM_EMU_GENERIC=" \
   fs-uae \
   PCSX2 \
   vice \
-  libretro-beetle-psx \
-  libretro-beetle-saturn \
-  libretro-bsnes-mercury-accuracy \
-  libretro-chailove \
-  libretro-citra \
-  libretro-desmume \
-  libretro-dolphin \
-  libretro-ishiiruka \
-  libretro-mame2016 \
-  libretro-mesen \
-  libretro-parallel-n64 \
-  libretro-snes9x"
+  lr-beetle-psx \
+  lr-beetle-saturn \
+  lr-bsnes-mercury-accuracy \
+  lr-chailove \
+  lr-citra \
+  lr-desmume \
+  lr-dolphin \
+  lr-ishiiruka \
+  lr-mame2016 \
+  lr-mesen \
+  lr-parallel-n64 \
+  lr-snes9x"
 
 OEM_EMU_RPI=" \
   amiberry \
-  libretro-mame2010 \
-  libretro-snes9x2010 \
-  libretro-vice \
-  libretro-yabause"
+  lr-mame2010 \
+  lr-snes9x2010 \
+  lr-vice \
+  lr-yabause"
 
 if [ "$OEM_APPS" == "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_APPS_COMMON"
