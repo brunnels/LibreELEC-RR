@@ -80,10 +80,7 @@ make_target() {
 }
 
 makeinstall_target() {
-  mkdir -p $INSTALL/usr/bin
   mkdir -p $INSTALL/etc
-    cp $PKG_BUILD/retroarch $INSTALL/usr/bin
-    cp $PKG_DIR/scripts/* $INSTALL/usr/bin
     cp $PKG_BUILD/retroarch.cfg $INSTALL/etc
   mkdir -p $INSTALL/usr/share/retroarch/video_filters
     cp $PKG_BUILD/gfx/video_filters/*.so $INSTALL/usr/share/retroarch/video_filters
@@ -91,6 +88,9 @@ makeinstall_target() {
   mkdir -p $INSTALL/usr/share/retroarch/audio_filters
     cp $PKG_BUILD/libretro-common/audio/dsp_filters/*.so $INSTALL/usr/share/retroarch/audio_filters
     cp $PKG_BUILD/libretro-common/audio/dsp_filters/*.dsp $INSTALL/usr/share/retroarch/audio_filters
+  mkdir -p $INSTALL/usr/bin
+    cp $PKG_BUILD/retroarch $INSTALL/usr/bin
+    cp $PKG_DIR/scripts/$PROJECT/* $INSTALL/usr/bin
 
   if [[ "$PROJECT" =~ "Generic" ]]; then
     mkdir -p $INSTALL/usr/config/retroarch
