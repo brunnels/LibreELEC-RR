@@ -16,7 +16,6 @@ PKG_TOOLCHAIN="cmake-make"
 
 PKG_LIBNAME="ppsspp_libretro.so"
 PKG_LIBPATH="lib/$PKG_LIBNAME"
-PKG_LIBVAR="PPSSPP_LIB"
 
 if [ "$PROJECT" == "Amlogic" ] || [ "$PROJECT" == "RPi" ]; then
   case $DEVICE in
@@ -39,8 +38,6 @@ pre_make_target() {
 }
 
 makeinstall_target() {
-  if [ ! "$OEM_EMU" = "no" ]; then
     mkdir -p $INSTALL/usr/lib/libretro
     cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
-  fi
 }
