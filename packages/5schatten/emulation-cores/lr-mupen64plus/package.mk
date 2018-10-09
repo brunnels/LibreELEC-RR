@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-mupen64plus"
-PKG_VERSION="3bf2b0f"
-PKG_SHA256="1727522d0b1fe1236a98932d09bf256cd260dca5164f4aba92c450888ccf78a1"
+PKG_VERSION="4ca2fa8"
+PKG_SHA256="071a448450bea92ebae121816c4c4bda795063d1e65ff6ac83d19822afeb9057"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/mupen64plus-libretro"
@@ -25,30 +25,26 @@ make_target() {
   if target_has_feature neon; then
     export HAVE_NEON=1
   fi
+  if [ "$PROJECT" = "RPi" ]; then
+    case $DEVICE in
+      RPi)
+        CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads \
+                        -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux"
 
-  if [ -z "$DEVICE" ]; then
-    PKG_DEVICE_NAME=$PROJECT
+        make FORCE_GLES=1 platform=rpi
+        ;;
+      RPi2)
+        CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads \
+                        -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux"
+
+        make FORCE_GLES=1 platform=rpi2
+        ;;
+    esac
+  elif [[ "$TARGET_CPU" = "cortex-a9" ]] || [[ "$TARGET_CPU" = *"cortex-a53" ]] || [[ "$TARGET_CPU" = "cortex-a17" ]]; then
+    make FORCE_GLES=1 WITH_DYNAREC=arm
   else
-    PKG_DEVICE_NAME=$DEVICE
+    make WITH_DYNAREC=x86_64
   fi
-
-  case $PKG_DEVICE_NAME in
-    RPi|RPi2)
-      make platform=${PKG_DEVICE_NAME,,}
-      ;;
-    Generic)
-      make WITH_DYNAREC=x86_64
-      ;;
-    *)
-      if [[ "$TARGET_CPU" = "cortex-a9" ]] || [[ "$TARGET_CPU" = *"cortex-a53" ]] || [[ "$TARGET_CPU" = "cortex-a17" ]]; then
-        if [ "$TARGET_ARCH" = "aarch64" ]; then
-          make platform=aarch64
-        else
-          make FORCE_GLES=1 WITH_DYNAREC=arm
-        fi
-      fi
-      ;;
-  esac
 }
 
 makeinstall_target() {
