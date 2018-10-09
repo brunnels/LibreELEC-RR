@@ -10,7 +10,6 @@ PKG_SITE="http://qt-project.org"
 PKG_URL="http://download.qt.io/archive/qt/${PKG_VERSION%.*}/$PKG_VERSION/single/$PKG_NAME-src-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain pcre2 zlib"
 PKG_SECTION="emulation/depends"
-PKG_SOURCE_DIR="$PKG_NAME-src-$PKG_VERSION"
 PKG_LONGDESC="A cross-platform application and UI framework"
 
 PKG_CONFIGURE_OPTS_TARGET="-prefix /usr
