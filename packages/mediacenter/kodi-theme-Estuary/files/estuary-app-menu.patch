@@ -6,14 +6,14 @@
  						</item>
 +						<item>
 +							<label>Chrome</label>
-+							<onclick>XBMC.RunScript(/usr/bin/google-chrome-stable.py)</onclick>
++							<onclick>XBMC.RunScript(/usr/bin/app-google-chrome.py)</onclick>
 +							<thumb>DefaultAddonWebSkinChrome.png</thumb>
 +							<property name="id">chrome</property>
 +							<visible>!Skin.HasSetting(HomeMenuNoChromeButton)</visible>
 +						</item>
 +						<item>
 +							<label>Spotify</label>
-+							<onclick>XBMC.RunScript(/usr/bin/spotify.py)</onclick>
++							<onclick>XBMC.RunScript(/usr/bin/app-spotify.py)</onclick>
 +							<thumb>DefaultAddonMusicSpotify.png</thumb>
 +							<property name="id">spotify</property>
 +							<visible>!Skin.HasSetting(HomeMenuNoSpotifyButton)</visible>

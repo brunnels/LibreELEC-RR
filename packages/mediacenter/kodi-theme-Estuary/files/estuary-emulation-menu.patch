@@ -6,14 +6,14 @@
  						</item>
 +						<item>
 +							<label>Emulationstation</label>
-+							<onclick>XBMC.RunScript(/usr/bin/emulationstation-frontend.py)</onclick>
++							<onclick>XBMC.RunScript(/usr/bin/frontend-emulationstation.py)</onclick>
 +							<thumb>DefaultAddonGameES.png</thumb>
 +							<property name="id">emulationstation</property>
 +							<visible>!Skin.HasSetting(HomeMenuNoEmulationstationButton)</visible>
 +						</item>
 +						<item>
 +							<label>Retroarch</label>
-+							<onclick>XBMC.RunScript(/usr/bin/retroarch-frontend.py)</onclick>
++							<onclick>XBMC.RunScript(/usr/bin/frontend-retroarch.py)</onclick>
 +							<thumb>DefaultAddonGameRA.png</thumb>
 +							<property name="id">retroarch</property>
 +							<visible>!Skin.HasSetting(HomeMenuNoRetroarchButton)</visible>
