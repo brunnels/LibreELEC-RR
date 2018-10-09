@@ -1,0 +1,22 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
+
+. /storage/.config/emulationstation/emulationstation.conf
+. /etc/profile
+
+if [ ! -L /storage/.emulationstation ]; then
+  ln -s /storage/.config/emulationstation /storage/.emulationstation
+fi
+
+# Set SDL audio driver to ALSA
+export SDL_AUDIODRIVER=alsa
+
+kodifreeze.sh freeze
+
+# Set fbdev geometry
+set_fbdev_mode
+
+emulationstation $EMULATIONSTATION_OPTS "$@" > /var/log/emulationstation.log 2>&1
+
+kodifreeze.sh unfreeze

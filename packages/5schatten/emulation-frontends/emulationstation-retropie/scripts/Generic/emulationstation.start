@@ -10,6 +10,7 @@ if [ ! -L /storage/.emulationstation ]; then
   ln -s /storage/.config/emulationstation /storage/.emulationstation
 fi
 
+# Set SDL audio driver to ALSA
 export SDL_AUDIODRIVER=alsa
 
 kodifreeze.sh freeze
