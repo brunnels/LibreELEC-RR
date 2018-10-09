@@ -6,17 +6,16 @@ PKG_NAME="dosbox-sdl2"
 PKG_VERSION="8f8d0c5"
 PKG_SHA256="8afd7946cedda8a2ca719fd5e70897b44153bb03a721d394bbfdca28a63d582d"
 PKG_ARCH="any"
-PKG_LICENSE="GPLv3"
+PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/duganchen/dosbox"
 PKG_URL="https://github.com/duganchen/dosbox/archive/$PKG_VERSION.tar.gz"
-PKG_SOURCE_DIR="dosbox-$PKG_VERSION*"
-PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2 SDL2_net SDL_sound fluidsynth libpng munt"
+PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2-git SDL2_net SDL_sound fluidsynth libpng munt"
 PKG_SECTION="emulation"
-PKG_SHORTDESC="DOSBox emulator SDL2 fork by duganchen"
+PKG_SHORTDESC="This is an enhanced SDL2 fork of DOSBox emulator by duganchen. It is currently in sync with revision 4006."
 PKG_TOOLCHAIN="autotools"
 
-if [ "$PROJECT" = "Generic" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET glew"
+if [ ! "$OPENGL" = "no" ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET dosbox-sdl2-shaders glew"
 fi
 
 PKG_CONFIGURE_OPTS_TARGET="--prefix=/usr \
@@ -31,17 +30,20 @@ pre_configure_target () {
 }
 
 pre_make_target() {
-  if [[ "$PROJECT" =~ "RPi" ]]; then
+  if [ "$TARGET_CPU" = "cortex-a7" ] || [ "$TARGET_CPU" = "cortex-a53" ]; then
+    sed -i 's|/\* #undef C_DYNREC \*/|#define C_DYNREC 1|' config.h
     sed -i s/C_TARGETCPU.*/C_TARGETCPU\ ARMV7LE/g config.h
+    sed -i 's|/\* #undef C_UNALIGNED_MEMORY \*/|#define C_UNALIGNED_MEMORY 1|' config.h
   fi
   sed -i s/SVN/SDL2/g config.h
 }
 
 post_makeinstall_target() {
-  cp $PKG_DIR/scripts/* $INSTALL/usr/bin/
   mkdir -p $INSTALL/usr/config/dosbox
+  cp $PKG_DIR/scripts/* $INSTALL/usr/bin/
   cp $PKG_DIR/config/dosbox-SDL2.conf $INSTALL/usr/config/dosbox/
-  mkdir -p $INSTALL/usr/config/dosbox/shaders
-  wget -q https://github.com/duganchen/dosbox_shaders/archive/master.zip
-  unzip -j master.zip -d $INSTALL/usr/config/dosbox/shaders
+
+  if [ ! "$OPENGL" = "no" ]; then
+    sed -i s/output=texture/output=opengl/g $INSTALL/usr/config/dosbox/dosbox-SDL2.conf
+  fi
 }
