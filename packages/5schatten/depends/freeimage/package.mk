@@ -2,13 +2,14 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="freeimage"
-PKG_VERSION="3.17"
-PKG_SHA256="8512934ae7774b60bacdd10dc0d436ace207ac5b7c3f957d002a39c85b38e6bc"
+PKG_VERSION="3180"
+PKG_SHA256="f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="http://freeimage.sourceforge.net/"
-PKG_URL="https://github.com/SupervisedThinking/freeimage/archive/$PKG_VERSION.tar.gz"
+PKG_URL="$SOURCEFORGE_SRC/$PKG_NAME/FreeImage$PKG_VERSION.zip"
 PKG_DEPENDS_TARGET="toolchain"
+PKG_SOURCE_DIR="FreeImage"
 PKG_SECTION="emulation/depends"
 PKG_SHORTDESC="FreeImage library"
 
