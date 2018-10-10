@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="vlc"
-PKG_VERSION="3.0.3"
-PKG_SHA256="9ba8b04bdb13f7860a2041768ac83b47b397a36549c71c530b94028a3cfd5b51"
+PKG_VERSION="3.0.4"
+PKG_SHA256="01f3db3790714038c01f5e23c709e31ecd6f1c046ac93d19e1dde38b3fc05a9e"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
@@ -14,7 +14,7 @@ PKG_SECTION="emulation/depends"
 PKG_SHORTDESC="VideoLAN multimedia player and streamer"
 PKG_LONGDESC="VLC is the VideoLAN project's media player. It plays MPEG, MPEG2, MPEG4, DivX, MOV, WMV, QuickTime, mp3, Ogg/Vorbis files, DVDs, VCDs, and multimedia streams from various network sources."
 
-if [ "$TARGET_ARCH" == "arm" ]; then
+if [ "$TARGET_ARCH" = "arm" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET lua" 
 fi 
 
@@ -34,16 +34,12 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-silent-rules \
                            --disable-decklink \
                            --disable-sftp \
                            --disable-v4l2 \
-                           --disable-gnomevfs \
-                           --disable-vcdx \
                            --disable-vcd \
                            --disable-libcddb \
                            --disable-dvbpsi \
                            --disable-screen \
                            --enable-ogg \
-                           --enable-mux_ogg \
                            --disable-shout\
-                           --disable-mkv \
                            --disable-mod \
                            --enable-mpc \
                            --disable-gme \
@@ -60,7 +56,6 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-silent-rules \
                            --enable-flac \
                            --enable-aa \
                            --disable-twolame \
-                           --disable-quicktime \
                            --disable-realrtsp \
                            --disable-libtar \
                            --disable-a52 \
@@ -84,7 +79,6 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-silent-rules \
                            --without-x \
                            --disable-xcb \
                            --disable-xvideo \
-                           --disable-sdl \
                            --disable-sdl-image \
                            --disable-freetype \
                            --disable-fribidi \
@@ -92,7 +86,6 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-silent-rules \
                            --enable-libxml2 \
                            --disable-svg \
                            --disable-directx \
-                           --disable-directfb \
                            --disable-caca \
                            --disable-oss \
                            --disable-pulse \
@@ -101,17 +94,12 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-silent-rules \
                            --disable-upnp \
                            --disable-skins2 \
                            --disable-kai \
+                           --disable-qt \
                            --disable-macosx \
-                           --disable-macosx-dialog-provider \
-                           --disable-macosx-eyetv \
-                           --disable-macosx-vlc-app \
                            --disable-macosx-qtkit \
-                           --disable-macosx-quartztext \
                            --disable-ncurses \
                            --disable-goom \
                            --disable-projectm \
-                           --disable-atmo \
-                           --disable-bonjour \
                            --enable-udev \
                            --disable-mtp \
                            --disable-lirc \
@@ -130,7 +118,7 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-silent-rules \
 pre_configure_target() {
   export LDFLAGS="$LDFLAGS -lresolv"
 
-  if [ "$TARGET_ARCH" == "arm" ]; then
+  if [ "$TARGET_ARCH" = "arm" ]; then
     export LUA_LIBS="-L$SYSROOT_PREFIX/usr/lib -llua -lm"
   fi
 }
