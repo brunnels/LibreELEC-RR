@@ -3,18 +3,18 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="emulationstation-retropie"
-PKG_VERSION="4ce357c"
+PKG_VERSION="8c0b00c"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/RetroPie/EmulationStation"
 PKG_URL="https://github.com/RetroPie/EmulationStation.git"
-PKG_DEPENDS_TARGET="toolchain SDL2-git freetype curl cmake:host freeimage emulationstation-theme-carbon emulationstation-theme-simple-dark vlc"
+PKG_DEPENDS_TARGET="toolchain SDL2-git freetype curl freeimage vlc emulationstation-theme-carbon emulationstation-theme-simple-dark "
 PKG_SECTION="emulation"
 PKG_LONGDESC="A Fork of Emulation Station for RetroPie. Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
 PKG_BUILD_FLAGS="-gold"
 GET_HANDLER_SUPPORT="git"
 
-if [ "$PROJECT" == "Amlogic" ]; then
+if [ "$PROJECT" = "Amlogic" ]; then
   PKG_CMAKE_OPTS_TARGET=-DGLES=ON
 fi
 
