@@ -9,9 +9,9 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/munt/munt"
 PKG_URL="https://github.com/munt/munt/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain cmake:host"
+PKG_DEPENDS_TARGET="toolchain"
 PKG_SECTION="emulation/depends"
-PKG_SHORTDESC="Software synthesizer capable of emulating Roland MT-32"
+PKG_LONGDESC="A multi-platform software synthesiser emulating (currently inaccurately) pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I. In no way endorsed by or affiliated with Roland Corp."
 
 PKG_CMAKE_OPTS_TARGET="-Dmunt_WITH_MT32EMU_QT=0 \
                        -Dmunt_WITH_MT32EMU_SMF2WAV=0 \
