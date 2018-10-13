@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-mgba"
-PKG_VERSION="f04e3a7"
-PKG_SHA256="1dffcc06cb145e084dc56f3704402aadcd37a922febce0ec046636acbd18c20d"
+PKG_VERSION="c6ac681"
+PKG_SHA256="b1401fce83011950d32af76374e9c6d3bc514fe7a2b1a1deebabf38b25c85d72"
 PKG_ARCH="any"
 PKG_LICENSE="MPL 2.0"
 PKG_SITE="https://github.com/libretro/mgba"
