@@ -5,13 +5,21 @@
 
 . /etc/profile
 
-export SDL_AUDIODRIVER=alsa
-
 if [ ! -L /storage/.dosbox ]; then
   rm -rf /storage/.dosbox
   ln -s /storage/.config/dosbox /storage/.dosbox
 fi
 
+# Freeze Kodi / stop audio
 kodifreeze.sh freeze
+
+# Change refresh rate to 60Hz
+set_refresh_rate_60
+
+# Set SDL audio driver to ALSA
+export SDL_AUDIODRIVER=alsa
+
 dosbox "$@" > /var/log/dosbox.log 2>&1
+
+# Switch back to ES or unfreeze Kodi & start audio
 pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
