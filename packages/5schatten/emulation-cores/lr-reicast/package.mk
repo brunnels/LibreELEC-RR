@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-reicast"
-PKG_VERSION="028d147"
-PKG_SHA256="737f8833630630043f09411d837b34f1ed6d53eb29171a10bd821a772cef3f20"
+PKG_VERSION="bc92da8"
+PKG_SHA256="050d5deab9e509ffc0acbea633cf63535a3b61018a7800aba7a8f6533f97261e"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/reicast-emulator"
@@ -36,7 +36,7 @@ make_target() {
     esac
 
   else
-    make AS=${AS} CC_AS=${AS} HAVE_OPENMP=0 HAVE_OIT=0 GIT_VERSION=$PKG_VERSION WITH_DYNAREC=$ARCH
+    make AS=${AS} CC_AS=${AS} HAVE_OPENMP=0 HAVE_OIT=1 GIT_VERSION=$PKG_VERSION WITH_DYNAREC=$ARCH
   fi
 }
 
