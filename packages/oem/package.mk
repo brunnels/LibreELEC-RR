@@ -19,8 +19,7 @@ OEM_APPS_COMMON=" \
   sdl-jstest \
   spectre-meltdown-checker"
 
-OEM_APPS_AMLOGIC=" \
-  librespot"
+OEM_APPS_AMLOGIC=""
 
 OEM_APPS_GENERIC=" \
   dmidecode \
@@ -29,8 +28,7 @@ OEM_APPS_GENERIC=" \
   spotify \
   tigervnc-system"
 
-OEM_APPS_RPI=" \
-  librespot"
+OEM_APPS_RPI=""
 
 OEM_EMU_COMMON=" \
   emulationstation-retropie \
