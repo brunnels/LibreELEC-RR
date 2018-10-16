@@ -17,9 +17,9 @@ PKG_TOOLCHAIN="cmake-make"
 PKG_LIBNAME="ppsspp_libretro.so"
 PKG_LIBPATH="lib/$PKG_LIBNAME"
 
-if [ "$PROJECT" == "Amlogic" ] || [ "$PROJECT" == "RPi" ]; then
+if [ "$PROJECT" = "Amlogic" ] || [ "$PROJECT" = "RPi" ]; then
   case $DEVICE in
-     KVIM|RPi2|S905)
+     KVIM|RPi2|S905|Odroid_C2)
       ARCH_ARM="-DARMV7=ON \
                 -DUSING_FBDEV=ON \
                 -DUSING_EGL=ON \
