@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-samples"
-PKG_VERSION="6b90ce9"
-PKG_SHA256="2bd1b3af783a028355eb4b4c416f09802313a9a69759e716377b55012f7bb4ae"
+PKG_VERSION="8452cd9"
+PKG_SHA256="0803a06c42acc78b12dd71183ffbed62ef3630cf82a3714ab1dd705467bb51ca"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/libretro/libretro-samples"
@@ -15,6 +15,7 @@ PKG_TOOLCHAIN="manual"
 
 make_target() {
  make -C input/button_test
+ make -C midi/midi_test
  make -C tests/test
 
  if [ "$ARCH" == "x86_64" ]; then
@@ -30,6 +31,7 @@ makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/libretro
 
   cp input/button_test/*.so $INSTALL/usr/lib/libretro/
+  cp midi/midi_test/*.so $INSTALL/usr/lib/libretro/
   cp tests/test/*.so $INSTALL/usr/lib/libretro/
 
   if [ "$ARCH" == "x86_64" ]; then
