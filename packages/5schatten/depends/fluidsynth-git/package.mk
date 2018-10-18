@@ -15,7 +15,7 @@ PKG_BUILD_FLAGS="+pic"
 
 PKG_CMAKE_OPTS_TARGET="-Denable-readline=0 \
                        -Denable-oss=0 \
-                       -Denable-pulseaudio=0 \
+                       -Denable-pulseaudio=1 \
                        -Denable-libsndfile=0"
 
 post_makeinstall_target() {
