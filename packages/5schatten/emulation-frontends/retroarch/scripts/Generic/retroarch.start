@@ -14,6 +14,9 @@ set_refresh_rate_60
 # enable kms
 switch_kms_on
 
+# Set audio & midi driver
+set_RA_audiodriver
+
 # Launch RetroArch
 /usr/bin/retroarch -v "$@" > /var/log/retroarch.log 2>&1
 

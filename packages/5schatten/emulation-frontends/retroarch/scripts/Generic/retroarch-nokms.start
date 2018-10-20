@@ -10,6 +10,9 @@ kodifreeze.sh freeze
 # Change refresh rate to 60Hz
 set_refresh_rate_60
 
+# Set audio & midi driver
+set_RA_audiodriver
+
 # Launch RetroArch
 /usr/bin/retroarch -v "$@" > /var/log/retroarch.log 2>&1
 
