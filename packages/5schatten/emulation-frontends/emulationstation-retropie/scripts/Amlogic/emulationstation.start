@@ -16,8 +16,8 @@ kodifreeze.sh freeze
 # Set fbdev geometry
 set_fbdev_mode
 
-# Set SDL audio driver to ALSA
-export SDL_AUDIODRIVER=alsa
+# Set SDL audio driver to Pulseaudio or ALSA
+set_SDL_audiodriver
 
 emulationstation $EMULATIONSTATION_OPTS "$@" > /var/log/emulationstation.log 2>&1
 
