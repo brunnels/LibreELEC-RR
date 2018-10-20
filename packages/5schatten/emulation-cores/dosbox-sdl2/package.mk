@@ -41,7 +41,7 @@ pre_make_target() {
 post_makeinstall_target() {
   mkdir -p $INSTALL/usr/config/dosbox
   cp $PKG_DIR/scripts/* $INSTALL/usr/bin/
-  cp $PKG_DIR/config/dosbox-SDL2.conf $INSTALL/usr/config/dosbox/
+  cp $PKG_DIR/config/* $INSTALL/usr/config/dosbox/
 
   if [ ! "$OPENGL" = "no" ]; then
     sed -i s/output=texture/output=opengl/g $INSTALL/usr/config/dosbox/dosbox-SDL2.conf
