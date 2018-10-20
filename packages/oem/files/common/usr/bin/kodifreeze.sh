@@ -6,10 +6,16 @@
 # Script to suspend/resume audio and freeze/unfreeze the Kodi process
 
 kodi_freeze() {
-  kodi-send --action="RunScript(/usr/bin/audio-suspend.py)"
-  usleep 500000
-  if [ ! "$1" = "muteonly" ]; then
+  if [ "$1" = "muteonly" ]; then
+    kodi-send --action="RunScript(/usr/bin/audio-suspend.py)"
+  else
     systemctl stop kodi &
+    usleep 500000
+
+    if [ -f /storage/.config/usePulseAudio ]; then
+      pactl load-module module-udev-detect &
+      systemctl start fluidsynth &
+    fi
   fi
 }
 
@@ -17,6 +23,13 @@ kodi_unfreeze() {
   if [ "$1" = "muteonly" ]; then
     kodi-send --action="RunScript(/usr/bin/audio-resume.py)"
   else
+    if [ -f /storage/.config/usePulseAudio ]; then
+      systemctl stop fluidsynth
+      pactl unload-module module-udev-detect
+      pactl unload-module module-alsa-card
+    fi
+
+    usleep 500000
     systemctl start kodi
   fi
 }
