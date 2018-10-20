@@ -11,10 +11,16 @@ fi
 # Freeze Kodi / stop audio
 kodifreeze.sh freeze
 
-# Set SDL audio driver to ALSA
-export SDL_AUDIODRIVER=alsa
+# Set OpenAL audio driver to Pulseaudio or ALSA
+set_OpenAL_audiodriver
+
+# Set SDL audio driver to PulseAudio or ALSA
+set_SDL_audiodriver
 
 quake2 "$@" > /var/log/yquake2.log 2>&1
+
+# Set OpenAL audio driver to ALSA
+rm /storage/.alsoftrc
 
 # Switch back to ES or unfreeze Kodi & start audio
 pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze

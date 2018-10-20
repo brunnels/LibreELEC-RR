@@ -5,11 +5,16 @@
 
 . /etc/profile
 
+# Freeze Kodi / stop audio
 kodifreeze.sh freeze
 
 # Change refresh rate to 60Hz if PAL60=True
 set_refresh_rate_PAL60
 
+# Set audio backend to PulseAudio or ALSA
+set_DOLPHIN_audiobackend
+
 dolphin-emu "$@"> /var/log/dolphin.log 2>&1
 
+# Switch back to ES or unfreeze Kodi
 pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze

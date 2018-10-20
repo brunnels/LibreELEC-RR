@@ -4,9 +4,12 @@
 
 . /etc/profile
 
+# Freeze Kodi / stop audio
 kodifreeze.sh freeze
 
-  export SDL_AUDIODRIVER=alsa
+# Set SDL audio driver to Pulseaudio or ALSA
+set_SDL_audiodriver
+
   MOONLIGHT_ARGS_CONF="/storage/.config/moonlight/moonlight_extra_args.conf"
 
   MOONLIGHT_APP_ID=$(cat "$@"|grep MOONLIGHT_APP_ID=* | cut -f2- -d"=")
@@ -30,4 +33,5 @@ kodifreeze.sh freeze
 
   moonlight ${MOONLIGHT_ARGS} -app "${MOONLIGHT_APP_ID}" >> /var/log/moonlight.log 2>&1
 
+# Switch back to ES or unfreeze Kodi
 pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze

@@ -16,8 +16,8 @@ kodifreeze.sh freeze
 # Change refresh rate to 60Hz
 set_refresh_rate_60
 
-# Set SDL audio driver to ALSA
-export SDL_AUDIODRIVER=alsa
+# Set SDL audio driver to Pulseaudio or ALSA
+set_SDL_audiodriver
 
 dosbox "$@" > /var/log/dosbox.log 2>&1
 

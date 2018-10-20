@@ -20,8 +20,8 @@ kodifreeze.sh freeze > $AMIBERRY_LOG
 # Change refresh rate to 50Hz
 set_refresh_rate_50 >> $AMIBERRY_LOG
 
-# Set SDL audio driver to ALSA
-export SDL_AUDIODRIVER=alsa
+# Set SDL audio driver to PulseAudio or ALSA
+set_SDL_audiodriver
 
 # Which file should amiberry load?
 echo "Trying to boot this game:" "$1" >> $AMIBERRY_LOG
@@ -132,9 +132,6 @@ fi
 
 # Remove temporary dir
 rm -rf "$AMIBERRY_TMP_DIR"
-
-# Change refresh rate to 60Hz
-#set_refresh_rate_60 >> $AMIBERRY_LOG
 
 # Switch back to ES or unfreeze Kodi
 pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze

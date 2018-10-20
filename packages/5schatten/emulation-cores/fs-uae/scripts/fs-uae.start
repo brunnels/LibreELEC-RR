@@ -20,8 +20,8 @@ kodifreeze.sh freeze > $FSUAE_LOG
 # Change refresh rate to 50Hz
 set_refresh_rate_50 >> $FSUAE_LOG
 
-# Set SDL audio driver to ALSA
-export SDL_AUDIODRIVER=alsa
+# Set OpenAL audio driver to Pulseaudio or ALSA
+set_OpenAL_audiodriver
 
 # Which file should amiberry load?
  echo "Trying to boot this game:" "$1" >> $FSUAE_LOG
@@ -109,7 +109,8 @@ fi
 # Remove temporary dir
 rm -rf "$FSUAE_TMP_DIR"
 
-# Change back refresh rate
-set_refresh_rate_60 >> $FSUAE_LOG
+# Set OpenAL audio driver to ALSA
+rm /storage/.alsoftrc
 
+# Switch back to ES or unfreeze Kodi
 pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
