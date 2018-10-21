@@ -2,14 +2,14 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="amiberry"
-PKG_VERSION="b6e62ba"
-PKG_ARCH="any"
+PKG_VERSION="6310c36" #version 2.24b+
+PKG_ARCH="arm"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/midwan/amiberry"
 PKG_URL="https://github.com/midwan/amiberry.git"
 PKG_DEPENDS_TARGET="toolchain zlib SDL2-git SDL2_image SDL2_ttf capsimg libxml2 flac mpg123-compat libpng libmpeg2 retroarch-joypad-autoconfig"
 PKG_SECTION="emulation"
-PKG_SHORTDESC="Amiga emulator for the Raspberry Pi and other ARM SoC"
+PKG_LONGDESC="Amiberry is an optimized Amiga emulator, for ARM-based boards (like the Raspberry Pi, ASUS Tinkerboard, Odroid XU4, etc). The core emulation comes from WinUAE, but stripped down to remove excess stuff in order to achieve good performance in underpowered boards. It includes ARM JIT support, to get high-performance results on CPU-intensive emulated environments."
 GET_HANDLER_SUPPORT="git"
 PKG_TOOLCHAIN="manual"
 
@@ -18,11 +18,11 @@ make_target() {
   # build amiberry
   export SYSROOT_PREFIX=$SYSROOT_PREFIX
 
-  if [ "$PROJECT" == "Amlogic" ]; then
+  if [ "$PROJECT" = "Amlogic" ]; then
     make all PLATFORM=aml
   fi
 
-  if [ "$PROJECT" == "RPi" ]; then
+  if [ "$PROJECT" = "RPi" ]; then
     case $DEVICE in
       RPi)
         make all PLATFORM=rpi1-sdl2
