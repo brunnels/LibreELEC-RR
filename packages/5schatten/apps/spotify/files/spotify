@@ -65,11 +65,13 @@ update_spotify() {
 }
 
 run_spotify() {
-  kodifreeze.sh freeze
+  kodifreeze.sh freeze_noPA
   systemctl stop pulseaudio
+
   $SPOTIFY_HOME/spotify "$@"
+
   systemctl start pulseaudio
-  kodifreeze.sh unfreeze
+  kodifreeze.sh unfreeze_noPA
 }
 
 if [ ! -x $SPOTIFY_HOME ]; then
