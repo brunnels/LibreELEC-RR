@@ -5,6 +5,8 @@
 
 # Script to suspend/resume audio and freeze/unfreeze the Kodi process
 
+. /etc/profile
+
 kodi_freeze() {
   if [ "$1" = "muteonly" ]; then
     kodi-send --action="RunScript(/usr/bin/audio-suspend.py)"
@@ -13,22 +15,38 @@ kodi_freeze() {
     usleep 500000
 
     if [ -f /storage/.config/usePulseAudio ]; then
-      pactl load-module module-udev-detect &
-      systemctl start fluidsynth &
+      start_FluidSynth_PA
     fi
   fi
 }
+
+kodi_freeze_noPA() {
+  if [ "$1" = "muteonly" ]; then
+    kodi-send --action="RunScript(/usr/bin/audio-suspend.py)"
+  else
+    systemctl stop kodi &
+    usleep 500000
+  fi
+}
+
 
 kodi_unfreeze() {
   if [ "$1" = "muteonly" ]; then
     kodi-send --action="RunScript(/usr/bin/audio-resume.py)"
   else
     if [ -f /storage/.config/usePulseAudio ]; then
-      systemctl stop fluidsynth
-      pactl unload-module module-udev-detect
-      pactl unload-module module-alsa-card
+      stop_FluidSynth_PA
     fi
 
+    usleep 500000
+    systemctl start kodi
+  fi
+}
+
+kodi_unfreeze_noPA() {
+  if [ "$1" = "muteonly" ]; then
+    kodi-send --action="RunScript(/usr/bin/audio-resume.py)"
+  else
     usleep 500000
     systemctl start kodi
   fi
@@ -48,6 +66,19 @@ case $1 in
       echo "Kodi already frozen, nothing to do."
     fi
     ;;
+  freeze_noPA)
+    if [ ! -f /tmp/.kodifreeze ]; then
+      pidof kodi.bin > /dev/null && KODI=1
+      if [ "$KODI" = "1" ]; then
+        kodi_freeze_noPA $2
+        touch /tmp/.kodifreeze
+      else
+        echo "Kodi isn't running, nothing to do."
+      fi
+    else
+      echo "Kodi already frozen, nothing to do."
+    fi
+    ;;
   unfreeze)
     if [ -f /tmp/.kodifreeze ]; then
       kodi_unfreeze $2
@@ -56,7 +87,15 @@ case $1 in
       echo "Kodi isn't frozen, nothing to do."
     fi
     ;;
+  unfreeze_noPA)
+    if [ -f /tmp/.kodifreeze ]; then
+      kodi_unfreeze_noPA $2
+      rm /tmp/.kodifreeze
+    else
+      echo "Kodi isn't frozen, nothing to do."
+    fi
+    ;;
   *)
-    echo "Usage: $0 [freeze|unfreeze] [muteonly]"
+    echo "Usage: $0 [freeze|unfreeze|freeze_noPA|unfreeze_noPA] [muteonly]"
     ;;
 esac
