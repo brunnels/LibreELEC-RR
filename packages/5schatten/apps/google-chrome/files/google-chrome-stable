@@ -48,7 +48,7 @@ if [ "$CHROME_PKGVER" != "$(cat $CHROME_VERSION)" ]; then
   update_chrome $CHROME_PKGVER > /var/log/chrome.log 2>&1
 fi
 
-if [ -S /var/run/pulse/native -a ! -f /storage/.config/usepulse ]; then
+if [ -S /var/run/pulse/native -a ! -f /storage/.config/usePulseAudioChrome ]; then
   kodifreeze.sh freeze muteonly
   systemctl stop pulseaudio
   NOPULSE=1
