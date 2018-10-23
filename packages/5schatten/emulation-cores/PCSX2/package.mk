@@ -13,6 +13,9 @@ PKG_LONGDESC="PCSX2 is an open-source PlayStation 2 (AKA PS2) emulator. Its purp
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
- mkdir -p $INSTALL/usr/
- cp -r $PKG_DIR/files/* $INSTALL/usr/
+ mkdir -p $INSTALL/usr/bin
+ mkdir -p $INSTALL/usr/config
+
+ cp -r $PKG_DIR/scripts/* $INSTALL/usr/bin/
+ cp -r $PKG_DIR/config/* $INSTALL/usr/config/
 }
