@@ -4,14 +4,11 @@
 
 PKG_NAME="retroarch"
 PKG_VERSION="e5b9ca5" #1.7.6-dev 
-PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
 PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa fluidsynth-git freetype zlib ffmpeg retroarch-assets retroarch-common-overlays retroarch-overlay-borders retroarch-joypad-autoconfig lr-common-shaders lr-slang-shaders lr-glsl-shaders lr-core-info lr-database"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="Reference frontend for the libretro API."
-PKG_LONGDESC="RetroArch is the reference frontend for the libretro API. Popular examples of implementations for this API includes videogame system emulators and game engines, but also more generalized 3D programs. These programs are instantiated as dynamic libraries. We refer to these as libretro cores."
+PKG_LONGDESC="Reference frontend for the libretro API."
 GET_HANDLER_SUPPORT="git"
 
 if [ "$OPENGLES_SUPPORT" = yes ]; then

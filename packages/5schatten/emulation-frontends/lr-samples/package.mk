@@ -4,13 +4,11 @@
 PKG_NAME="lr-samples"
 PKG_VERSION="8452cd9"
 PKG_SHA256="0803a06c42acc78b12dd71183ffbed62ef3630cf82a3714ab1dd705467bb51ca"
-PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/libretro/libretro-samples"
 PKG_URL="https://github.com/libretro/libretro-samples/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="A set of samples to illustrate libretro API."
+PKG_LONGDESC="A set of samples to illustrate libretro API."
 PKG_TOOLCHAIN="manual"
 
 make_target() {

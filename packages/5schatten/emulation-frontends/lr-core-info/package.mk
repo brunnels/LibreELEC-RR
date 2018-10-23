@@ -4,12 +4,10 @@
 PKG_NAME="lr-core-info"
 PKG_VERSION="473d80b"
 PKG_SHA256="e238f2813431e8f2477e90297d9159261e9cd436b1e9931aaa4344e7391c0791"
-PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/libretro-core-info"
 PKG_URL="https://github.com/libretro/libretro-core-info/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="emulation"
 PKG_LONGDESC="Mirror of libretro's core info files"
 PKG_TOOLCHAIN="manual"
 

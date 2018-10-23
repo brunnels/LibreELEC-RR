@@ -4,12 +4,10 @@
 PKG_NAME="retroarch-overlay-borders"
 PKG_VERSION="9aceca2"
 PKG_SHA256="f78ca10f26a960c902440512a4fa790b411551b1710ae64a3a1418af05fede58"
-PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/overlay-borders"
 PKG_URL="https://github.com/libretro/overlay-borders/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="emulation"
 PKG_LONGDESC="A place for collecting decorative/cosmetic overlays for use with RetroArch."
 PKG_TOOLCHAIN="manual"
 

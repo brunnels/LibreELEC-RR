@@ -5,12 +5,10 @@
 PKG_NAME="lr-database"
 PKG_VERSION="c88445d"
 PKG_SHA256="dcbb96a443f81c36897cdaa4383dcafba585fe62571087a2e39de7857148ed53"
-PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/libretro-database"
 PKG_URL="https://github.com/libretro/libretro-database/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="emulation"
 PKG_LONGDESC="Repository containing cheatcode files, content data files, etc."
 PKG_TOOLCHAIN="manual"
 

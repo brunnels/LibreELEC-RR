@@ -4,13 +4,11 @@
 PKG_NAME="lr-common-shaders"
 PKG_VERSION="5e14fb8"
 PKG_SHA256="3a972f4c44ae625a4901a5a752f8a4668791de5e48167293683898e82e9bd41d"
-PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/libretro/common-shaders"
 PKG_URL="https://github.com/libretro/common-shaders/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="Collection of commonly used Cg shaders. These shaders are usable by either HLSL and/or Cg runtime compilers. The cg2glsl script will translate most of these into GLSL shaders."
+PKG_LONGDESC="Collection of commonly used Cg shaders. These shaders are usable by either HLSL and/or Cg runtime compilers. The cg2glsl script will translate most of these into GLSL shaders."
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
