@@ -5,12 +5,10 @@
 PKG_NAME="python-evdev"
 PKG_VERSION="0303d3e"
 PKG_SHA256="fcba4863bd87dc0979a5ad19676c10c16fa6998c6f1716e871bba9aa38256969"
-PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="https://github.com/gvalkov/python-evdev"
 PKG_URL="https://github.com/gvalkov/python-evdev/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain Python2 distutilscross:host"
-PKG_SECTION="python/devel"
 PKG_LONGDESC="This package provides bindings to the generic input event interface in Linux. The evdev interface serves the purpose of passing events generated in the kernel directly to userspace through character devices that are typically located in /dev/input/."
 PKG_TOOLCHAIN="manual"
 

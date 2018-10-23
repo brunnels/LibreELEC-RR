@@ -4,12 +4,11 @@
 PKG_NAME="lr-desmume"
 PKG_VERSION="07162f4"
 PKG_SHA256="4a95423264989ee57f783b395601e9131a2ede83f3911679538ddfc8c505c28a"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/desmume"
 PKG_URL="https://github.com/libretro/desmume/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
-PKG_SECTION="emulation"
 PKG_LONGDESC="DeSmuME is a Nintendo DS emulator"
 PKG_TOOLCHAIN="manual"
 

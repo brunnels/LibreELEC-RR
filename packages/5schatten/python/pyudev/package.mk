@@ -5,12 +5,10 @@
 PKG_NAME="pyudev"
 PKG_VERSION="0.21.0"
 PKG_SHA256="5f4625f89347e465731866ddbe042a055bbc5092577356aa3d089ac5fb8efd94"
-PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="https://github.com/pyudev/pyudev"
 PKG_URL="https://github.com/pyudev/pyudev/archive/v$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain Python2 distutilscross:host"
-PKG_SECTION="python/devel"
 PKG_LONGDESC="pyudev is a LGPL licenced, pure Python 2/3 binding to libudev, the device and hardware management and information library of Linux."
 
 pre_make_target() {

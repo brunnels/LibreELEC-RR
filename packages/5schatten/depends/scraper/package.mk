@@ -4,12 +4,9 @@
 
 PKG_NAME="scraper"
 PKG_VERSION="1.4.6"
-PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/sselph/scraper"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="emulation/depends"
-PKG_SHORTDESC="An auto-scraper for EmulationStation."
 PKG_LONGDESC="An auto-scraper for EmulationStation written in Go using hashes. This currently works with NES, SNES, N64, GB, GBC, GBA, MD, SMS, 32X, GG, PCE, A2600, LNX, MAME/FBA(see below), Dreamcast(bin/gdi), PSX(bin/cue), ScummVM, SegaCD, WonderSwan, WonderSwan Color ROMs."
 
 PKG_TOOLCHAIN="manual"

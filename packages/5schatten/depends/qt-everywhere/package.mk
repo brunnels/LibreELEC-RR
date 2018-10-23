@@ -4,12 +4,11 @@
 PKG_NAME="qt-everywhere"
 PKG_VERSION="5.11.2"
 PKG_SHA256="c6104b840b6caee596fa9a35bc5f57f67ed5a99d6a36497b6fe66f990a53ca81"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://qt-project.org"
 PKG_URL="http://download.qt.io/archive/qt/${PKG_VERSION%.*}/$PKG_VERSION/single/$PKG_NAME-src-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain pcre2 zlib"
-PKG_SECTION="emulation/depends"
 PKG_LONGDESC="A cross-platform application and UI framework"
 
 PKG_CONFIGURE_OPTS_TARGET="-prefix /usr

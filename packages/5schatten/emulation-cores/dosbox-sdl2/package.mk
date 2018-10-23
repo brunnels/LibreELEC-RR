@@ -5,13 +5,11 @@
 PKG_NAME="dosbox-sdl2"
 PKG_VERSION="8f8d0c5"
 PKG_SHA256="8afd7946cedda8a2ca719fd5e70897b44153bb03a721d394bbfdca28a63d582d"
-PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/duganchen/dosbox"
 PKG_URL="https://github.com/duganchen/dosbox/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2-git SDL2_net SDL_sound libpng munt"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="This is an enhanced SDL2 fork of DOSBox emulator by duganchen. It is currently in sync with revision 4006."
+PKG_LONGDESC="This is an enhanced SDL2 fork of DOSBox emulator by duganchen. It is currently in sync with revision 4006."
 PKG_TOOLCHAIN="autotools"
 
 if [ ! "$OPENGL" = "no" ]; then

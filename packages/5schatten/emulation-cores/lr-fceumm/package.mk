@@ -4,12 +4,10 @@
 PKG_NAME="lr-fceumm"
 PKG_VERSION="eb17f88"
 PKG_SHA256="8a3c3e7f52c2d463e708b15051f7b2255b336491a94169c0e82e81b6bafc3c4f"
-PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/libretro-fceumm"
 PKG_URL="https://github.com/libretro/libretro-fceumm/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
-PKG_SECTION="emulation"
 PKG_LONGDESC="FCEU mappers modified is an unofficial build of FCEU Ultra by CaH4e3, which supports a lot of new mappers including some obscure mappers such as one for unlicensed NES ROM's."
 
 PKG_LIBNAME="fceumm_libretro.so"

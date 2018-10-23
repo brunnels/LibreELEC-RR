@@ -5,13 +5,11 @@
 PKG_NAME="gnutls"
 PKG_VERSION="3.6.3"
 PKG_SHA256="ed642b66a4ecf4851ab2d809cd1475c297b6201d8e8bd14b4d1c08b53ffca993"
-PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://www.gnutls.org"
 PKG_URL="https://www.gnupg.org/ftp/gcrypt/gnutls/v${PKG_VERSION%.*}/gnutls-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain nettle"
-PKG_SECTION="emulation/depends"
-PKG_SHORTDESC="GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them."
+PKG_LONGDESC="GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them."
 
 PKG_CONFIGURE_OPTS_TARGET="--with-included-libtasn1 \
                            --with-included-unistring \

@@ -6,14 +6,11 @@
 PKG_NAME="lua"
 PKG_VERSION="5.3.3"
 PKG_SHA256="5113c06884f7de453ce57702abaac1d618307f33f6789fa870e87a59d772aca2"
-PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://www.lua.org/"
 PKG_URL="http://www.lua.org/ftp/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain readline"
-PKG_SECTION="emulation/depends"
-PKG_SHORTDESC="lua: A lightweight, extensible programming language"
-PKG_LONGDESC="Lua is a powerful light-weight programming language designed for extending applications. Lua is also frequently used as a general-purpose, stand-alone language."
+PKG_LONGDESC="lua: A lightweight, extensible programming language"
 PKG_TOOLCHAIN="manual"
 
 _MAJORVER=${PKG_VERSION%.*}

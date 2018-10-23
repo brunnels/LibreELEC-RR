@@ -10,8 +10,7 @@ PKG_LICENSE="OSS"
 PKG_SITE="http://www.makemkv.com/"
 PKG_URL="http://www.makemkv.com/download/makemkv-bin-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="depends/multimedia"
-PKG_SHORTDESC="MakeMKV binaries & EULA"
+PKG_LONGDESC="MakeMKV binaries & EULA"
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {

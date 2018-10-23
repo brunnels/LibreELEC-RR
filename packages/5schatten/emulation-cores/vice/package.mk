@@ -5,13 +5,12 @@
 PKG_NAME="vice"
 PKG_VERSION="3.2"
 PKG_SHA256="17c9ece18dc100a5be26ad02ad74e7583e06458a87aabab720db30e176716aee"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv3"
 PKG_SITE="http://vice-emu.sourceforge.net/"
 PKG_URL="https://github.com/SupervisedThinking/vice/archive/v$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2-git libpng giflib zlib libvorbis libogg lame"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="VICE C64 emulator"
+PKG_LONGDESC="VICE C64 emulator"
 PKG_TOOLCHAIN="configure"
 
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_prog_sdl2_config=$SYSROOT_PREFIX/usr/bin/sdl2-config \

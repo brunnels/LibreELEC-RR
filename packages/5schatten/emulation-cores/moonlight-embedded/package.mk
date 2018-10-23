@@ -3,12 +3,10 @@
 
 PKG_NAME="moonlight-embedded"
 PKG_VERSION="e21e207" #v2.4.7+
-PKG_ARCH="any"
 PKG_LICENSE="LGPL"
 PKG_SITE="https://github.com/irtimmer/moonlight-embedded"
 PKG_URL="https://github.com/irtimmer/moonlight-embedded.git"
 PKG_DEPENDS_TARGET="toolchain alsa-lib avahi curl enet expat ffmpeg libcec libevdev pulseaudio openssl opus SDL2-git SDL_GameControllerDB systemd"
-PKG_SECTION="emulation"
 PKG_LONGDESC="Moonlight Embedded is an open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield, but built for Linux."
 GET_HANDLER_SUPPORT="git"
 

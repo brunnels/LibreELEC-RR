@@ -3,12 +3,11 @@
 
 PKG_NAME="google-chrome"
 PKG_VERSION="latest"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="Freeware"
 PKG_SITE="http://www.google.com/chrome"
 PKG_DEPENDS_TARGET="toolchain gtk3 libXcomposite libXcursor libxss nss scrnsaverproto atk cups unclutter"
-PKG_SECTION="apps"
-PKG_SHORTDESC="Google Chrome browser"
+PKG_LONGDESC="Google Chrome browser"
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {

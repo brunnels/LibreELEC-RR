@@ -4,13 +4,11 @@
 PKG_NAME="hatari"
 PKG_VERSION="31028b8" #v2.1.0
 PKG_SHA256="3a210cc9ec0ade06bb2cbe0c90f0b2e78175602b329d44d7830f719e55b5fd76"
-PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://hatari.tuxfamily.org/"
 PKG_URL="https://github.com/hatari/hatari/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain SDL2-git portaudio zlib capsimg"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="Hatari is an Atari ST/STE/TT/Falcon emulator"
+PKG_LONGDESC="Hatari is an Atari ST/STE/TT/Falcon emulator"
 
 PKG_CMAKE_OPTS_TARGET="-DCMAKE_SKIP_RPATH=ON \
                        -DDATADIR="/usr/config/hatari" \

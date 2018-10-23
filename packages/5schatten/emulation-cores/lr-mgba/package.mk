@@ -4,12 +4,10 @@
 PKG_NAME="lr-mgba"
 PKG_VERSION="0a79981"
 PKG_SHA256="f6171ee6b5459de8eca30231c6fcacdfd94e7375508e347042714a668aa8970d"
-PKG_ARCH="any"
 PKG_LICENSE="MPL 2.0"
 PKG_SITE="https://github.com/libretro/mgba"
 PKG_URL="https://github.com/libretro/mgba/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
-PKG_SECTION="emulation"
 PKG_LONGDESC="mGBA is an emulator for running Game Boy Advance games. It aims to be faster and more accurate than many existing Game Boy Advance emulators, as well as adding features that other emulators lack."
 PKG_TOOLCHAIN="manual"
 

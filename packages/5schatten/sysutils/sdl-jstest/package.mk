@@ -4,13 +4,11 @@
 
 PKG_NAME="sdl-jstest"
 PKG_VERSION="53b89cc2" #v0.2.1
-PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://gitlab.com/sdl-jstest/sdl-jstest"
 PKG_URL="https://gitlab.com/sdl-jstest/sdl-jstest.git"
 PKG_DEPENDS_TARGET="toolchain SDL2-git SDL_GameControllerDB ncurses"
-PKG_SECTION="emulation/sysutils"
-PKG_SHORTDESC="sdl2-jstest are simple programs that lets you find out how many joysticks SDL2 detects on your system, how many axes, buttons, hats and balls they have each."
+PKG_LONGDESC="sdl2-jstest are simple programs that lets you find out how many joysticks SDL2 detects on your system, how many axes, buttons, hats and balls they have each."
 GET_HANDLER_SUPPORT="git"
 
 PKG_CMAKE_OPTS_TARGET="-DBUILD_SDL_JSTEST=off"

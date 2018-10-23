@@ -5,13 +5,11 @@
 PKG_NAME="libcurl-compat"
 PKG_VERSION="7.61.1"
 PKG_SHA256="a308377dbc9a16b2e994abd55455e5f9edca4e31666f8f8fcfe7a1a4aea419b9"
-PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://curl.haxx.se"
 PKG_URL="http://curl.haxx.se/download/curl-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain zlib openssl rtmpdump"
-PKG_SECTION="apps/depends"
-PKG_SHORTDESC="libcurl without versioned symbols"
+PKG_LONGDESC="libcurl without versioned symbols"
 
 PKG_TOOLCHAIN="configure"
 

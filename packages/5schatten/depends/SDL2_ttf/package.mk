@@ -5,13 +5,11 @@
 PKG_NAME="SDL2_ttf"
 PKG_VERSION="2.0.14"
 PKG_SHA256="34db5e20bcf64e7071fe9ae25acaa7d72bdc4f11ab3ce59acc768ab62fe39276"
-PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.libsdl.org/"
 PKG_URL="https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain SDL2-git"
-PKG_SECTION="emulation/depends"
-PKG_SHORTDESC="This is a sample library which allows you to use TrueType fonts in your SDL applications"
+PKG_LONGDESC="This is a sample library which allows you to use TrueType fonts in your SDL applications"
 
 if [ ! "$DISPLAYSERVER" = "x11" ]; then
   X11="--without-x"

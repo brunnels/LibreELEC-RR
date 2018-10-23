@@ -4,12 +4,11 @@
 PKG_NAME="lr-mesen"
 PKG_VERSION="f2af2ba" # 0.9.7
 PKG_SHA256="cdd3968a94538816af785159d8ddaa30323ec5b337ec4f1ff88a318a2c3955ed"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/SourMesen/Mesen"
 PKG_URL="https://github.com/SourMesen/Mesen/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
-PKG_SECTION="emulation"
 PKG_LONGDESC="Mesen is a cross-platform (Windows & Linux) NES/Famicom emulator built in C++ and C#"
 PKG_TOOLCHAIN="manual"
 

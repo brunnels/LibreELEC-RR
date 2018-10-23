@@ -4,12 +4,10 @@
 PKG_NAME="lr-beetle-psx"
 PKG_VERSION="a38aa45"
 PKG_SHA256="8325e530cc4350b7101ca8dc0958c787f22484eedafe612cd074f425ed54f834"
-PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/beetle-psx-libretro"
 PKG_URL="https://github.com/libretro/beetle-psx-libretro/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
-PKG_SECTION="emulation"
 PKG_LONGDESC="Standalone port/fork of Mednafen PSX to the Libretro API."
 
 PKG_LIBNAME="mednafen_psx_libretro.so"

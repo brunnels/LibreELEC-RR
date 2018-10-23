@@ -4,12 +4,11 @@
 
 PKG_NAME="spotify"
 PKG_VERSION="latest"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="Freeware"
 PKG_SITE="http://www.spotify.com"
 PKG_DEPENDS_TARGET="toolchain gtk+ libX11 openssl-compat libcurl-compat freetype zlib"
-PKG_SECTION="apps"
-PKG_SHORTDESC="A proprietary music streaming service"
+PKG_LONGDESC="A proprietary music streaming service"
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {

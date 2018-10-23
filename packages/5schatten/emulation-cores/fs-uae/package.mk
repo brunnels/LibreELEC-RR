@@ -5,13 +5,12 @@
 PKG_NAME="fs-uae"
 PKG_VERSION="3d6a8dc"
 PKG_SHA256="915e7033bfc1416c81e29bcc27e8baae4ceb21b1f5c379665b17526f2e0d7690"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/FrodeSolheim/fs-uae"
 PKG_URL="https://github.com/FrodeSolheim/fs-uae/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain SDL2-git glew glu libmpeg2 libXi openal-soft capsimg"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="FS-UAE amiga emulator."
+PKG_LONGDESC="FS-UAE amiga emulator."
 PKG_TOOLCHAIN="autotools"
 
 pre_configure_target() {

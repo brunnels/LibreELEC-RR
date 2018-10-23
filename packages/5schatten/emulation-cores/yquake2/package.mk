@@ -9,7 +9,6 @@ PKG_LICENSE="GPLv2"
 PKG_SITE="https://www.yamagi.org/quake2/"
 PKG_URL="https://github.com/yquake2/yquake2/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain openal-soft SDL2-git"
-PKG_SECTION="emulation"
 PKG_LONGDESC="This is the Yamagi Quake II Client, an enhanced version of id Software's Quake II with focus on offline and coop gameplay."
 
 PKG_CMAKE_OPTS_TARGET="-DSYSTEMWIDE_SUPPORT=yes"

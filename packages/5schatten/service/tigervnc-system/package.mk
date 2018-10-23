@@ -10,8 +10,7 @@ PKG_LICENSE="GPLv2"
 PKG_SITE="http://www.tigervnc.org"
 PKG_URL="https://github.com/TigerVNC/tigervnc/archive/v$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain libX11 libXdamage libXext libXtst zlib libjpeg-turbo"
-PKG_SECTION="service"
-PKG_SHORTDESC="TigerVNC server"
+PKG_LONGDESC="TigerVNC server"
 
 PKG_CMAKE_OPTS_TARGET="-DBUILD_VIEWER=off \
                        -Wno-dev"

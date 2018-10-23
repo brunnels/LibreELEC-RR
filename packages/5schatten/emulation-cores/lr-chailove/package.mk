@@ -3,12 +3,10 @@
 
 PKG_NAME="lr-chailove"
 PKG_VERSION="14e0a09" # v0.29.0
-PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/libretro/libretro-chailove"
 PKG_URL="https://github.com/libretro/libretro-chailove.git"
 PKG_DEPENDS_TARGET="toolchain retroarch"
-PKG_SECTION="emulation"
 PKG_LONGDESC="ChaiLove is an awesome framework you can use to make 2D games in ChaiScript."
 GET_HANDLER_SUPPORT="git"
 PKG_TOOLCHAIN="manual"

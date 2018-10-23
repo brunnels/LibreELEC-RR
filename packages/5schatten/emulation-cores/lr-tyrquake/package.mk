@@ -4,12 +4,10 @@
 PKG_NAME="lr-tyrquake"
 PKG_VERSION="7d18c405b3713577865d2bbb1a654b1ad0c3cd62"
 PKG_SHA256="cb19180f50b767866d5f1d77de15797dda999400d5175c70cd6c104cea497339"
-PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/tyrquake"
 PKG_URL="https://github.com/libretro/tyrquake/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
-PKG_SECTION="emulation"
 PKG_LONGDESC="Libretro port of Tyrquake (Quake 1 engine)"
 
 PKG_LIBNAME="tyrquake_libretro.so"

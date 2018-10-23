@@ -4,13 +4,11 @@
 PKG_NAME="capsimg"
 PKG_VERSION="067db4c"
 PKG_SHA256="0576a49a23c70b0022d423d8ae4691c8d7004ceed1527b971f2eba0fc799c0af"
-PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/FrodeSolheim/capsimg"
 PKG_URL="https://github.com/FrodeSolheim/capsimg/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="emulation/depends"
-PKG_SHORTDESC="SPS Decoder Library 5.1 (formerly IPF Decoder Lib)"
+PKG_LONGDESC="SPS Decoder Library 5.1 (formerly IPF Decoder Lib)"
 PKG_TOOLCHAIN="manual"
 
 make_target() {
