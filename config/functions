@@ -1321,6 +1321,16 @@ fix_module_depends() {
   rm new.modinfo*
 }
 
+### rev hack for kodi ###
+get_source_rev() {
+  local pkg_name=$1 pkg_version=$2
+  local tarball="$ROOT/$SOURCES/${pkg_name}/${pkg_name}-${pkg_version}.*.repo"
+   if [ -f ${tarball} ]; then
+    cat ${tarball} | awk '{ print substr($2,1,7) }'
+  else
+    echo ${pkg_version}
+  fi
+}
 
 ### ADDON HELPERS ###
 install_binary_addon() {
