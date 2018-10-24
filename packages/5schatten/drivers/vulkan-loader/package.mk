@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="vulkan-loader"
-PKG_VERSION="2aa6dcc10189f7700824bc5e21120beeff013c3a"
-PKG_SHA256="3c124d3ebcc4f4756cacf40c667c3a7e0c6a33fb4839cb0d16f47b6f63ee36b5"
+PKG_VERSION="953b0807fd4d9487b9c888539ab3adefa4329820"
+PKG_SHA256="854b7f8e9f06798ade8340132f873748c50cb12d038068aee2ca4a114a7a82cc"
 PKG_LICENSE="Apache 2.0"
 PKG_SITE="https://github.com/KhronosGroup/Vulkan-Loader"
 PKG_URL="https://github.com/KhronosGroup/Vulkan-Loader/archive/$PKG_VERSION.tar.gz"
