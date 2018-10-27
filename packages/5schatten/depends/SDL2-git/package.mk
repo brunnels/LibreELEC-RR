@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="SDL2-git"
-PKG_VERSION="0330891"
-PKG_SHA256="ff25f262a53f29ff4ef129dded438a9a86f8dac17aae1c422560e04a0517b41c"
+PKG_VERSION="99a161adc7a0ff21e0fbaa37e2b7416822f05568"
+PKG_SHA256="4b8f11e59ed7552b1a2772b6b76e803780560d95cc3ce6d7d2dc74a83541da0a"
 PKG_LICENSE="GPL"
 PKG_SITE="https://www.libsdl.org/"
 PKG_URL="https://github.com/spurious/SDL-mirror/archive/$PKG_VERSION.tar.gz"
@@ -52,7 +52,7 @@ else
 fi
 
 # AML Mali Video Support
-if [ "$OPENGLES" = "opengl-meson" ] || [ "$OPENGLES" == "opengl-meson-t82x" ]; then
+if [ "$OPENGLES" = "opengl-meson" ] || [ "$OPENGLES" = "opengl-meson-t82x" ]; then
   SUPPORT_MALI="-DVIDEO_MALI=ON \
                 -DVIDEO_VULKAN=OFF \
                 -DVIDEO_KMSDRM=OFF"
