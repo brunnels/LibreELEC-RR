@@ -38,7 +38,11 @@ OEM_EMU_COMMON=" \
   moonlight-embedded \
   ppsspp \
   lr-2048 \
+  lr-atari800 \
+  lr-beetle-pce-fast \
   lr-beetle-wswan \
+  lr-bluemsx \
+  lr-chailove \
   lr-dosbox \
   lr-fbalpha \
   lr-fceumm \
@@ -55,6 +59,7 @@ OEM_EMU_COMMON=" \
   lr-reicast \
   lr-samples \
   lr-scummvm \
+  lr-stella \
   lr-tyrquake"
 
 OEM_EMU_AMLOGIC=" \
@@ -74,7 +79,6 @@ OEM_EMU_GENERIC=" \
   lr-beetle-psx \
   lr-beetle-saturn \
   lr-bsnes-mercury-accuracy \
-  lr-chailove \
   lr-citra \
   lr-desmume \
   lr-dolphin \
