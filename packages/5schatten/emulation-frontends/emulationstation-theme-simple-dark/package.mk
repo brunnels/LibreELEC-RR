@@ -19,6 +19,7 @@ makeinstall_target() {
 
   #adding additional themes
   cp -a $PKG_DIR/files/2048 $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
+  cp -a $PKG_DIR/files/chailove $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
   cp -a $PKG_DIR/files/mrboom $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
   cp -a $PKG_DIR/files/moonlight $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
   cp -a $PKG_DIR/files/prboom $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
@@ -27,7 +28,6 @@ makeinstall_target() {
   #adding additional themes for generic
   if [ "$PROJECT" == "Generic" ]; then
     cp -a $PKG_DIR/files/n3ds $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
-    cp -a $PKG_DIR/files/chailove $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
   fi
 
   #adding click sounds
