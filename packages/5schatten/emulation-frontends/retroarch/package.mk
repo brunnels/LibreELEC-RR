@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="20b9d12914253792cd581ba84272edbf05843b55" #1.7.6-dev 
+PKG_VERSION="6c51c4458b5df4480786890077de86601356ec14" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
@@ -11,10 +11,12 @@ PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa fluidsynth-git freetype zlib ffm
 PKG_LONGDESC="Reference frontend for the libretro API."
 GET_HANDLER_SUPPORT="git"
 
+if [ "$OPENGL_SUPPORT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGL"
+fi
+
 if [ "$OPENGLES_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGLES"
-else
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGL"
 fi
 
 if [ "$SAMBA_SUPPORT" = yes ]; then
@@ -25,29 +27,38 @@ if [ "$AVAHI_DAEMON" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET avahi nss-mdns"
 fi
 
-# Project Generic OpenGL
-if [ "$OPENGLES" == "no" ]; then
-  RETROARCH_GL="--enable-kms --enable-vulkan"
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET mesa vulkan-loader"
-# Project RPi OpenGLES
-elif [[ "$PROJECT" =~ "RPi" ]]; then
-  RETROARCH_GL="--enable-opengles --disable-kms --enable-dispmanx"
+# OpenGL Features Support
+if [ "$OPENGL_SUPPORT" = yes ]; then
+  RETROARCH_SUPPORT_GL="--enable-kms"
+
+# RPi OpenGLES Features Support
+elif [ "$OPENGLES" = "bcm2835-driver" ]; then
+  RETROARCH_SUPPORT_GLES="--enable-opengles \
+                          --disable-kms \
+                          --enable-dispmanx"
+
   CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads \
                   -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux"
-# Project Amlogic OpenGLES
-elif [ "$OPENGLES" == "opengl-meson" ] || [ "$OPENGLES" == "opengl-meson-t82x" ]; then
-  RETROARCH_GL="--enable-opengles --disable-kms --enable-mali_fbdev"
-fi
 
-if [[ "$TARGET_FPU" =~ "neon" ]]; then
-  RETROARCH_NEON="--enable-neon"
-fi
+# Amlogic OpenGLES Features Support
+elif [ "$OPENGLES" = "opengl-meson" ] || [ "$OPENGLES" = "opengl-meson-t82x" ]; then
+  RETROARCH_SUPPORT_GLES="--enable-opengles \
+                          --disable-kms \
+                          --enable-mali_fbdev"
 
-if [[ "$PROJECT" =~ "Generic" ]]; then
+# Vulkan Support
+elif [ "$VULKAN_SUPPORT" = yes ]; then
+  RETROARCH_SUPPORT_VULKAN="--enable-vulkan"
+
+# QT Support
+elif [ "$PROJECT" = "Generic" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET qt-everywhere"
-  RETROARCH_QT="--enable-qt"
-else
-  RETROARCH_QT="--disable-qt"
+  RETROARCH_SUPPORT_QT="--enable-qt"
+fi
+
+# NEON Support
+if target_has_feature neon; then
+  RETROARCH_SUPPORT_NEON="--enable-neon"
 fi
 
 TARGET_CONFIGURE_OPTS=""
@@ -56,12 +67,14 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-vg \
                            --disable-xvideo \
                            --disable-al \
                            --disable-oss \
-                           $RETROARCH_GL \
-                           $RETROARCH_NEON \
-                           $RETROARCH_QT \
                            --enable-zlib \
                            --host=$TARGET_NAME \
-                           --enable-freetype"
+                           --enable-freetype \
+                           $RETROARCH_SUPPORT_GL \
+                           $RETROARCH_SUPPORT_GLES \
+                           $RETROARCH_SUPPORT_VULKAN \
+                           $RETROARCH_SUPPORT_QT \
+                           $RETROARCH_SUPPORT_NEON"
 
 pre_configure_target() {
   cd ..
