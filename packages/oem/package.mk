@@ -44,7 +44,7 @@ OEM_EMU_COMMON=" \
   lr-bluemsx \
   lr-chailove \
   lr-dosbox \
-  lr-fbalpha \
+  lr-fbalpha2018 \
   lr-fceumm \
   lr-fuse \
   lr-gambatte \
