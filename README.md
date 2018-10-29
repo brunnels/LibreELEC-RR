@@ -85,6 +85,7 @@
 *  [libretro-beetle-pce-fast](https://github.com/libretro/beetle-pce-fast-libretro) - git  7f6f061 | PC-Engine
 *  [libretro-beetle-wswan](https://github.com/libretro/beetle-wswan-libretro) - git b4dc85b | Bandai WonderSwan
 *  [libretro-blueMSX](https://github.com/libretro/blueMSX-libretro) - git 4be0a24 | MSX
+*  [libretro-chailove](https://github.com/libretro/libretro-chailove) - git 14e0a09 | 0.29.0 | 2D Game Framework with ChaiScript
 *  [libretro-dosbox](https://github.com/libretro/dosbox-libretro) - git 8f2d731 | DOS
 *  [libretro-fbalpha](https://github.com/libretro/fbalpha) - git 92ab7c6 | Multiple Arcade Machine Emulator
 *  [libretro-fceumm](https://github.com/libretro/libretro-fceumm) - git eb17f88 | Nintendo Entertainment System
@@ -113,7 +114,6 @@
 *  [libretro-beetle-psx](https://github.com/libretro/beetle-psx-libretro) - git a38aa45 | Sony Playstation
 *  [libretro-beetle-saturn](https://github.com/libretro/beetle-saturn-libretro) - git 1983713 | Sega Saturn
 *  [libretro-bsnes-mercury](https://github.com/libretro/bsnes-mercury) git 4e221df | Nintendo Super Nintendo Entertainment System
-*  [libretro-chailove](https://github.com/libretro/libretro-chailove) - git 14e0a09 | 0.29.0 | 2D Game Framework with ChaiScript
 *  [libretro-citra](https://github.com/libretro/citra) - git a0c222c | Nintendo 3DS
 *  [libretro-desmume](https://github.com/libretro/desmume) - git 07162f4 | Nintendo DS
 *  [libretro-dolphin](https://github.com/libretro/dolphin) - git a5bce7d | Nintendo Wii / Gamecube
