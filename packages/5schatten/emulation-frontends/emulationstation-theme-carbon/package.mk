@@ -18,15 +18,15 @@ makeinstall_target() {
 
   #adding additional themes
   cp -a $PKG_DIR/files/2048 $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
+  cp -a $PKG_DIR/files/chailove $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
   cp -a $PKG_DIR/files/mrboom $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
   cp -a $PKG_DIR/files/moonlight $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
   cp -a $PKG_DIR/files/prboom $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
   cp -a $PKG_DIR/files/tyrquake $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
 
   #adding additional themes for generic
-  if [ "$PROJECT" == "Generic" ]; then
+  if [ "$PROJECT" = "Generic" ]; then
     cp -a $PKG_DIR/files/n3ds $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
-    cp -a $PKG_DIR/files/chailove $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
   fi
 
   #adding click sounds
