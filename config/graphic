@@ -10,6 +10,12 @@ else
   OPENGLES_SUPPORT="yes"
 fi
 
+if [ "$VULKANAPI" = no ]; then
+  VULKAN_SUPPORT="no"
+else
+  VULKAN_SUPPORT="yes"
+fi
+
 get_graphicdrivers() {
 
   # set defaults
