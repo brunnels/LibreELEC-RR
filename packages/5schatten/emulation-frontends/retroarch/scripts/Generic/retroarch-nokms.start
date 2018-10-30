@@ -4,17 +4,25 @@
 
 . /etc/profile
 
-# Freeze Kodi / stop audio
-kodifreeze.sh freeze
+# Check if asound.conf file is found
+if [ -f /storage/.config/asound.conf ]; then
 
-# Change refresh rate to 60Hz
-set_refresh_rate_60
+  # Freeze Kodi / stop audio
+  kodifreeze.sh freeze
 
-# Set audio & midi driver
-set_RA_audiodriver
+  # Change refresh rate to 60Hz
+  set_refresh_rate_60
 
-# Launch RetroArch
-/usr/bin/retroarch -v "$@" > /var/log/retroarch.log 2>&1
+  # Set audio & midi driver
+  set_RA_audiodriver
 
-# Switch back to ES or unfreeze Kodi & start audio
-pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
+  # Launch RetroArch
+  /usr/bin/retroarch -v "$@" > /var/log/retroarch.log 2>&1
+
+  # Switch back to ES or unfreeze Kodi & start audio
+  pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
+
+else
+  # Inform about missing asound.conf
+  missing_asound_conf
+fi
