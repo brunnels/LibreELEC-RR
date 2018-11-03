@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-reicast"
-PKG_VERSION="d7c47cd"
-PKG_SHA256="5f22b310cc4e3d1d069ab838e3dd0cfeec0100c5c7e23e643ead841648b54361"
+PKG_VERSION="3bf600215ae53c9028cebed4b931852c4f1409c6"
+PKG_SHA256="325c64dbcfbd361e351bc538ae9eb1a36d0a8113faec0672493109a8896e6244"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/reicast-emulator"
 PKG_URL="https://github.com/libretro/reicast-emulator/archive/$PKG_VERSION.tar.gz"
@@ -20,10 +20,10 @@ pre_make_target() {
 }
 
 make_target() {
-  if [ "$PROJECT" == "Amlogic" ]; then
+  if [ "$PROJECT" = "Amlogic" ]; then
     make FORCE_GLES=1 HAVE_OPENMP=0 GIT_VERSION=$PKG_VERSION WITH_DYNAREC=$ARCH platform=rpi3
   
-  elif [ "$PROJECT" == "RPi" ]; then
+  elif [ "$PROJECT" = "RPi" ]; then
     case $DEVICE in
       RPi)
         make FORCE_GLES=1 HAVE_OPENMP=0 GIT_VERSION=$PKG_VERSION WITH_DYNAREC=$ARCH platform=rpi
