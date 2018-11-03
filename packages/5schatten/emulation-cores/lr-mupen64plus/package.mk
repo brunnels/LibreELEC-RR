@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-mupen64plus"
-PKG_VERSION="e7ea1ae"
-PKG_SHA256="f1d86cc8ac9e3b951bd757a0c2196f3e42473a6a81ac8952374cf92743069d25"
+PKG_VERSION="bb64262862109783fea77fc00514c14d2bb7e4d9"
+PKG_SHA256="31e8e895d8b2c5d1ee33094c955331820053f6c0b9975ca53a708cb487a32a9b"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/mupen64plus-libretro"
 PKG_URL="https://github.com/libretro/mupen64plus-libretro/archive/$PKG_VERSION.tar.gz"
@@ -23,6 +23,7 @@ make_target() {
   if target_has_feature neon; then
     export HAVE_NEON=1
   fi
+
   if [ "$PROJECT" = "RPi" ]; then
     case $DEVICE in
       RPi)
