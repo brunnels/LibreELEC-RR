@@ -116,7 +116,7 @@ PKG_CMAKE_OPTS_TARGET="-DSDL_STATIC=OFF \
                        $SUPPORT_PULSEAUDIO"
 
 post_makeinstall_target() {
-  $SED "s:\(['=\" ]\)/usr:\\1$SYSROOT_PREFIX/usr:g" $SYSROOT_PREFIX/usr/bin/sdl2-config
+  sed -e "s:\(['=\" ]\)/usr:\\1$SYSROOT_PREFIX/usr:g" -i $SYSROOT_PREFIX/usr/bin/sdl2-config
 
   rm -rf $INSTALL/usr/bin
 }
