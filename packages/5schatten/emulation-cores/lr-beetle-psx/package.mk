@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-beetle-psx"
-PKG_VERSION="a38aa45"
-PKG_SHA256="8325e530cc4350b7101ca8dc0958c787f22484eedafe612cd074f425ed54f834"
+PKG_VERSION="74bd7550ff07e9953f353e1d434663ad627afa20"
+PKG_SHA256="14c969c923340e35d6291d740561925f50fcd4d223740d8377c55c3ee3d1a781"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/beetle-psx-libretro"
 PKG_URL="https://github.com/libretro/beetle-psx-libretro/archive/$PKG_VERSION.tar.gz"
@@ -20,7 +20,7 @@ pre_build_target() {
 make_target() {
   make
 
-  if [ "$PROJECT" == "Generic" ];then
+  if [ "$PROJECT" = "Generic" ];then
     mkdir -p tmp
     mv $PKG_LIBNAME tmp/
     make clean
