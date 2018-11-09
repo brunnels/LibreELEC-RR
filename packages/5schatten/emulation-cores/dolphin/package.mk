@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="dolphin"
-PKG_VERSION="80259b019b476b4a932342ca7593799c9abdfefb"
-PKG_SHA256="f00955784146e4f5fa5d28da6a18bb9439882752dc40689a896bb02a83ea0d66"
+PKG_VERSION="0e1cca54da025d73694aedc080e364ee51bf1ce9"
+PKG_SHA256="fb9797edd888b280840ebea981832163d1d1183c35021e0daf021f944a565ac9"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/dolphin-emu/dolphin"
@@ -17,27 +17,30 @@ PKG_BUILD_FLAGS="-gold"
 PKG_CMAKE_OPTS_TARGET="-DENABLE_LTO=off \
                        -DUSE_SHARED_ENET=on \
                        -DUSE_DISCORD_PRESENCE=off \
-                       -DENABLE_ANALYTICS=off"
+                       -DENABLE_ANALYTICS=off \
+                       -DDISTRIBUTOR=5schatten"
 
 pre_make_target() {
-  #fix stdlib.h error
+  # Fix stdlib.h error
   find . -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
   
-  #export QT path
+  # Export QT path
   export Qt5Gui_DIR=$SYSROOT_PREFIX/usr/lib
 
-  #ugly version hack
-  PKG_DOLPHIN_RELEASE="5.0-9012"
+  # Ugly version hack
+  PKG_DOLPHIN_RELEASE="5.0-9111"
   PKG_DOLPHIN_BRANCH="Master"
   printf "#define SCM_REV_STR \""$PKG_VERSION"\"\n""#define SCM_DESC_STR \""$PKG_DOLPHIN_RELEASE"\"\n""#define SCM_BRANCH_STR \""$PKG_DOLPHIN_BRANCH"\"\n""#define SCM_IS_MASTER 0\n""#define SCM_DISTRIBUTOR_STR \"None\"\n""#define SCM_UPDATE_TRACK_STR \"\"\n" > Source/Core/Common/scmrev.h
 }
 
 post_makeinstall_target() {
-  #copy scripts & config files
-  cp $PKG_DIR/scripts/* $INSTALL/usr/bin/
+  # Copy scripts & config files
   mkdir -p $INSTALL/usr/config/dolphin-emu
+  cp $PKG_DIR/scripts/* $INSTALL/usr/bin/
   cp -PR $PKG_DIR/config/* $INSTALL/usr/config/dolphin-emu/
 
-  #remove not neeeded binary
+  # Clean up
   rm $INSTALL/usr/bin/dolphin-emu-nogui
+  rm -rf $INSTALL/usr/share/applications
+  rm -rf $INSTALL/usr/share/icons
 }
