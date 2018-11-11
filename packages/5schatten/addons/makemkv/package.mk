@@ -3,9 +3,9 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="makemkv"
-PKG_VERSION="1.14.0"
-PKG_SHA256="bf883793cd62931d68876a5534377124c121ce6f6bc8a76fe8f8fdb3ad5015c6"
-PKG_REV="105"
+PKG_VERSION="1.14.1"
+PKG_SHA256="fc8e15ef1148988b241110fc7cf2c2d916abf01bb85c3450b4e2ee10aa054b7b"
+PKG_REV="106"
 PKG_ARCH="x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://makemkv.com/"
@@ -33,15 +33,15 @@ makeinstall_target() {
 }
 
 addon() {
-  # install makemkv binary
+  # Install makemkv binary
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   install -m 0755 $(get_build_dir makemkv-bin)/bin/amd64/makemkvcon $ADDON_BUILD/$PKG_ADDON_ID/bin/makemkvcon.bin
 
-  # licence file
+  # Copy licence file
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/license
   cp $(get_build_dir makemkv-bin)/src/eula_en_linux.txt $ADDON_BUILD/$PKG_ADDON_ID/license
 
-  # install libs
+  # Install libs
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
   cp $PKG_BUILD/out/libmakemkv.so.? $ADDON_BUILD/$PKG_ADDON_ID/lib
   cp $PKG_BUILD/out/libdriveio.so.? $ADDON_BUILD/$PKG_ADDON_ID/lib
