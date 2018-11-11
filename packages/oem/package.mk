@@ -73,6 +73,7 @@ OEM_EMU_GENERIC=" \
   citra \
   dolphin \
   fs-uae \
+  mupen64plus \
   PCSX2 \
   vice \
   yquake2 \
