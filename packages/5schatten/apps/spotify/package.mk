@@ -18,6 +18,6 @@ makeinstall_target() {
 
   # copy scripts, config files & resources
   cp $PKG_DIR/files/icon.png $INSTALL/usr/config/spotify/
-  cp $PKG_DIR/files/spotify $INSTALL/usr/bin/
+  cp $PKG_DIR/scripts/spotify $INSTALL/usr/bin/
   touch $INSTALL/usr/config/spotify/stable
 }
