@@ -43,6 +43,7 @@ OEM_EMU_COMMON=" \
   lr-beetle-wswan \
   lr-bluemsx \
   lr-chailove \
+  lr-desmume \
   lr-dosbox \
   lr-fbalpha2018 \
   lr-fceumm \
@@ -81,7 +82,6 @@ OEM_EMU_GENERIC=" \
   lr-beetle-saturn \
   lr-bsnes-mercury-accuracy \
   lr-citra \
-  lr-desmume \
   lr-dolphin \
   lr-ishiiruka \
   lr-mame2016 \
