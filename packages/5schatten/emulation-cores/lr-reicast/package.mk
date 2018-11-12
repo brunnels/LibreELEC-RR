@@ -21,24 +21,24 @@ pre_make_target() {
 
 make_target() {
   if [ "$PROJECT" = "Amlogic" ]; then
-    make FORCE_GLES=1 HAVE_OPENMP=0 GIT_VERSION=$PKG_VERSION WITH_DYNAREC=$ARCH platform=rpi3
+    make FORCE_GLES=1 HAVE_OPENMP=0 GIT_VERSION=${PKG_VERSION:0:7} WITH_DYNAREC=$ARCH platform=rpi3
   
   elif [ "$PROJECT" = "RPi" ]; then
     case $DEVICE in
       RPi)
-        make FORCE_GLES=1 HAVE_OPENMP=0 GIT_VERSION=$PKG_VERSION WITH_DYNAREC=$ARCH platform=rpi
+        make FORCE_GLES=1 HAVE_OPENMP=0 GIT_VERSION=${PKG_VERSION:0:7} WITH_DYNAREC=$ARCH platform=rpi
         ;;
       RPi2)
-        make FORCE_GLES=1 HAVE_OPENMP=0 GIT_VERSION=$PKG_VERSION WITH_DYNAREC=$ARCH platform=rpi2
+        make FORCE_GLES=1 HAVE_OPENMP=0 GIT_VERSION=${PKG_VERSION:0:7} WITH_DYNAREC=$ARCH platform=rpi2
         ;;
     esac
 
   else
-    make AS=${AS} CC_AS=${AS} HAVE_OPENMP=0 HAVE_OIT=1 GIT_VERSION=$PKG_VERSION WITH_DYNAREC=$ARCH
+    make AS=${AS} CC_AS=${AS} HAVE_OPENMP=0 HAVE_OIT=1 GIT_VERSION=${PKG_VERSION:0:7} WITH_DYNAREC=$ARCH
   fi
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

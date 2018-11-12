@@ -13,23 +13,19 @@ PKG_LONGDESC="Standalone port/fork of Mednafen PSX to the Libretro API."
 PKG_LIBNAME="mednafen_psx_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-pre_build_target() {
-  export GIT_VERSION=$PKG_VERSION
-}
-
 make_target() {
-  make
+  make GIT_VERSION=${PKG_VERSION:0:7}
 
   if [ "$PROJECT" = "Generic" ];then
     mkdir -p tmp
     mv $PKG_LIBNAME tmp/
     make clean
-    make HAVE_HW=1
+    make HAVE_HW=1 GIT_VERSION=${PKG_VERSION:0:7}
     mv tmp/$PKG_LIBNAME .
   fi
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp mednafen_psx_*libretro.so $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp mednafen_psx_*libretro.so $INSTALL/usr/lib/libretro/
 }

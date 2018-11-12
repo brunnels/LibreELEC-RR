@@ -22,26 +22,26 @@ pre_configure_target() {
 
 make_target() {
   if [ "$PROJECT" == "Amlogic" ]; then
-      make -f Makefile.libretro platform=unix-armv HAVE_NEON=1 GIT_VERSION=$PKG_VERSION
+      make -f Makefile.libretro platform=unix-armv HAVE_NEON=1 GIT_VERSION=${PKG_VERSION:0:7}
   fi
 
   if [ "$PROJECT" == "Generic" ]; then
-      make -f Makefile.libretro GIT_VERSION=$PKG_VERSION
+      make -f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}
   fi
 
   if [ "$PROJECT" == "RPi" ]; then
     case $DEVICE in
       RPi)
-      make -f Makefile.libretro platform=unix-armv HAVE_NEON=1 GIT_VERSION=$PKG_VERSION
+      make -f Makefile.libretro platform=unix-armv HAVE_NEON=1 GIT_VERSION=${PKG_VERSION:0:7}
         ;;
       RPi2)
-      make -f Makefile.libretro platform=unix-armv CC=$CC CXX=$CXX GIT_VERSION=$PKG_VERSION
+      make -f Makefile.libretro platform=unix-armv CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
         ;;
     esac
   fi
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

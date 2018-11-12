@@ -19,15 +19,15 @@ make_target() {
   cd $PKG_BUILD
   
   if [[ "$TARGET_FPU" =~ "neon" ]]; then
-    make -f Makefile.libretro HAVE_NEON=1 USE_DYNAREC=1 BUILTIN_GPU=neon GIT_VERSION=$PKG_VERSION
-  elif [ "$ARCH" == "arm" ]; then
-    make -f Makefile.libretro HAVE_NEON=0 USE_DYNAREC=1 GIT_VERSION=$PKG_VERSION
+    make -f Makefile.libretro HAVE_NEON=1 USE_DYNAREC=1 BUILTIN_GPU=neon GIT_VERSION=${PKG_VERSION:0:7}
+  elif [ "$ARCH" = "arm" ]; then
+    make -f Makefile.libretro HAVE_NEON=0 USE_DYNAREC=1 GIT_VERSION=${PKG_VERSION:0:7}
   else
-    make -f Makefile.libretro GIT_VERSION=$PKG_VERSION
+    make -f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}
   fi
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

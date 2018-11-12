@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-bsnes-mercury-accuracy"
-PKG_VERSION="4e221df"
+PKG_VERSION="4e221df676ffc7b46d083cf2ae100131eabe5076"
 PKG_SHA256="ad493381c5736e521996b850918e0df7c09124c71d98fac6a1e04c57830dade4"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/bsnes-mercury"
@@ -14,10 +14,10 @@ PKG_LIBNAME="bsnes_mercury_accuracy_libretro.so"
 PKG_LIBPATH="out/$PKG_LIBNAME"
 
 make_target() {
-  make profile=accuracy
+  make profile=accuracy GIT_VERSION=${PKG_VERSION:0:7}
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

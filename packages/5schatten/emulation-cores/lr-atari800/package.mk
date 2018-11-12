@@ -14,7 +14,7 @@ PKG_LIBNAME="atari800_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
 make_target() {
-  make GIT_VERSION=$PKG_VERSION
+  make GIT_VERSION=${PKG_VERSION:0:7}
 }
 
 makeinstall_target() {

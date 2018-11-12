@@ -16,24 +16,24 @@ PKG_LIBPATH="$PKG_LIBNAME"
 
 make_target() {
   if [ "$PROJECT" = "Amlogic" ]; then
-    make -f makefile.libretro platform=rpi3 CC=$CC CXX=$CXX GIT_VERSION=$PKG_VERSION
+    make -f makefile.libretro platform=rpi3 CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
 
   elif [ "$PROJECT" = "RPi" ]; then
     case $DEVICE in
       RPi)
-        make -f makefile.libretro platform=armv CC=$CC CXX=$CXX GIT_VERSION=$PKG_VERSION
+        make -f makefile.libretro platform=armv CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
         ;;
       RPi2)
-        make -f makefile.libretro platform=rpi2 CC=$CC CXX=$CXX GIT_VERSION=$PKG_VERSION
+        make -f makefile.libretro platform=rpi2 CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
         ;;
     esac
 
   else
-    make -f makefile.libretro CC=$CC CXX=$CXX GIT_VERSION=$PKG_VERSION
+    make -f makefile.libretro CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
   fi
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

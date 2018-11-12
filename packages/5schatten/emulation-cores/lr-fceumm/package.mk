@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-fceumm"
-PKG_VERSION="eb17f88"
+PKG_VERSION="eb17f882dfcb945c5439c2d60b8e8aba580fce45"
 PKG_SHA256="8a3c3e7f52c2d463e708b15051f7b2255b336491a94169c0e82e81b6bafc3c4f"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/libretro-fceumm"
@@ -14,10 +14,10 @@ PKG_LIBNAME="fceumm_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
 make_target() {
-  make -f Makefile.libretro GIT_VERSION=$PKG_VERSION
+  make -f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

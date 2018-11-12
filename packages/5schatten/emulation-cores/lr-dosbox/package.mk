@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-dosbox"
-PKG_VERSION="8f2d731"
+PKG_VERSION="8f2d7318b6e66e397448a5905b30bc4f92de7133"
 PKG_SHA256="ee1bd0d04f9aa0e11eb827b8badbceec5bd9f0727765688436bd1d67fdb65816"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/dosbox-libretro"
@@ -15,10 +15,10 @@ PKG_LIBNAME="dosbox_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
 make_target() {
-  make -f Makefile.libretro
+  make -f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

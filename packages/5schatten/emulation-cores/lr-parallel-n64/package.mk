@@ -16,7 +16,7 @@ PKG_LIBNAME="parallel_n64_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
 pre_build_target() {
-  export GIT_VERSION=$PKG_VERSION
+  export GIT_VERSION=${PKG_VERSION:0:7}
 }
 
 make_target() {
@@ -37,6 +37,6 @@ make_target() {
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

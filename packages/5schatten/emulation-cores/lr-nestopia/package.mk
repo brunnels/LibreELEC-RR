@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-nestopia"
-PKG_VERSION="69d0ca1"
-PKG_SHA256="e46fb72930190a9673f74a45ec65851314b892cadb3a7b233515bf03070bc6f0"
+PKG_VERSION="28aa27ccd6a44cf8e1e406b58356a8d0bb646834"
+PKG_SHA256="ea0d16236355f67c9b16aca47415ca19f713adfa87371d82e7e96e09ce83ecbe"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/nestopia"
 PKG_URL="https://github.com/libretro/nestopia/archive/$PKG_VERSION.tar.gz"
@@ -19,15 +19,14 @@ post_unpack() {
 }
 
 make_target() {
-
-  if [ "$PROJECT" == "RPi" ]; then
-    make -C libretro platform=rpi2
+  if [ "$PROJECT" = "RPi" ]; then
+    make -C libretro platform=rpi2 GIT_VERSION=${PKG_VERSION:0:7}
   else
-    make -C libretro
+    make -C libretro GIT_VERSION=${PKG_VERSION:0:7}
   fi
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

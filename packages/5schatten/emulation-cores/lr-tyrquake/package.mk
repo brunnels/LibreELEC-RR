@@ -14,10 +14,10 @@ PKG_LIBNAME="tyrquake_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
 make_target() {
-  make GIT_VERSION=$PKG_VERSION
+  make GIT_VERSION=${PKG_VERSION:0:7}
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

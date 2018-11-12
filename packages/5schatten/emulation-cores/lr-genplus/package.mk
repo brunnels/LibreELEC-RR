@@ -15,14 +15,14 @@ PKG_LIBNAME="genesis_plus_gx_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
 make_target() {
-  if [ "$ARCH" == "arm" ]; then
+  if [ "$ARCH" = "arm" ]; then
     CFLAGS="$CFLAGS -DALIGN_LONG"
   fi
 
-  make -f Makefile.libretro GIT_VERSION=$PKG_VERSION
+  make -f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }

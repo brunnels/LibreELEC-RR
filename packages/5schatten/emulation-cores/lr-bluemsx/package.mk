@@ -14,7 +14,7 @@ PKG_LIBNAME="bluemsx_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
 make_target() {
-  make -f Makefile.libretro GIT_VERSION=$PKG_VERSION
+  make -f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}
 }
 
 makeinstall_target() {

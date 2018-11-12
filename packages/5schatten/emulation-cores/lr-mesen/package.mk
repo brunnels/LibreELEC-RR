@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-mesen"
-PKG_VERSION="f2af2ba" # 0.9.7
+PKG_VERSION="f2af2ba9865013d7f2e0e3bfb9eba8b3418b44d9" # 0.9.7
 PKG_SHA256="cdd3968a94538816af785159d8ddaa30323ec5b337ec4f1ff88a318a2c3955ed"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv3"
@@ -20,6 +20,6 @@ make_target() {
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }
