@@ -80,11 +80,11 @@ pre_configure_target() {
   cd ..
   rm -rf .$TARGET_NAME
   export PKG_CONF_PATH=$TOOLCHAIN/bin/pkg-config
-  echo $PKG_VERSION > .gitversion
+  echo ${PKG_VERSION:0:7} > .gitversion
 }
 
 make_target() {
-  make V=1
+  make
   make -C gfx/video_filters compiler=$CC extra_flags="$CFLAGS"
   make -C libretro-common/audio/dsp_filters compiler=$CC extra_flags="$CFLAGS"
 }
