@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="moonlight-embedded"
-PKG_VERSION="e21e207" #v2.4.7+
-PKG_LICENSE="LGPL"
+PKG_VERSION="e21e2074e3bb2affdc34a413db98452c5db504e4" #v2.4.7+
+PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/irtimmer/moonlight-embedded"
 PKG_URL="https://github.com/irtimmer/moonlight-embedded.git"
 PKG_DEPENDS_TARGET="toolchain alsa-lib avahi curl enet expat ffmpeg libcec libevdev pulseaudio openssl opus SDL2-git SDL_GameControllerDB systemd"
@@ -17,19 +17,19 @@ elif [ "$PROJECT" = "Generic" ]; then
 fi
 
 post_makeinstall_target() {
-  #cleanup
-  rm -rf $INSTALL/usr/share
-  rm -rf $INSTALL/usr/etc
-  
-  #create directories
+  # Create directories
   mkdir -p $INSTALL/etc/moonlight
   mkdir -p $INSTALL/usr/config/moonlight
   mkdir -p $INSTALL/usr/share/moonlight
 
-  #copy config files
+  # Copy config files
   ln -sf /usr/config/moonlight/moonlight.conf $INSTALL/etc/moonlight/
   ln -sf /usr/config/SDL-GameControllerDB/gamecontrollerdb.txt $INSTALL/usr/share/moonlight/
   ln -sf /usr/config/SDL-GameControllerDB/gamecontrollerdb.txt $INSTALL/usr/config/moonlight/
   cp -PR $PKG_DIR/config/* $INSTALL/usr/config/moonlight/
   cp -PR $PKG_DIR/scripts/* $INSTALL/usr/bin/
+
+  # Clean up
+  rm -rf $INSTALL/usr/share
+  rm -rf $INSTALL/usr/etc
 }               
