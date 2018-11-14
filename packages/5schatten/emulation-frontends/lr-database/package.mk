@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-database"
-PKG_VERSION="cfafc3b3ce20673f4b31e4a6385f05eafcff27d7"
-PKG_SHA256="53c8b5200138a104d71c5bad6dbd5639a81479a897d627cabcd89816fdbdc11d"
+PKG_VERSION="e199b3bdaa7d67ae0c9b46df86bc99e3e6b2d4e8"
+PKG_SHA256="beafaf2f74be988a22dae58a48b515d572de32d2960fb1e61bc6f782f0726fb3"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/libretro-database"
 PKG_URL="https://github.com/libretro/libretro-database/archive/$PKG_VERSION.tar.gz"
@@ -18,17 +18,15 @@ pre_configure_target() {
 }
 
 makeinstall_target() {
-  make install DESTDIR=$INSTALL PREFIX=/usr
+  make install INSTALLDIR="$INSTALL/usr/share/retroarch/database"
 }
 
 post_makeinstall_target() {
-  mv $INSTALL/usr/share/libretro $INSTALL/usr/share/retroarch
-
   #remove oldest & unneeded MAME 2000 database use mame2003-plus instead
-  rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2000.rdb
+  rm "$INSTALL/usr/share/retroarch/database/rdb/MAME 2000.rdb"
 
   #remove unneeded MAME databases for SBC based systems
-  if [ "$PROJECT" == "Amlogic" ] || [ "$PROJECT" == "RPi" ]; then
+  if [ "$PROJECT" = "Amlogic" ] || [ "$PROJECT" = "RPi" ]; then
     rm $INSTALL/usr/share/retroarch/database/rdb/MAME.rdb
     rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2014.rdb
   fi
@@ -39,7 +37,7 @@ post_makeinstall_target() {
   fi
 
   #workaround until a MAME 2016 database for romset 0.174 is included
-  if [ ! -f "$INSTALL/usr/share/retroarch/database/rdb/MAME 2016.rdb" ] && [ "$PROJECT" == "Generic" ]; then
+  if [ ! -f "$INSTALL/usr/share/retroarch/database/rdb/MAME 2016.rdb" ] && [ "$PROJECT" = "Generic" ]; then
     ln -sf /usr/share/retroarch/database/rdb/MAME.rdb "$INSTALL/usr/share/retroarch/database/rdb/MAME 2016.rdb"
   fi
 }
