@@ -36,7 +36,6 @@ OEM_EMU_COMMON=" \
   dosbox-sdl2 \
   hatari \
   moonlight-embedded \
-  ppsspp \
   lr-2048 \
   lr-atari800 \
   lr-beetle-pce-fast \
@@ -56,6 +55,7 @@ OEM_EMU_COMMON=" \
   lr-mupen64plus \
   lr-nestopia \
   lr-pcsx-rearmed \
+  lr-ppsspp \
   lr-prboom \
   lr-reicast \
   lr-samples \
@@ -96,7 +96,7 @@ OEM_EMU_RPI=" \
   lr-vice \
   lr-yabause"
 
-if [ "$OEM_APPS" == "yes" ]; then
+if [ "$OEM_APPS" = "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_APPS_COMMON"
   case $PROJECT in
     Amlogic)
@@ -111,7 +111,7 @@ if [ "$OEM_APPS" == "yes" ]; then
   esac
 fi
 
-if [ "$OEM_EMU" == "yes" ]; then
+if [ "$OEM_EMU" = "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_EMU_COMMON"
   case $PROJECT in
     Amlogic)
