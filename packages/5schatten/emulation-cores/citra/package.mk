@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="citra"
-PKG_VERSION="b1f55c9cabcb66305969e9007c68e79a1119b76b"
+PKG_VERSION="d3b1b5f22c24fc4dc0ba76e9de231cf3b7471ef6"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2+"
 PKG_SITE="https://github.com/citra-emu/citra"
@@ -25,14 +25,14 @@ pre_make_target() {
 }
 
 post_makeinstall_target() {
-  # copy scripts & config files
+  # Copy scripts & config files
   mkdir -p $INSTALL/usr/config/citra-emu
 
   cp $PKG_DIR/scripts/* $INSTALL/usr/bin/
   cp -PR $PKG_DIR/config/* $INSTALL/usr/config/citra-emu/
   cp -PR $PKG_DIR/files/* $INSTALL/usr/config/citra-emu/
   
-  # clean up
+  # Clean up
   rm -rf $INSTALL/usr/share/
   rm -rf $INSTALL/usr/bin/citra
 }
