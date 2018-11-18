@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-parallel-n64"
-PKG_VERSION="d4d8f475fc990652c72e1413291a1f8e788646db"
-PKG_SHA256="8ab9e8a6e534e4fddf3757f2ee192c2979b6188e232a065e648e24a636620b73"
+PKG_VERSION="a8ef6c75eeffcfb537932b342556febea6a0e6e7"
+PKG_SHA256="6fcb8bb9c321e87b007b013dc9e3f8018c5d187d4ea278754e729c26a0280f11"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/parallel-n64"
