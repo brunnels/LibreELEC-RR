@@ -88,7 +88,9 @@ fi
 ### Check if asound.conf file is found ###
 
 if [ -f /opt/google/chrome/chrome ]; then 
-  
+  # Set ALSA output device
+  set_ALSA_output_device
+
   if [ ! -f /storage/.config/asound.conf ]; then
     #### Inform about missing asound.conf ###
     missing_asound_conf
