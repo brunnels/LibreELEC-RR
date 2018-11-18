@@ -5,6 +5,9 @@
 
 . /etc/profile
 
+# Set ALSA output device
+set_ALSA_output_device
+
 #### Inform about missing asound.conf ###
 if [ ! -f /storage/.config/asound.conf ]; then
   missing_asound_conf
