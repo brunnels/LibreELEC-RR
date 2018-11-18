@@ -10,6 +10,9 @@ if [ ! -L /storage/.emulationstation ]; then
   ln -s /storage/.config/emulationstation /storage/.emulationstation
 fi
 
+# Set ALSA output device
+set_ALSA_output_device
+
 # Freeze Kodi / stop audio
 kodifreeze.sh freeze
 
