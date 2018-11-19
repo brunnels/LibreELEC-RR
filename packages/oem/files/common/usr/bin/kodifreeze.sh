@@ -13,10 +13,7 @@ kodi_freeze() {
   else
     systemctl stop kodi &
     usleep 500000
-
-    if [ -f /storage/.config/usePulseAudio ]; then
-      start_FluidSynth_PA
-    fi
+    start_FluidSynth_PA
   fi
 }
 
@@ -34,10 +31,7 @@ kodi_unfreeze() {
   if [ "$1" = "muteonly" ]; then
     kodi-send --action="RunScript(/usr/bin/audio-resume.py)"
   else
-    if [ -f /storage/.config/usePulseAudio ]; then
-      stop_FluidSynth_PA
-    fi
-
+    stop_FluidSynth_PA
     usleep 500000
     systemctl start kodi
   fi
