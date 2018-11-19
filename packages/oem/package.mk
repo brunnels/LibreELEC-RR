@@ -36,6 +36,7 @@ OEM_EMU_COMMON=" \
   dosbox-sdl2 \
   hatari \
   moonlight-embedded \
+  ppsspp \
   lr-2048 \
   lr-atari800 \
   lr-beetle-pce-fast \
