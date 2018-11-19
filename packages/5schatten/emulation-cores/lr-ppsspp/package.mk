@@ -26,14 +26,9 @@ if [ $OPENGLES_SUPPORT = "yes" ]; then
                            -DUSING_GLES2=ON"
 fi
 
-if [ "$DISPLAYSERVER" = "x11" ] && [ $VULKAN_SUPPORT = "yes" ]; then
-  PPSSPP_VULKAN_SUPPORT="-DUSING_X11_VULKAN=ON"
-else
-  PPSSPP_VULKAN_SUPPORT="-DUSING_X11_VULKAN=OFF"
-fi
-
 PKG_CMAKE_OPTS_TARGET="-DLIBRETRO=ON \
                        -DUSE_SYSTEM_FFMPEG=ON \
+                       -DUSING_X11_VULKAN=OFF \
                        $PPSSPP_ARCH_ARM \
                        $PPSSPP_OPENGLES_SUPPORT \
                        $PPSSPP_VULKAN_SUPPORT"
