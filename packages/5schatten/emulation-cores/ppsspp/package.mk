@@ -30,6 +30,7 @@ else
 fi
 
 PKG_CMAKE_OPTS_TARGET="-DUSE_SYSTEM_FFMPEG=ON \
+                       -DUSE_DISCORD=OFF \
                        $PPSSPP_ARCH_ARM \
                        $PPSSPP_OPENGLES_SUPPORT \
                        $PPSSPP_VULKAN_SUPPORT"
