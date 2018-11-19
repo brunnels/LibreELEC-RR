@@ -11,9 +11,6 @@ PKG_LONGDESC="A PSP emulator for Android, Windows, Mac, Linux and Blackberry 10,
 GET_HANDLER_SUPPORT="git"
 PKG_TOOLCHAIN="cmake-make"
 
-PKG_LIBNAME="ppsspp_libretro.so"
-PKG_LIBPATH="lib/$PKG_LIBNAME"
-
 if [ $ARCH = "arm" ] && [ ! $TARGET_CPU = "arm1176jzf-s" ]; then
   PPSSPP_ARCH_ARM="-DARMV7=ON"
 elif [ $TARGET_CPU = "arm1176jzf-s" ]; then
@@ -26,14 +23,13 @@ if [ $OPENGLES_SUPPORT = "yes" ]; then
                            -DUSING_GLES2=ON"
 fi
 
-if [ "DISPLAYSERVER" = "x11" ] && [ $VULKAN_SUPPORT = "yes" ]; then
+if [ $DISPLAYSERVER = "x11" ] && [ $VULKAN_SUPPORT = "yes" ]; then
   PPSSPP_VULKAN_SUPPORT="-DUSING_X11_VULKAN=ON"
 else
   PPSSPP_VULKAN_SUPPORT="-DUSING_X11_VULKAN=OFF"
 fi
 
-PKG_CMAKE_OPTS_TARGET="-DLIBRETRO=ON \
-                       -DUSE_SYSTEM_FFMPEG=ON \
+PKG_CMAKE_OPTS_TARGET="-DUSE_SYSTEM_FFMPEG=ON \
                        $PPSSPP_ARCH_ARM \
                        $PPSSPP_OPENGLES_SUPPORT \
                        $PPSSPP_VULKAN_SUPPORT"
@@ -43,6 +39,18 @@ pre_make_target() {
 }
 
 makeinstall_target() {
-  mkdir -p $INSTALL/usr/lib/libretro
-  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  # Create directories
+  mkdir -p $INSTALL/usr/bin
+  mkdir -p $INSTALL/usr/share/PPSSPP
+  mkdir -p $INSTALL/usr/config/ppsspp/PSP/SYSTEM
+
+  # Install assets & binary
+  cp -r assets $INSTALL/usr/share/PPSSPP
+  cp PPSSPPSDL $INSTALL/usr/share/PPSSPP
+
+  # Install scripts
+  cp $PKG_DIR/scripts/* $INSTALL/usr/bin
+
+  # Install config
+  cp $PKG_DIR/config/* $INSTALL/usr/config/ppsspp/PSP/SYSTEM
 }
