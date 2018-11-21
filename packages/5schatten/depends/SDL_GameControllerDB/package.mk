@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="SDL_GameControllerDB"
-PKG_VERSION="573ff7efd9a79c4532370899b1dc9288971f0381"
-PKG_SHA256="f3c404c04e7671772d25acd6a4f7b9a25591395df8dd36df906db2c9dff4c85e"
+PKG_VERSION="89224d5cbd85aa743d4dc7f8f197e714e21ac26e"
+PKG_SHA256="55f7990e847bce87711228a85dd204128ac5eb3b83a46c1f14a163b428e484da"
 PKG_LICENSE="OSS"
 PKG_SITE="https://github.com/gabomdq/SDL_GameControllerDB"
 PKG_URL="https://github.com/gabomdq/SDL_GameControllerDB/archive/$PKG_VERSION.tar.gz"
