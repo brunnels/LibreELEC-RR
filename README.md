@@ -59,8 +59,8 @@
 * [GCC](https://gcc.gnu.org/gcc-8/changes.html) - v8.2
 * [glibc](https://sourceware.org/glibc/wiki/Release/2.28) - v2.28
 * [LLVM](https://llvm.org/) - v7.0.0
-* [Mesa 3D](https://www.mesa3d.org/) - v18.2.3
-* [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.92
+* [Mesa 3D](https://www.mesa3d.org/) - v18.3.0-rc4
+* [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.93
 * [openssl](https://www.openssl.org/source/) - v1.0.2p
 * [PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) - 12.2
 * [Samba](https://www.samba.org/samba/history/samba-4.9.1.html) - v4.9.2
