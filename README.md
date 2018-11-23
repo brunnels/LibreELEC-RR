@@ -86,8 +86,9 @@
 *  [libretro-beetle-wswan](https://github.com/libretro/beetle-wswan-libretro) - git b4dc85b | Bandai WonderSwan
 *  [libretro-blueMSX](https://github.com/libretro/blueMSX-libretro) - git 4be0a24 | MSX
 *  [libretro-chailove](https://github.com/libretro/libretro-chailove) - git 73baade | v0.30.0 | 2D Game Framework with ChaiScript
+*  [libretro-desmume](https://github.com/libretro/desmume) - git 07162f4 | Nintendo DS
 *  [libretro-dosbox](https://github.com/libretro/dosbox-libretro) - git 8f2d731 | DOS
-*  [libretro-fbalpha](https://github.com/libretro/fbalpha) - git 92ab7c6 | Multiple Arcade Machine Emulator
+*  [libretro-fbalpha2018](https://github.com/libretro/fbalpha2018) - git 20daa80 | Multiple Arcade Machine Emulator
 *  [libretro-fceumm](https://github.com/libretro/libretro-fceumm) - git eb17f88 | Nintendo Entertainment System
 *  [libretro-fuse](https://github.com/libretro/fuse-libretro) - git 69a4442 | ZX Spectrum
 *  [libretro-gambatte](https://github.com/libretro/gambatte-libretro) - git 5ee8b1e | Nintendo Game Boy (Color)
@@ -117,7 +118,6 @@
 *  [libretro-beetle-saturn](https://github.com/libretro/beetle-saturn-libretro) - git 1983713 | Sega Saturn
 *  [libretro-bsnes-mercury](https://github.com/libretro/bsnes-mercury) git 4e221df | Nintendo Super Nintendo Entertainment System
 *  [libretro-citra](https://github.com/libretro/citra) - git a0c222c | Nintendo 3DS
-*  [libretro-desmume](https://github.com/libretro/desmume) - git 07162f4 | Nintendo DS
 *  [libretro-dolphin](https://github.com/libretro/dolphin) - git a5bce7d | Nintendo Wii / Gamecube
 *  [libretro-ishiiruka](https://github.com/libretro/Ishiiruka) - git ede0713 | Nintendo Wii / Gamecube
 *  [libretro-mame2016](https://github.com/libretro/mame2016-libretro) - git e06d731 | Romset 0.174 | Multiple Arcade Machine Emulator
