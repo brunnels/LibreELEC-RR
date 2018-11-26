@@ -1,0 +1,21 @@
+From 29e0b8854dfda6feadf0b92fa5fa0d4822c59738 Mon Sep 17 00:00:00 2001
+From: AreaScout <d.mehrwald@gmail.com>
+Date: Sun, 25 Nov 2018 19:52:34 +0000
+Subject: [PATCH] Add: register all for FFmpeg
+
+---
+ src/video/ffmpeg.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/video/ffmpeg.c b/src/video/ffmpeg.c
+index 2f26fff3..1949c50d 100644
+--- a/src/video/ffmpeg.c
++++ b/src/video/ffmpeg.c
+@@ -49,6 +49,7 @@ enum decoders ffmpeg_decoder;
+ int ffmpeg_init(int videoFormat, int width, int height, int perf_lvl, int buffer_count, int thread_count) {
+   // Initialize the avcodec library and register codecs
+   av_log_set_level(AV_LOG_QUIET);
++  avcodec_register_all();
+ 
+   av_init_packet(&pkt);
+ 
