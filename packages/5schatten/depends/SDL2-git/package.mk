@@ -32,7 +32,7 @@ else
 fi
 
 # OpenGL Support
-if [ ! "$OPENGL" = "no" ]; then
+if [ "$OPENGL_SUPPORT" = "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGL"
   SDL2_SUPPORT_OPENGL="-DVIDEO_OPENGL=ON"
 else
@@ -40,7 +40,7 @@ else
 fi
 
 # OpenGLES Support
-if [ ! "$OPENGLES" = "no" ]; then
+if [ "$OPENGLES_SUPPORT" = "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGLES"
   SDL2_SUPPORT_OPENGLES="-DVIDEO_OPENGLES=ON"
 else
