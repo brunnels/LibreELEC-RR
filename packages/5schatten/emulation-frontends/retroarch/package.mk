@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="0bf3007f0a2cd1563194a22c6d963f77cfd783f1" #1.7.6-dev 
+PKG_VERSION="803af8a89098c6dd1c6dd56fad1bfae2eec93f5d" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
@@ -11,24 +11,24 @@ PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa fluidsynth-git freetype zlib ffm
 PKG_LONGDESC="Reference frontend for the libretro API."
 GET_HANDLER_SUPPORT="git"
 
-if [ "$OPENGL_SUPPORT" = yes ]; then
+if [ "$OPENGL_SUPPORT" = "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGL"
 fi
 
-if [ "$OPENGLES_SUPPORT" = yes ]; then
+if [ "$OPENGLES_SUPPORT" = "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGLES"
 fi
 
-if [ "$SAMBA_SUPPORT" = yes ]; then
+if [ "$SAMBA_SUPPORT" = "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET samba"
 fi
 
-if [ "$AVAHI_DAEMON" = yes ]; then
+if [ "$AVAHI_DAEMON" = "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET avahi nss-mdns"
 fi
 
 # OpenGL Features Support
-if [ "$OPENGL_SUPPORT" = yes ]; then
+if [ "$OPENGL_SUPPORT" = "yes" ]; then
   RETROARCH_SUPPORT_GL="--enable-kms"
 
 # RPi OpenGLES Features Support
@@ -47,7 +47,7 @@ elif [ "$OPENGLES" = "opengl-meson" ] || [ "$OPENGLES" = "opengl-meson-t82x" ]; 
                           --enable-mali_fbdev"
 
 # Vulkan Support
-elif [ "$VULKAN_SUPPORT" = yes ]; then
+elif [ "$VULKAN_SUPPORT" = "yes" ]; then
   RETROARCH_SUPPORT_VULKAN="--enable-vulkan"
 
 # QT Support
