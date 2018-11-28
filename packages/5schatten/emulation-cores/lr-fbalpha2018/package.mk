@@ -9,28 +9,28 @@ PKG_SITE="https://github.com/libretro/fbalpha2018"
 PKG_URL="https://github.com/libretro/fbalpha2018/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="Port of Final Burn Alpha to Libretro (v0.2.97.43)."
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="fbalpha_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-make_target() {
-  # NEON Support
-  if target_has_feature neon; then
-    FBALPHA_SUPPORT_NEON="HAVE_NEON=1"
-  fi
+PKG_MAKE_OPTS_TARGET="-f makefile.libretro CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}"
 
+pre_make_target() {
   if [ "$PROJECT" = "RPi" ]; then
     case $DEVICE in
       RPi)
-        make -f makefile.libretro platform=armv CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
+        PKG_MAKE_OPTS_TARGET+=" platform=armv"
         ;;
       RPi2)
-        make -f makefile.libretro platform=rpi2 CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
+        PKG_MAKE_OPTS_TARGET+=" platform=rpi2"
         ;;
     esac
   else
-    make -f makefile.libretro $FBALPHA_SUPPORT_NEON CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
+    # NEON Support ?
+    if target_has_feature neon; then
+      PKG_MAKE_OPTS_TARGET+=" HAVE_NEON=1"
+    fi
   fi
 }
 
