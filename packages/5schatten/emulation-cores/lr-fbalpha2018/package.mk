@@ -15,10 +15,12 @@ PKG_LIBNAME="fbalpha_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
 make_target() {
-  if [ "$PROJECT" = "Amlogic" ]; then
-    make -f makefile.libretro platform=rpi3 CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
+  # NEON Support
+  if target_has_feature neon; then
+    FBALPHA_SUPPORT_NEON="HAVE_NEON=1"
+  fi
 
-  elif [ "$PROJECT" = "RPi" ]; then
+  if [ "$PROJECT" = "RPi" ]; then
     case $DEVICE in
       RPi)
         make -f makefile.libretro platform=armv CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
@@ -27,9 +29,8 @@ make_target() {
         make -f makefile.libretro platform=rpi2 CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
         ;;
     esac
-
   else
-    make -f makefile.libretro CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
+    make -f makefile.libretro $FBALPHA_SUPPORT_NEON CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
   fi
 }
 
