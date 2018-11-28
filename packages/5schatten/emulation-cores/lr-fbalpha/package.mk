@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-fbalpha"
-PKG_VERSION="da8864302899161b66ca059b743087a035eb33fa"
-PKG_SHA256="e2e31b82604bba64e74cc5e5c94edd0cf2e387a83b35ca1e77ce80c18c9c349c"
+PKG_VERSION="bfededf36c4ca6f37926a66822d860a9754080c3"
+PKG_SHA256="0c31bb6fe84f2dfa9adead0a6fd23cb2d516c96c7213cec89e66444e13fe8478"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/fbalpha"
 PKG_URL="https://github.com/libretro/fbalpha/archive/$PKG_VERSION.tar.gz"
@@ -15,10 +15,12 @@ PKG_LIBNAME="fbalpha_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
 make_target() {
-  if [ "$PROJECT" = "Amlogic" ]; then
-    make -f makefile.libretro platform=rpi3 CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
+  # NEON Support
+  if target_has_feature neon; then
+    FBALPHA_SUPPORT_NEON="HAVE_NEON=1"
+  fi
 
-  elif [ "$PROJECT" = "RPi" ]; then
+  if [ "$PROJECT" = "RPi" ]; then
     case $DEVICE in
       RPi)
         make -f makefile.libretro platform=armv CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
@@ -27,9 +29,8 @@ make_target() {
         make -f makefile.libretro platform=rpi2 CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
         ;;
     esac
-
   else
-    make -f makefile.libretro CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
+    make -f makefile.libretro $FBALPHA_SUPPORT_NEON CC=$CC CXX=$CXX GIT_VERSION=${PKG_VERSION:0:7}
   fi
 }
 
