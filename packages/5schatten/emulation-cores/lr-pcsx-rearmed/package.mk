@@ -9,21 +9,25 @@ PKG_SITE="https://github.com/libretro/pcsx_rearmed"
 PKG_URL="https://github.com/libretro/pcsx_rearmed/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="PCSX ReARMed is yet another PCSX fork based on the PCSX-Reloaded project, which itself contains code from PCSX, PCSX-df and PCSX-Revolution. "
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 PKG_BUILD_FLAGS="-gold"
 
 PKG_LIBNAME="pcsx_rearmed_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-make_target() {
+PKG_MAKE_OPTS_TARGET="-f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}"
+
+pre_make_target() {
   cd $PKG_BUILD
-  
-  if [[ "$TARGET_FPU" =~ "neon" ]]; then
-    make -f Makefile.libretro HAVE_NEON=1 USE_DYNAREC=1 BUILTIN_GPU=neon GIT_VERSION=${PKG_VERSION:0:7}
-  elif [ "$ARCH" = "arm" ]; then
-    make -f Makefile.libretro HAVE_NEON=0 USE_DYNAREC=1 GIT_VERSION=${PKG_VERSION:0:7}
-  else
-    make -f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}
+
+  if [ "$PROJECT" = "arm" ]; then
+    PKG_MAKE_OPTS_TARGET+=" USE_DYNAREC=1"
+
+    if target_has_feature neon; then
+      PKG_MAKE_OPTS_TARGET+=" HAVE_NEON=1 BUILTIN_GPU=neon"
+    else
+      PKG_MAKE_OPTS_TARGET+=" HAVE_NEON=0"
+    fi
   fi
 }
 
