@@ -1,0 +1,54 @@
+From 8c4c024de11d3222f5672d2e16124e40825547d0 Mon Sep 17 00:00:00 2001
+From: "Keith F. Kelly" <keith.f.kelly@outlook.com>
+Date: Wed, 28 Nov 2018 11:09:52 -0800
+Subject: [PATCH] Add support to built-in thegamesdb.net scraper for TurboGrafx
+ CD platform.
+
+---
+ es-app/src/PlatformId.cpp              | 3 ++-
+ es-app/src/PlatformId.h                | 3 ++-
+ es-app/src/scrapers/GamesDBScraper.cpp | 3 ++-
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/es-app/src/PlatformId.cpp b/es-app/src/PlatformId.cpp
+index fa9af434a..383db7cbb 100644
+--- a/es-app/src/PlatformId.cpp
++++ b/es-app/src/PlatformId.cpp
+@@ -61,7 +61,8 @@ namespace PlatformIds
+ 		"psvita",
+ 		"psp", // playstation portable
+ 		"snes", // super nintendo entertainment system
+-		"pcengine", // turbografx-16/pcengine
++		"pcengine", // (aka turbografx-16) HuCards only
++		"pcenginecd", // (aka turbografx-16) CD-ROMs only
+ 		"wonderswan",
+ 		"wonderswancolor",
+ 		"zxspectrum",
+diff --git a/es-app/src/PlatformId.h b/es-app/src/PlatformId.h
+index cf34c6eaf..2380cb736 100644
+--- a/es-app/src/PlatformId.h
++++ b/es-app/src/PlatformId.h
+@@ -62,7 +62,8 @@ namespace PlatformIds
+ 		PLAYSTATION_VITA,
+ 		PLAYSTATION_PORTABLE,
+ 		SUPER_NINTENDO,
+-		TURBOGRAFX_16, // (also PC Engine)
++		TURBOGRAFX_16, // (aka PC Engine) HuCards only
++		TURBOGRAFX_CD, // (aka PC Engine) CD-ROMs only
+ 		WONDERSWAN,
+ 		WONDERSWAN_COLOR,
+ 		ZX_SPECTRUM,
+diff --git a/es-app/src/scrapers/GamesDBScraper.cpp b/es-app/src/scrapers/GamesDBScraper.cpp
+index 436bafee1..157b181ee 100644
+--- a/es-app/src/scrapers/GamesDBScraper.cpp
++++ b/es-app/src/scrapers/GamesDBScraper.cpp
+@@ -64,7 +64,8 @@ const std::map<PlatformId, const char*> gamesdb_platformid_map {
+ 	{ PLAYSTATION_VITA, "Sony Playstation Vita" },
+ 	{ PLAYSTATION_PORTABLE, "Sony Playstation Portable" },
+ 	{ SUPER_NINTENDO, "Super Nintendo (SNES)" },
+-	{ TURBOGRAFX_16, "TurboGrafx 16" },
++	{ TURBOGRAFX_16, "TurboGrafx 16" }, // HuCards only
++	{ TURBOGRAFX_CD, "TurboGrafx CD" }, // CD-ROMs only
+ 	{ WONDERSWAN, "WonderSwan" },
+ 	{ WONDERSWAN_COLOR, "WonderSwan Color" },
+ 	{ ZX_SPECTRUM, "Sinclair ZX Spectrum" },
