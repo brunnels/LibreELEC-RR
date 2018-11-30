@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-beetle-psx"
-PKG_VERSION="a081f34a52d6e7fde7063d62d54a60ea05bf42fc"
-PKG_SHA256="129767f833f7557edeeea44a99d2b5d7ee6fa93c3c9b769ed0898cb3918a2a4a"
+PKG_VERSION="616a56355df1751983d17cb07adc37818f1ef93e"
+PKG_SHA256="eafb783472a62f34ad7f4923923ede9a35595e9a9012c5bdc9f15cacaf096d58"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/beetle-psx-libretro"
 PKG_URL="https://github.com/libretro/beetle-psx-libretro/archive/$PKG_VERSION.tar.gz"
@@ -11,17 +11,22 @@ PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="Standalone port/fork of Mednafen PSX to the Libretro API."
 
 PKG_LIBNAME="mednafen_psx_libretro.so"
-PKG_LIBPATH="$PKG_LIBNAME"
+PKG_LIBPATH="${PKG_LIBNAME}"
 
 make_target() {
   make GIT_VERSION=${PKG_VERSION:0:7}
 
-  if [ "$PROJECT" = "Generic" ];then
+  # Build with OpenGL/Vulkan support if available
+  if [ "${OPENGL_SUPPORT}" = "yes" ];then
     mkdir -p tmp
-    mv $PKG_LIBNAME tmp/
+    mv ${PKG_LIBNAME} tmp/
     make clean
-    make HAVE_HW=1 GIT_VERSION=${PKG_VERSION:0:7}
-    mv tmp/$PKG_LIBNAME .
+    if [ "${VULKAN_SUPPORT}" = "yes" ];then
+      make HAVE_HW=1 GIT_VERSION=${PKG_VERSION:0:7}
+    else
+      make HAVE_OPENGL=1 GIT_VERSION=${PKG_VERSION:0:7}
+    fi
+    mv tmp/${PKG_LIBNAME} .
   fi
 }
 
