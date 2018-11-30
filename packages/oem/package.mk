@@ -59,7 +59,6 @@ OEM_EMU_COMMON=" \
   lr-ppsspp \
   lr-prboom \
   lr-reicast \
-  lr-samples \
   lr-scummvm \
   lr-stella \
   lr-tyrquake"
