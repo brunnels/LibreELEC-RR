@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
-PKG_NAME="retroarch-overlay-borders"
+PKG_NAME="lr-overlay-borders"
 PKG_VERSION="9aceca2"
 PKG_SHA256="f78ca10f26a960c902440512a4fa790b411551b1710ae64a3a1418af05fede58"
 PKG_LICENSE="GPL"
