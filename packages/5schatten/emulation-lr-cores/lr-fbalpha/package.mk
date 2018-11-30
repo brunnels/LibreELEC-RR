@@ -2,13 +2,13 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-fbalpha"
-PKG_VERSION="bfededf36c4ca6f37926a66822d860a9754080c3"
-PKG_SHA256="0c31bb6fe84f2dfa9adead0a6fd23cb2d516c96c7213cec89e66444e13fe8478"
+PKG_VERSION="813290ecf3ca8551476311cc176d6ddec0f1114c"
+PKG_SHA256="4d7f5f615b4558f593d19e681ed62b0b9ca43f0fce96316f573227750c70b471"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/fbalpha"
 PKG_URL="https://github.com/libretro/fbalpha/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
-PKG_LONGDESC="Port of Final Burn Alpha to Libretro (pre-v0.2.97.44)."
+PKG_LONGDESC="Port of Final Burn Alpha to Libretro (v0.2.97.44)."
 PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="fbalpha_libretro.so"
