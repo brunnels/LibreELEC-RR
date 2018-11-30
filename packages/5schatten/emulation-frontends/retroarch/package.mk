@@ -7,7 +7,7 @@ PKG_VERSION="c7496604622806868775603418083cb555098bf5" #1.7.6-dev
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
-PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa fluidsynth-git freetype zlib ffmpeg retroarch-assets retroarch-joypad-autoconfig lr-common-overlays lr-overlay-borders lr-common-shaders lr-slang-shaders lr-glsl-shaders lr-core-info lr-database"
+PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa fluidsynth-git freetype zlib ffmpeg lr-common-overlays lr-common-shaders lr-core-info lr-database lr-glsl-shaders lr-overlay-borders lr-samples lr-slang-shaders retroarch-assets retroarch-joypad-autoconfig"
 PKG_LONGDESC="Reference frontend for the libretro API."
 GET_HANDLER_SUPPORT="git"
 
