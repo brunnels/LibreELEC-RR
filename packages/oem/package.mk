@@ -31,7 +31,7 @@ OEM_APPS_GENERIC=" \
 OEM_APPS_RPI=""
 
 OEM_EMU_COMMON=" \
-  emulationstation-retropie \
+  emulationstation \
   retroarch \
   dosbox-sdl2 \
   hatari \
