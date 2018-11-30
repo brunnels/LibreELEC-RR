@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="citra"
-PKG_VERSION="2678c1a945c00dfa506e818dae368a9c7d873275"
+PKG_VERSION="7e90abec78fafbbdc9370f28435b297af7fe7074"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2+"
 PKG_SITE="https://github.com/citra-emu/citra"
