@@ -221,56 +221,6 @@ If you want to start a clean build without buildcache:
 make distclean
 ```
 ---
-**Emulationstation configuration** 
-
-path to config file:
-```
-/storage/.config/emulationstation/emulationstation.conf
-```
-**Out of the box Emulationstation will look for roms in**
-
-```
-/storage/roms/...
-(amiga|c64|dos|dreamcast|fba|gamecube|gb|gba|genesis|mame|n3ds|n64|nes|nds|ps2|psp|psx|snes|saturn|wii|wonderswan|zxspectrum)
-```
-
-**BIOS files should be put in**
-
-```
-/storage/roms/bios
-```
-**The keyboard layout is as follows:**
-
-```
-Navigation = Arrow keys
-A = Enter
-B = Backspace
-Page up = ,
-Page down = .
-Start = ctrl
-Select = ralt
-```
-
-**Keyboard buttons in different apps**
-```
-Kodi shutdown menu = S
-Kodi context menu = C
-Spotify exit = Alt+Esc
-Emulationstation menu = AltGR
-Emulationstation exit = Alt+F4
-Retroarch menu = F1
-Retroarch exit = AltGR
-Dolphin exit = Alt+Esc
-PCSX2 exit = Alt+Esc
-Amiberry menu = F12
-Amiberry joystick/mouse switch = F11
-FS-UAE menu = F12
-Hatari menu = F12
-Hatari floppy menu = AltGR+D
-Hatari quit = AltGR+Q
-VICE menu = F12
-```
----
 **Issues**
 
 Visit the [LibreELEC 9 Remix issue page](https://github.com/thinksupervised/LibreELEC.tv/issues) or [LibreELEC 9.0 Reborn Remix [Emulationstation|Retroarch|DolphinQT |Chrome|Spotify]](https://forum.libreelec.tv/thread/12662-libreelec-9-0-reborn-remix-emulationstation-retroarch-dolphinqt-chrome-spotify-w/)  for issues pertaining to this specific fork. 
