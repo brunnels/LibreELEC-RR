@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-gambatte"
-PKG_VERSION="2358cb7db53b5dbe21202333d2e31748186bbbb3"
-PKG_SHA256="52f1dcc2ecf2c4c4044a5c67e829007d6fc0ab6e4b62ad91cfe960e42cd19bf0"
+PKG_VERSION="0897d1d9052ed0ea008f2d8bae50e7dbef59e083"
+PKG_SHA256="3f648dc29b1d3ad86315548bf7a7372b8977ad396deec984a48fc09c5b8fd431"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/gambatte-libretro"
 PKG_URL="https://github.com/libretro/gambatte-libretro/archive/$PKG_VERSION.tar.gz"
