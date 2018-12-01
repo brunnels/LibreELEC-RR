@@ -3,65 +3,13 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="c7496604622806868775603418083cb555098bf5" #1.7.6-dev 
+PKG_VERSION="67699be3bee73c6ec68c0c60b784e5481731a4b0" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
 PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa fluidsynth-git freetype zlib ffmpeg lr-common-overlays lr-common-shaders lr-core-info lr-database lr-glsl-shaders lr-overlay-borders lr-samples lr-slang-shaders retroarch-assets retroarch-joypad-autoconfig"
 PKG_LONGDESC="Reference frontend for the libretro API."
 GET_HANDLER_SUPPORT="git"
-
-# SAMBA Support
-if [ "$SAMBA_SUPPORT" = "yes" ]; then
-  PKG_DEPENDS_TARGET+=" samba"
-fi
-
-# AVAHI Support
-if [ "$AVAHI_DAEMON" = "yes" ]; then
-  PKG_DEPENDS_TARGET+=" avahi nss-mdns"
-fi
-
-# QT Support
-if [ "$PROJECT" = "Generic" ]; then
-  PKG_DEPENDS_TARGET+=" qt-everywhere"
-  PKG_SUPPORT_QT="--enable-qt"
-fi
-
-# OpenGL Support
-if [ "$OPENGL_SUPPORT" = "yes" ]; then
-  PKG_DEPENDS_TARGET+=" $OPENGL"
-  PKG_SUPPORT_GL="--enable-opengl \
-                  --enable-kms"
-fi
-
-# Vulkan Support
-if [ "$VULKAN_SUPPORT" = "yes" ]; then
-  PKG_SUPPORT_VULKAN="--enable-vulkan"
-fi
-
-# OpenGLES Support
-if [ "$OPENGLES_SUPPORT" = "yes" ]; then
-  PKG_DEPENDS_TARGET+=" $OPENGLES"
-  PKG_SUPPORT_GLES="--enable-opengles \
-                    --disable-kms"
-
-  # RPi OpenGLES Features Support
-  if [ "$OPENGLES" = "bcm2835-driver" ]; then
-    PKG_SUPPORT_GLES+=" --enable-dispmanx"
-
-    CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads \
-                    -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux"
-
-  # Amlogic OpenGLES Features Support
-  elif [ "$OPENGLES" = "opengl-meson" ] || [ "$OPENGLES" = "opengl-meson-t82x" ]; then
-    PKG_SUPPORT_GLES+=" --enable-mali_fbdev"
-  fi
-fi
-
-# NEON Support
-if target_has_feature neon; then
-  PKG_SUPPORT_NEON="--enable-neon"
-fi
 
 TARGET_CONFIGURE_OPTS=""
 PKG_CONFIGURE_OPTS_TARGET="--disable-vg \
@@ -71,16 +19,63 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-vg \
                            --disable-oss \
                            --enable-zlib \
                            --host=$TARGET_NAME \
-                           --enable-freetype \
-                           $PKG_SUPPORT_QT \
-                           $PKG_SUPPORT_GL \
-                           $PKG_SUPPORT_VULKAN \
-                           $PKG_SUPPORT_GLES \
-                           $PKG_SUPPORT_NEON"
+                           --enable-freetype"
+
+# SAMBA Support
+if [ "${SAMBA_SUPPORT}" = "yes" ]; then
+  PKG_DEPENDS_TARGET+=" samba"
+fi
+
+# AVAHI Support
+if [ "${AVAHI_DAEMON}" = "yes" ]; then
+  PKG_DEPENDS_TARGET+=" avahi nss-mdns"
+fi
+
+# QT Support
+if [ "${PROJECT}" = "Generic" ]; then
+  PKG_DEPENDS_TARGET+=" qt-everywhere"
+  PKG_CONFIGURE_OPTS_TARGET+=" --enable-qt"
+fi
+
+# OpenGL Support
+if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+  PKG_DEPENDS_TARGET+=" ${OPENGL}"
+  PKG_CONFIGURE_OPTS_TARGET+=" --enable-opengl \
+                               --enable-kms"
+fi
+
+# Vulkan Support
+if [ "${VULKAN_SUPPORT}" = "yes" ]; then
+   PKG_CONFIGURE_OPTS_TARGET+=" --enable-vulkan"
+fi
+
+# OpenGLES Support
+if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+  PKG_DEPENDS_TARGET+=" ${OPENGLES}"
+  PKG_CONFIGURE_OPTS_TARGET+=" --enable-opengles \
+                               --disable-kms"
+
+  # RPi OpenGLES Features Support
+  if [ "${OPENGLES}" = "bcm2835-driver" ]; then
+    PKG_CONFIGURE_OPTS_TARGET+=" --enable-dispmanx"
+
+    CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads \
+                    -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux"
+
+  # Amlogic OpenGLES Features Support
+  elif [ "${OPENGLES}" = "opengl-meson" ] || [ "${OPENGLES}" = "opengl-meson-t82x" ]; then
+    PKG_CONFIGURE_OPTS_TARGET+=" --enable-mali_fbdev"
+  fi
+fi
+
+# NEON Support
+if target_has_feature neon; then
+  PKG_CONFIGURE_OPTS_TARGET+=" --enable-neon"
+fi
 
 pre_configure_target() {
   cd ..
-  rm -rf .$TARGET_NAME
+  rm -rf .${TARGET_NAME}
   export PKG_CONF_PATH=$TOOLCHAIN/bin/pkg-config
   echo ${PKG_VERSION:0:7} > .gitversion
 }
@@ -104,7 +99,7 @@ makeinstall_target() {
     cp $PKG_BUILD/retroarch $INSTALL/usr/bin
     cp $PKG_DIR/scripts/$PROJECT/* $INSTALL/usr/bin
 
-  if [ "$PROJECT" = "Generic" ]; then
+  if [ "${PROJECT}" = "Generic" ]; then
     mkdir -p $INSTALL/usr/config/retroarch
     cp -PR $PKG_DIR/config/* $INSTALL/usr/config/retroarch/
   fi
@@ -129,7 +124,6 @@ makeinstall_target() {
   echo 'system_directory = "/storage/roms/bios"' >> $INSTALL/etc/retroarch.cfg
   
   # Video
-  sed -i -e "s/# framecount_show =/framecount_show = false/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# video_fullscreen = false/video_fullscreen = true/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# video_windowed_fullscreen = true/video_windowed_fullscreen = false/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# video_smooth = true/video_smooth = false/" $INSTALL/etc/retroarch.cfg
@@ -142,7 +136,7 @@ makeinstall_target() {
   sed -i -e "s/# audio_driver =/audio_driver = \"alsathread\"/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# audio_filter_dir =/audio_filter_dir =\/usr\/share\/retroarch\/audio_filters/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# audio_filter_dir =/audio_filter_dir =\/usr\/share\/retroarch\/audio_filters/" $INSTALL/etc/retroarch.cfg
-  if [ "$PROJECT" = "RPi" ]; then # set default audio device for RPi
+  if [ "${PROJECT}" = "RPi" ]; then # set default audio device for RPi
     sed -i -e "s/# audio_device =/audio_device = \"sysdefault:CARD=ALSA\"/" $INSTALL/etc/retroarch.cfg
   fi
 
@@ -167,7 +161,7 @@ makeinstall_target() {
   echo "xmb_menu_color_theme = \"8\"" >> $INSTALL/etc/retroarch.cfg
 
   # Updater
-  if [ "$TARGET_ARCH" = "arm" ]; then
+  if [ "${TARGET_ARCH}" = "arm" ]; then
     sed -i -e "s/# core_updater_buildbot_url = \"http:\/\/buildbot.libretro.com\"/core_updater_buildbot_url = \"http:\/\/buildbot.libretro.com\/nightly\/linux\/armhf\/latest\/\"/" $INSTALL/etc/retroarch.cfg
   fi
 
