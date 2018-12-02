@@ -24,9 +24,11 @@ OEM_APPS_AMLOGIC=""
 OEM_APPS_GENERIC=" \
   dmidecode \
   google-chrome \
+  mesa-demos-system \
   smartmontools \
   spotify \
-  tigervnc-system"
+  tigervnc-system \
+  vulkan-tools"
 
 OEM_APPS_RPI=""
 
