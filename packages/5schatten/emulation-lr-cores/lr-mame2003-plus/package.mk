@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-mame2003-plus"
-PKG_VERSION="4e43b1898a3ef5675c6d93b0c222ddf7d2ced827"
-PKG_SHA256="23970ced69807bce198271db413821e3bdefa969eb1367cd167de34035e0a80f"
+PKG_VERSION="357d098e028483b612ce218229b250cef8c04511"
+PKG_SHA256="d875cb7e10cd4260509dc6b05a3ff52ff038bbbf8da4a1c122b1b7bd5739e480"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/mame2003-plus-libretro"
 PKG_URL="https://github.com/libretro/mame2003-plus-libretro/archive/$PKG_VERSION.tar.gz"
@@ -16,6 +16,10 @@ PKG_LIBPATH="$PKG_LIBNAME"
 
 configure_target() {
   export LD="$CC"
+}
+
+pre_make_target() {
+  sed -e "s/\"Skip Disclaimer; disabled|enabled\"/\"Skip Disclaimer; enabled|disabled\"/" -i ${PKG_BUILD}/src/mame2003/mame2003.c
 }
 
 make_target() {
