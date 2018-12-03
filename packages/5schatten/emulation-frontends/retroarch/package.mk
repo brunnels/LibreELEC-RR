@@ -124,6 +124,7 @@ makeinstall_target() {
   echo 'system_directory = "/storage/roms/bios"' >> $INSTALL/etc/retroarch.cfg
   
   # Video
+  sed -i -e "s/# framecount_show =/framecount_show = false/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# video_fullscreen = false/video_fullscreen = true/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# video_windowed_fullscreen = true/video_windowed_fullscreen = false/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# video_smooth = true/video_smooth = false/" $INSTALL/etc/retroarch.cfg
