@@ -9,13 +9,12 @@ PKG_SITE="https://github.com/libretro/libretro-2048"
 PKG_URL="https://github.com/libretro/libretro-2048/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="Port of 2048 puzzle game to the libretro API."
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="2048_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-make_target() {
-  make -f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}
-}
+PKG_MAKE_OPTS_TARGET="-f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}"
 
 makeinstall_target() {
   #create Retroarch Playlist

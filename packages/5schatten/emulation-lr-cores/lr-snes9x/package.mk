@@ -8,15 +8,13 @@ PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/snes9x"
 PKG_URL="https://github.com/libretro/snes9x/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
-PKG_LONGDESC="Snes9x - Portable Super Nintendo Entertainment System (TM) emulator "
-PKG_TOOLCHAIN="manual"
+PKG_LONGDESC="Snes9x - Portable Super Nintendo Entertainment System (TM) emulator"
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="snes9x_libretro.so"
 PKG_LIBPATH="libretro/$PKG_LIBNAME"
 
-make_target() {
-  make -C libretro GIT_VERSION=${PKG_VERSION:0:7}
-}
+PKG_MAKE_OPTS_TARGET="-C libretro GIT_VERSION=${PKG_VERSION:0:7}"
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/libretro

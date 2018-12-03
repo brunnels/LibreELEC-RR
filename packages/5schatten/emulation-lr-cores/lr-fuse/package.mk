@@ -13,10 +13,6 @@ PKG_LONGDESC="fuse-libretro is an work in progress port of the Fuse Unix Spectru
 PKG_LIBNAME="fuse_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-make_target() {
-  make
-}
-
 makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/libretro
   cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/

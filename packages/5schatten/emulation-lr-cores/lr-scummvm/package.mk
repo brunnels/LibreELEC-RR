@@ -9,16 +9,17 @@ PKG_SITE="https://github.com/libretro/scummvm"
 PKG_URL="https://github.com/libretro/scummvm/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="ScummVM is an interpreter for point-and-click adventure games that can be used as a libretro core."
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="scummvm_libretro.so"
 PKG_LIBPATH="backends/platform/libretro/build/$PKG_LIBNAME"
 
-make_target() {
+PKG_MAKE_OPTS_TARGET="-C backends/platform/libretro/build/ GIT_VERSION=${PKG_VERSION:0:7}"
+
+pre_make_target() {
   cd $PKG_BUILD
-  CXXFLAGS="$CXXFLAGS -DHAVE_POSIX_MEMALIGN=1"
-  export AR="$AR cru"
-  make -C backends/platform/libretro/build/ GIT_VERSION=${PKG_VERSION:0:7}
+  CXXFLAGS+=" -DHAVE_POSIX_MEMALIGN=1"
+  export AR+=" cru"
 }
 
 makeinstall_target() {

@@ -9,17 +9,17 @@ PKG_SITE="https://github.com/libretro/Genesis-Plus-GX"
 PKG_URL="https://github.com/libretro/Genesis-Plus-GX/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="An enhanced port of Genesis Plus - accurate & portable Sega 8/16 bit emulator"
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="genesis_plus_gx_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-make_target() {
-  if [ "$ARCH" = "arm" ]; then
-    CFLAGS="$CFLAGS -DALIGN_LONG"
-  fi
+PKG_MAKE_OPTS_TARGET="-f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}"
 
-  make -f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}
+pre_make_target() {
+  if [ "${ARCH}" = "arm" ]; then
+    CFLAGS+=" -DALIGN_LONG"
+  fi
 }
 
 makeinstall_target() {

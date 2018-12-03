@@ -9,18 +9,18 @@ PKG_SITE="https://github.com/libretro/mrboom-libretro"
 PKG_URL="https://github.com/libretro/mrboom-libretro/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="Mr.Boom is an 8 player Bomberman clone for RetroArch/Libretro"
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="mrboom_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-make_target() {
+PKG_MAKE_OPTS_TARGET="GIT_VERSION=${PKG_VERSION:0:7}"
+
+pre_make_target() {
   # Disable NEON otherwise build fails
   if target_has_feature neon; then
-    CFLAGS="$CFLAGS -DDONT_WANT_ARM_OPTIMIZATIONS" 
+    CFLAGS+=" -DDONT_WANT_ARM_OPTIMIZATIONS" 
   fi
-
-  make clean
-  make GIT_VERSION=${PKG_VERSION:0:7}
 }
 
 makeinstall_target() {

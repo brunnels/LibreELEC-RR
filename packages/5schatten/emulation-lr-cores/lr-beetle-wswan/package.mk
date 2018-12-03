@@ -9,13 +9,12 @@ PKG_SITE="https://github.com/libretro/beetle-wswan-libretro"
 PKG_URL="https://github.com/libretro/beetle-wswan-libretro/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="Standalone port of Mednafen WonderSwan to libretro, itself a fork of Cygne."
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="mednafen_wswan_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-make_target() {
-  make GIT_VERSION=${PKG_VERSION:0:7}
-}
+PKG_MAKE_OPTS_TARGET="GIT_VERSION=${PKG_VERSION:0:7}"
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/libretro

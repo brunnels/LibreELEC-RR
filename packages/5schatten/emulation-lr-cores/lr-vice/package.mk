@@ -9,13 +9,12 @@ PKG_SITE="https://github.com/libretro/vice-libretro"
 PKG_URL="https://github.com/libretro/vice-libretro/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="Versatile Commodore 8-bit Emulator version 3.0 LIBRETRO WIP"
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="vice_x64_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-make_target() {
-  make -f Makefile.libretro CC=$CC GIT_VERSION=${PKG_VERSION:0:7}
-}
+PKG_MAKE_OPTS_TARGET="-f Makefile.libretro CC=$CC GIT_VERSION=${PKG_VERSION:0:7}"
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/libretro

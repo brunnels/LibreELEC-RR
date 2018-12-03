@@ -10,14 +10,12 @@ PKG_SITE="https://github.com/SourMesen/Mesen"
 PKG_URL="https://github.com/SourMesen/Mesen/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="Mesen is a cross-platform (Windows & Linux) NES/Famicom emulator built in C++ and C#"
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="mesen_libretro.so"
 PKG_LIBPATH="Libretro/$PKG_LIBNAME"
 
-make_target() {
-  make -C Libretro
-}
+PKG_MAKE_OPTS_TARGET="-C Libretro"
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/libretro

@@ -9,13 +9,12 @@ PKG_SITE="https://github.com/libretro/libretro-atari800"
 PKG_URL="https://github.com/libretro/libretro-atari800/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="WIP Libretro port of Atari800 emulator version 3.1.0"
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="atari800_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-make_target() {
-  make GIT_VERSION=${PKG_VERSION:0:7}
-}
+PKG_MAKE_OPTS_TARGET="GIT_VERSION=${PKG_VERSION:0:7}"
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/libretro

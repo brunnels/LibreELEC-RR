@@ -9,17 +9,15 @@ PKG_URL="https://github.com/libretro/libretro-chailove.git"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="ChaiLove is an awesome framework you can use to make 2D games in ChaiScript."
 GET_HANDLER_SUPPORT="git"
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="chailove_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
+PKG_MAKE_OPTS_TARGET="GIT_VERSION=${PKG_VERSION:0:7}"
+
 configure_target() {
   cd $PKG_BUILD
-}
-
-make_target() {
-  make GIT_VERSION=${PKG_VERSION:0:7}
 }
 
 makeinstall_target() {
