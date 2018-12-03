@@ -20,7 +20,7 @@ PKG_MAKE_OPTS_TARGET="-f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}"
 pre_make_target() {
   cd $PKG_BUILD
 
-  if [ "$PROJECT" = "arm" ]; then
+  if [ "${ARCH}" = "arm" ]; then
     PKG_MAKE_OPTS_TARGET+=" USE_DYNAREC=1"
 
     if target_has_feature neon; then
