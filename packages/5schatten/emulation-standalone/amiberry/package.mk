@@ -10,21 +10,23 @@ PKG_URL="https://github.com/midwan/amiberry.git"
 PKG_DEPENDS_TARGET="toolchain zlib SDL2-git SDL2_image SDL2_ttf capsimg libxml2 flac mpg123-compat libpng libmpeg2 retroarch-joypad-autoconfig"
 PKG_LONGDESC="Amiberry is an optimized Amiga emulator, for ARM-based boards (like the Raspberry Pi, ASUS Tinkerboard, Odroid XU4, etc)."
 GET_HANDLER_SUPPORT="git"
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 
-make_target() {
+PKG_MAKE_OPTS_TARGET="all"
+
+pre_make_target() {
   export SYSROOT_PREFIX=$SYSROOT_PREFIX
 
   # build amiberry
   if [ "${PROJECT}" = "Amlogic" ]; then
-    make all PLATFORM=aml
+    PKG_MAKE_OPTS_TARGET+=" PLATFORM=aml"
   elif [ "${PROJECT}" = "RPi" ]; then
     case ${DEVICE} in
       RPi)
-        make all PLATFORM=rpi1-sdl2
+      PKG_MAKE_OPTS_TARGET+=" PLATFORM=rpi1-sdl2"
         ;;
       RPi2)
-        make all PLATFORM=rpi2-sdl2
+      PKG_MAKE_OPTS_TARGET+=" PLATFORM=rpi2-sdl2"
         ;;
     esac
   fi
