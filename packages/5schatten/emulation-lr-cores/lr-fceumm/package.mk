@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-fceumm"
-PKG_VERSION="829a7552f199110880de9f26e170302f039973e9"
-PKG_SHA256="32c8ce4c1bdb3870bf17f19a78e0b8a4d3db8a6d395e7a79817ed274dac484d5"
+PKG_VERSION="b5803e0e1d56d534e5ace80598e188d30bc7d6cb"
+PKG_SHA256="aa5bd297bce576aed97648c494cefd216d297dd2c8af9b9be300417f9a15878c"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/libretro-fceumm"
 PKG_URL="https://github.com/libretro/libretro-fceumm/archive/$PKG_VERSION.tar.gz"
