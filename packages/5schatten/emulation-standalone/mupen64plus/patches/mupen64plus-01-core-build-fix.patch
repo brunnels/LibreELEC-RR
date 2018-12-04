@@ -9,18 +9,16 @@
    ifeq ($(shell which $(SDL_CONFIG) 2>/dev/null),)
      SDL_CONFIG = $(CROSS_COMPILE)sdl-config
      ifeq ($(shell which $(SDL_CONFIG) 2>/dev/null),)
-@@ -371,10 +371,7 @@
+@@ -371,9 +371,6 @@
  endif
  
  # set base program pointers and flags
 -CC        = $(CROSS_COMPILE)gcc
 -CXX       = $(CROSS_COMPILE)g++
 -STRINGS   = $(CROSS_COMPILE)strings
--AS        = nasm
-+AS        = yasm
+ AS        = nasm
  TR       ?= tr
  RM       ?= rm -f
- INSTALL  ?= install
 @@ -751,7 +748,7 @@
  # Script hackery for generating ASM include files for the new dynarec assembly code
  $(SRCDIR)/asm_defines/asm_defines_gas.h: $(SRCDIR)/asm_defines/asm_defines_nasm.h
