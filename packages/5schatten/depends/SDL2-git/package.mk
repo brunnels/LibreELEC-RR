@@ -7,7 +7,7 @@ PKG_SHA256="b91987e4bd2a3797a842c8a1ee00bd7a7040f419f6e8c0f888689102e8c44930"
 PKG_LICENSE="GPL"
 PKG_SITE="https://www.libsdl.org/"
 PKG_URL="https://github.com/spurious/SDL-mirror/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain yasm:host alsa-lib systemd dbus"
+PKG_DEPENDS_TARGET="toolchain nasm:host alsa-lib systemd dbus"
 PKG_LONGDESC="SDL2: A cross-platform Graphic API"
 
 # Set up egl-interface
