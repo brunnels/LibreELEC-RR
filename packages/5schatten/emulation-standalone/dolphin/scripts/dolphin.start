@@ -16,5 +16,5 @@ set_DOLPHIN_audiobackend
 
 dolphin-emu "$@"> /var/log/dolphin.log 2>&1
 
-# Switch back to ES or unfreeze Kodi
-pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
+# Switch back to Frontends or unfreeze Kodi & start audio
+pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze

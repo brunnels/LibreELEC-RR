@@ -133,7 +133,5 @@ fi
 # Remove temporary dir
 rm -rf "$AMIBERRY_TMP_DIR"
 
-# Switch back to ES or unfreeze Kodi
-pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
-
-
+# Switch back to Frontends or unfreeze Kodi & start audio
+pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze

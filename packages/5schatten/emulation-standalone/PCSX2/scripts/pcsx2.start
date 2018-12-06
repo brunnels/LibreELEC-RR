@@ -65,8 +65,8 @@ if [ -x $DOCKER_PATH ]; then
       usleep 500000
     fi
 
-    # Switch back to ES or unfreeze Kodi
-    pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
+    # Switch back to Frontends or unfreeze Kodi & start audio
+    pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze
   fi
 else
   echo "######################################################################################################" > $PCSX2_LOG 2>&1

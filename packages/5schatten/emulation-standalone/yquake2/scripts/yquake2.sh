@@ -22,5 +22,5 @@ quake2 "$@" > /var/log/yquake2.log 2>&1
 # Set OpenAL audio driver to ALSA
 rm /storage/.alsoftrc
 
-# Switch back to ES or unfreeze Kodi & start audio
-pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
+# Switch back to Frontends or unfreeze Kodi & start audio
+pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze
