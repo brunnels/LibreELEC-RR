@@ -4,71 +4,71 @@
 PKG_NAME="qt-everywhere"
 PKG_VERSION="5.11.2"
 PKG_SHA256="c6104b840b6caee596fa9a35bc5f57f67ed5a99d6a36497b6fe66f990a53ca81"
-PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://qt-project.org"
 PKG_URL="http://download.qt.io/archive/qt/${PKG_VERSION%.*}/$PKG_VERSION/single/$PKG_NAME-src-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain pcre2 zlib"
+PKG_DEPENDS_TARGET="toolchain libjpeg-turbo libpng pcre2 sqlite zlib freetype gstreamer gst-plugins-base gst-plugins-good gst-libav"
 PKG_LONGDESC="A cross-platform application and UI framework"
 
 PKG_CONFIGURE_OPTS_TARGET="-prefix /usr
                            -sysroot $SYSROOT_PREFIX
                            -hostprefix $TOOLCHAIN
                            -device linux-libreelec-g++
+                           -device-option CROSS_COMPILE=${TARGET_PREFIX}
+                           -fontconfig
                            -opensource -confirm-license
                            -release
                            -shared
                            -make libs
-                           -qt-xcb
+                           -nomake examples
+                           -nomake tests
+                           -ccache
+                           -gstreamer 1.0
                            -force-pkg-config
-                           -no-accessibility
-                           -no-sql-sqlite
-                           -no-sql-mysql
-                           -system-zlib
-                           -no-mtdev
-                           -no-gif
-                           -no-libjpeg
-                           -no-harfbuzz
-                           -no-libproxy
-                           -system-pcre
-                           -no-glib
                            -silent
+                           -system-libjpeg
+                           -system-libpng
+                           -system-pcre
+                           -system-sqlite
+                           -system-zlib
+                           -no-accessibility
                            -no-cups
-                           -no-iconv
-                           -no-evdev
-                           -no-tslib
-                           -no-icu
-                           -no-strip
                            -no-dbus
-                           -opengl
-                           -no-libudev
-                           -no-libinput
-                           -no-eglfs
+                           -no-evdev
+                           -no-gif
+                           -no-glib
+                           -no-harfbuzz
+                           -no-iconv
+                           -no-icu
+                           -no-libproxy
+                           -no-mtdev
+                           -no-sql-mysql
+                           -no-strip
+                           -no-tslib
+                           -no-feature-linuxfb
+                           -no-feature-openal
+                           -no-feature-qml-debug
+                           -no-feature-printer
+                           -no-feature-vnc
                            -skip qt3d
                            -skip qtactiveqt
                            -skip qtandroidextras
-                           -skip qtcanvas3d
                            -skip qtcharts
                            -skip qtconnectivity
                            -skip qtdatavis3d
-                           -skip qtdeclarative
                            -skip qtdoc
-                           -skip qtgamepad
-                           -skip qtgraphicaleffects
-                           -skip qtimageformats
                            -skip qtlocation
                            -skip qtmacextras
                            -skip qtnetworkauth
                            -skip qtpurchasing
                            -skip qtquickcontrols
-                           -skip qtquickcontrols2
                            -skip qtremoteobjects
                            -skip qtscript
                            -skip qtscxml
                            -skip qtsensors
+                           -skip qtserialport
                            -skip qtserialbus
                            -skip qtspeech
-                           -skip qtsvg
                            -skip qttranslations
                            -skip qtvirtualkeyboard
                            -skip qtwayland
@@ -79,6 +79,18 @@ PKG_CONFIGURE_OPTS_TARGET="-prefix /usr
                            -skip qtwinextras
                            -skip qtx11extras
                            -skip qtxmlpatterns"
+
+# Build with OpenGL or OpenGLES support
+if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+  PKG_CONFIGURE_OPTS_TARGET+=" -opengl -no-eglfs"
+elif [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+  PKG_CONFIGURE_OPTS_TARGET+=" -opengl es2"
+fi
+
+# Build with XCB support for X11
+if [ ${DISPLAYSERVER} = "x11" ]; then
+  PKG_CONFIGURE_OPTS_TARGET+=" -qt-xcb"
+fi
 
 configure_target() {
   QMAKE_CONF_DIR="qtbase/mkspecs/devices/linux-libreelec-g++"
@@ -115,51 +127,50 @@ post_makeinstall_target() {
   # install QT5 libs
   mkdir -p $INSTALL/usr/lib
   mkdir -p $INSTALL/usr/plugins
-  mkdir -p $INSTALL/usr/plugins/platforms
+  mkdir -p $INSTALL/usr/qml
 
-  # libQt5Concurrent.so.5
-   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Concurrent.so.$PKG_VERSION $INSTALL/usr/lib
-     ln -sf libQt5Concurrent.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Concurrent.so.${PKG_VERSION:0:4}
-     ln -sf libQt5Concurrent.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Concurrent.so.${PKG_VERSION:0:1}
+  # Install Qt5 libs
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Concurrent.so*         $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Core.so*               $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Gamepad.so*            $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Gui.so*                $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Multimedia.so*         $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5MultimediaGstTools.so* $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5MultimediaQuick.so*    $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5MultimediaWidgets.so*  $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Network.so*            $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5OpenGL.so*             $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Qml.so*                $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Quick.so*              $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Sql.so*                $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Svg.so*                $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Widgets.so*            $INSTALL/usr/lib
 
-  # libQt5Core.so.5
-   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Core.so.$PKG_VERSION $INSTALL/usr/lib
-     ln -sf libQt5Core.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Core.so.${PKG_VERSION:0:4}
-     ln -sf libQt5Core.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Core.so.${PKG_VERSION:0:1}
+  # Install Qt5 plugins
+  cp -PR $SYSROOT_PREFIX/usr/plugins/audio             $INSTALL/usr/plugins
+  cp -PR $SYSROOT_PREFIX/usr/plugins/gamepads          $INSTALL/usr/plugins
+  cp -PR $SYSROOT_PREFIX/usr/plugins/imageformats      $INSTALL/usr/plugins
+  cp -PR $SYSROOT_PREFIX/usr/plugins/iconengines       $INSTALL/usr/plugins
+  cp -PR $SYSROOT_PREFIX/usr/plugins/mediaservice      $INSTALL/usr/plugins
+  cp -PR $SYSROOT_PREFIX/usr/plugins/platforms         $INSTALL/usr/plugins
+  cp -PR $SYSROOT_PREFIX/usr/plugins/playlistformats   $INSTALL/usr/plugins
+  cp -PR $SYSROOT_PREFIX/usr/plugins/sqldrivers        $INSTALL/usr/plugins
 
-  # libQt5Gui.so.5
-   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Gui.so.$PKG_VERSION $INSTALL/usr/lib
-     ln -sf libQt5Gui.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Gui.so.${PKG_VERSION:0:4}
-     ln -sf libQt5Gui.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Gui.so.${PKG_VERSION:0:1}
+  # Install Qt5 QML
+  cp -PR $SYSROOT_PREFIX/usr/qml/QtCanvas3D         $INSTALL/usr/qml
+  cp -PR $SYSROOT_PREFIX/usr/qml/QtGamepad          $INSTALL/usr/qml
+  cp -PR $SYSROOT_PREFIX/usr/qml/QtGraphicalEffects $INSTALL/usr/qml
+  cp -PR $SYSROOT_PREFIX/usr/qml/QtMultimedia       $INSTALL/usr/qml
+  cp -PR $SYSROOT_PREFIX/usr/qml/QtQuick            $INSTALL/usr/qml
+  cp -PR $SYSROOT_PREFIX/usr/qml/QtQuick.2          $INSTALL/usr/qml
+  cp -PR $SYSROOT_PREFIX/usr/qml/QtTest             $INSTALL/usr/qml
 
-  # libQt5Multimedia.so.5 
-   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Multimedia.so.$PKG_VERSION $INSTALL/usr/lib
-     ln -sf libQt5Multimedia.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Multimedia.so.${PKG_VERSION:0:4}
-     ln -sf libQt5Multimedia.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Multimedia.so.${PKG_VERSION:0:1}
-
-  # libQt5Network.so.5
-   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Network.so.$PKG_VERSION $INSTALL/usr/lib
-     ln -sf libQt5Network.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Network.so.${PKG_VERSION:0:4}
-     ln -sf libQt5Network.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Network.so.${PKG_VERSION:0:1}
-
-  # libQt5OpenGL.so.5
-   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5OpenGL.so.$PKG_VERSION $INSTALL/usr/lib
-     ln -sf libQt5OpenGL.so.$PKG_VERSION $INSTALL/usr/lib/libQt5OpenGL.so.${PKG_VERSION:0:4}
-     ln -sf libQt5OpenGL.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5OpenGL.so.${PKG_VERSION:0:1}
-
-  # libQt5Widgets.so.5
-   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Widgets.so.$PKG_VERSION $INSTALL/usr/lib
-     ln -sf libQt5Widgets.so.$PKG_VERSION $INSTALL/usr/lib/libQt5Widgets.so.${PKG_VERSION:0:4}
-     ln -sf libQt5Widgets.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5Widgets.so.${PKG_VERSION:0:1}
-
-  # libQt5XcbQpa.so.5
-   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5XcbQpa.so.$PKG_VERSION $INSTALL/usr/lib
-     ln -sf libQt5XcbQpa.so.$PKG_VERSION $INSTALL/usr/lib/libQt5XcbQpa.so.${PKG_VERSION:0:4}
-     ln -sf libQt5XcbQpa.so.${PKG_VERSION:0:4} $INSTALL/usr/lib/libQt5XcbQpa.so.${PKG_VERSION:0:1}
-
-  # plugin libqxcb.so
-   cp -PR $SYSROOT_PREFIX/usr/plugins/platforms/libqxcb.so $INSTALL/usr/plugins/platforms/libqxcb.so
-
-  # plugins xcbglintegrations
-   cp -PR $SYSROOT_PREFIX/usr/plugins/xcbglintegrations $INSTALL/usr/plugins
+  # Install XCB libs & plugins if X11 is present
+  if [ ${DISPLAYSERVER} = "x11" ]; then
+    cp -PR $SYSROOT_PREFIX/usr/lib/libQt5XcbQpa.so*      $INSTALL/usr/lib
+    cp -PR $SYSROOT_PREFIX/usr/plugins/xcbglintegrations $INSTALL/usr/plugins
+  elif [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+    cp -PR $SYSROOT_PREFIX/usr/lib/libQt5EglFSDeviceIntegration.so* $INSTALL/usr/lib
+    cp -PR $SYSROOT_PREFIX/usr/plugins/egldeviceintegrations        $INSTALL/usr/plugins
+  fi
 }
