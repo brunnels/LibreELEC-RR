@@ -34,6 +34,7 @@ OEM_APPS_RPI=""
 
 OEM_EMU_COMMON=" \
   emulationstation \
+  pegasus-frontend \
   retroarch \
   dosbox-sdl2 \
   hatari \
