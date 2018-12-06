@@ -32,5 +32,5 @@ set_RA_audiodriver
 # disable kms
 switch_kms_off
 
-# Switch back to ES or unfreeze Kodi & start audio
-pidof emulationstation > /dev/null 2>&1 || kodifreeze.sh unfreeze
+# Switch back to Frontends or unfreeze Kodi & start audio
+pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze
