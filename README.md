@@ -29,10 +29,10 @@
 **Basics**
 
 * [LibreELEC 9.0-devel](https://github.com/LibreELEC/LibreELEC.tv)
-* [Kodi 18](https://github.com/xbmc/xbmc) - git 314c302 | RC1
-* [Linux 4.19.3](https://www.kernel.org/) - generic x86-64 builds
+* [Kodi 18](https://github.com/xbmc/xbmc) - git 812855d | RC2
+* [Linux 4.19.7](https://www.kernel.org/) - generic x86-64 builds
 * [Linux 3.14.29](https://www.kernel.org/) - Khadas Vim builds
-* [Linux 4.19.3](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
+* [Linux 4.19.7](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
 ---
 **Addons & tools for generic builds**
 
@@ -49,7 +49,7 @@
 
 * [AMDGPU](https://cgit.freedesktop.org/xorg/driver/xf86-video-amdgpu/) - v18.1.0
 * [ATI](https://cgit.freedesktop.org/xorg/driver/xf86-video-ati) - v18.1.0
-* [Intel-video](https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/) - git 746ab3b
+* [Intel-video](https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/) - git e5ff8e1
 * [Intel](https://downloadcenter.intel.com/download/28087/Linux-Processor-Microcode-Data-File) - µcode 2018-08-07a
 * [Nvidia](https://www.nvidia.com/Download/driverResults.aspx/134859/en-us) - v410.78
 * [Nvidia-legacy](https://www.nvidia.com/Download/driverResults.aspx/135161/en-us) - v340.107
@@ -59,11 +59,11 @@
 * [GCC](https://gcc.gnu.org/gcc-8/changes.html) - v8.2
 * [glibc](https://sourceware.org/glibc/wiki/Release/2.28) - v2.28
 * [LLVM](https://llvm.org/) - v7.0.0
-* [Mesa 3D](https://www.mesa3d.org/) - v18.3.0-rc4
-* [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.93
+* [Mesa 3D](https://www.mesa3d.org/) - v18.3.0-rc6
+* [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.95
 * [openssl](https://www.openssl.org/source/) - v1.0.2p
 * [PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) - 12.2
-* [Samba](https://www.samba.org/samba/history/samba-4.9.1.html) - v4.9.2
+* [Samba](https://www.samba.org/samba/history/samba-4.9.1.html) - v4.9.3
 * [SDL2](https://github.com/spurious/SDL-mirror) - git 678ba78 | v2.0.9-dev
 * [systemd](https://github.com/systemd/systemd) - v239
 * [Qt](https://wiki.qt.io/Qt_5.11_Release) - v5.11.2
@@ -71,8 +71,10 @@
 ---
 **Emulator Frontends**
 
-* [Emulationstation-Retropie](https://github.com/RetroPie/EmulationStation) - v2.8-DEV + [Steven Selph's Scraper](https://github.com/sselph/scraper) - v1.4.6
+* [Emulationstation-Retropie](https://github.com/RetroPie/EmulationStation) - v2.8-DEV + 
 * [RetroArch](https://github.com/libretro/RetroArch) - v1.7.5-dev
+* [Pegasus-Frontend](http://pegasus-frontend.org/) - git 6e0bdef | Alpha 10+
+* [Steven Selph's Scraper](https://github.com/sselph/scraper) - v1.4.6
 ---
 **Emulators included in all builds**
 
