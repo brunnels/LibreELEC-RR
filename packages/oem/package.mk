@@ -16,6 +16,7 @@ OEM_APPS_COMMON=" \
   ds4drv \
   htop \
   mc \
+  scraper \
   sdl-jstest \
   spectre-meltdown-checker"
 
