@@ -43,23 +43,22 @@
 
 * Updated "51-these-are-not-joysticks.rules" udev rules for input devices
 * Increased system partion size to 1024MB for new installations
-* [spectre-meltdown-checker](https://github.com/speed47/spectre-meltdown-checker) - > open a terminal and run sm-checker to check if you're vulnerable
 ---
-**Updated driver versions**
+**Updated video driver versions**
 
 * [AMDGPU](https://cgit.freedesktop.org/xorg/driver/xf86-video-amdgpu/) - v18.1.0
 * [ATI](https://cgit.freedesktop.org/xorg/driver/xf86-video-ati) - v18.1.0
 * [Intel-video](https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/) - git e5ff8e1
 * [Intel](https://downloadcenter.intel.com/download/28087/Linux-Processor-Microcode-Data-File) - µcode 2018-08-07a
+* [Mesa 3D](https://www.mesa3d.org/) - v18.3.0
 * [Nvidia](https://www.nvidia.com/Download/driverResults.aspx/134859/en-us) - v410.78
 * [Nvidia-legacy](https://www.nvidia.com/Download/driverResults.aspx/135161/en-us) - v340.107
 ---
-**Updated drivers & daemons**
+**Updated daemons / backends**
 
 * [GCC](https://gcc.gnu.org/gcc-8/changes.html) - v8.2
 * [glibc](https://sourceware.org/glibc/wiki/Release/2.28) - v2.28
 * [LLVM](https://llvm.org/) - v7.0.0
-* [Mesa 3D](https://www.mesa3d.org/) - v18.3.0-rc6
 * [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.95
 * [openssl](https://www.openssl.org/source/) - v1.0.2p
 * [PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) - 12.2
@@ -69,18 +68,25 @@
 * [Qt](https://wiki.qt.io/Qt_5.11_Release) - v5.11.2
 * [Xorg-Server](https://cgit.freedesktop.org/xorg/xserver/log/) - v1.20.3
 ---
+**Sysutils**
+
+* [mesa-demos](https://cgit.freedesktop.org/mesa/demos/) - git 317f67f | 8.4.0
+* [sdl-jstest](https://gitlab.com/sdl-jstest/sdl-jstest) - git 53b89cc2 | v0.2.1
+* [spectre-meltdown-checker](https://github.com/speed47/spectre-meltdown-checker) - git c705afe | v0.40
+* [Steven Selph's Scraper](https://github.com/sselph/scraper) - git 4737943 | v1.4.6
+* [vulkan-tools](https://github.com/KhronosGroup/Vulkan-Tools) -git 9bbdd55 | 1.1.92
+---
 **Emulator Frontends**
 
-* [Emulationstation-Retropie](https://github.com/RetroPie/EmulationStation) - v2.8-DEV + 
-* [RetroArch](https://github.com/libretro/RetroArch) - v1.7.5-dev
+* [Emulationstation-Retropie](https://github.com/RetroPie/EmulationStation) - git bf02819 | v2.8-DEV+ 
 * [Pegasus-Frontend](http://pegasus-frontend.org/) - git 6e0bdef | Alpha 10+
-* [Steven Selph's Scraper](https://github.com/sselph/scraper) - v1.4.6
+* [RetroArch](https://github.com/libretro/RetroArch) - git d6e96b9 | v1.7.6-dev
 ---
 **Emulators included in all builds**
 
 *  [dosbox-sdl2](https://github.com/duganchen/dosbox) - git 8f8d0c5 | DOS
 *  [hatari](https://github.com/hatari/hatari) - git 31028b8 | v2.1.0 | Atari ST/STE/TT/Falcon
-*  [moonlight-embedded](https://github.com/irtimmer/moonlight-embedded) - git e21e207 | v2.4.6 | NVIDIA GameStream client
+*  [moonlight-embedded](https://github.com/irtimmer/moonlight-embedded) - git a5ea38c | v2.4.7 | NVIDIA GameStream client
 *  [PPSSPP-SDL](https://github.com/hrydgard/ppsspp) - git fdb0732 | v1.7.1 | Sony PSP
 *  [libretro-2048](https://github.com/libretro/libretro-2048) - git 8284300 | 2048
 *  [libretro-atari800](https://github.com/libretro/libretro-atari800) - git b3931bb | Atari 5200
@@ -91,32 +97,32 @@
 *  [libretro-desmume](https://github.com/libretro/desmume) - git 07162f4 | Nintendo DS
 *  [libretro-dosbox](https://github.com/libretro/dosbox-libretro) - git 8f2d731 | DOS
 *  [libretro-fbalpha2018](https://github.com/libretro/fbalpha2018) - git 20daa80 | Multiple Arcade Machine Emulator
-*  [libretro-fceumm](https://github.com/libretro/libretro-fceumm) - git eb17f88 | Nintendo Entertainment System
+*  [libretro-fceumm](https://github.com/libretro/libretro-fceumm) - git b5803e0 | Nintendo Entertainment System
 *  [libretro-fuse](https://github.com/libretro/fuse-libretro) - git 69a4442 | ZX Spectrum
-*  [libretro-gambatte](https://github.com/libretro/gambatte-libretro) - git 5ee8b1e | Nintendo Game Boy (Color)
+*  [libretro-gambatte](https://github.com/libretro/gambatte-libretro) - git a307317 | Nintendo Game Boy (Color)
 *  [libretro-genplus](https://github.com/libretro/Genesis-Plus-GX) - git 7d0c04c | Sega Mega Drive
-*  [libretro-mame2003-plus](https://github.com/libretro/mame2003-plus-libretro) - git 0d6174b | Romset 0.78 | Multiple Arcade Machine Emulator
-*  [libretro-mgba](https://github.com/libretro/mgba) - git 0a79981 | Nintendo Game Boy Advance
+*  [libretro-mame2003-plus](https://github.com/libretro/mame2003-plus-libretro) - git 947c71f | Romset 0.78 | Multiple Arcade Machine Emulator
+*  [libretro-mgba](https://github.com/libretro/mgba) - git 6158a4f | Nintendo Game Boy Advance
 *  [libretro-mrboom](https://github.com/libretro/mrboom-libretro) - git 2865840 | v4.5 | Bomberman clone
 *  [libretro-mupen64plus](https://github.com/libretro/mupen64plus-libretro) - git e7ea1ae | Nintendo N64
 *  [libretro-nestopia](https://github.com/libretro/nestopia) - git 69d0ca1 | Nintendo Entertainment System
 *  [libretro-pcsx-rearmed](https://github.com/libretro/pcsx_rearmed) - git 0370856 | Sony Playstation
 *  [libretro-ppsspp](https://github.com/hrydgard/ppsspp) - git fdb0732 | v1.7.1 | Sony PSP
 *  [libretro-prboom](https://github.com/libretro/libretro-prboom) - git 3ff6c1c | Doom Clone
-*  [libretro-reicast](https://github.com/libretro/reicast-emulator) - git 6e732ea | Sega Dreamcast
+*  [libretro-reicast](https://github.com/libretro/reicast-emulator) - git 57b7677 | Sega Dreamcast
 *  [libretro-scummvm](https://github.com/libretro/scummvm) - git 0daf2f4 | Engine for LucasArts adventure games
 *  [libretro-stella](https://github.com/libretro/stella-libretro) - git 3ed8154 | Atari 2600
 *  [libretro-tyrquake](https://github.com/libretro/tyrquake) - git 7d18c40 | Quake Clone
 ---
 **Emulators included in generic x86-64 builds**
 
-*  [citra](https://github.com/citra-emu/citra) - git aa168b4 | QT GUI | Nintendo 3DS
-*  [Dolphin](https://de.dolphin-emu.org/?cr=de) - git 8d20a17 | 5.0-9155 | [Qt GUI](https://de.dolphin-emu.org/blog/2018/02/03/dolphin-progress-report-january-2018/) | Nintendo Wii / Gamecube
+*  [citra](https://github.com/citra-emu/citra) - git edbdbf0 | QT GUI | Nintendo 3DS
+*  [Dolphin](https://de.dolphin-emu.org/?cr=de) - git f510f6e | r5.0-9208 | [Qt GUI](https://de.dolphin-emu.org/blog/2018/02/03/dolphin-progress-report-january-2018/) | Nintendo Wii / Gamecube
 *  [fs-uae](https://fs-uae.net/) - git 3d6a8dc | 2.9.7dev4 | Commodore Amiga
 *  [mupen64plus](https://github.com/m64p/mupen64plus-GLideN64) - git 9dd12b5 | Nintendo N64
 *  [PCSX2 ](https://github.com/PCSX2/pcsx2) - git 5b9e93c | v1.5.0-dev | Docker addon needed | Sony PlayStation 2
 *  [Vice](http://vice-emu.sourceforge.net/amigaos.html) - v3.2-release | Commodore C64
-*  [libretro-beetle-psx](https://github.com/libretro/beetle-psx-libretro) - git a38aa45 | Sony Playstation
+*  [libretro-beetle-psx](https://github.com/libretro/beetle-psx-libretro) - git ad1768a | Sony Playstation
 *  [libretro-beetle-saturn](https://github.com/libretro/beetle-saturn-libretro) - git 1983713 | Sega Saturn
 *  [libretro-bsnes-mercury](https://github.com/libretro/bsnes-mercury) git 4e221df | Nintendo Super Nintendo Entertainment System
 *  [libretro-citra](https://github.com/libretro/citra) - git a0c222c | Nintendo 3DS
@@ -129,7 +135,7 @@
 ---
 **Emulators included in Amlogic S905 | Khadas Vim | Odroid C2 builds**
 
-*  [amiberry](https://github.com/midwan/amiberry) - git 85f7e14 | v2.24b5+ | Commodore Amiga
+*  [amiberry](https://github.com/midwan/amiberry) - it 3bca81d | v2.24b12 | Commodore Amiga
 *  [libretro-mame2010](https://github.com/libretro/mame2010-libretro) - git 70732f9 | Romset 0.139 | Multiple Arcade Machine Emulator
 *  [libretro-snes9x2010](https://github.com/libretro/snes9x2010) - git d857a31 | Nintendo Super Nintendo Entertainment System
 *  [libretro-vice](https://github.com/libretro/vice-libretro) - git b35a177 | Commodore C64
@@ -137,7 +143,7 @@
 ---
 **Emulators included in RPi2 & RPi3 builds**
 
-*  [amiberry](https://github.com/midwan/amiberry) - git 85f7e14 | v2.24b5+ | Commodore Amiga
+*  [amiberry](https://github.com/midwan/amiberry) - git 3bca81d | v2.24b12 | Commodore Amiga
 *  [libretro-mame2010](https://github.com/libretro/mame2010-libretro) - git 70732f9 | Romset 0.139 | Multiple Arcade Machine Emulator
 *  [libretro-snes9x2010](https://github.com/libretro/snes9x2010) - git d857a31 | Nintendo Super Nintendo Entertainment System
 *  [libretro-vice](https://github.com/libretro/vice-libretro) - git b35a177 | Commodore C64
