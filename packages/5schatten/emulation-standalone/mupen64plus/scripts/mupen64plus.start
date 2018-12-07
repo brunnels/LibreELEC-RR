@@ -13,6 +13,9 @@ set_refresh_rate_60
 # Set audio backend to PulseAudio or ALSA
 set_SDL_audiodriver
 
+# Set Qt5 screen scale environment vars
+set_QT_screen_scale_environment_vars
+
 mupen64plus-gui "$@"> /var/log/m64p.log 2>&1
 
 # Switch back to Frontends or unfreeze Kodi & start audio

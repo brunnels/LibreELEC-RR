@@ -30,6 +30,9 @@ set_CITRA_audioengine
 # force fullscreen on startup
 set_CITRA_videosettings
 
+# Set Qt5 screen scale environment vars
+set_QT_screen_scale_environment_vars
+
 # create link for citra log file
 ln -s $CITRA_HOME_CONFIG/log/citra_log.txt /var/log/citra.log
 

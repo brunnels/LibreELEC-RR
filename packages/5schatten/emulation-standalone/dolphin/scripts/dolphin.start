@@ -14,6 +14,9 @@ set_refresh_rate_PAL60
 # Set audio backend to PulseAudio or ALSA
 set_DOLPHIN_audiobackend
 
+# Set Qt5 screen scale environment vars
+set_QT_screen_scale_environment_vars
+
 dolphin-emu "$@"> /var/log/dolphin.log 2>&1
 
 # Switch back to Frontends or unfreeze Kodi & start audio
