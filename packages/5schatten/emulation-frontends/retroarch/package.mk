@@ -3,13 +3,18 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="e036470e3362b2a738065cd39ae39431fd33da33" #1.7.6-dev 
+PKG_VERSION="0735fbcd57ec8b6d683ec797358c19188e51ce19" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
 PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa fluidsynth-git freetype zlib ffmpeg lr-common-overlays lr-common-shaders lr-core-info lr-database lr-glsl-shaders lr-overlay-borders lr-samples lr-slang-shaders retroarch-assets retroarch-joypad-autoconfig"
 PKG_LONGDESC="Reference frontend for the libretro API."
 GET_HANDLER_SUPPORT="git"
+
+# Temp. fix KMS for OpenGL
+if [ $OPENGL_SUPPORT = "yes" ]; then
+  PKG_PATCH_DIRS="kms-opengl"
+fi
 
 TARGET_CONFIGURE_OPTS=""
 PKG_CONFIGURE_OPTS_TARGET="--disable-vg \
