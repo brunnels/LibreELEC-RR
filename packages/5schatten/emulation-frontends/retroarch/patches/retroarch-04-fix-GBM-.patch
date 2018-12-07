@@ -1,0 +1,24 @@
+diff --git a/gfx/common/egl_common.c b/gfx/common/egl_common.c
+index 8ae8fee90c..a8f7380568 100644
+--- a/gfx/common/egl_common.c
++++ b/gfx/common/egl_common.c
+@@ -334,6 +334,7 @@ bool egl_init_context(egl_ctx_data_t *egl,
+ 
+    RARCH_LOG("[EGL]: EGL version: %d.%d", *major, *minor);
+ 
++#ifdef HAVE_GBM
+    if (!eglGetConfigs(egl->dpy, NULL, 0, &count) || count < 1)
+    {
+       RARCH_ERR("[EGL]: No cofigs to choose from.");
+@@ -374,6 +375,11 @@ bool egl_init_context(egl_ctx_data_t *egl,
+       egl->config = configs[config_index];
+ 
+    free(configs);
++#else
++   if (!eglChooseConfig(egl->dpy,
++            attrib_ptr, &egl->config, 1, n) || *n != 1)
++      return false;
++#endif
+ 
+    egl->major = g_egl_major;
+    egl->minor = g_egl_minor;
