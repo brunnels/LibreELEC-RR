@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="bfd914157718083bfa511e54ccdb894d2d41ee05" #1.7.6-dev 
+PKG_VERSION="669f16c00ca392c5c3ff421f594884976a40a533" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
@@ -37,6 +37,14 @@ if [ "${PROJECT}" = "Generic" ]; then
   PKG_CONFIGURE_OPTS_TARGET+=" --enable-qt"
 else
   PKG_CONFIGURE_OPTS_TARGET+=" --disable-qt"
+fi
+
+# Displayserver Support
+if [ "${DISPLAYSERVER}" = "x11" ]; then
+  PKG_DEPENDS_TARGET+=" xorg-server"
+  PKG_CONFIGURE_OPTS_TARGET+=" --enable-x11"
+else
+  PKG_CONFIGURE_OPTS_TARGET+=" --disable-x11"
 fi
 
 # OpenGL Support
