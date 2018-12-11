@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="qt-everywhere"
-PKG_VERSION="5.11.2"
-PKG_SHA256="c6104b840b6caee596fa9a35bc5f57f67ed5a99d6a36497b6fe66f990a53ca81"
+PKG_VERSION="5.11.3"
+PKG_SHA256="859417642713cee2493ee3646a7fee782c9f1db39e41d7bb1322bba0c5f0ff4d"
 PKG_LICENSE="GPL"
 PKG_SITE="http://qt-project.org"
 PKG_URL="http://download.qt.io/archive/qt/${PKG_VERSION%.*}/$PKG_VERSION/single/$PKG_NAME-src-$PKG_VERSION.tar.xz"
@@ -160,7 +160,6 @@ post_makeinstall_target() {
   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Svg.so*                $INSTALL/usr/lib
   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Test.so*               $INSTALL/usr/lib
   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Widgets.so*            $INSTALL/usr/lib
-
 
   # Install Qt5 plugins
   cp -PR $SYSROOT_PREFIX/usr/plugins/audio             $INSTALL/usr/plugins
