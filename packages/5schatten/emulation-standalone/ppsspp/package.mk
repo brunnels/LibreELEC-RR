@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="ppsspp"
-PKG_VERSION="fdb07323e0878e4773011a7a51a43a8900ad9d4a" #v1.7.1
+PKG_VERSION="74d87fa2b4a3c943c1df09cc26a8c70b1335fd30" #v1.7.5
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/hrydgard/ppsspp"
 PKG_URL="https://github.com/hrydgard/ppsspp.git"
@@ -30,7 +30,6 @@ else
 fi
 
 PKG_CMAKE_OPTS_TARGET="-DUSE_SYSTEM_FFMPEG=ON \
-                       -DUSE_DISCORD=OFF \
                        $PPSSPP_ARCH_ARM \
                        $PPSSPP_OPENGLES_SUPPORT \
                        $PPSSPP_VULKAN_SUPPORT"
