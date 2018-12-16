@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="pegasus-frontend"
-PKG_VERSION="6e0bdeffd3f148f60429c2739db5628a535621dc" # Alpha 10+
+PKG_VERSION="b98de668175972a3c5ab7de16db9f77f066f3a32" # Alpha 10+
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/mmatyas/pegasus-frontend"
 PKG_URL="https://github.com/mmatyas/pegasus-frontend.git"
