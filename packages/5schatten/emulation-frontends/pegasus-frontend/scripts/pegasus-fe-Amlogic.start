@@ -17,6 +17,9 @@ fi
 # Freeze Kodi / stop audio
 kodifreeze.sh freeze
 
+# Set fbdev geometry
+set_fbdev_mode
+
 # Set SDL audio driver to Pulseaudio or ALSA
 set_SDL_audiodriver
 
