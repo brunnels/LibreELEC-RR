@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-desmume"
-PKG_VERSION="5f6f1ee44310cb7b84111fa86288fcb912da33a7"
-PKG_SHA256="b231f187c2eee594bc48622cdf8486e3e135806f297bf34045897028cf4a4977"
+PKG_VERSION="a0da7bf2e05d0daa14f0928a525dc39b28865aec"
+PKG_SHA256="2fc3cb16737594cda9089ae84df36e6a7616cb24c43420dfe6f049d5ed334a1b"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/desmume"
 PKG_URL="https://github.com/libretro/desmume/archive/$PKG_VERSION.tar.gz"
