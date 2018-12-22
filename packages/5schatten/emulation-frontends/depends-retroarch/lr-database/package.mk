@@ -4,7 +4,7 @@
 
 PKG_NAME="lr-database"
 PKG_VERSION="25d808a8b27f9bd7bf9373b29fcd2b9858eb5b3d"
-#PKG_SHA256="d72c7c8f270d73ae6f88cbd2a89290b9c7c992f6b4f3c7db6fe21e40788a89ea"
+PKG_SHA256="a5f594d3c8e334e8d53431bd1c527f2dcef7bea62c03a4616c178f74128dfc22"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/libretro-database"
 PKG_URL="https://github.com/libretro/libretro-database/archive/$PKG_VERSION.tar.gz"
