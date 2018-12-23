@@ -405,28 +405,6 @@ index 9575e77..14cdfce 100644
   * output format.
   */
  
-diff --git a/ext/libav/gstavscale.c b/ext/libav/gstavscale.c
-index f6d12ed..a6d6a18 100644
---- a/ext/libav/gstavscale.c
-+++ b/ext/libav/gstavscale.c
-@@ -270,7 +270,7 @@ gst_ffmpegscale_get_unit_size (GstBaseTransform * trans, GstCaps * caps,
-   ctx->width = width;
-   ctx->height = height;
-   ctx->pix_fmt = AV_PIX_FMT_NB;
--  gst_ffmpeg_caps_with_codectype (CODEC_TYPE_VIDEO, caps, ctx);
-+  gst_ffmpeg_caps_with_codectype (AV_CODEC_TYPE_VIDEO, caps, ctx);
-   if (ctx->pix_fmt == AV_PIX_FMT_NB) {
-     av_free (ctx);
-     return FALSE;
-@@ -317,7 +317,7 @@ gst_ffmpegscale_set_caps (GstBaseTransform * trans, GstCaps * incaps,
-   ctx->width = scale->in_width;
-   ctx->height = scale->in_height;
-   ctx->pix_fmt = AV_PIX_FMT_NB;
--  gst_ffmpeg_caps_with_codectype (CODEC_TYPE_VIDEO, incaps, ctx);
-+  gst_ffmpeg_caps_with_codectype (AV_CODEC_TYPE_VIDEO, incaps, ctx);
-   if (ctx->pix_fmt == AV_PIX_FMT_NB) {
-     av_free (ctx);
-     return FALSE;
 diff --git a/ext/libav/gstavviddec.c b/ext/libav/gstavviddec.c
 index f9c6096..0ed4b23 100644
 --- a/ext/libav/gstavviddec.c
