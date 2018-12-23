@@ -2,12 +2,12 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-desmume"
-PKG_VERSION="a0da7bf2e05d0daa14f0928a525dc39b28865aec"
-PKG_SHA256="2fc3cb16737594cda9089ae84df36e6a7616cb24c43420dfe6f049d5ed334a1b"
+PKG_VERSION="1ac359d8f92faf911386910e74c76aa6f5e9722e"
+PKG_SHA256="d28285adfa135278270f22f7ae25a8cad83fbc8d4541e24f609a5c51ae7dc438"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/desmume"
 PKG_URL="https://github.com/libretro/desmume/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain retroarch libpcap"
 PKG_LONGDESC="DeSmuME is a Nintendo DS emulator"
 PKG_TOOLCHAIN="make"
 
