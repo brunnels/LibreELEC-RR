@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="citra"
-PKG_VERSION="83e3e30d0ee7bded79d75a503222abe3565e35a0"
+PKG_VERSION="3ede43605333a626adefc24243f2c6b389837746"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2+"
 PKG_SITE="https://github.com/citra-emu/citra"
@@ -16,7 +16,6 @@ PKG_CMAKE_OPTS_TARGET="-DENABLE_SDL2=1 \
                        -DENABLE_QT=1 \
                        -DENABLE_CUBEB=0 \
                        -DCMAKE_BUILD_TYPE=\"Release\" \
-                       -DENABLE_WEB_SERVICE=0 \
                        -DCMAKE_NO_SYSTEM_FROM_IMPORTED=1 \
                        -DCMAKE_VERBOSE_MAKEFILE=1"
 
