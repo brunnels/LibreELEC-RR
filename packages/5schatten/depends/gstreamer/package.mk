@@ -12,10 +12,3 @@ PKG_LONGDESC="GStreamer open-source multimedia framework core library"
 PKG_TOOLCHAIN="configure"
 
 PKG_CONFIGURE_OPTS_TARGET="--with-unwind=no"
-
-post_makeinstall_target(){
-  # Clean up
-  rm -rf $INSTALL/usr/bin
-  rm -rf $INSTALL/usr/share
-}
-
