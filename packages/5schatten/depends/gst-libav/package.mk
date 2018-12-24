@@ -9,4 +9,4 @@ PKG_SITE="https://gstreamer.freedesktop.org/modules/gst-libav.html"
 PKG_URL="https://gstreamer.freedesktop.org/src/gst-libav/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain gstreamer ffmpeg"
 PKG_LONGDESC="GStreamer plugin for the libav* library (former FFmpeg)"
-PKG_TOOLCHAIN="configure"
+
