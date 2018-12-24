@@ -87,7 +87,6 @@ OEM_EMU_GENERIC=" \
   lr-bsnes-mercury-accuracy \
   lr-citra \
   lr-dolphin \
-  lr-ishiiruka \
   lr-mame2016 \
   lr-mesen \
   lr-parallel-n64 \
