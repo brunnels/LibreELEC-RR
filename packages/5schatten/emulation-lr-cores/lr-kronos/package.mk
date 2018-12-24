@@ -1,23 +1,21 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
-PKG_NAME="Kronos"
-PKG_VERSION="1eeb61e78811944b96ac2e3da564ec16ae988235"
-PKG_SHA256="aa3fd7a858fc02769519d8f0814e03cbf7835d04b02ecf9643e72ef363155a08"
+PKG_NAME="lr-kronos"
+PKG_VERSION="e2d1f26f342b1795d2b1401237e4d9c632eb9de3"
+PKG_SHA256="595b484e10a154f801bf8e32a315d5b218ee7614b9352b3802e3232323d733df"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/FCare/Kronos"
 PKG_URL="https://github.com/FCare/Kronos/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch"
 PKG_LONGDESC="Kronos is a Sega Saturn emulator forked from uoYabause. "
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 
 PKG_LIBNAME="kronos_libretro.so"
 PKG_LIBPATH="libretro/$PKG_LIBNAME"
 
-make_target() {
-  make -C libretro GIT_VERSION=$PKG_VERSION
-}
+PKG_MAKE_OPTS_TARGET="-C libretro GIT_VERSION=${PKG_VERSION:0:7}"
 
 makeinstall_target() {
     mkdir -p $INSTALL/usr/lib/libretro
