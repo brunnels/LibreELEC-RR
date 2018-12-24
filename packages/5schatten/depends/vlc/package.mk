@@ -85,7 +85,7 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-silent-rules \
                            --disable-directx \
                            --disable-caca \
                            --disable-oss \
-                           --disable-pulse \
+                           --enable-pulse \
                            --enable-alsa \
                            --disable-jack \
                            --disable-upnp \
