@@ -60,7 +60,6 @@ OEM_EMU_COMMON=" \
   lr-mupen64plus \
   lr-nestopia \
   lr-pcsx-rearmed \
-  lr-ppsspp \
   lr-prboom \
   lr-reicast \
   lr-scummvm \
@@ -91,6 +90,7 @@ OEM_EMU_GENERIC=" \
   lr-mame2016 \
   lr-mesen \
   lr-parallel-n64 \
+  lr-ppsspp \
   lr-snes9x"
 
 OEM_EMU_RPI=" \
