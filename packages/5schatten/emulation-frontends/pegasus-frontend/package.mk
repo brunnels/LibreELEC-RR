@@ -2,11 +2,11 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="pegasus-frontend"
-PKG_VERSION="765650dd4d87bcd8ee7c9392864e341e61c7b76b" # Alpha 10+
+PKG_VERSION="3ab18e026c0c639ddae9f7dd79740bd963d93faf" # Alpha 10+
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/mmatyas/pegasus-frontend"
 PKG_URL="https://github.com/mmatyas/pegasus-frontend.git"
-PKG_DEPENDS_TARGET="toolchain SDL2-git qt-everywhere pegasus-theme-es2-simple"
+PKG_DEPENDS_TARGET="toolchain SDL2-git qt-everywhere pegasus-theme-es2-simple pegasus-theme-gameOS"
 PKG_LONGDESC="A cross platform, customizable graphical frontend for launching emulators and managing your game collection."
 GET_HANDLER_SUPPORT="git"
 PKG_TOOLCHAIN="manual"
