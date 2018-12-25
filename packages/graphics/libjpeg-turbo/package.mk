@@ -33,6 +33,11 @@ if [ $TARGET_ARCH = "x86_64" ]; then
   PKG_DEPENDS_TARGET+=" nasm:host"
 fi
 
+if [ $TARGET_ARCH = "x86_64" ]; then
+  PKG_DEPENDS_HOST+=" nasm:host"
+  PKG_DEPENDS_TARGET+=" nasm:host"
+fi
+
 post_makeinstall_target() {
   rm -rf $INSTALL/usr/bin
 }
