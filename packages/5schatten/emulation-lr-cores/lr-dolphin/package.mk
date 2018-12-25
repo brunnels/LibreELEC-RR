@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-dolphin"
-PKG_VERSION="ecd93212a201ee12902c0b69b9c0d692f2e743af"
-PKG_SHA256="6e544d702f051e0059bf8ac0ba1fab71cfd09bde250cce497073b4e9cb05f1ea"
+PKG_VERSION="1a7d1bc867e62f85598e79ed8d704259869c773e"
+PKG_SHA256="3acfdb0dee34773cfc67b045f135465f5e96e4de7b2912dfe61c6ea7c7d7e4d2"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/dolphin"
