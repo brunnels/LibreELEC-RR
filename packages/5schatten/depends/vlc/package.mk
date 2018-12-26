@@ -3,17 +3,13 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="vlc"
-PKG_VERSION="3.0.4"
-PKG_SHA256="01f3db3790714038c01f5e23c709e31ecd6f1c046ac93d19e1dde38b3fc05a9e"
+PKG_VERSION="3.0.5"
+PKG_SHA256="f5c087dfebd4827052bf3b97996b3a05c79ae336dcb60a9e8d1a010f270072db"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://get.videolan.org/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain dbus gnutls ffmpeg libmpeg2 zlib flac libvorbis"
 PKG_LONGDESC="VideoLAN multimedia player and streamer"
-
-if [ "$TARGET_ARCH" = "arm" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET lua" 
-fi 
 
 PKG_CONFIGURE_OPTS_TARGET="--enable-silent-rules \
                            --disable-dependency-tracking \
@@ -71,9 +67,6 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-silent-rules \
                            --disable-libass \
                            --disable-kate \
                            --disable-tiger \
-                           --disable-libva \
-                           --disable-vdpau \
-                           --without-x \
                            --disable-xcb \
                            --disable-xvideo \
                            --disable-sdl-image \
@@ -109,25 +102,41 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-silent-rules \
                            --disable-sid \
                            --disable-crystalhd \
                            --disable-dxva2 \
-                           --disable-vlc \
-                           LUAC=$ROOT/$TOOLCHAIN/bin/luac"
+                           --disable-aom \
+                           --disable-dav1d \
+                           --disable-vlc"
+
+# X11 Support
+if [ "${DISPLAYSERVER}" = "x11" ]; then
+  PKG_CONFIGURE_OPTS_TARGET+=" --with-x"
+else
+  PKG_CONFIGURE_OPTS_TARGET+=" --without-x"
+fi
+
+# OpenGLES 2 Support
+if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+  PKG_DEPENDS_TARGET+=" ${OPENGLES}"
+  PKG_CONFIGURE_OPTS_TARGET+=" --enable-gles2"
+fi
+
+# MMAL Support
+if [ "${OPENGLES}" = "bcm2835-driver" ]; then
+  PKG_CONFIGURE_OPTS_TARGET+=" --enable-mmal"
+fi
+
+# NEON Support
+if target_has_feature neon; then
+  PKG_CONFIGURE_OPTS_TARGET+=" --enable-neon"
+fi
 
 pre_configure_target() {
+  # Fix outdated automake for Linux Mint 18.04
+  sed -e "s/am__api_version='1.16'/am__api_version='1.15'/" -i ${PKG_BUILD}/configure
   export LDFLAGS="$LDFLAGS -lresolv"
-
-  if [ "$TARGET_ARCH" = "arm" ]; then
-    export LUA_LIBS="-L$SYSROOT_PREFIX/usr/lib -llua -lm"
-  fi
 }
 
 post_makeinstall_target() {
-  rm -fr $INSTALL/usr/share/applications
-  rm -fr $INSTALL/usr/share/icons
-  rm -fr $INSTALL/usr/share/kde4
-  rm -f $INSTALL/usr/bin/rvlc
-  rm -f $INSTALL/usr/bin/vlc-wrapper
-
-  mkdir -p $INSTALL/usr/config
-    mv -f $INSTALL/usr/lib/vlc $INSTALL/usr/config
-    ln -sf /storage/.config/vlc $INSTALL/usr/lib/vlc
+  # Clean up
+  rm -rf $INSTALL/usr/bin
+  rm -rf $INSTALL/usr/share
 }
