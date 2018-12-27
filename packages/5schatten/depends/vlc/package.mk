@@ -113,12 +113,6 @@ else
   PKG_CONFIGURE_OPTS_TARGET+=" --without-x"
 fi
 
-# OpenGLES 2 Support
-if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
-  PKG_DEPENDS_TARGET+=" ${OPENGLES}"
-  PKG_CONFIGURE_OPTS_TARGET+=" --enable-gles2"
-fi
-
 # MMAL Support
 if [ "${OPENGLES}" = "bcm2835-driver" ]; then
   PKG_CONFIGURE_OPTS_TARGET+=" --enable-mmal"
