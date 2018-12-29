@@ -14,7 +14,7 @@ PKG_TOOLCHAIN="make"
 PKG_LIBNAME="vice_x64_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
-PKG_MAKE_OPTS_TARGET="-f Makefile.libretro CC=$CC GIT_VERSION=${PKG_VERSION:0:7}"
+PKG_MAKE_OPTS_TARGET="-f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}"
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/libretro
