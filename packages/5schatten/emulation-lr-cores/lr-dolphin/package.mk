@@ -9,8 +9,7 @@ PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/dolphin"
 PKG_URL="https://github.com/libretro/dolphin/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain retroarch enet bluez lzo alsa-lib ffmpeg curl libpng zlib"
-PKG_LONGDESC="Dolphin is a GameCube / Wii emulator, allowing you to play games for these two platforms on PC with improvements. "
-PKG_TOOLCHAIN="cmake-make"
+PKG_LONGDESC="Dolphin is a GameCube / Wii emulator, allowing you to play games for these two platforms on PC with improvements."
 
 PKG_LIBNAME="dolphin_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
@@ -21,10 +20,12 @@ PKG_CMAKE_OPTS_TARGET="-DENABLE_QT=OFF \
                        -DENABLE_ANALYTICS=OFF"
 
 pre_make_target() {
-  find . -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  # fix cross compiling
+  find $PKG_BUILD -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  find $PKG_BUILD -name build.ninja -exec sed -i "s:isystem :I:g" \{} \;
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }
