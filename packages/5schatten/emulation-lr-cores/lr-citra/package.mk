@@ -10,7 +10,6 @@ PKG_URL="https://github.com/libretro/citra.git"
 PKG_DEPENDS_TARGET="toolchain retroarch boost"
 PKG_LONGDESC="A Nintendo 3DS Emulator, running on libretro"
 GET_HANDLER_SUPPORT="git"
-PKG_TOOLCHAIN="cmake-make"
 
 PKG_LIBNAME="citra_libretro.so"
 PKG_LIBPATH="src/citra_libretro/$PKG_LIBNAME"
@@ -25,10 +24,12 @@ PKG_CMAKE_OPTS_TARGET="-DENABLE_LIBRETRO=1 \
                        --target citra_libretro"
 
 pre_make_target() {
-  find . -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  # fix cross compiling
+  find $PKG_BUILD -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  find $PKG_BUILD -name build.ninja -exec sed -i "s:isystem :I:g" \{} \;
 }
 
 makeinstall_target() {
-    mkdir -p $INSTALL/usr/lib/libretro
-    cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
+  mkdir -p $INSTALL/usr/lib/libretro
+  cp $PKG_LIBPATH $INSTALL/usr/lib/libretro/
 }
