@@ -10,7 +10,6 @@ PKG_URL="https://github.com/citra-emu/citra.git"
 PKG_DEPENDS_TARGET="toolchain boost qt-everywhere SDL2-git"
 PKG_LONGDESC="A Nintendo 3DS Emulator"
 GET_HANDLER_SUPPORT="git"
-PKG_TOOLCHAIN="cmake-make"
 
 PKG_CMAKE_OPTS_TARGET="-DENABLE_SDL2=1 \
                        -DENABLE_QT=1 \
@@ -20,7 +19,9 @@ PKG_CMAKE_OPTS_TARGET="-DENABLE_SDL2=1 \
                        -DCMAKE_VERBOSE_MAKEFILE=1"
 
 pre_make_target() {
-  find . -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  # fix cross compiling
+  find $PKG_BUILD -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  find $PKG_BUILD -name build.ninja -exec sed -i "s:isystem :I:g" \{} \;
 }
 
 post_makeinstall_target() {
