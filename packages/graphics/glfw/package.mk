@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
+# Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="glfw"
 PKG_VERSION="3.2.1"
@@ -18,11 +19,3 @@ fi
 PKG_CMAKE_OPTS_TARGET="-DGLFW_BUILD_EXAMPLES=off \
                        -DGLFW_BUILD_TESTS=off \
                        -DGLFW_BUILD_DOCS=off"
-
-#make_target() {
-#  make x11 PREFIX=$SYSROOT_PREFIX/usr
-#}
-
-#makeinstall_target() {
-#  make x11-install PREFIX=$SYSROOT_PREFIX/usr
-#}
