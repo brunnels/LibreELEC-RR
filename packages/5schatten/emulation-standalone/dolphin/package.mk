@@ -3,17 +3,15 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="dolphin"
-PKG_VERSION="187058a07277560061eb63e54d8a5562cd56f939"
-PKG_SHA256="632e54d079385f269f042e8d3dc4d6c0a08bb3173a1329dcec0dd4706690efcb"
-PKG_DOLPHIN_RELEASE="5.0-9273"
+PKG_VERSION="75b8824c95176118b0d04b813e744f2b306ea026"
+PKG_SHA256="ab1d473381d8572c0756c00bb2a1c5b61a5cd9c6855d9bf0e3a9bfe94650ef2c"
+PKG_DOLPHIN_RELEASE="5.0-9275"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/dolphin-emu/dolphin"
 PKG_URL="https://github.com/dolphin-emu/dolphin/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain openal-soft libevdev gtk+ ffmpeg zlib bluez pulseaudio alsa-lib libogg libvorbis libSM enet qt-everywhere"
-PKG_LONGDESC="Dolphin GameCube/Wii emulator"
-PKG_TOOLCHAIN="cmake-make"
-PKG_BUILD_FLAGS="-gold"
+PKG_LONGDESC="Dolphin is a GameCube / Wii emulator, allowing you to play games for these two platforms on PC with improvements."
 
 PKG_CMAKE_OPTS_TARGET="-DENABLE_LTO=off \
                        -DUSE_SHARED_ENET=on \
@@ -22,8 +20,9 @@ PKG_CMAKE_OPTS_TARGET="-DENABLE_LTO=off \
                        -DDISTRIBUTOR=5schatten"
 
 pre_make_target() {
-  # Fix stdlib.h error
-  find . -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  # fix cross compiling
+  find $PKG_BUILD -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  find $PKG_BUILD -name build.ninja -exec sed -i "s:isystem :I:g" \{} \;
   
   # Export QT path
   export Qt5Gui_DIR=$SYSROOT_PREFIX/usr/lib
