@@ -10,13 +10,13 @@ PKG_URL="https://github.com/hatari/hatari/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain SDL2-git portaudio zlib capsimg"
 PKG_LONGDESC="Hatari is an Atari ST/STE/TT/Falcon emulator"
 
-PKG_CMAKE_OPTS_TARGET="-DCMAKE_SKIP_RPATH=ON \
-                       -DDATADIR="/usr/config/hatari" \
-                       -DBIN2DATADIR="../../storage/.config/hatari" \
-                       -DCAPSIMAGE_INCLUDE_DIR=$PKG_BUILD/src/include \
-                       -DCAPSIMAGE_LIBRARY=$PKG_BUILD/libcapsimage.so.5.1"
-
 pre_configure_target() {
+  PKG_CMAKE_OPTS_TARGET="-DCMAKE_SKIP_RPATH=ON \
+                         -DDATADIR="/usr/config/hatari" \
+                         -DBIN2DATADIR="../../storage/.config/hatari" \
+                         -DCAPSIMAGE_INCLUDE_DIR=$PKG_BUILD/src/include \
+                         -DCAPSIMAGE_LIBRARY=$PKG_BUILD/libcapsimage.so.5.1"
+
   # copy IPF Support Library include files
   mkdir -p $PKG_BUILD/src/includes/caps5/
   cp -R $(get_build_dir capsimg)/LibIPF/* $PKG_BUILD/src/includes/caps5/
