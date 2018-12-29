@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="mupen64plus"
-PKG_VERSION="e66cc114bd7c8b7ae3dbf21dbd8d8d2a717b47bf"
+PKG_VERSION="bcbef775124342ac62e00fc595f361d97b3c309d"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://m64p.github.io/"
