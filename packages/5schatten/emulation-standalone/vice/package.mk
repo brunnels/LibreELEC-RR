@@ -13,19 +13,19 @@ PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2-git libpng giflib zlib libvorbis lib
 PKG_LONGDESC="VICE C64 emulator"
 PKG_TOOLCHAIN="configure"
 
-PKG_CONFIGURE_OPTS_TARGET="ac_cv_prog_sdl2_config=$SYSROOT_PREFIX/usr/bin/sdl2-config \
-                           toolchain_check=no \
-                         --prefix=/usr \
-                         --disable-option-checking \
-                         --disable-catweasel \
-                         --enable-native-tools=$HOST_CC \
-                         --enable-sdlui2 \
-                         --disable-parsid \
-                         --disable-hardsid \
-                         --without-oss \
-                         --without-pulse"
-
 pre_configure_target() {
+  PKG_CONFIGURE_OPTS_TARGET="ac_cv_prog_sdl2_config=$SYSROOT_PREFIX/usr/bin/sdl2-config \
+                             toolchain_check=no \
+                           --prefix=/usr \
+                           --disable-option-checking \
+                           --disable-catweasel \
+                           --enable-native-tools=$HOST_CC \
+                           --enable-sdlui2 \
+                           --disable-parsid \
+                           --disable-hardsid \
+                           --without-oss \
+                           --without-pulse"
+
   export LIBS="-ludev"
   $PKG_BUILD/autogen.sh
 }
