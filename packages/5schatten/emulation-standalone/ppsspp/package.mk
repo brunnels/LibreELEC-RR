@@ -9,33 +9,33 @@ PKG_URL="https://github.com/hrydgard/ppsspp.git"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_LONGDESC="A PSP emulator for Android, Windows, Mac, Linux and Blackberry 10, written in C++."
 GET_HANDLER_SUPPORT="git"
-PKG_TOOLCHAIN="cmake-make"
 
-if [ $ARCH = "arm" ] && [ ! $TARGET_CPU = "arm1176jzf-s" ]; then
-  PPSSPP_ARCH_ARM="-DARMV7=ON"
-elif [ $TARGET_CPU = "arm1176jzf-s" ]; then
-  PPSSPP_ARCH_ARM="-DARM=ON"
-fi
+pre_configure_target() {
+  PKG_CMAKE_OPTS_TARGET="-DUSE_SYSTEM_FFMPEG=ON"
 
-if [ $OPENGLES_SUPPORT = "yes" ]; then
-  PPSSPP_OPENGLES_SUPPORT="-DUSING_FBDEV=ON \
-                           -DUSING_EGL=ON \
-                           -DUSING_GLES2=ON"
-fi
+  if [ "${ARCH}" = "arm" ] && [ ! "${TARGET_CPU}" = "arm1176jzf-s" ]; then
+    PKG_CMAKE_OPTS_TARGET+=" -DARMV7=ON"
+  elif [ "${TARGET_CPU}" = "arm1176jzf-s" ]; then
+    PKG_CMAKE_OPTS_TARGET+=" -DARM=ON"
+  fi
 
-if [ $DISPLAYSERVER = "x11" ] && [ $VULKAN_SUPPORT = "yes" ]; then
-  PPSSPP_VULKAN_SUPPORT="-DUSING_X11_VULKAN=ON"
-else
-  PPSSPP_VULKAN_SUPPORT="-DUSING_X11_VULKAN=OFF"
-fi
+  if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+    PKG_CMAKE_OPTS_TARGET+=" -DUSING_FBDEV=ON \
+                             -DUSING_EGL=ON \
+                             -DUSING_GLES2=ON"
+  fi
 
-PKG_CMAKE_OPTS_TARGET="-DUSE_SYSTEM_FFMPEG=ON \
-                       $PPSSPP_ARCH_ARM \
-                       $PPSSPP_OPENGLES_SUPPORT \
-                       $PPSSPP_VULKAN_SUPPORT"
+  if [ "${DISPLAYSERVER}" = "x11" ] && [ "${VULKAN_SUPPORT}" = "yes" ]; then
+    PKG_CMAKE_OPTS_TARGET+=" -DUSING_X11_VULKAN=ON"
+  else
+    PKG_CMAKE_OPTS_TARGET+=" -DUSING_X11_VULKAN=OFF"
+  fi
+}
 
 pre_make_target() {
-  find . -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  # fix cross compiling
+  find $PKG_BUILD -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  find $PKG_BUILD -name build.ninja -exec sed -i "s:isystem :I:g" \{} \;
 }
 
 makeinstall_target() {
