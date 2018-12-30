@@ -2,39 +2,39 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-ppsspp"
-PKG_VERSION="fdb07323e0878e4773011a7a51a43a8900ad9d4a" #v1.7.1
+PKG_VERSION="74d87fa2b4a3c943c1df09cc26a8c70b1335fd30" #v1.7.5
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/hrydgard/ppsspp"
 PKG_URL="https://github.com/hrydgard/ppsspp.git"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_LONGDESC="A PSP emulator for Android, Windows, Mac, Linux and Blackberry 10, written in C++."
 GET_HANDLER_SUPPORT="git"
-PKG_TOOLCHAIN="cmake-make"
 
 PKG_LIBNAME="ppsspp_libretro.so"
 PKG_LIBPATH="lib/$PKG_LIBNAME"
 
-if [ $ARCH = "arm" ] && [ ! $TARGET_CPU = "arm1176jzf-s" ]; then
-  PPSSPP_ARCH_ARM="-DARMV7=ON"
-elif [ $TARGET_CPU = "arm1176jzf-s" ]; then
-  PPSSPP_ARCH_ARM="-DARM=ON"
-fi
+pre_configure_target() {
+  PKG_CMAKE_OPTS_TARGET="-DLIBRETRO=ON \
+                         -DUSE_SYSTEM_FFMPEG=ON \
+                         -DUSING_X11_VULKAN=OFF"
 
-if [ $OPENGLES_SUPPORT = "yes" ]; then
-  PPSSPP_OPENGLES_SUPPORT="-DUSING_FBDEV=ON \
-                           -DUSING_EGL=ON \
-                           -DUSING_GLES2=ON"
-fi
+  if [ "${ARCH}" = "arm" ] && [ ! "${TARGET_CPU}" = "arm1176jzf-s" ]; then
+    PKG_CMAKE_OPTS_TARGET+=" -DARMV7=ON"
+  elif [ "${TARGET_CPU}" = "arm1176jzf-s" ]; then
+    PKG_CMAKE_OPTS_TARGET+=" -DARM=ON"
+  fi
 
-PKG_CMAKE_OPTS_TARGET="-DLIBRETRO=ON \
-                       -DUSE_SYSTEM_FFMPEG=ON \
-                       -DUSING_X11_VULKAN=OFF \
-                       $PPSSPP_ARCH_ARM \
-                       $PPSSPP_OPENGLES_SUPPORT \
-                       $PPSSPP_VULKAN_SUPPORT"
+  if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+    PKG_CMAKE_OPTS_TARGET+=" -DUSING_FBDEV=ON \
+                             -DUSING_EGL=ON \
+                             -DUSING_GLES2=ON"
+  fi
+}
 
 pre_make_target() {
-  find . -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  # fix cross compiling
+  find $PKG_BUILD -name flags.make -exec sed -i "s:isystem :I:g" \{} \;
+  find $PKG_BUILD -name build.ninja -exec sed -i "s:isystem :I:g" \{} \;
 }
 
 makeinstall_target() {
