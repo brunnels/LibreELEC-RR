@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="50fcf4c1907af752d068c7337302d09f5c13178e" #1.7.6-dev 
+PKG_VERSION="fc8abd7baf17dcf0ec8dcfcd02864a76a0d0b3aa" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
@@ -82,7 +82,8 @@ pre_configure_target() {
   if target_has_feature neon; then
     PKG_CONFIGURE_OPTS_TARGET+=" --enable-neon"
   fi
-
+  
+  # Clean up & export env/version
   cd ..
   rm -rf .${TARGET_NAME}
   export PKG_CONF_PATH=$TOOLCHAIN/bin/pkg-config
