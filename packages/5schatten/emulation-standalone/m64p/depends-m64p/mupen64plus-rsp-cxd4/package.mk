@@ -9,16 +9,19 @@ PKG_SITE="https://github.com/mupen64plus/mupen64plus-rsp-cxd4"
 PKG_URL="https://github.com/mupen64plus/mupen64plus-rsp-cxd4/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain SDL2-git mupen64plus-core"
 PKG_LONGDESC="Exemplary MSP communications simulator using a normalized VU."
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 
-make_target() {
-  PKG_MAKE_OPTS_TARGET="all HLEVIDEO=1 APIDIR=$(get_build_dir mupen64plus-core)/src/api"
+PKG_MAKE_OPTS_TARGET="-f projects/unix/Makefile SRCDIR=. APIDIR=$(get_build_dir mupen64plus-core)/src/api all HLEVIDEO=1"
 
-  # ARM NEON optimization
-  if target_has_feature neon; then
-    PKG_MAKE_OPTS_TARGET+=" NEON=1"
+pre_configure_target() {
+  export SYSROOT_PREFIX=$SYSROOT_PREFIX
+
+  # ARCH arm
+  if [ "${ARCH}" = "arm" ]; then
+    PKG_MAKE_OPTS_TARGET+=" HOST_CPU=arm"
   fi
+}
 
-  cd $PKG_BUILD/projects/unix
-  make -j$CONCURRENCY_MAKE_LEVEL ${PKG_MAKE_OPTS_TARGET}
+makeinstall_target() {
+ :
 }
