@@ -1,0 +1,30 @@
+From 504c1ebaa936e3854bb7204340c5501413e19523 Mon Sep 17 00:00:00 2001
+From: hizzlekizzle <hizzlekizzle@users.noreply.github.com>
+Date: Wed, 2 Jan 2019 16:24:28 -0600
+Subject: REVERT [PATCH] static link libgcc and libstdc++ on non-Clang/MSVC
+
+--- a/Source/Core/DolphinLibretro/CMakeLists.txt
++++ b/Source/Core/DolphinLibretro/CMakeLists.txt
+@@ -35,15 +35,10 @@
+ 
+ if(NOT MSVC AND NOT CLANG)
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
+-   target_link_libraries(dolphin_libretro PRIVATE
+-      core
+-      uicommon
+-      ${LIBS}
+-      -static-libgcc -static-libstdc++)
+-else()
+-   target_link_libraries(dolphin_libretro PRIVATE
+-      core
+-      uicommon
+-      ${LIBS}
+-   )
+ endif()
++
++target_link_libraries(dolphin_libretro PRIVATE
++  core
++  uicommon
++  ${LIBS}
++)
+
