@@ -30,9 +30,9 @@
 
 * [LibreELEC 9.0-devel](https://github.com/LibreELEC/LibreELEC.tv)
 * [Kodi 18](https://github.com/xbmc/xbmc) - v18-rc4
-* [Linux 4.20.0](https://www.kernel.org/) - generic x86-64 builds
+* [Linux 4.19.13](https://www.kernel.org/) - generic x86-64 builds
 * [Linux 3.14.29](https://www.kernel.org/) - Amlogic S905(X) builds
-* [Linux 4.20.0](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
+* [Linux 4.19.13](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
 ---
 **Addons & tools for generic builds**
 
@@ -94,14 +94,14 @@
 *  [libretro-beetle-wswan](https://github.com/libretro/beetle-wswan-libretro) - git b4dc85b | Bandai WonderSwan
 *  [libretro-blueMSX](https://github.com/libretro/blueMSX-libretro) - git 4be0a24 | MSX
 *  [libretro-chailove](https://github.com/libretro/libretro-chailove) - v0.31.0 | 2D Game Framework with ChaiScript
-*  [libretro-desmume](https://github.com/libretro/desmume) - git fe58f1e | Nintendo DS
+*  [libretro-desmume](https://github.com/libretro/desmume) - git 5c8ba82 | Nintendo DS
 *  [libretro-dosbox](https://github.com/libretro/dosbox-libretro) - git 8f2d731 | DOS
 *  [libretro-fbalpha2018](https://github.com/libretro/fbalpha2018) - git 20daa80 | Multiple Arcade Machine Emulator
 *  [libretro-fceumm](https://github.com/libretro/libretro-fceumm) - git b6c251b | Nintendo Entertainment System
 *  [libretro-fuse](https://github.com/libretro/fuse-libretro) - git 69a4442 | ZX Spectrum
 *  [libretro-gambatte](https://github.com/libretro/gambatte-libretro) - git a307317 | Nintendo Game Boy (Color)
 *  [libretro-genplus](https://github.com/libretro/Genesis-Plus-GX) - git 7d0c04c | Sega Mega Drive
-*  [libretro-mame2003-plus](https://github.com/libretro/mame2003-plus-libretro) - git b366898 | Romset 0.78 | Multiple Arcade Machine Emulator
+*  [libretro-mame2003-plus](https://github.com/libretro/mame2003-plus-libretro) - git 7aec74d | Romset 0.78 | Multiple Arcade Machine Emulator
 *  [libretro-mgba](https://github.com/libretro/mgba) - git 6442d17 | Nintendo Game Boy Advance
 *  [libretro-mrboom](https://github.com/libretro/mrboom-libretro) - git 6631ad8 | v4.5+ | Bomberman clone
 *  [libretro-mupen64plus](https://github.com/libretro/mupen64plus-libretro) - git 0064cb4 | Nintendo N64
@@ -115,12 +115,12 @@
 ---
 **Emulators included in generic x86-64 builds**
 
-*  [citra](https://github.com/citra-emu/citra) - git 3989c17 | QT GUI | Nintendo 3DS
-*  [Dolphin](https://de.dolphin-emu.org/?cr=de) - r5.0-9271 | [Qt GUI](https://de.dolphin-emu.org/blog/2018/02/03/dolphin-progress-report-january-2018/) | Nintendo Wii / Gamecube
+*  [citra](https://github.com/citra-emu/citra) - git f80f08b | QT GUI | Nintendo 3DS
+*  [Dolphin](https://de.dolphin-emu.org/?cr=de) - r5.0-9281 | [Qt GUI](https://de.dolphin-emu.org/blog/2018/02/03/dolphin-progress-report-january-2018/) | Nintendo Wii / Gamecube
 *  [fs-uae](https://fs-uae.net/) - git 3d6a8dc | 2.9.7dev4 | Commodore Amiga
-*  [mupen64plus](https://github.com/m64p/mupen64plus-GLideN64) - git 9dd12b5 | Nintendo N64
+*  [m64p](https://m64p.github.io/) - git bcbef77 | Nintendo N64
 *  [PCSX2 ](https://github.com/PCSX2/pcsx2) - git 5b9e93c | v1.5.0-dev | Docker addon needed | Sony PlayStation 2
-*  [Vice](http://vice-emu.sourceforge.net/amigaos.html) - v3.2-release | Commodore C64
+*  [Vice](http://vice-emu.sourceforge.net/index.html#vice) - v3.3-release | Commodore C64
 *  [libretro-beetle-psx](https://github.com/libretro/beetle-psx-libretro) - git ba28561 | Sony Playstation
 *  [libretro-beetle-saturn](https://github.com/libretro/beetle-saturn-libretro) - git 1983713 | Sega Saturn
 *  [libretro-bsnes-mercury](https://github.com/libretro/bsnes-mercury) git 4e221df | Nintendo Super Nintendo Entertainment System
