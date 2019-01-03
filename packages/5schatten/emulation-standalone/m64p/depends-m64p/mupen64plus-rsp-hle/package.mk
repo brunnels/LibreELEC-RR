@@ -9,11 +9,19 @@ PKG_SITE="https://github.com/mupen64plus/mupen64plus-rsp-hle"
 PKG_URL="https://github.com/mupen64plus/mupen64plus-rsp-hle/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain SDL2-git mupen64plus-core"
 PKG_LONGDESC="RSP processor plugin for the Mupen64Plus v2.0 project. This plugin is based on the Mupen64 HLE RSP plugin v0.2 with Azimers code by Hacktarux"
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 
-make_target() {
-  PKG_MAKE_OPTS_TARGET="all APIDIR=$(get_build_dir mupen64plus-core)/src/api"
+PKG_MAKE_OPTS_TARGET="-f projects/unix/Makefile SRCDIR=src APIDIR=$(get_build_dir mupen64plus-core)/src/api all"
 
-  cd $PKG_BUILD/projects/unix
-  make -j$CONCURRENCY_MAKE_LEVEL ${PKG_MAKE_OPTS_TARGET}
+pre_configure_target() {
+  export SYSROOT_PREFIX=$SYSROOT_PREFIX
+
+  # ARCH arm
+  if [ "${ARCH}" = "arm" ]; then
+    PKG_MAKE_OPTS_TARGET+=" DYNAREC=arm HOST_CPU=arm"
+  fi
+}
+
+makeinstall_target() {
+ :
 }
