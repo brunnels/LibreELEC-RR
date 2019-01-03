@@ -1,5 +1,5 @@
---- a/GLideN64/src/Combiner.cpp
-+++ b/GLideN64/src/Combiner.cpp
+--- a/src/Combiner.cpp
++++ b/src/Combiner.cpp
 @@ -295,7 +295,7 @@
  	} else {
  		m_pCurrent = Combiner_Compile(key);

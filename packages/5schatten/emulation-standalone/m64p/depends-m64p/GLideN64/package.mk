@@ -7,40 +7,34 @@ PKG_SHA256="f093d1712d075646097d92c30066a341db39f30b96ef966987028d4aaee888b8"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/gonetz/GLideN64"
 PKG_URL="https://github.com/gonetz/GLideN64/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain freetype zlib"
+PKG_DEPENDS_TARGET="toolchain freetype:host zlib"
 PKG_LONGDESC="A new generation, open-source graphics plugin for N64 emulators."
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="cmake"
 
 # workaround for shader cache crash issue github.com/gonetz/GLideN64/issues/1665
 if [ "${PROJECT}" = "RPi" ]; then
   PKG_PATCH_DIRS="${PROJECT}"
 fi
 
-make_target() {
-  cd $PKG_BUILD/src
-  ./getRevision.sh
-  cd $PKG_BUILD/projects/cmake
+pre_configure_target() {
+  PKG_CMAKE_SCRIPT="$PKG_BUILD/src/CMakeLists.txt"
+  PKG_CMAKE_OPTS_TARGET="-DUSE_SYSTEM_LIBS=On \
+                         -DVEC4_OPT=On \
+                         -DCRC_OPT=On \
+                         -DMUPENPLUSAPI=On"
+  # Fix revision header
+  PKG_REV_H=$PKG_BUILD/src/Revision.h
+  echo "#define PLUGIN_REVISION" ""\"${PKG_VERSION:0:10}""\"     > ${PKG_REV_H}
+  echo "#define PLUGIN_REVISION_W" "L"\"${PKG_VERSION:0:10}""\" >> ${PKG_REV_H}
+
   rm -rf $PKG_BUILD/src/GLideNHQ/inc
 
-  # GLideN64 fix OpenGL lib path
-  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
-    PKG_GLIDEN64_GL_PATH="-DOPENGL_gl_LIBRARY=$SYSROOT_PREFIX/usr/lib"
-  elif [ "${OPENGLES_SUPPORT}" = "yes" ]; then
-    PKG_GLIDEN64_GL_PATH="-DOPENGLES_gl_LIBRARY=$SYSROOT_PREFIX/usr/lib"
-  fi
-
-  # GLideN64 ARM NEON optimization
+  # NEON Support
   if target_has_feature neon; then
-    PKG_GLIDEN64_NEON="-DNEON_OPT=On"
+    PKG_CMAKE_OPTS_TARGET+=" -DNEON_OPT=On"
   fi
+}
 
-  cmake -DUSE_SYSTEM_LIBS=On \
-        -DVEC4_OPT=On \
-        -DCRC_OPT=On \
-        -DMUPENPLUSAPI=On \
-        ${PKG_GLIDEN64_NEON} \
-        ${PKG_GLIDEN64_GL_PATH} \
-        $PKG_BUILD/src/
-
-  make -j$CONCURRENCY_MAKE_LEVEL
+makeinstall_target() {
+ :
 }
