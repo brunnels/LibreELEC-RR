@@ -15,7 +15,7 @@ PKG_TOOLCHAIN="manual"
 OEM_APPS_COMMON=" \
   ds4drv \
   htop \
-  mc \
+  midnight-commander \
   scraper \
   sdl-jstest \
   spectre-meltdown-checker"
@@ -77,7 +77,7 @@ OEM_EMU_GENERIC=" \
   citra \
   dolphin \
   fs-uae \
-  mupen64plus \
+  m64p \
   PCSX2 \
   vice \
   yquake2 \
