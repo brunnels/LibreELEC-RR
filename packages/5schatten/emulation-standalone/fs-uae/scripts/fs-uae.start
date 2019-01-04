@@ -23,7 +23,7 @@ set_refresh_rate_50 >> $FSUAE_LOG
 # Set OpenAL audio driver to Pulseaudio or ALSA
 set_OpenAL_audiodriver
 
-# Which file should amiberry load?
+# Which file should FS-UAE load?
  echo "Trying to boot this game:" "$1" >> $FSUAE_LOG
 
 # Check if the file is an Amiga 1200/CD32 game and set configuration options for an Amiga 1200
