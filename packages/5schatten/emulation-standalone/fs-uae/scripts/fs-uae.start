@@ -8,7 +8,7 @@
 # Set some common variables
 FSUAE_DIR=/storage/.config/fs-uae
 FSUAE_CONFIG_DIR=$FSUAE_DIR/Configurations
-FSUAE_TMP_DIR=/tmp/fs-uae
+FSUAE_TMP_DIR=/tmp/emulation/fs-uae
 FSUAE_TMP_CONFIG="$FSUAE_TMP_DIR"/.fs-uae_conf.fs-uae
 FSUAE_LOG=/var/log/fs-uae.log
 MAX_DRIVES=20
