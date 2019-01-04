@@ -28,7 +28,7 @@ makeinstall_target() {
 
   # Install binaries & scripts
   cp $(get_build_dir mupen64plus-ui-console)/mupen64plus $INSTALL/usr/bin/mupen64plus-cli
-  cp $PKG_DIR/scripts/cli/m64p-cli-${PROJECT}.start      $INSTALL/usr/bin/m64p-cli.start
+  cp $PKG_DIR/scripts/cli/*                              $INSTALL/usr/bin
 
   # Install config files
   cp $PKG_DIR/config/*                             $INSTALL/usr/config/mupen64plus
