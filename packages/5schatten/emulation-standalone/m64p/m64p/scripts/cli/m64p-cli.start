@@ -5,7 +5,7 @@
 . /etc/profile
 
 # Set some common variables
-M64P_TMP_DIR=/tmp/m64p
+M64P_TMP_DIR=/tmp/emulation/m64p
 M64P_LOG=/var/log/m64p.log
 M64P_GAME_NAME=$(basename -- "$1")
  
