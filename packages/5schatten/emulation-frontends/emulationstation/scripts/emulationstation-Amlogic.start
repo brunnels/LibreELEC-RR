@@ -10,6 +10,9 @@ if [ ! -L /storage/.emulationstation ]; then
   ln -s /storage/.config/emulationstation /storage/.emulationstation
 fi
 
+# Create basic links & files
+set_RR_environment
+
 # Set ALSA output device
 set_ALSA_output_device
 
