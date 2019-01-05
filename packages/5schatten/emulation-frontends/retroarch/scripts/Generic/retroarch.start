@@ -5,6 +5,9 @@
 
 . /etc/profile
 
+# Create basic links & files
+set_RR_environment
+
 # Set ALSA output device
 set_ALSA_output_device
 
