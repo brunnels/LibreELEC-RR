@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="92e2221c2dcfedaa68e44f1fedc0e72fe200cace" #1.7.6-dev 
+PKG_VERSION="22598feca3a9be76c8391bba09bfde1c852f7225" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
@@ -148,9 +148,6 @@ makeinstall_target() {
   sed -i -e "s/# audio_driver =/audio_driver = \"alsathread\"/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# audio_filter_dir =/audio_filter_dir =\/usr\/share\/retroarch\/audio_filters/" $INSTALL/etc/retroarch.cfg
   sed -i -e "s/# audio_filter_dir =/audio_filter_dir =\/usr\/share\/retroarch\/audio_filters/" $INSTALL/etc/retroarch.cfg
-  if [ "${PROJECT}" = "RPi" ]; then # set default audio device for RPi
-    sed -i -e "s/# audio_device =/audio_device = \"sysdefault:CARD=ALSA\"/" $INSTALL/etc/retroarch.cfg
-  fi
 
   # Input
   sed -i -e "s/# input_driver = sdl/input_driver = udev/" $INSTALL/etc/retroarch.cfg
