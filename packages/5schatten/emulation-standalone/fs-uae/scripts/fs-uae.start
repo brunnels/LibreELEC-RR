@@ -46,17 +46,17 @@ mkdir -p "$FSUAE_TMP_DIR"
 
 # Check if we are loading a zip file
 if [ `echo $1 | grep -i .zip | wc -l` -eq 1 ]; then
-  #unpack the zip file
+  # Unpack the zip file
   unzip -q -o "$1" -d "$FSUAE_TMP_DIR"
 
   if [ -f "$FSUAE_TMP_DIR"/*.*nfo ] && [ -f "$FSUAE_TMP_DIR"/*/*.*lave ]; then
 
-    # Unsupported WHDLoad file detcted
+    # Unsupported WHDLoad file detected
     echo "Detected a WHDLoad (.zip) file. Sorry these files are not supported without fs-uae-launcher." >> $FSUAE_LOG
 
   else
 
-    #.zip file detcted
+    # .zip file detected
     echo "Loading a .zip file..." >> $FSUAE_LOG
 
     # Set default config
@@ -81,9 +81,9 @@ if [ `echo $1 | grep -i .zip | wc -l` -eq 1 ]; then
     echo -e "\nAssigned floppy drives:" $ARGS "\n">> $FSUAE_LOG
     fs-uae "$FSUAE_TMP_CONFIG" >> $FSUAE_LOG 2>&1
   fi
-#Check if we are loading a configuration file
+# Check if we are loading a configuration file
 elif [ `echo $1 | grep -i .fs-uae | wc -l` -eq 1 ]; then
-  #.uae file detcted
+  # .uae file detected
   echo "Loading a .fs-uae file..." >> $FSUAE_LOG
 
   fs-uae "$1" >> $FSUAE_LOG 2>&1
@@ -91,7 +91,7 @@ elif [ `echo $1 | grep -i .fs-uae | wc -l` -eq 1 ]; then
 # All other files (.adf .adz .ipf)
 else
 
-  #.adf or .adz or .ipf file detcted
+  # .adf or .adz or .ipf file detected
   echo "Loading a single .adf or .adz or .ipf file..." >> $FSUAE_LOG
 
   # Set default config
