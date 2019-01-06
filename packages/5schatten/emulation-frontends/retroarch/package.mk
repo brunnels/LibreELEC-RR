@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="74c8c1310238455c5f31e275c140fcd43430cb64" #1.7.6-dev 
+PKG_VERSION="92e2221c2dcfedaa68e44f1fedc0e72fe200cace" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
@@ -21,6 +21,7 @@ pre_configure_target() {
                              --enable-zlib \
                              --host=$TARGET_NAME \
                              --enable-freetype"
+
   # SAMBA Support
   if [ "${SAMBA_SUPPORT}" = "yes" ]; then
     PKG_DEPENDS_TARGET+=" samba"
