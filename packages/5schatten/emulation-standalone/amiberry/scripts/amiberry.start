@@ -50,12 +50,12 @@ AMIBERRY_SET_CONF() {
 # Check if we are loading a .zip file
 if [ `echo $1 | grep -i .zip | wc -l` -eq 1 ]; then
   
-  #unpack the zip file
+  # Unpack the zip file
   unzip -q -o "$1" -d "$AMIBERRY_TMP_DIR"
   
   if [ -f "$AMIBERRY_TMP_DIR"/*.*nfo ] && [ -f "$AMIBERRY_TMP_DIR"/*/*.*lave ]; then
 
-    #WHDLoad file detcted
+    # WHDLoad file detected
     echo "Loading a WHDLoad (.zip) file..." >> $AMIBERRY_LOG
 
     # Set default config
@@ -65,7 +65,7 @@ if [ `echo $1 | grep -i .zip | wc -l` -eq 1 ]; then
     amiberry -f "$AMIBERRY_TMP_CONFIG" -autowhdload="$1" >> $AMIBERRY_LOG 2>&1
 
   else
-    #.zip file detcted
+    # .zip file detected
     echo "Loading a .zip file..." >> $AMIBERRY_LOG
 
     # Set default config
@@ -94,7 +94,7 @@ if [ `echo $1 | grep -i .zip | wc -l` -eq 1 ]; then
 # Check for WHDload files (.lha)
 elif [ `echo $1 | grep -i .lha | wc -l` -eq 1 ]; then
     
-  #.lha file detcted
+  #.lha file detected
   echo "Loading a WHDLoad (.lha) file..." >> $AMIBERRY_LOG
 
   # Set default config
@@ -106,7 +106,7 @@ elif [ `echo $1 | grep -i .lha | wc -l` -eq 1 ]; then
 # Check for .uae config file
 elif [ `echo $1 | grep -i .uae | wc -l` -eq 1 ]; then
 
-  #.uae file detcted
+  # .uae file detected
   echo "Loading an .uae file..." >> $AMIBERRY_LOG
 
   # Load .uae config file
@@ -115,7 +115,7 @@ elif [ `echo $1 | grep -i .uae | wc -l` -eq 1 ]; then
 # All other files (.adf .adz .ipf)
 else
 
-  #.adf or .adz or .ipf file detcted
+  #.adf or .adz or .ipf file detected
   echo "Loading a single .adf or .adz or .ipf file..." >> $AMIBERRY_LOG
 
   # Set default config
