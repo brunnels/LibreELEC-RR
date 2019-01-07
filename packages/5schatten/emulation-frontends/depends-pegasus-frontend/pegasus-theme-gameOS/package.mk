@@ -12,6 +12,6 @@ PKG_LONGDESC="gameOS theme for Pegasus Frontend"
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-  mkdir -p $INSTALL/usr/config/pegasus-frontend/themes/gameOS
-  cp -r * $INSTALL/usr/config/pegasus-frontend/themes/gameOS
+  mkdir -p $INSTALL/usr/share/pegasus-frontend/themes/gameOS
+  cp -r *  $INSTALL/usr/share/pegasus-frontend/themes/gameOS
 }
