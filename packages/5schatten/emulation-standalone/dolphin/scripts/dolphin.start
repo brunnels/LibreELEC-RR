@@ -8,8 +8,8 @@
 # Freeze Kodi / stop audio
 kodifreeze.sh freeze
 
-# Change refresh rate to 60Hz if PAL60=True
-set_refresh_rate_PAL60
+# Change refresh rate to 50Hz(PAL) or 60Hz(NTSC/PAL60)
+set_refresh_rate_DOLPHIN
 
 # Set audio backend to PulseAudio or ALSA
 set_DOLPHIN_audiobackend
