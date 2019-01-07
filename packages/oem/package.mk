@@ -131,7 +131,12 @@ if [ "$OEM_EMU" = "yes" ]; then
 fi
 
 makeinstall_target() {
+  # Create dirs
   mkdir -p $INSTALL
+  mkdir -p $INSTALL/usr/config/rr-config
+
+  # Copy oem config files & scripts
   cp -PR $PKG_DIR/files/common/* $INSTALL
   cp -PR $PKG_DIR/files/$PROJECT/* $INSTALL
+  cp -rf $INSTALL/usr/share/* $INSTALL/usr/config
 }
