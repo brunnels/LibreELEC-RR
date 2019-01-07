@@ -16,8 +16,7 @@ post_unpack() {
 }
 
 make_target() {
-  cd $PKG_BUILD
-  mkdir -p .${TARGET_NAME}
+  mkdir -p $PKG_BUILD/.${TARGET_NAME}
   cd .${TARGET_NAME}
   qmake $PKG_BUILD/pegasus.pro INSTALLDIR=${INSTALL}/usr/bin \
                                INSTALL_BINDIR=${INSTALL}/usr/bin \
