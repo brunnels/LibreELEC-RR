@@ -24,6 +24,9 @@ pre_configure_target() {
                            --enable-sdlui2 \
                            --disable-parsid \
                            --disable-hardsid \
+                           --without-alsa \
+                           --without-pulse \
+                           --with-sdlsound \
                            --without-oss"
 
   export LIBS="-ludev"
@@ -41,7 +44,9 @@ post_makeinstall_target() {
 
   # Copy default config
   mkdir -p $INSTALL/etc
+  mkdir -p $INSTALL/usr/config/vice
   cp $PKG_DIR/config/sdl-vicerc $INSTALL/etc/
+  cp $PKG_DIR/config/sdl-vicerc $INSTALL/usr/config/vice/
 
   # Remove binaries
   for bin in \

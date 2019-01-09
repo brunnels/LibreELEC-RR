@@ -5,9 +5,13 @@
 
 . /etc/profile
 
-if [ ! -f /storage/.vice/sdl-vicerc ]; then
-  mkdir -p /storage/.vice
-  cp /etc/sdl-vicerc /storage/.vice/
+if [ ! -L /storage/.vice ]; then
+  rm -rf /storage/.vice
+  ln -sf /storage/.config/vice /storage/.vice
+fi
+
+if [ ! -f /storage/.config/vice/sdl-vicerc ]; then
+  cp /etc/sdl-vicerc /storage/.config/vice/sdl-vicerc
 fi
 
 # Freeze Kodi / stop audio
