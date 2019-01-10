@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="b9ff2e4de1978a71322342a25fc70332114f639b" #1.7.6-dev 
+PKG_VERSION="ccec13e64ff3b728ecb5831131685b7879641cc8" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
@@ -92,9 +92,15 @@ pre_configure_target() {
 }
 
 make_target() {
+  # Build Retroarch & exit if build fails
   make
-  make -C gfx/video_filters compiler=$CC extra_flags="$CFLAGS"
-  make -C libretro-common/audio/dsp_filters compiler=$CC extra_flags="$CFLAGS"
+  if [ ! -f $PKG_BUILD/retroarch ] ; then
+    exit 0
+  fi
+
+  # Build Video & DSP filters
+  make -C gfx/video_filters compiler=$CC extra_flags="$CFLAGS" 
+  make -C libretro-common/audio/dsp_filters compiler=$CC extra_flags="$CFLAGS" 
 }
 
 makeinstall_target() {
