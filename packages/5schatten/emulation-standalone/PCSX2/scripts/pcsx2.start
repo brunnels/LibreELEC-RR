@@ -9,27 +9,27 @@ DOCKER_PATH=/storage/.kodi/addons/service.system.docker/bin/docker
 DOCKER_IMAGE=5schatten/arch-pcsx2
 PCSX2_LOG=/var/log/pcsx2.log
 
-if [ -x $DOCKER_PATH ]; then
-  kodifreeze.sh freeze > $PCSX2_LOG 2>&1
-  $DOCKER_PATH -v >> $PCSX2_LOG 2>&1
+if [ -x ${DOCKER_PATH} ]; then
+  kodifreeze.sh freeze > ${PCSX2_LOG} 2>&1
+  ${DOCKER_PATH} -v >> ${PCSX2_LOG} 2>&1
 
-  if ! docker images | grep $DOCKER_IMAGE > /dev/null; then
-    echo "############################" >> $PCSX2_LOG 2>&1
-    echo "# Pulling the Docker image #" >> $PCSX2_LOG 2>&1
-    echo "############################" >> $PCSX2_LOG 2>&1
-    docker pull $DOCKER_IMAGE >> $PCSX2_LOG 2>&1
+  if ! docker images | grep ${DOCKER_IMAGE} > /dev/null; then
+    echo "############################" >> ${PCSX2_LOG} 2>&1
+    echo "# Pulling the Docker image #" >> ${PCSX2_LOG} 2>&1
+    echo "############################" >> ${PCSX2_LOG} 2>&1
+    docker pull ${DOCKER_IMAGE} >> ${PCSX2_LOG} 2>&1
   fi
 
-  if docker images | grep $DOCKER_IMAGE > /dev/null; then
-    echo "######################################################" >> $PCSX2_LOG 2>&1
-    echo "# Checking for image updates & clean up if necessary #" >> $PCSX2_LOG 2>&1
-    echo "######################################################" >> $PCSX2_LOG 2>&1
-    docker pull $DOCKER_IMAGE:latest >> $PCSX2_LOG 2>&1
-    docker image prune -f >> $PCSX2_LOG 2>&1
+  if docker images | grep ${DOCKER_IMAGE} > /dev/null; then
+    echo "######################################################" >> ${PCSX2_LOG} 2>&1
+    echo "# Checking for image updates & clean up if necessary #" >> ${PCSX2_LOG} 2>&1
+    echo "######################################################" >> ${PCSX2_LOG} 2>&1
+    docker pull ${DOCKER_IMAGE}:latest >> ${PCSX2_LOG} 2>&1
+    docker image prune -f >> ${PCSX2_LOG} 2>&1
 
-    echo "##################" >> $PCSX2_LOG 2>&1
-    echo "# Starting PCSX2 #" >> $PCSX2_LOG 2>&1
-    echo "##################" >> $PCSX2_LOG 2>&1
+    echo "##################" >> ${PCSX2_LOG} 2>&1
+    echo "# Starting PCSX2 #" >> ${PCSX2_LOG} 2>&1
+    echo "##################" >> ${PCSX2_LOG} 2>&1
 
     # Stop FluidSynth / set audio driver to ALSA
     RR_ADVANCED_CONF=/storage/.config/rr-config/advanced.conf
@@ -56,7 +56,7 @@ if [ -x $DOCKER_PATH ]; then
     -v /storage/roms/bios:/root/.config/PCSX2/bios \
     -v /tmp/.X11-unix:/tmp/.X11-unix"
 
-    $DOCKER_PATH run $DOCKER_ARGS $DOCKER_IMAGE /usr/bin/PCSX2 "$@" >> $PCSX2_LOG 2>&1
+    ${DOCKER_PATH} run ${DOCKER_ARGS} ${DOCKER_IMAGE} /usr/bin/PCSX2 "$@" >> ${PCSX2_LOG} 2>&1
 
     # Set audio driver to PulseAudio / start FluidSynth
     if [ ${RR_AUDIO_BACKEND} = "PulseAudio" ] && [ ! -f /var/run/fluidsynth.run ]; then
@@ -69,7 +69,7 @@ if [ -x $DOCKER_PATH ]; then
     pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze
   fi
 else
-  echo "######################################################################################################" > $PCSX2_LOG 2>&1
-  echo "# The Docker addon is missing. Please check out the Kodi addons, install Docker and run PCSX2 again. #" >> $PCSX2_LOG 2>&1
-  echo "######################################################################################################" >> $PCSX2_LOG 2>&1
+  echo "######################################################################################################" > ${PCSX2_LOG} 2>&1
+  echo "# The Docker addon is missing. Please check out the Kodi addons, install Docker and run PCSX2 again. #" >> ${PCSX2_LOG} 2>&1
+  echo "######################################################################################################" >> ${PCSX2_LOG} 2>&1
 fi
