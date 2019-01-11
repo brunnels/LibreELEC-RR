@@ -3,36 +3,36 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="emulationstation-theme-simple-dark"
-PKG_VERSION="4c33193"
+PKG_VERSION="4c33193cb3efd55b2631d856b9799e4841c3da8f"
 PKG_SHA256="07f2cc90a2966c1f66a799c6d8171401f547474f3d95db1838d67e2a1ab20bb9"
-PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/RetroPie/es-theme-simple-dark.git"
+PKG_LICENSE="CC-BY-NC-SA-2.0"
+PKG_SITE="https://github.com/RetroPie/es-theme-simple-dark"
 PKG_URL="https://github.com/RetroPie/es-theme-simple-dark/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_LONGDESC="Simple dark theme for Emulationstation"
+PKG_LONGDESC="Simple dark theme for Emulationstation based on Theme 'simple' v1.3 - 11-29-2014"
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources
-  mkdir -p $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark
-  cp -r * $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark
+  # Install stock theme
+  ES_THEME_PATH=/usr/share/emulationstation/themes/simple-dark
+  mkdir -p $INSTALL/usr/config/emulationstation/themes
+  mkdir -p $INSTALL/${ES_THEME_PATH}
+  cp -r *  $INSTALL/${ES_THEME_PATH}
+  ln -s    ${ES_THEME_PATH} $INSTALL/usr/config/emulationstation/themes/simple-dark
 
-  #adding additional themes
-  cp -a $PKG_DIR/files/2048 $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
-  cp -a $PKG_DIR/files/chailove $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
-  cp -a $PKG_DIR/files/mrboom $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
-  cp -a $PKG_DIR/files/moonlight $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
-  cp -a $PKG_DIR/files/prboom $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
-  cp -a $PKG_DIR/files/tyrquake $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
+  # Add missing common systems
+  cp -a $PKG_DIR/files/2048      $INSTALL/${ES_THEME_PATH}/
+  cp -a $PKG_DIR/files/chailove  $INSTALL/${ES_THEME_PATH}/
+  cp -a $PKG_DIR/files/mrboom    $INSTALL/${ES_THEME_PATH}/
+  cp -a $PKG_DIR/files/moonlight $INSTALL/${ES_THEME_PATH}/
+  cp -a $PKG_DIR/files/prboom    $INSTALL/${ES_THEME_PATH}/
+  cp -a $PKG_DIR/files/tyrquake  $INSTALL/${ES_THEME_PATH}/
 
-  #adding additional themes for generic
-  if [ "$PROJECT" == "Generic" ]; then
-    cp -a $PKG_DIR/files/n3ds $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/
+  # Add missing generic systems
+  if [ "$PROJECT" = "Generic" ]; then
+    cp -a $PKG_DIR/files/n3ds $INSTALL/${ES_THEME_PATH}/
   fi
 
-  #adding click sounds
-  cp $PKG_DIR/files/scroll.wav $INSTALL/usr/config/emulationstation/themes/es-theme-simple-dark/art/
-  cp $PKG_DIR/files/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/back.wav
-  cp $PKG_DIR/files/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/click.wav
-  cp $PKG_DIR/files/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/cursor.wav
+  # Add scroll sound to menu 
+  cp $PKG_DIR/files/scroll.wav $INSTALL/${ES_THEME_PATH}/art/
 }
