@@ -4,7 +4,7 @@
 PKG_NAME="emulationstation-theme-carbon"
 PKG_VERSION="488ce79"
 PKG_SHA256="7d3da3e1838c38c0983294ae4be08e4b8212ec189e73c67f1639444eaf2e829c"
-PKG_LICENSE="GPL"
+PKG_LICENSE="CC-BY-NC-SA-2.0"
 PKG_SITE="https://github.com/RetroPie/es-theme-carbon"
 PKG_URL="https://github.com/RetroPie/es-theme-carbon/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
@@ -12,25 +12,23 @@ PKG_LONGDESC="Theme 'carbon' v2.4 - 08-16-2016 by Rookervik"
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources
-  mkdir -p $INSTALL/usr/config/emulationstation/themes/es-theme-carbon
-  cp -r * $INSTALL/usr/config/emulationstation/themes/es-theme-carbon
+  # Install stock theme
+  ES_THEME_PATH=/usr/share/emulationstation/themes/carbon
+  mkdir -p $INSTALL/usr/config/emulationstation/themes
+  mkdir -p $INSTALL/${ES_THEME_PATH}
+  cp -r *  $INSTALL/${ES_THEME_PATH}
+  ln -s    ${ES_THEME_PATH} $INSTALL/usr/config/emulationstation/themes/carbon
 
-  #adding additional themes
-  cp -a $PKG_DIR/files/2048 $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
-  cp -a $PKG_DIR/files/chailove $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
-  cp -a $PKG_DIR/files/mrboom $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
-  cp -a $PKG_DIR/files/moonlight $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
-  cp -a $PKG_DIR/files/prboom $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
-  cp -a $PKG_DIR/files/tyrquake $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
+  # Add missing common systems
+  cp -a $PKG_DIR/files/2048      $INSTALL/${ES_THEME_PATH}/
+  cp -a $PKG_DIR/files/chailove  $INSTALL/${ES_THEME_PATH}/
+  cp -a $PKG_DIR/files/mrboom    $INSTALL/${ES_THEME_PATH}/
+  cp -a $PKG_DIR/files/moonlight $INSTALL/${ES_THEME_PATH}/
+  cp -a $PKG_DIR/files/prboom    $INSTALL/${ES_THEME_PATH}/
+  cp -a $PKG_DIR/files/tyrquake  $INSTALL/${ES_THEME_PATH}/
 
-  #adding additional themes for generic
+  # Add missing generic systems
   if [ "$PROJECT" = "Generic" ]; then
-    cp -a $PKG_DIR/files/n3ds $INSTALL/usr/config/emulationstation/themes/es-theme-carbon/
+    cp -a $PKG_DIR/files/n3ds $INSTALL/${ES_THEME_PATH}/
   fi
-
-  #adding click sounds
-  cp art/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/back.wav
-  cp art/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/click.wav
-  cp art/scroll.wav $INSTALL/usr/share/kodi/addons/resource.uisounds.kodi/resources/cursor.wav
 }
