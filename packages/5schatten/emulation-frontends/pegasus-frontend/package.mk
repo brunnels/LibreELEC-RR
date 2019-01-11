@@ -30,7 +30,9 @@ make_target() {
 post_makeinstall_target() {
   # Install start scripts
   mkdir -p $INSTALL/usr/bin
-  cp $PKG_DIR/scripts/pegasus-fe-${PROJECT}.start $INSTALL/usr/bin/pegasus-fe.start
+  mkdir -p $INSTALL/usr/config/pegasus-frontend/themes
+  echo "Place your Pegasus-Frontend Themes here!" >> $INSTALL/usr/config/pegasus-frontend/themes/readme.txt
+  cp $PKG_DIR/scripts/pegasus-fe-${PROJECT}.start    $INSTALL/usr/bin/pegasus-fe.start
 
   # Clean up
   rm -rf $INSTALL/usr/bin/pegasus-fe.desktop
