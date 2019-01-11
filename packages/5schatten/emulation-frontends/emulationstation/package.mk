@@ -17,20 +17,21 @@ post_makeinstall_target() {
   mkdir -p $INSTALL/etc/emulationstation
   mkdir -p $INSTALL/usr/config/emulationstation
   mkdir -p $INSTALL/usr/lib/tmpfiles.d
+
+  # Create symlinks for themes & config files
   ln -s /usr/config/emulationstation/es_systems.cfg $INSTALL/etc/emulationstation/
-  ln -s /usr/config/emulationstation/themes $INSTALL/etc/emulationstation/themes
+  ln -s /usr/config/emulationstation/themes         $INSTALL/etc/emulationstation/themes
 
   # Install scripts
   cp $PKG_DIR/scripts/emulationstation-${PROJECT}.start $INSTALL/usr/bin/emulationstation.start
 
   # Install resources
-  cp -r $PKG_DIR/files/* $INSTALL/usr/config/emulationstation/
-  cp -a ../resources $INSTALL/usr/config/emulationstation/
+  cp -r $PKG_DIR/files/*     $INSTALL/usr/config/emulationstation/
+  cp -a $PKG_BUILD/resources $INSTALL/usr/config/emulationstation/
 
   # Install config files
-  cp $PKG_DIR/config/emulationstation.conf $INSTALL/usr/config/emulationstation/
-  cp $PKG_DIR/config/es_input.cfg $INSTALL/usr/config/emulationstation/
-  cp $PKG_DIR/config/es_settings.cfg $INSTALL/usr/config/emulationstation/
-  cp $PKG_DIR/config/${PROJECT}/es_systems-${PROJECT}.cfg $INSTALL/usr/config/emulationstation/es_systems.cfg
+  cp $PKG_DIR/config/es_input.cfg          $INSTALL/usr/config/emulationstation/
+  cp $PKG_DIR/config/es_settings.cfg       $INSTALL/usr/config/emulationstation/
+  cp $PKG_DIR/config/${PROJECT}/es_systems-${PROJECT}.cfg                 $INSTALL/usr/config/emulationstation/es_systems.cfg
   cp $PKG_DIR/config/${PROJECT}/emulationstation-userdirs-${PROJECT}.conf $INSTALL/usr/lib/tmpfiles.d/emulationstation-userdirs.conf
 }

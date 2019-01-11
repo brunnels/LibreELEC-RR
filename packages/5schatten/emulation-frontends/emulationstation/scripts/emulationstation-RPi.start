@@ -3,7 +3,6 @@
 # Copyright (C) 0riginally created by Escalade (https://github.com/escalade)
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
-. /storage/.config/emulationstation/emulationstation.conf
 . /etc/profile
 
 if [ ! -L /storage/.emulationstation ]; then
@@ -22,7 +21,7 @@ kodifreeze.sh freeze
 # Set SDL audio driver to Pulseaudio or ALSA
 set_SDL_audiodriver
 
-emulationstation $EMULATIONSTATION_OPTS "$@" > /var/log/emulationstation.log 2>&1
+emulationstation "$@" > /var/log/emulationstation.log 2>&1
 
 # Unfreeze Kodi / start audio
 kodifreeze.sh unfreeze
