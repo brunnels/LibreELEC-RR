@@ -6,10 +6,14 @@ PKG_VERSION="3ab18e026c0c639ddae9f7dd79740bd963d93faf" # Alpha 10+
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/mmatyas/pegasus-frontend"
 PKG_URL="https://github.com/mmatyas/pegasus-frontend.git"
-PKG_DEPENDS_TARGET="toolchain SDL2-git qt-everywhere pegasus-theme-es2-simple pegasus-theme-gameOS"
+PKG_DEPENDS_TARGET="toolchain SDL2-git qt-everywhere pegasus-theme-gameOS"
 PKG_LONGDESC="A cross platform, customizable graphical frontend for launching emulators and managing your game collection."
 GET_HANDLER_SUPPORT="git"
 PKG_TOOLCHAIN="manual"
+
+if [ ! "${PROJECT}" = "Amlogic" ]; then
+  PKG_DEPENDS_TARGET+=" pegasus-theme-es2-simple"
+fi
 
 post_unpack() {
   cp -r ${PKG_DIR}/files/logos/* ${PKG_BUILD}/src/themes/pegasus-theme-grid/assets/logos
