@@ -2,13 +2,13 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="amiberry"
-PKG_VERSION="3cfe48e2ceae2beb38c717cd8f03f7029488e55a" # v2.24b12
+PKG_VERSION="888da42f22b900bb1e9cec9b838e5a1e945dcedf" # v2.24b12
 PKG_ARCH="arm"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/midwan/amiberry"
 PKG_URL="https://github.com/midwan/amiberry.git"
 PKG_DEPENDS_TARGET="toolchain zlib SDL2-git SDL2_image SDL2_ttf capsimg libxml2 flac mpg123-compat libpng libmpeg2 retroarch-joypad-autoconfig"
-PKG_LONGDESC="Amiberry is an optimized Amiga emulator, for ARM-based boards (like the Raspberry Pi, ASUS Tinkerboard, Odroid XU4, etc)."
+PKG_LONGDESC="Amiberry is an optimized Amiga emulator for ARM-based boards."
 GET_HANDLER_SUPPORT="git"
 PKG_TOOLCHAIN="make"
 
@@ -34,7 +34,6 @@ pre_make_target() {
 }
 
 makeinstall_target() {
-
   # Create directories
   mkdir -p $INSTALL/usr/bin
   mkdir -p $INSTALL/usr/lib
@@ -56,6 +55,5 @@ makeinstall_target() {
   # Copy binary, scripts & link libcapsimg
   cp amiberry-*-sdl2 $INSTALL/usr/bin/amiberry
   cp $PKG_DIR/scripts/* $INSTALL/usr/bin
-
   ln -sf /usr/lib/libcapsimage.so.5.1 $INSTALL/usr/config/amiberry/capsimg.so
 }
