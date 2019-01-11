@@ -3,9 +3,9 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="dolphin"
-PKG_VERSION="d3e1d2ea000412ee40251656c3efa4375e91f092"
-PKG_SHA256="9365058522b32c144e8d7c483fb20111536349802dcb4a994ecf9b9fcf2840dc"
-PKG_DOLPHIN_RELEASE="5.0-9320"
+PKG_VERSION="012338288e30e765e2ef8ec284cdbaceb42ba5ea"
+PKG_SHA256="4f743f42bf679a644514c5e054bfdd45607cf79c10faabc32c0b6d0bb3ddb017"
+PKG_DOLPHIN_RELEASE="5.0-9331"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/dolphin-emu/dolphin"
