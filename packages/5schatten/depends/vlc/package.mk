@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="vlc"
-PKG_VERSION="3.0.5"
-PKG_SHA256="f5c087dfebd4827052bf3b97996b3a05c79ae336dcb60a9e8d1a010f270072db"
+PKG_VERSION="3.0.6"
+PKG_SHA256="18c16d4be0f34861d0aa51fbd274fb87f0cab3b7119757ead93f3db3a1f27ed3"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://get.videolan.org/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
