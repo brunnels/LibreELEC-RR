@@ -8,122 +8,118 @@ PKG_LICENSE="GPL"
 PKG_SITE="https://www.libsdl.org/"
 PKG_URL="https://github.com/spurious/SDL-mirror/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain nasm:host alsa-lib systemd dbus"
-PKG_LONGDESC="SDL2: A cross-platform Graphic API"
+PKG_LONGDESC="Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware."
 
 # Set up egl-interface
-if [ $PROJECT = "Amlogic" ]; then
+if [ ${PROJECT} = "Amlogic" ]; then
   PKG_PATCH_DIRS="Amlogic"
 fi
 
-# X11 Support
-if [ "$DISPLAYSERVER" = "x11" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libX11 libXrandr"
-  SDL2_SUPPORT_X11="-DVIDEO_X11=ON \
-                    -DX11_SHARED=ON \
-                    -DVIDEO_X11_XCURSOR=OFF \
-                    -DVIDEO_X11_XINERAMA=OFF \
-                    -DVIDEO_X11_XINPUT=OFF \
-                    -DVIDEO_X11_XRANDR=ON \
-                    -DVIDEO_X11_XSCRNSAVER=OFF \
-                    -DVIDEO_X11_XSHAPE=OFF \
-                    -DVIDEO_X11_XVM=OFF"
-else
-  SDL2_SUPPORT_X11="-DVIDEO_X11=OFF"
-fi
+pre_configure_target(){
+  PKG_CMAKE_OPTS_TARGET="-DSDL_STATIC=OFF \
+                         -DLIBC=ON \
+                         -DGCC_ATOMICS=ON \
+                         -DASSEMBLY=ON \
+                         -DALTIVEC=OFF \
+                         -DOSS=OFF \
+                         -DALSA=ON \
+                         -DALSA_SHARED=ON \
+                         -DJACK=OFF \
+                         -DJACK_SHARED=OFF \
+                         -DESD=OFF \
+                         -DESD_SHARED=OFF \
+                         -DARTS=OFF \
+                         -DARTS_SHARED=OFF \
+                         -DNAS=OFF \
+                         -DNAS_SHARED=OFF \
+                         -DLIBSAMPLERATE=OFF \
+                         -DLIBSAMPLERATE_SHARED=OFF \
+                         -DSNDIO=OFF \
+                         -DDISKAUDIO=OFF \
+                         -DDUMMYAUDIO=OFF \
+                         -DVIDEO_WAYLAND=OFF \
+                         -DVIDEO_WAYLAND_QT_TOUCH=ON \
+                         -DWAYLAND_SHARED=OFF \
+                         -DVIDEO_MIR=OFF \
+                         -DMIR_SHARED=OFF \
+                         -DVIDEO_COCOA=OFF \
+                         -DVIDEO_DIRECTFB=OFF \
+                         -DVIDEO_VIVANTE=OFF \
+                         -DDIRECTFB_SHARED=OFF \
+                         -DFUSIONSOUND=OFF \
+                         -DFUSIONSOUND_SHARED=OFF \
+                         -DVIDEO_DUMMY=OFF \
+                         -DINPUT_TSLIB=OFF \
+                         -DPTHREADS=ON \
+                         -DPTHREADS_SEM=ON \
+                         -DDIRECTX=OFF \
+                         -DSDL_DLOPEN=ON \
+                         -DCLOCK_GETTIME=OFF \
+                         -DRPATH=OFF \
+                         -DRENDER_D3D=OFF"
 
-# OpenGL Support
-if [ "$OPENGL_SUPPORT" = "yes" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGL"
-  SDL2_SUPPORT_OPENGL="-DVIDEO_OPENGL=ON"
-else
-  SDL2_SUPPORT_OPENGL="-DVIDEO_OPENGL=OFF"
-fi
+  # X11 Support
+  if [ "${DISPLAYSERVER}" = "x11" ]; then
+    PKG_DEPENDS_TARGET+=" libX11 libXrandr"
+    PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_X11=ON \
+                             -DX11_SHARED=ON \
+                             -DVIDEO_X11_XCURSOR=OFF \
+                             -DVIDEO_X11_XINERAMA=OFF \
+                             -DVIDEO_X11_XINPUT=OFF \
+                             -DVIDEO_X11_XRANDR=ON \
+                             -DVIDEO_X11_XSCRNSAVER=OFF \
+                             -DVIDEO_X11_XSHAPE=OFF \
+                             -DVIDEO_X11_XVM=OFF"
+  else
+    PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_X11=OFF"
+  fi
 
-# OpenGLES Support
-if [ "$OPENGLES_SUPPORT" = "yes" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGLES"
-  SDL2_SUPPORT_OPENGLES="-DVIDEO_OPENGLES=ON"
-else
-  SDL2_SUPPORT_OPENGLES="-DVIDEO_OPENGLES=OFF"
-fi
+  # OpenGL Support
+  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" $OPENGL"
+    PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_OPENGL=ON"
+  else
+    PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_OPENGL=OFF"
+  fi
 
-# RPi Video Support
-if [ "$OPENGLES" = "bcm2835-driver" ]; then
-  SDL2_SUPPORT_RPI="-DVIDEO_RPI=ON \
-                    -DVIDEO_VULKAN=OFF \
-                    -DVIDEO_KMSDRM=OFF"
-else
-  SDL2_SUPPORT_RPI="-DVIDEO_RPI=OFF"
-fi
+  # OpenGLES Support
+  if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" $OPENGLES"
+    PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_OPENGLES=ON"
+  else
+    PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_OPENGLES=OFF"
+  fi
 
-# AML Mali Video Support
-if [ "$OPENGLES" = "opengl-meson" ] || [ "$OPENGLES" = "opengl-meson-t82x" ]; then
-  SDL2_SUPPORT_MALI="-DVIDEO_MALI=ON \
-                     -DVIDEO_VULKAN=OFF \
-                     -DVIDEO_KMSDRM=OFF"
-else
-  SDL2_SUPPORT_MALI="-DVIDEO_MALI=OFF"
-fi
+  # RPi Video Support
+  if [ "${OPENGLES}" = "bcm2835-driver" ]; then
+    PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_RPI=ON \
+                             -DVIDEO_VULKAN=OFF \
+                             -DVIDEO_KMSDRM=OFF"
+  else
+    PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_RPI=OFF"
+  fi
 
-# Pulseaudio Support
-if [ "$PULSEAUDIO_SUPPORT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET pulseaudio"
+  # AML Mali Video Support
+  if [ "${OPENGLES}" = "opengl-meson" ]; then
+    PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_MALI=ON \
+                             -DVIDEO_VULKAN=OFF \
+                             -DVIDEO_KMSDRM=OFF"
+  else
+    PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_MALI=OFF"
+  fi
 
-  SDL2_SUPPORT_PULSEAUDIO="-DPULSEAUDIO=ON \
-                           -DPULSEAUDIO_SHARED=ON"
-else
-  SDL2_SUPPORT_PULSEAUDIO="-DPULSEAUDIO=OFF \
-                           -DPULSEAUDIO_SHARED=OFF"
-fi
-
-PKG_CMAKE_OPTS_TARGET="-DSDL_STATIC=OFF \
-                       -DLIBC=ON \
-                       -DGCC_ATOMICS=ON \
-                       -DASSEMBLY=ON \
-                       -DALTIVEC=OFF \
-                       -DOSS=OFF \
-                       -DALSA=ON \
-                       -DALSA_SHARED=ON \
-                       -DESD=OFF \
-                       -DESD_SHARED=OFF \
-                       -DARTS=OFF \
-                       -DARTS_SHARED=OFF \
-                       -DNAS=OFF \
-                       -DNAS_SHARED=OFF \
-                       -DLIBSAMPLERATE=OFF \
-                       -DLIBSAMPLERATE_SHARED=OFF \
-                       -DSNDIO=OFF \
-                       -DDISKAUDIO=OFF \
-                       -DDUMMYAUDIO=OFF \
-                       -DVIDEO_WAYLAND=OFF \
-                       -DVIDEO_WAYLAND_QT_TOUCH=ON \
-                       -DWAYLAND_SHARED=OFF \
-                       -DVIDEO_MIR=OFF \
-                       -DMIR_SHARED=OFF \
-                       -DVIDEO_COCOA=OFF \
-                       -DVIDEO_DIRECTFB=OFF \
-                       -DVIDEO_VIVANTE=OFF \
-                       -DDIRECTFB_SHARED=OFF \
-                       -DFUSIONSOUND=OFF \
-                       -DFUSIONSOUND_SHARED=OFF \
-                       -DVIDEO_DUMMY=OFF \
-                       -DINPUT_TSLIB=OFF \
-                       -DPTHREADS=ON \
-                       -DPTHREADS_SEM=ON \
-                       -DDIRECTX=OFF \
-                       -DSDL_DLOPEN=ON \
-                       -DCLOCK_GETTIME=OFF \
-                       -DRPATH=OFF \
-                       -DRENDER_D3D=OFF \
-                       $SDL2_SUPPORT_X11 \
-                       $SDL2_SUPPORT_OPENGL \
-                       $SDL2_SUPPORT_OPENGLES \
-                       $SDL2_SUPPORT_RPI \
-                       $SDL2_SUPPORT_MALI \
-                       $SDL2_SUPPORT_PULSEAUDIO"
+  # Pulseaudio Support
+  if [ "${PULSEAUDIO_SUPPORT}" = yes ]; then
+    PKG_DEPENDS_TARGET+=" pulseaudio"
+    PKG_CMAKE_OPTS_TARGET+=" -DPULSEAUDIO=ON \
+                             -DPULSEAUDIO_SHARED=ON"
+  else
+    PKG_CMAKE_OPTS_TARGET+=" -DPULSEAUDIO=OFF \
+                             -DPULSEAUDIO_SHARED=OFF"
+  fi
+}
 
 post_makeinstall_target() {
   sed -e "s:\(['=\" ]\)/usr:\\1$SYSROOT_PREFIX/usr:g" -i $SYSROOT_PREFIX/usr/bin/sdl2-config
-
   rm -rf $INSTALL/usr/bin
 }
