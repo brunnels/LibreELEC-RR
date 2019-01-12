@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="fluidsynth-git"
-PKG_VERSION="2.0.1"
-PKG_SHA256="0d80f0b2fb0d3f93722844e654d5b5f004bf31a07f752c0be939b7242ac33248"
+PKG_VERSION="2.0.3"
+PKG_SHA256="12c7ede220f54a6e52a7e7b0b1729c04a4282685569adf18d932a7dd3c10e759"
 PKG_LICENSE="LGPL"
 PKG_SITE="http://fluidsynth.org/"
 PKG_URL="https://github.com/FluidSynth/fluidsynth/archive/v$PKG_VERSION.tar.gz"
