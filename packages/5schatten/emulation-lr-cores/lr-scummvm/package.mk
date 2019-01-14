@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-scummvm"
-PKG_VERSION="0daf2f441c73b0ec0b1562c3483390ade790795c"
-PKG_SHA256="5420a7ad148cc83f898e597f44bb4924ff019cc40add43851782ab5c8c4524cc"
+PKG_VERSION="7fb4d42ca053d8a2e4b9a21ac185226f37568522"
+PKG_SHA256="beca3eb4c10733d35ce40a38fe8b38e756b70e81144827e0e0309fdd9d9df711"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/scummvm"
 PKG_URL="https://github.com/libretro/scummvm/archive/$PKG_VERSION.tar.gz"
