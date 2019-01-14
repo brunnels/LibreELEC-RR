@@ -68,6 +68,11 @@ addon() {
     cp -P $(get_install_dir rar2fs)/usr/bin/mkr2i $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $(get_install_dir rar2fs)/usr/bin/rar2fs $ADDON_BUILD/$PKG_ADDON_ID/bin
 
+    # rar2fs
+    cp -P $(get_build_dir libunrar)/libunrar.so $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -P $(get_build_dir rar2fs)/.$TARGET_NAME/mkr2i $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $(get_build_dir rar2fs)/.$TARGET_NAME/rar2fs $ADDON_BUILD/$PKG_ADDON_ID/bin
+
     # rsync
     cp -P $(get_install_dir rsync)/usr/bin/rsync $ADDON_BUILD/$PKG_ADDON_ID/bin
 
