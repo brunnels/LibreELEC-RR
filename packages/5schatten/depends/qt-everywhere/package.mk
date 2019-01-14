@@ -10,87 +10,92 @@ PKG_URL="http://download.qt.io/archive/qt/${PKG_VERSION%.*}/$PKG_VERSION/single/
 PKG_DEPENDS_TARGET="toolchain libjpeg-turbo libpng pcre2 sqlite zlib freetype gstreamer gst-plugins-base gst-plugins-good gst-libav"
 PKG_LONGDESC="A cross-platform application and UI framework"
 
-PKG_CONFIGURE_OPTS_TARGET="-prefix /usr
-                           -sysroot $SYSROOT_PREFIX
-                           -hostprefix $TOOLCHAIN
-                           -device linux-libreelec-g++
-                           -device-option CROSS_COMPILE=${TARGET_PREFIX}
-                           -fontconfig
-                           -opensource -confirm-license
-                           -release
-                           -shared
-                           -make libs
-                           -nomake examples
-                           -nomake tests
-                           -ccache
-                           -gstreamer 1.0
-                           -force-pkg-config
-                           -silent
-                           -system-libjpeg
-                           -system-libpng
-                           -system-pcre
-                           -system-sqlite
-                           -system-zlib
-                           -no-accessibility
-                           -no-cups
-                           -no-dbus
-                           -no-evdev
-                           -no-gif
-                           -no-glib
-                           -no-harfbuzz
-                           -no-iconv
-                           -no-icu
-                           -no-libproxy
-                           -no-mtdev
-                           -no-sql-mysql
-                           -no-strip
-                           -no-tslib
-                           -no-feature-linuxfb
-                           -no-feature-openal
-                           -no-feature-qml-debug
-                           -no-feature-printer
-                           -no-feature-vnc
-                           -skip qt3d
-                           -skip qtactiveqt
-                           -skip qtandroidextras
-                           -skip qtcharts
-                           -skip qtconnectivity
-                           -skip qtdatavis3d
-                           -skip qtdoc
-                           -skip qtlocation
-                           -skip qtmacextras
-                           -skip qtnetworkauth
-                           -skip qtpurchasing
-                           -skip qtquickcontrols
-                           -skip qtremoteobjects
-                           -skip qtscript
-                           -skip qtscxml
-                           -skip qtsensors
-                           -skip qtserialport
-                           -skip qtserialbus
-                           -skip qtspeech
-                           -skip qttranslations
-                           -skip qtvirtualkeyboard
-                           -skip qtwayland
-                           -skip qtwebchannel
-                           -skip qtwebengine
-                           -skip qtwebsockets
-                           -skip qtwebview
-                           -skip qtwinextras
-                           -skip qtx11extras
-                           -skip qtxmlpatterns"
+pre_configure_target() {
+  # Fix cross compiling
+  sed -e "s/QMAKE_CFLAGS_ISYSTEM        = -isystem/QMAKE_CFLAGS_ISYSTEM        = -I/" -i ${PKG_BUILD}/qtbase/mkspecs/common/gcc-base.conf
 
-# Build with OpenGL or OpenGLES support
-if [ "${OPENGL_SUPPORT}" = "yes" ]; then
-  PKG_CONFIGURE_OPTS_TARGET+=" -opengl -no-eglfs"
-elif [ "${OPENGLES_SUPPORT}" = "yes" ]; then
-  PKG_CONFIGURE_OPTS_TARGET+=" -opengl es2"
-fi
+  PKG_CONFIGURE_OPTS_TARGET="-prefix /usr
+                             -sysroot $SYSROOT_PREFIX
+                             -hostprefix $TOOLCHAIN
+                             -device linux-libreelec-g++
+                             -device-option CROSS_COMPILE=${TARGET_PREFIX}
+                             -fontconfig
+                             -opensource -confirm-license
+                             -release
+                             -shared
+                             -make libs
+                             -nomake examples
+                             -nomake tests
+                             -ccache
+                             -gstreamer 1.0
+                             -force-pkg-config
+                             -silent
+                             -system-libjpeg
+                             -system-libpng
+                             -system-pcre
+                             -system-sqlite
+                             -system-zlib
+                             -no-accessibility
+                             -no-cups
+                             -no-dbus
+                             -no-evdev
+                             -no-gif
+                             -no-glib
+                             -no-harfbuzz
+                             -no-iconv
+                             -no-icu
+                             -no-libproxy
+                             -no-mtdev
+                             -no-sql-mysql
+                             -no-strip
+                             -no-tslib
+                             -no-feature-linuxfb
+                             -no-feature-openal
+                             -no-feature-qml-debug
+                             -no-feature-printer
+                             -no-feature-vnc
+                             -skip qt3d
+                             -skip qtactiveqt
+                             -skip qtandroidextras
+                             -skip qtcharts
+                             -skip qtconnectivity
+                             -skip qtdatavis3d
+                             -skip qtdoc
+                             -skip qtlocation
+                             -skip qtmacextras
+                             -skip qtnetworkauth
+                             -skip qtpurchasing
+                             -skip qtquickcontrols
+                             -skip qtremoteobjects
+                             -skip qtscript
+                             -skip qtscxml
+                             -skip qtsensors
+                             -skip qtserialport
+                             -skip qtserialbus
+                             -skip qtspeech
+                             -skip qttranslations
+                             -skip qtvirtualkeyboard
+                             -skip qtwayland
+                             -skip qtwebchannel
+                             -skip qtwebengine
+                             -skip qtwebsockets
+                             -skip qtwebview
+                             -skip qtwinextras
+                             -skip qtx11extras
+                             -skip qtxmlpatterns"
 
-# Build with XCB support for X11
-if [ ${DISPLAYSERVER} = "x11" ]; then
-  PKG_CONFIGURE_OPTS_TARGET+=" -qt-xcb"
-fi
+  # Build with OpenGL or OpenGLES support
+  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+    PKG_CONFIGURE_OPTS_TARGET+=" -opengl -no-eglfs"
+  elif [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+    PKG_CONFIGURE_OPTS_TARGET+=" -opengl es2"
+  fi
+
+  # Build with XCB support for X11
+  if [ ${DISPLAYSERVER} = "x11" ]; then
+    PKG_CONFIGURE_OPTS_TARGET+=" -qt-xcb"
+  fi
+}
 
 configure_target() {
   QMAKE_CONF_DIR="qtbase/mkspecs/devices/linux-libreelec-g++"
