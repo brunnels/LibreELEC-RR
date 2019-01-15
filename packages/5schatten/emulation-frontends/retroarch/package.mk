@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="af7379889dedf740d7e83feb6ad054d46b9d414d" #1.7.6-dev 
+PKG_VERSION="c7054a36f2c9fa4b99c76e09398e74c003efe7d4" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
@@ -74,7 +74,7 @@ pre_configure_target() {
                       -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux"
 
     # Amlogic OpenGLES Features Support
-    elif [ "${OPENGLES}" = "opengl-meson" ] || [ "${OPENGLES}" = "opengl-meson-t82x" ]; then
+    elif [ "${OPENGLES}" = "opengl-meson" ]; then
       PKG_CONFIGURE_OPTS_TARGET+=" --enable-mali_fbdev"
     fi
   fi
