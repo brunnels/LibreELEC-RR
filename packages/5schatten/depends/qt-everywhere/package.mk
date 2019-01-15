@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="qt-everywhere"
-PKG_VERSION="5.11.3"
-PKG_SHA256="859417642713cee2493ee3646a7fee782c9f1db39e41d7bb1322bba0c5f0ff4d"
+PKG_VERSION="5.12.0"
+PKG_SHA256="356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c"
 PKG_LICENSE="GPL"
 PKG_SITE="http://qt-project.org"
 PKG_URL="http://download.qt.io/archive/qt/${PKG_VERSION%.*}/$PKG_VERSION/single/$PKG_NAME-src-$PKG_VERSION.tar.xz"
@@ -139,7 +139,7 @@ configure_target() {
 }
 
 post_makeinstall_target() {
-  # install QT5 libs
+  # Create directories
   mkdir -p $INSTALL/usr/lib
   mkdir -p $INSTALL/usr/plugins
   mkdir -p $INSTALL/usr/qml
