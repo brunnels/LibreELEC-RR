@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="amiberry"
-PKG_VERSION="22b95018eca3225083a66d574e0847d6e9ab3631" # v2.24
+PKG_VERSION="2d3495c7d0d410a6e20b26c133ae89e43b0020b1" # v2.24+
 PKG_ARCH="arm"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/midwan/amiberry"
