@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="vulkan-headers"
-PKG_VERSION="c200cb25db0f47364d3318d92c1d8e9dfff2fef1" # 1.1.97
-PKG_SHA256="a7a1639e2e67b4cf723f0c591eb1d32d02c08b0e1ae422cf62f96238cc25488b"
+PKG_VERSION="d59ee6ab0d0636a018874c23a46f4208b6cee9ca" # 1.1.98
+PKG_SHA256="47df109786671d4a0c10ba4e4f84219775b7b0e287b27e97d7b2320732f405e4"
 PKG_LICENSE="Apache 2.0"
 PKG_SITE="https://github.com/KhronosGroup/Vulkan-Headers"
 PKG_URL="https://github.com/KhronosGroup/Vulkan-Headers/archive/$PKG_VERSION.tar.gz"
