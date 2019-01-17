@@ -48,7 +48,7 @@
 
 * [AMDGPU](https://cgit.freedesktop.org/xorg/driver/xf86-video-amdgpu/) - v18.1.0
 * [ATI](https://cgit.freedesktop.org/xorg/driver/xf86-video-ati) - v18.1.0
-* [Intel-video](https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/) - git e5ff8e1
+* [Intel-video](https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/) - git c37c7ee
 * [Intel](https://downloadcenter.intel.com/download/28087/Linux-Processor-Microcode-Data-File) - µcode 2018-08-07a
 * [Mesa 3D](https://www.mesa3d.org/) - v18.3.2
 * [Nvidia](https://www.nvidia.com/Download/driverResults.aspx/134859/en-us) - v410.93
