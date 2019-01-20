@@ -13,7 +13,7 @@ set_refresh_rate_60
 # Set audio backend to PulseAudio or ALSA
 set_SDL_audiodriver
 
-/usr/share/PPSSPP/PPSSPPSDL "$@"> /var/log/PPSSPP.log 2>&1
+/usr/share/PPSSPP/PPSSPPSDL "$@" > /var/log/PPSSPP.log 2>&1
 
 # Switch back to Frontends or unfreeze Kodi & start audio
 pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze
