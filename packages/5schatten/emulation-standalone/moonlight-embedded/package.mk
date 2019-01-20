@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="moonlight-embedded"
-PKG_VERSION="a5ea38cb281a791de269804130e1d601f9817b64" #v2.4.7+
+PKG_VERSION="ee6a3b49d4d8e3f08f542e9536c04b6c032225ee" #v2.4.7+
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/irtimmer/moonlight-embedded"
 PKG_URL="https://github.com/irtimmer/moonlight-embedded.git"
@@ -10,10 +10,10 @@ PKG_DEPENDS_TARGET="toolchain alsa-lib avahi curl enet expat ffmpeg libcec libev
 PKG_LONGDESC="Moonlight Embedded is an open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield, but built for Linux."
 GET_HANDLER_SUPPORT="git"
 
-if [ "$PROJECT" = "RPi" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET bcm2835-driver"
-elif [ "$PROJECT" = "Generic" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libvdpau libxcb"
+if [ "${PROJECT}" = "RPi" ]; then
+  PKG_DEPENDS_TARGET+=" bcm2835-driver"
+elif [ "${PROJECT}" = "Generic" ]; then
+  PKG_DEPENDS_TARGET+=" libvdpau libxcb"
 fi
 
 post_makeinstall_target() {
