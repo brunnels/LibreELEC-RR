@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-mupen64plus"
-PKG_VERSION="501d2987be8ee7a58186581597e1a64175f82bad"
-PKG_SHA256="571ff9a7059960c8b9d5780308dfb2dbdb10f2d3b482b1dbf1dbeaf6265ec672"
+PKG_VERSION="b21e3292e6ff7afb954d4871362ab6e6473d680f"
+PKG_SHA256="2bc4424ac80ee03d248d261908a857dc1e0ae919704830e1629cd111a9acc91e"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/mupen64plus-libretro"
 PKG_URL="https://github.com/libretro/mupen64plus-libretro/archive/$PKG_VERSION.tar.gz"
