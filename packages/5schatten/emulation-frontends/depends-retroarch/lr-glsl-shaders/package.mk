@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-glsl-shaders"
-PKG_VERSION="493e6bb8550695eb87b632bc109f10f46bdc7cf4"
-PKG_SHA256="85b3ac99b1cf7d8504bf64a91b582905cca55db9130167b4ff8fdfa56e0d6748"
+PKG_VERSION="a28198bc9bf469fd2897db8622fcf71f137a5bf6"
+PKG_SHA256="b976bae910d443a8d7eb9cd7ab09255bd17687c1fffba59b25a1e896d82fbb12"
 PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/libretro/glsl-shaders"
 PKG_URL="https://github.com/libretro/glsl-shaders/archive/$PKG_VERSION.tar.gz"
