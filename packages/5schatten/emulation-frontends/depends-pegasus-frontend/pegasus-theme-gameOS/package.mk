@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="pegasus-theme-gameOS"
-PKG_VERSION="8d947875c9b805a5c7f66b4c502ef34224bf2b5f" # v0.5
-PKG_SHA256="5048dbf4b37a9d790a8a8f0f1151e115e1d453d87975594754690ce821c20d70"
+PKG_VERSION="3f49d84eacc62a6dfb487fcf15131d5594df3315" # v0.5
+PKG_SHA256="94b1c0b5da0c6960dd5fb0f405b4b0909f227129166cf523f6840cef220294c9"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/PlayingKarrde/gameOS"
 PKG_URL="https://github.com/PlayingKarrde/gameOS/archive/$PKG_VERSION.tar.gz"
