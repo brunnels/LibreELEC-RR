@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-reicast"
-PKG_VERSION="b3ac84189693a9d97624282f3dd511ad932a4233"
-PKG_SHA256="6e5759b6f3cf1805490fe00dbbfe20bfa4d2fbe782a317b4dc2ca8aa5fa3e4b4"
+PKG_VERSION="cdc1dbba4e45a438d829e7a63406e4e038b63d5c"
+PKG_SHA256="5fe04d6f42b898b7125d3ca2f96a2b1facefdbc4660e2c2c7476415f3a1c4349"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/reicast-emulator"
 PKG_URL="https://github.com/libretro/reicast-emulator/archive/$PKG_VERSION.tar.gz"
