@@ -4,12 +4,9 @@
 
 . /etc/profile
 
+# Set common paths
 CITRA_HOME_CONFIG=/storage/.config/citra-emu
 CITRA_HOME_LOCAL=/storage/.local/share/citra-emu
-CITRA_QTCONFIG=$CITRA_HOME_CONFIG/qt-config.ini
-
-# Freeze Kodi / stop audio
-kodifreeze.sh freeze
 
 # create link to config directory
 if [ ! -L $CITRA_HOME_LOCAL ]; then
@@ -17,6 +14,9 @@ if [ ! -L $CITRA_HOME_LOCAL ]; then
   rm -rf $CITRA_HOME_LOCAL
   ln -s $CITRA_HOME_CONFIG $CITRA_HOME_LOCAL
 fi
+
+# Freeze Kodi / stop audio
+kodifreeze.sh freeze
 
 # Set SDL audio driver to PulseAudio or ALSA
 set_SDL_audiodriver
