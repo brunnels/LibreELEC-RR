@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="moonlight-embedded"
-PKG_VERSION="ee6a3b49d4d8e3f08f542e9536c04b6c032225ee" #v2.4.7+
+PKG_VERSION="d0f5f90dea8c703db9e1c899746f1d49dc1cac7e" #v2.4.7+
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/irtimmer/moonlight-embedded"
 PKG_URL="https://github.com/irtimmer/moonlight-embedded.git"
