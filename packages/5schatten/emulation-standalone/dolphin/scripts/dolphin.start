@@ -5,6 +5,18 @@
 
 . /etc/profile
 
+# Set common paths
+DOLPHIN_HOME_CONFIG=/storage/.config/dolphin-emu/share
+DOLPHIN_HOME_LOCAL=/storage/.local/share/dolphin-emu
+
+# create link to config directory
+if [ ! -L ${DOLPHIN_HOME_LOCAL} ]; then
+  mkdir -p ${DOLPHIN_HOME_CONFIG}
+  cp -r ${DOLPHIN_HOME_LOCAL}/* ${DOLPHIN_HOME_CONFIG}/
+  rm -rf ${DOLPHIN_HOME_LOCAL}
+  ln -s ${DOLPHIN_HOME_CONFIG} ${DOLPHIN_HOME_LOCAL}
+fi
+
 # Freeze Kodi / stop audio
 kodifreeze.sh freeze
 
