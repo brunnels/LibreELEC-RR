@@ -28,7 +28,7 @@ post_makeinstall_target() {
   #remove unneeded MAME databases for SBC based systems
   if [ "${PROJECT}" = "Amlogic" ] || [ "${PROJECT}" = "RPi" ]; then
     rm $INSTALL/usr/share/retroarch/database/rdb/MAME.rdb
-    rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2014.rdb
+    rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2015.rdb
   fi
 
   #workaround until a MAME 2016 database for romset 0.174 is included
