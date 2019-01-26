@@ -15,6 +15,7 @@ PKG_TOOLCHAIN="manual"
 OEM_APPS_COMMON=" \
   ds4drv \
   htop \
+  lm-sensors \
   midnight-commander \
   scraper \
   sdl-jstest \
@@ -49,7 +50,7 @@ OEM_EMU_COMMON=" \
   lr-chailove \
   lr-desmume \
   lr-dosbox \
-  lr-fbalpha2018 \
+  lr-fbalpha \
   lr-fceumm \
   lr-fuse \
   lr-gambatte \
