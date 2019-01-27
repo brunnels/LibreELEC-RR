@@ -1,0 +1,174 @@
+From 7439bc3f26ce81ba886c308769c32432734054eb Mon Sep 17 00:00:00 2001
+From: Flyinghead <raphael.jean@gmail.com>
+Date: Sat, 26 Jan 2019 17:23:46 +0100
+Subject: [PATCH] generic dynarec was always used if compiled in
+
+also disable the generic dynarec when using a native one
+fixes startup crash on RPi3
+---
+ Makefile     | 21 +++++++++++++++------
+ core/rec.cpp |  7 +++++++
+ 2 files changed, 22 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 96adebe48..47be5b201 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,7 +9,7 @@ NO_EXCEPTIONS := 0
+ NO_NVMEM      := 0
+ NO_VERIFY     := 1
+ HAVE_LTCG     := 1
+-HAVE_GENERIC_JIT   := 1
++HAVE_GENERIC_JIT := 1
+ HAVE_GL3      := 0
+ FORCE_GLES    := 0
+ STATIC_LINKING:= 0
+@@ -127,7 +127,7 @@ ifneq (,$(findstring unix,$(platform)))
+ 		CFLAGS += -DTARGET_LINUX_x64 -D TARGET_NO_AREC
+ 		SINGLE_PREC_FLAGS=1
+ 		CXXFLAGS += -fexceptions
+-		HAVE_GENERIC_JIT   = 0
++		HAVE_GENERIC_JIT = 0
+ 	else ifeq ($(WITH_DYNAREC), x86)
+ 		CFLAGS += -m32 -D TARGET_LINUX_x86
+ 		SINGLE_PREC_FLAGS=1
+@@ -135,7 +135,7 @@ ifneq (,$(findstring unix,$(platform)))
+ 		MFLAGS += -m32
+ 		ASFLAGS += --32
+ 		LDFLAGS += -m32
+-		HAVE_GENERIC_JIT   = 0
++		HAVE_GENERIC_JIT = 0
+ 	endif
+ 
+ 	PLATFORM_EXT := unix
+@@ -169,6 +169,7 @@ else ifneq (,$(findstring rpi,$(platform)))
+ 
+ 	PLATFORM_EXT := unix
+ 	WITH_DYNAREC=arm
++	HAVE_GENERIC_JIT = 0
+ 
+ # Classic Platforms ####################
+ # Platform affix = classic_<ISA>_<µARCH>
+@@ -211,6 +212,7 @@ else ifeq ($(platform), classic_armv7_a7)
+ 	endif
+ 	PLATFORM_EXT := unix
+ 	WITH_DYNAREC = arm
++	HAVE_GENERIC_JIT = 0
+ #######################################
+ 
+ # RockPro64
+@@ -229,6 +231,7 @@ else ifeq ($(platform), rockpro64)
+ 	ASFLAGS += $(CFLAGS) -c -frename-registers -fno-strict-aliasing -ffast-math -ftree-vectorize
+ 	PLATFORM_EXT := unix
+ 	WITH_DYNAREC=arm
++	HAVE_GENERIC_JIT = 0
+ 
+ # ODROIDs
+ else ifneq (,$(findstring odroid,$(platform)))
+@@ -279,6 +282,7 @@ else ifneq (,$(findstring odroid,$(platform)))
+ 
+ 	PLATFORM_EXT := unix
+ 	WITH_DYNAREC=arm
++	HAVE_GENERIC_JIT = 0
+ 
+ # i.MX6
+ else ifneq (,$(findstring imx6,$(platform)))
+@@ -291,6 +295,7 @@ else ifneq (,$(findstring imx6,$(platform)))
+ 	CPUFLAGS += -DNO_ASM
+ 	PLATFORM_EXT := unix
+ 	WITH_DYNAREC=arm
++	HAVE_GENERIC_JIT = 0
+ 
+ # OS X
+ else ifneq (,$(findstring osx,$(platform)))
+@@ -310,8 +315,8 @@ else ifneq (,$(findstring osx,$(platform)))
+ 	# Target Dynarec
+ 	ifeq ($(ARCH), $(filter $(ARCH), ppc))
+ 		WITH_DYNAREC =
+-        else
+-                HAVE_GENERIC_JIT   = 0
++    else
++		HAVE_GENERIC_JIT = 0
+ 	endif
+ 	HAVE_OPENMP=0
+ 
+@@ -367,6 +372,7 @@ else ifneq (,$(findstring theos_ios,$(platform)))
+ 	DEFINES += -DIOS
+ 	FORCE_GLES = 1
+ 	WITH_DYNAREC=arm
++	HAVE_GENERIC_JIT = 0
+ 
+ 	PLATCFLAGS += -DHAVE_POSIX_MEMALIGN -DNO_ASM
+ 	PLATCFLAGS += -DIOS -marm
+@@ -382,6 +388,7 @@ else ifneq (,$(findstring android,$(platform)))
+ 	CC = arm-linux-androideabi-gcc
+ 	CXX = arm-linux-androideabi-g++
+ 	WITH_DYNAREC=arm
++	HAVE_GENERIC_JIT = 0
+ 	FORCE_GLES = 1
+ 	PLATCFLAGS += -DANDROID
+ 	CPUCFLAGS  += -DNO_ASM
+@@ -402,6 +409,7 @@ else ifeq ($(platform), qnx)
+ 	CXX = QCC -Vgcc_ntoarmv7le
+ 	AR = QCC -Vgcc_ntoarmv7le
+ 	WITH_DYNAREC=arm
++	HAVE_GENERIC_JIT = 0
+ 	FORCE_GLES = 1
+ 	PLATCFLAGS += -DNO_ASM -D__BLACKBERRY_QNX__
+ 	CPUFLAGS += -marm -mcpu=cortex-a9 -mfpu=neon -mfloat-abi=softfp -D__arm__ -DARM_ASM -D__NEON_OPT
+@@ -417,6 +425,7 @@ else ifneq (,$(findstring armv,$(platform)))
+ 	fpic := -fPIC
+ 	CPUFLAGS += -DNO_ASM -DARM -D__arm__ -DARM_ASM -DNOSSE
+ 	WITH_DYNAREC=arm
++	HAVE_GENERIC_JIT = 0
+ 	PLATCFLAGS += -DARM
+ 	ifneq (,$(findstring gles,$(platform)))
+ 		FORCE_GLES = 1
+@@ -464,7 +473,7 @@ else
+ 		endif
+ 	endif
+ 	EXT       ?= dll
+-	HAVE_GENERIC_JIT   = 0
++	HAVE_GENERIC_JIT = 0
+ 	TARGET := $(TARGET_NAME)_libretro.$(EXT)
+ 	LDFLAGS += -shared -static-libgcc -static-libstdc++ -Wl,--version-script=link.T -lwinmm -lgdi32
+ 	GL_LIB := -lopengl32
+diff --git a/core/rec.cpp b/core/rec.cpp
+index 19ae152cf..8210f1064 100644
+--- a/core/rec.cpp
++++ b/core/rec.cpp
+@@ -29,6 +29,7 @@ void ngen_init(void)
+          ngen_CC_Param = ngen_CC_Param_x86;
+          ngen_CC_Finish = ngen_CC_Finish_x86;
+ 
++         break;
+ #elif FEAT_SHREC == DYNAREC_JIT && HOST_CPU == CPU_ARM
+          extern void ngen_init_arm(void);
+          extern void ngen_Compile_arm(RuntimeBlockInfo* block,bool force_checks, bool reset, bool staging,bool optimise);
+@@ -43,6 +44,8 @@ void ngen_init(void)
+          ngen_CC_Call = ngen_CC_Call_arm;
+          ngen_CC_Param = ngen_CC_Param_arm;
+          ngen_CC_Finish = ngen_CC_Finish_arm;
++
++         break;
+ #elif FEAT_SHREC == DYNAREC_JIT && HOST_CPU == CPU_ARM64
+          extern void ngen_init_arm64(void);
+          extern void ngen_Compile_arm64(RuntimeBlockInfo* block,bool force_checks, bool reset, bool staging,bool optimise);
+@@ -57,6 +60,8 @@ void ngen_init(void)
+          ngen_CC_Call = ngen_CC_Call_arm64;
+          ngen_CC_Param = ngen_CC_Param_arm64;
+          ngen_CC_Finish = ngen_CC_Finish_arm64;
++
++         break;
+ #elif FEAT_SHREC == DYNAREC_JIT && HOST_CPU == CPU_X64
+          extern void ngen_Compile_x64(RuntimeBlockInfo* block, bool force_checks, bool reset, bool staging, bool optimise);
+          extern void ngen_CC_Start_x64(shil_opcode* op);
+@@ -69,6 +74,8 @@ void ngen_init(void)
+          ngen_CC_Call = ngen_CC_Call_x64;
+          ngen_CC_Param = ngen_CC_Param_x64;
+          ngen_CC_Finish = ngen_CC_Finish_x64;
++
++         break;
+ #elif defined(TARGET_NO_JIT)
+          /* we want this to fall through */
+ #else
