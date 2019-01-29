@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="mupen64plus-core"
-PKG_VERSION="1b481123c2ac594b91fd7bb0bc1b0de0707c7b14"
-PKG_SHA256="aec474dd3a827a0c1677a4d6252fc730758732787dfbe1a230dc7142b20fb54c"
+PKG_VERSION="06669827f959b58d33360383d7f111c3a34637a1"
+PKG_SHA256="aa194862a620438736fd4a5ed9e0705311fd9aac9fa7570dbfd0bee5c6e53b1a"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/mupen64plus/mupen64plus-core"
 PKG_URL="https://github.com/mupen64plus/mupen64plus-core/archive/$PKG_VERSION.tar.gz"
