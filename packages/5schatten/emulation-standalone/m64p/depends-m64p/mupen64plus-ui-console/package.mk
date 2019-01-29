@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="mupen64plus-ui-console"
-PKG_VERSION="5926250b866a83a00c0460271dbdb4a5313669e9"
-PKG_SHA256="4387df182961a538584d358663e56d6924ab074651102f3cc6bc070fd1411d29"
+PKG_VERSION="d4303d96c4c7acfa664b59016c670768403c639c"
+PKG_SHA256="c000346a1db487d86acfe1c56a0803f035a9e66af3b42a991ebad8df836ceccd"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/mupen64plus/mupen64plus-ui-console"
 PKG_URL="https://github.com/mupen64plus/mupen64plus-ui-console/archive/$PKG_VERSION.tar.gz"
