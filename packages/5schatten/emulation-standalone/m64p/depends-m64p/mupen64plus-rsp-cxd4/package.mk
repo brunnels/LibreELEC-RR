@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="mupen64plus-rsp-cxd4"
-PKG_VERSION="62244037ce5c04451760a5195da30823995196b9"
-PKG_SHA256="9ade4834f633eb2f5c6554620f6596b9c681057eeaf7798f3d84c257c1b69b07"
+PKG_VERSION="87c1c9a89730c0522cb66380adcb8b39075dda4d"
+PKG_SHA256="49de602b33428fffce20af7d1320d370c3a529251961239a9768e8bdc7489fd6"
 PKG_LICENSE="CC0-1.0"
 PKG_SITE="https://github.com/mupen64plus/mupen64plus-rsp-cxd4"
 PKG_URL="https://github.com/mupen64plus/mupen64plus-rsp-cxd4/archive/$PKG_VERSION.tar.gz"
