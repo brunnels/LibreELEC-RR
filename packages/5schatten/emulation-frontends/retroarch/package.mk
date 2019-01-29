@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch"
-PKG_VERSION="d99f32a5ad75827a8e15d73f769086a57d541433" #1.7.6-dev 
+PKG_VERSION="5302a1e61cdbab2bf6afbe2dad0ebc29db95ec38" #1.7.6-dev 
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
@@ -87,7 +87,7 @@ pre_configure_target() {
   # Clean up & export env/version
   cd ..
   rm -rf .${TARGET_NAME}
-  export PKG_CONF_PATH=$TOOLCHAIN/bin/pkg-config
+  export PKG_CONF_PATH=${TOOLCHAIN}/bin/pkg-config
   echo ${PKG_VERSION:0:7} > .gitversion
 }
 
