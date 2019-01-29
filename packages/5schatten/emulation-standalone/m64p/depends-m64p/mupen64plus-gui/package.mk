@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="mupen64plus-gui"
-PKG_VERSION="3bf730a473bef77f7b6c64586a1fc2eb064243eb"
-PKG_SHA256="a27bf345db3448adaebd50cb949063fd3d88549c4911e5b69adfe261264cbddf"
+PKG_VERSION="ebad8c6bae19df3df7ac93f98c83a7498eac2eef"
+PKG_SHA256="2d57f2549d4d0a827059f5bbb4be6403c7596056067b072e883bfeaf3ef90ba4"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/m64p/mupen64plus-gui"
 PKG_URL="https://github.com/m64p/mupen64plus-gui/archive/$PKG_VERSION.tar.gz"
