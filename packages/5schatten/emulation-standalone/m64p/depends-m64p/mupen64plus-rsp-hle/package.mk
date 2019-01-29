@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="mupen64plus-rsp-hle"
-PKG_VERSION="12339811299155b66bc0a944457e83ea49f30b6f"
-PKG_SHA256="240d4a671ff20328f1c17e30cee36cd731b759ca87c1d0df1350f1f169a05b3d"
+PKG_VERSION="e2adb502c6e75dc3e10ed63b7fa28b223c6ca04d"
+PKG_SHA256="cb13f20be8cbe80965403c97bb06bef3c544a588b4e62fde56ef692d26aec6dc"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/mupen64plus/mupen64plus-rsp-hle"
 PKG_URL="https://github.com/mupen64plus/mupen64plus-rsp-hle/archive/$PKG_VERSION.tar.gz"
