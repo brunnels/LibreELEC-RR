@@ -28,11 +28,11 @@
 ---
 **Basics**
 
-* [LibreELEC 9.0-devel](https://github.com/LibreELEC/LibreELEC.tv) | Beta3
-* [Kodi 18](https://github.com/xbmc/xbmc) - v18-rc5v2
-* [Linux 4.19.16](https://www.kernel.org/) - generic x86-64 builds
+* [LibreELEC 9.0-devel](https://github.com/LibreELEC/LibreELEC.tv) | 9.x
+* [Kodi 18](https://github.com/xbmc/xbmc) - v18.0
+* [Linux 4.19.19](https://www.kernel.org/) - generic x86-64 builds
 * [Linux 3.14.29](https://www.kernel.org/) - Amlogic S905(X) builds
-* [Linux 4.19.15](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
+* [Linux 4.19.17](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
 ---
 **Addons & tools for generic builds**
 
@@ -48,9 +48,9 @@
 
 * [AMDGPU](https://cgit.freedesktop.org/xorg/driver/xf86-video-amdgpu/) - v18.1.0
 * [ATI](https://cgit.freedesktop.org/xorg/driver/xf86-video-ati) - v18.1.0
-* [Intel-video](https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/) - git c37c7ee
+* [Intel-video](https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/) - git 33ee0c3
 * [Intel](https://downloadcenter.intel.com/download/28087/Linux-Processor-Microcode-Data-File) - µcode 2018-08-07a
-* [Mesa 3D](https://www.mesa3d.org/) - v18.3.2
+* [Mesa 3D](https://www.mesa3d.org/) - v18.3.3
 * [Nvidia](https://www.nvidia.com/Download/driverResults.aspx/134859/en-us) - v410.93
 * [Nvidia-legacy](https://www.nvidia.com/Download/driverResults.aspx/135161/en-us) - v340.107
 ---
@@ -65,7 +65,7 @@
 * [Samba](https://www.samba.org/samba/history/samba-4.9.1.html) - v4.9.4
 * [SDL2](https://github.com/spurious/SDL-mirror) - git 678ba78 | v2.0.9-dev
 * [systemd](https://github.com/systemd/systemd) - v239
-* [Qt](https://wiki.qt.io/Qt_5.12_Release) - v5.12
+* [Qt](https://wiki.qt.io/Qt_5.12_Release) - v5.12.0
 * [Xorg-Server](https://cgit.freedesktop.org/xorg/xserver/log/) - v1.20.3
 ---
 **Sysutils**
@@ -152,7 +152,7 @@
 ---
 **Builds systems**
 
-I use VirtualBox v6.0.0 to run a Linux Mint 19 Mate VM as building system. So this distribution should be suitable for you too. For further information see [LibreELEC Wiki / Compile](https://wiki.libreelec.tv/compile).
+I use VirtualBox v6.0.4 to run a Linux Mint 19 Mate VM as building system. So this distribution should be suitable for you too. For further information see [LibreELEC Wiki / Compile](https://wiki.libreelec.tv/compile).
 
 ---
 **Build dependencies**
