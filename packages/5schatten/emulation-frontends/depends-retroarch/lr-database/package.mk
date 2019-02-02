@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-database"
-PKG_VERSION="7be1e11c6a99164b4fa8de3a3fc3420f8a4fb645"
-PKG_SHA256="812fd51f297edd6c33b6ba71fcd58743c96fc551311143595423cb677d94ac0c"
+PKG_VERSION="94173ae5173119cd0d391976d5444843d0722e9a"
+PKG_SHA256="203114f52e2657616083a93ae722cef1e97a8856167c4aa2aa9973fd0f6efa89"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/libretro-database"
 PKG_URL="https://github.com/libretro/libretro-database/archive/$PKG_VERSION.tar.gz"
@@ -26,7 +26,7 @@ post_makeinstall_target() {
   rm "$INSTALL/usr/share/retroarch/database/rdb/MAME 2000.rdb"
 
   #remove unneeded MAME databases for SBC based systems
-  if [ "${PROJECT}" = "Amlogic" ] || [ "${PROJECT}" = "RPi" ]; then
+  if [ "${PROJECT}" = "Amlogic_Legacy" ] || [ "${PROJECT}" = "RPi" ]; then
     rm $INSTALL/usr/share/retroarch/database/rdb/MAME.rdb
     rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2015.rdb
   fi
