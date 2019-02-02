@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-core-info"
-PKG_VERSION="473d80b"
-PKG_SHA256="e238f2813431e8f2477e90297d9159261e9cd436b1e9931aaa4344e7391c0791"
+PKG_VERSION="b48f2444ba470b686a310ce83dd614be31271cd9"
+PKG_SHA256="93cba4df7a19001002a9a807e0f54c0e04dde68a0fe5923b1de55a103df427a4"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/libretro-core-info"
 PKG_URL="https://github.com/libretro/libretro-core-info/archive/$PKG_VERSION.tar.gz"
