@@ -13,7 +13,7 @@ PKG_TOOLCHAIN="manual"
 pre_build_target() {
   cd $PKG_BUILD
   # Download the precompiled binary
-  if [ "${PROJECT}" = "Amlogic" ]; then
+  if [ "${PROJECT}" = "Amlogic_Legacy" ]; then
     wget $PKG_SITE/releases/download/v$PKG_VERSION/${PKG_NAME}_rpi2.zip
   elif [ "${PROJECT}" = "Generic" ]; then
     wget $PKG_SITE/releases/download/v$PKG_VERSION/${PKG_NAME}_linux_amd64.zip
