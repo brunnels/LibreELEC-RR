@@ -25,7 +25,7 @@ pre_make_target() {
   fi
 
   case $PROJECT in
-    Amlogic)
+    Amlogic_Legacy)
       PKG_MAKE_OPTS_TARGET+=" platform=rpi3"
       ;;
     RPi)
