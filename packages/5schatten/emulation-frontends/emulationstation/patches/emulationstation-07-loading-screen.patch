@@ -1,0 +1,120 @@
+From 3d0dbb6c64658c84f0ba34d4cd12dc98b0ee5ca8 Mon Sep 17 00:00:00 2001
+From: Lubosz Sarnecki <lubosz@gmail.com>
+Date: Thu, 31 Jan 2019 21:19:34 +0100
+Subject: [PATCH] Loading screen: Be more verbose about what is happening.
+
+Starting up emulationstation takes me about 1 minute over the network
+with a large collection of 27 systems with images.
+
+This patch uses the loading screen to tell the user about the status
+of the startup, with information how many systems are left for view
+initialization.
+
+The most beefy part of the startup process is initializing the views,
+and preloading images.
+
+This patch extends the `renderLoadingScreen` function to take a string
+and uses it in `ViewController::preload`.
+---
+ es-app/src/main.cpp                 |  5 ++++-
+ es-app/src/views/ViewController.cpp | 12 +++++++++++-
+ es-core/src/Window.cpp              | 10 ++++++----
+ es-core/src/Window.h                |  2 +-
+ 4 files changed, 22 insertions(+), 7 deletions(-)
+
+diff --git a/es-app/src/main.cpp b/es-app/src/main.cpp
+index 2cc928146..7485af5ed 100644
+--- a/es-app/src/main.cpp
++++ b/es-app/src/main.cpp
+@@ -304,7 +304,7 @@ int main(int argc, char* argv[])
+ 		LOG(LogInfo) << "Checking available OpenGL extensions...";
+ 		LOG(LogInfo) << " ARB_texture_non_power_of_two: " << (glExts.find("ARB_texture_non_power_of_two") != std::string::npos ? "ok" : "MISSING");
+ 		if(Settings::getInstance()->getBool("SplashScreen"))
+-			window.renderLoadingScreen();
++			window.renderLoadingScreen("Loading system config...");
+ 	}
+ 
+ 	const char* errorMsg = NULL;
+@@ -342,6 +342,9 @@ int main(int argc, char* argv[])
+ 	// this makes for no delays when accessing content, but a longer startup time
+ 	ViewController::get()->preload();
+ 
++	if(Settings::getInstance()->getBool("SplashScreen"))
++		window.renderLoadingScreen("Done.");
++
+ 	//choose which GUI to open depending on if an input configuration already exists
+ 	if(errorMsg == NULL)
+ 	{
+diff --git a/es-app/src/views/ViewController.cpp b/es-app/src/views/ViewController.cpp
+index 0d81471ea..2f8f03578 100644
+--- a/es-app/src/views/ViewController.cpp
++++ b/es-app/src/views/ViewController.cpp
+@@ -65,7 +65,7 @@ void ViewController::goToStart()
+ 
+ void ViewController::ReloadAndGoToStart()
+ {
+-	mWindow->renderLoadingScreen();
++	mWindow->renderLoadingScreen("Loading...");
+ 	ViewController::get()->reloadAll();
+ 	ViewController::get()->goToStart();
+ }
+@@ -429,8 +429,18 @@ void ViewController::render(const Transform4x4f& parentTrans)
+ 
+ void ViewController::preload()
+ {
++	uint32_t i = 0;
+ 	for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++)
+ 	{
++		if(Settings::getInstance()->getBool("SplashScreen"))
++		{
++			i++;
++			char buffer[100];
++			sprintf (buffer, "Loading '%s' (%d/%d)",
++			         (*it)->getFullName().c_str(), i, SystemData::sSystemVector.size());
++			mWindow->renderLoadingScreen(std::string(buffer));
++		}
++
+ 		(*it)->getIndex()->resetFilters();
+ 		getGameListView(*it);
+ 	}
+diff --git a/es-core/src/Window.cpp b/es-core/src/Window.cpp
+index 3c0aa1d06..d7d0af708 100644
+--- a/es-core/src/Window.cpp
++++ b/es-core/src/Window.cpp
+@@ -298,7 +298,7 @@ void Window::setAllowSleep(bool sleep)
+ 	mAllowSleep = sleep;
+ }
+ 
+-void Window::renderLoadingScreen()
++void Window::renderLoadingScreen(std::string text)
+ {
+ 	Transform4x4f trans = Transform4x4f::Identity();
+ 	Renderer::setMatrix(trans);
+@@ -311,9 +311,11 @@ void Window::renderLoadingScreen()
+ 	splash.render(trans);
+ 
+ 	auto& font = mDefaultFonts.at(1);
+-	TextCache* cache = font->buildTextCache("LOADING...", 0, 0, 0x656565FF);
+-	trans = trans.translate(Vector3f(Math::round((Renderer::getScreenWidth() - cache->metrics.size.x()) / 2.0f),
+-		Math::round(Renderer::getScreenHeight() * 0.835f), 0.0f));
++	TextCache* cache = font->buildTextCache(text, 0, 0, 0x656565FF);
++
++	float x = Math::round((Renderer::getScreenWidth() - cache->metrics.size.x()) / 2.0f);
++	float y = Math::round(Renderer::getScreenHeight() * 0.835f);
++	trans = trans.translate(Vector3f(x, y, 0.0f));
+ 	Renderer::setMatrix(trans);
+ 	font->renderTextCache(cache);
+ 	delete cache;
+diff --git a/es-core/src/Window.h b/es-core/src/Window.h
+index 0cc6009d0..143a36cc2 100644
+--- a/es-core/src/Window.h
++++ b/es-core/src/Window.h
+@@ -63,7 +63,7 @@ class Window
+ 	bool getAllowSleep();
+ 	void setAllowSleep(bool sleep);
+ 
+-	void renderLoadingScreen();
++	void renderLoadingScreen(std::string text);
+ 
+ 	void renderHelpPromptsEarly(); // used to render HelpPrompts before a fade
+ 	void setHelpPrompts(const std::vector<HelpPrompt>& prompts, const HelpStyle& style);

@@ -23,7 +23,7 @@ post_makeinstall_target() {
   ln -s /usr/config/emulationstation/themes         $INSTALL/etc/emulationstation/themes
 
   # Install scripts
-  cp $PKG_DIR/scripts/emulationstation-${PROJECT}.start $INSTALL/usr/bin/emulationstation.start
+  cp $PKG_DIR/scripts/${PROJECT}/emulationstation.start $INSTALL/usr/bin/
 
   # Install resources
   cp -r $PKG_DIR/files/*     $INSTALL/usr/config/emulationstation/
@@ -32,6 +32,6 @@ post_makeinstall_target() {
   # Install config files
   cp $PKG_DIR/config/es_input.cfg          $INSTALL/usr/config/emulationstation/
   cp $PKG_DIR/config/es_settings.cfg       $INSTALL/usr/config/emulationstation/
-  cp $PKG_DIR/config/${PROJECT}/es_systems-${PROJECT}.cfg                 $INSTALL/usr/config/emulationstation/es_systems.cfg
-  cp $PKG_DIR/config/${PROJECT}/emulationstation-userdirs-${PROJECT}.conf $INSTALL/usr/lib/tmpfiles.d/emulationstation-userdirs.conf
+  cp $PKG_DIR/config/${PROJECT}/es_systems.cfg                 $INSTALL/usr/config/emulationstation/
+  cp $PKG_DIR/config/${PROJECT}/emulationstation-userdirs.conf $INSTALL/usr/lib/tmpfiles.d/
 }
