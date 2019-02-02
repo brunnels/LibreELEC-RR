@@ -19,7 +19,7 @@ pre_make_target() {
   export SYSROOT_PREFIX=$SYSROOT_PREFIX
 
   # build amiberry
-  if [ "${PROJECT}" = "Amlogic" ]; then
+  if [ "${PROJECT}" = "Amlogic_Legacy" ]; then
     PKG_MAKE_OPTS_TARGET+=" PLATFORM=aml"
   elif [ "${PROJECT}" = "RPi" ]; then
     case ${DEVICE} in
