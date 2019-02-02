@@ -17,7 +17,6 @@ OEM_APPS_COMMON=" \
   htop \
   lm-sensors \
   midnight-commander \
-  scraper \
   sdl-jstest \
   spectre-meltdown-checker"
 
