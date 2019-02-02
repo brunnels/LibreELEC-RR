@@ -11,8 +11,8 @@ PKG_DEPENDS_TARGET="toolchain nasm:host alsa-lib systemd dbus"
 PKG_LONGDESC="Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware."
 
 # Set up egl-interface
-if [ ${PROJECT} = "Amlogic" ]; then
-  PKG_PATCH_DIRS="Amlogic"
+if [ ${PROJECT} = "Amlogic_Legacy" ]; then
+  PKG_PATCH_DIRS="Amlogic_Legacy"
 fi
 
 pre_configure_target(){
