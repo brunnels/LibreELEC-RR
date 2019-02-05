@@ -103,7 +103,7 @@ OEM_EMU_RPI=" \
 if [ "$OEM_APPS" = "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_APPS_COMMON"
   case $PROJECT in
-    Amlogic)
+    Amlogic_Legacy)
       PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_APPS_AMLOGIC"
       ;;
     Generic)
@@ -118,7 +118,7 @@ fi
 if [ "$OEM_EMU" = "yes" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_EMU_COMMON"
   case $PROJECT in
-    Amlogic)
+    Amlogic_Legacy)
       PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OEM_EMU_AMLOGIC"
       ;;
     Generic)
