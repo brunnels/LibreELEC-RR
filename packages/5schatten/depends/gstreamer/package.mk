@@ -9,6 +9,7 @@ PKG_SITE="https://gstreamer.freedesktop.org"
 PKG_URL="https://gstreamer.freedesktop.org/src/gstreamer/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_LONGDESC="GStreamer open-source multimedia framework core library"
-PKG_TOOLCHAIN="configure"
 
-PKG_CONFIGURE_OPTS_TARGET="--with-unwind=no"
+PKG_MESON_OPTS_TARGET="-Ddisable_gtkdoc=true \
+                       -Ddisable_examples=true \
+                       -Ddisable_libunwind=true"
