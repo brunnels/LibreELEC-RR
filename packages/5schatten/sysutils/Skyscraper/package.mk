@@ -27,6 +27,7 @@ configure_target() {
 post_makeinstall_target() {
   # Install scripts 
   mv $INSTALL/usr/bin/Skyscraper $INSTALL/usr/bin/skyscraper-bin
+  ln -sf /usr/bin/skyscraper     $INSTALL/usr/bin/Skyscraper
   cp $PKG_DIR/scripts/* $INSTALL/usr/bin/
 
   # Install config
