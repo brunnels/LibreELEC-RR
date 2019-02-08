@@ -29,6 +29,10 @@ post_makeinstall_target() {
   if [ "${PROJECT}" = "Amlogic_Legacy" ] || [ "${PROJECT}" = "RPi" ]; then
     rm $INSTALL/usr/share/retroarch/database/rdb/MAME.rdb
     rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2015.rdb
-    rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2016.rdb
+  fi
+
+  #workaround until a MAME 2016 database for romset 0.174 is included
+  if [ ! -f "$INSTALL/usr/share/retroarch/database/rdb/MAME 2016.rdb" ] && [ "${PROJECT}" = "Generic" ]; then
+    ln -sf /usr/share/retroarch/database/rdb/MAME.rdb "$INSTALL/usr/share/retroarch/database/rdb/MAME 2016.rdb"
   fi
 }
