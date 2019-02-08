@@ -9,14 +9,12 @@ PKG_SITE="https://gstreamer.freedesktop.org/modules/gst-plugins-base.html"
 PKG_URL="https://gstreamer.freedesktop.org/src/gst-plugins-base/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain gstreamer"
 PKG_LONGDESC="Base GStreamer plugins and helper libraries"
-PKG_TOOLCHAIN="configure"
 
-PKG_CONFIGURE_OPTS_TARGET="--disable-static \
-                           --enable-shared"
+PKG_MESON_OPTS_TARGET="-Ddisable_examples=true \
+                       -Ddisable_gtkdoc=true"
 
 post_makeinstall_target(){
   # Clean up
   rm -rf $INSTALL/usr/bin
-  rm -rf $INSTALL/usr/share
 }
 
