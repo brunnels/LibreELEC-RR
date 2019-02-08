@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-fbalpha"
-PKG_VERSION="f0d5bcc30258e68cf06c644102f229acce214e58"
-PKG_SHA256="1a0fb87ed4f6fa175700a424ee2bb9d8e3c6ba40bb23986812c8245678b138a4"
+PKG_VERSION="79a250f0e60499b6ea86eb7fab003b67354b1347"
+PKG_SHA256="257dd0e13b007550a30f6f84476fd222590785b66675cc40f34f4aa2a2caf98b"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/fbalpha"
 PKG_URL="https://github.com/libretro/fbalpha/archive/$PKG_VERSION.tar.gz"
