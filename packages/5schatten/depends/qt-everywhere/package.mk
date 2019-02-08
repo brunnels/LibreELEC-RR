@@ -81,8 +81,7 @@ pre_configure_target() {
                              -skip qtwebsockets
                              -skip qtwebview
                              -skip qtwinextras
-                             -skip qtx11extras
-                             -skip qtxmlpatterns"
+                             -skip qtx11extras"
 
   # Build with OpenGL or OpenGLES support
   if [ "${OPENGL_SUPPORT}" = "yes" ]; then
@@ -165,6 +164,7 @@ post_makeinstall_target() {
   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Svg.so*                $INSTALL/usr/lib
   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Test.so*               $INSTALL/usr/lib
   cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Widgets.so*            $INSTALL/usr/lib
+  cp -PR $SYSROOT_PREFIX/usr/lib/libQt5Xml.so*                $INSTALL/usr/lib
 
   # Install Qt5 plugins
   cp -PR $SYSROOT_PREFIX/usr/plugins/audio             $INSTALL/usr/plugins
