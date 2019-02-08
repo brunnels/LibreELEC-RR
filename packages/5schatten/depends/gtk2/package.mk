@@ -1,12 +1,12 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
-PKG_NAME="gtk+"
+PKG_NAME="gtk2"
 PKG_VERSION="2.24.32"
 PKG_SHA256="b6c8a93ddda5eabe3bfee1eb39636c9a03d2a56c7b62828b359bf197943c582e"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.gtk.org/"
-PKG_URL="http://ftp.gnome.org/pub/gnome/sources/gtk+/${PKG_VERSION:0:4}/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="http://ftp.gnome.org/pub/gnome/sources/gtk+/${PKG_VERSION:0:4}/gtk+-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain atk libX11 libXrandr libXi glib pango cairo gdk-pixbuf"
 PKG_LONGDESC="gtk+: The Gimp ToolKit (GTK)"
 PKG_TOOLCHAIN="autotools"
@@ -26,8 +26,9 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_path_GLIB_GENMARSHAL=$TOOLCHAIN/bin/glib-genmar
 
 pre_configure_target() {
   LIBS="$LIBS -lXcursor"
-  export PKG_CONFIG_PATH="$(get_build_dir pango)/.$TARGET_NAME"
-  export CFLAGS="$CFLAGS -I$(get_build_dir pango) -L$(get_build_dir pango)/.$TARGET_NAME/pango"
+  export PKG_CONFIG_PATH="$(get_build_dir pango)/.$TARGET_NAME/meson-private:$(get_build_dir gdk-pixbuf)/.$TARGET_NAME/meson-private:$(get_build_dir shared-mime-info)/.$TARGET_NAME"
+  export CFLAGS="$CFLAGS -I$(get_build_dir pango) -I$(get_build_dir pango)/.$TARGET_NAME -L$(get_build_dir pango)/.$TARGET_NAME/pango"
+  export GLIB_COMPILE_RESOURCES=glib-compile-resources GLIB_MKENUMS=glib-mkenums GLIB_GENMARSHAL=glib-genmarshal
 }
 
 make_target() {
