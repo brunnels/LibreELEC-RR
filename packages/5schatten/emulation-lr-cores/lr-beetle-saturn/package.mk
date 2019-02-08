@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-beetle-saturn"
-PKG_VERSION="c726c623b9df052ae457ff75bbb231d46b97dfc7"
-PKG_SHA256="0b3f98df4d17eb36ff47a466c520e3e1235bab73aa1555f87762bda2fe07ee52"
+PKG_VERSION="ad74e9675ad60211ae5d7bb6bbdfbae234110a55"
+PKG_SHA256="4820b641bd85fb51edfacd01f3518f03dbaa91f71a9900a9760e73ce67bf9064"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/beetle-saturn-libretro"
 PKG_URL="https://github.com/libretro/beetle-saturn-libretro/archive/$PKG_VERSION.tar.gz"
