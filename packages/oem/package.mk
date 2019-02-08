@@ -18,6 +18,7 @@ OEM_APPS_COMMON=" \
   lm-sensors \
   midnight-commander \
   sdl-jstest \
+  Skyscraper \
   spectre-meltdown-checker"
 
 OEM_APPS_AMLOGIC=""
