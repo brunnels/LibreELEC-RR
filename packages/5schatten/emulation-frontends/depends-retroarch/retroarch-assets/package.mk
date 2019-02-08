@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="retroarch-assets"
-PKG_VERSION="118578bded4bda229e19797c80e7e8d0c7e06137"
-PKG_SHA256="53f311aa3722c6a17aef5631532f21c8694b6c6d02ff79856daa22e0bbeba17c"
+PKG_VERSION="77724af397808ccc40115fb0d4be360deb760c54"
+PKG_SHA256="ab491a7273ff868f541b07909851df39fadfc9503ed2b2514bf36ad975221dac"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/retroarch-assets"
 PKG_URL="https://github.com/libretro/retroarch-assets/archive/$PKG_VERSION.tar.gz"
