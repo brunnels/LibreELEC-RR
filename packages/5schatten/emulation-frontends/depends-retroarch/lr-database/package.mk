@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-database"
-PKG_VERSION="b2853574592aa6fce1adaaf2bdc5f16eb7609ee9"
-PKG_SHA256="8e0407e54df6dd16e0ff98f80ed52c755277011df0627b8c75f26402dd69aa95"
+PKG_VERSION="d82641ab09ccefdc1726fb8eb13a67cd6ea2b5e1"
+PKG_SHA256="4e92274d52b210be9a2ec254291ab0917e2c578ac06769ac2b68b921c023f7b2"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libretro/libretro-database"
 PKG_URL="https://github.com/libretro/libretro-database/archive/$PKG_VERSION.tar.gz"
@@ -29,10 +29,6 @@ post_makeinstall_target() {
   if [ "${PROJECT}" = "Amlogic_Legacy" ] || [ "${PROJECT}" = "RPi" ]; then
     rm $INSTALL/usr/share/retroarch/database/rdb/MAME.rdb
     rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2015.rdb
-  fi
-
-  #workaround until a MAME 2016 database for romset 0.174 is included
-  if [ ! -f "$INSTALL/usr/share/retroarch/database/rdb/MAME 2016.rdb" ] && [ "${PROJECT}" = "Generic" ]; then
-    ln -sf /usr/share/retroarch/database/rdb/MAME.rdb "$INSTALL/usr/share/retroarch/database/rdb/MAME 2016.rdb"
+    rm $INSTALL/usr/share/retroarch/database/rdb/MAME\ 2016.rdb
   fi
 }
