@@ -9,22 +9,23 @@ PKG_URL="https://github.com/mmatyas/pegasus-frontend.git"
 PKG_DEPENDS_TARGET="toolchain SDL2-git qt-everywhere pegasus-theme-es2-simple pegasus-theme-gameOS"
 PKG_LONGDESC="A cross platform, customizable graphical frontend for launching emulators and managing your game collection."
 GET_HANDLER_SUPPORT="git"
-PKG_TOOLCHAIN="manual"
+PKG_TOOLCHAIN="make"
 
 post_unpack() {
   cp -r ${PKG_DIR}/files/logos/* ${PKG_BUILD}/src/themes/pegasus-theme-grid/assets/logos
 }
 
-make_target() {
+configure_target() {
+  # Create working dir
   mkdir -p $PKG_BUILD/.${TARGET_NAME}
   cd .${TARGET_NAME}
+
+  # Generate qmake config
   qmake $PKG_BUILD/pegasus.pro INSTALLDIR=${INSTALL}/usr/bin \
                                INSTALL_BINDIR=${INSTALL}/usr/bin \
                                INSTALL_DATADIR=${INSTALL}/usr/bin \
                                INSTALL_ICONDIR=${INSTALL}/usr/bin \
                                INSTALL_DESKTOPDIR=${INSTALL}/usr/bin
-  make
-  make install
 }
 
 post_makeinstall_target() {
