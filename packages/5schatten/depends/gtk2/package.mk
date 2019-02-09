@@ -33,7 +33,7 @@ pre_configure_target() {
 
 make_target() {
   make SRC_SUBDIRS="gdk gtk modules"
-  $MAKEINSTALL SRC_SUBDIRS="gdk gtk modules"
+  make install DESTDIR=$SYSROOT_PREFIX $PKG_MAKEINSTALL_OPTS_TARGET SRC_SUBDIRS="gdk gtk modules"
 }
 
 makeinstall_target() {
