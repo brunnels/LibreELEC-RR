@@ -7,7 +7,7 @@ PKG_SHA256="b91987e4bd2a3797a842c8a1ee00bd7a7040f419f6e8c0f888689102e8c44930"
 PKG_LICENSE="GPL"
 PKG_SITE="https://www.libsdl.org/"
 PKG_URL="https://github.com/spurious/SDL-mirror/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain nasm:host alsa-lib systemd dbus"
+PKG_DEPENDS_TARGET="toolchain alsa-lib systemd dbus"
 PKG_LONGDESC="Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware."
 
 # Set up egl-interface
@@ -19,7 +19,6 @@ pre_configure_target(){
   PKG_CMAKE_OPTS_TARGET="-DSDL_STATIC=OFF \
                          -DLIBC=ON \
                          -DGCC_ATOMICS=ON \
-                         -DASSEMBLY=ON \
                          -DALTIVEC=OFF \
                          -DOSS=OFF \
                          -DALSA=ON \
@@ -57,6 +56,14 @@ pre_configure_target(){
                          -DCLOCK_GETTIME=OFF \
                          -DRPATH=OFF \
                          -DRENDER_D3D=OFF"
+
+  # Use ppc assembly only for x86_64
+  if [ "$TARGET_ARCH" = "x86_64" ]; then
+    PKG_DEPENDS_TARGET+=" nasm:host"
+    PKG_CMAKE_OPTS_TARGET+=" -DASSEMBLY=ON"
+  else
+    PKG_CMAKE_OPTS_TARGET+=" -DASSEMBLY=OFF"
+  fi
 
   # X11 Support
   if [ "${DISPLAYSERVER}" = "x11" ]; then
