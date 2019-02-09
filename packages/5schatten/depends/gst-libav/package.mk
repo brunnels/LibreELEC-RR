@@ -7,6 +7,6 @@ PKG_SHA256="dfd78591901df7853eab7e56a86c34a1b03635da0d3d56b89aa577f1897865da"
 PKG_LICENSE="GPL"
 PKG_SITE="https://gstreamer.freedesktop.org/modules/gst-libav.html"
 PKG_URL="https://gstreamer.freedesktop.org/src/gst-libav/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain gstreamer ffmpeg"
+PKG_DEPENDS_TARGET="toolchain gstreamer gst-plugins-base ffmpeg"
 PKG_LONGDESC="GStreamer plugin for the libav* library (former FFmpeg)"
 
