@@ -5,7 +5,7 @@
 PKG_NAME="makemkv"
 PKG_VERSION="1.14.2"
 PKG_SHA256="82da3c03bcd458d60ec006d0eda506fe0d6d7e0c4c9f8757fbfb0f2da69404ca"
-PKG_REV="107"
+PKG_REV="108"
 PKG_ARCH="x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://makemkv.com/"
@@ -19,7 +19,6 @@ PKG_LONGDESC="MakeMKV is your one-click solution to convert video that you own i
 PKG_IS_ADDON="yes"
 PKG_ADDON_NAME="MakeMKV"
 PKG_ADDON_TYPE="xbmc.python.script"
-PKG_ADDON_VERSION="$PKG_VERSION"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-gui"
 
