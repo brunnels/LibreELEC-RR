@@ -3,10 +3,11 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="emulationstation"
-PKG_VERSION="9ae899360c11fdd88f671713ddb965227b99e79f"
+PKG_VERSION="2af2ec5f125bbacfb8a23a38cd3a1d049fd4cdf3" #v2.8.0
 PKG_LICENSE="OSS"
 PKG_SITE="https://github.com/RetroPie/EmulationStation"
 PKG_URL="https://github.com/RetroPie/EmulationStation.git"
+PKG_GIT_CLONE_BRANCH="stable"
 PKG_DEPENDS_TARGET="toolchain SDL2-git freetype curl freeimage vlc emulationstation-theme-carbon emulationstation-theme-simple-dark "
 PKG_LONGDESC="A Fork of Emulation Station for RetroPie. Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
 PKG_BUILD_FLAGS="-gold"
