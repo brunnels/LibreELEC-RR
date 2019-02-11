@@ -7,7 +7,7 @@ PKG_SHA256="4820b641bd85fb51edfacd01f3518f03dbaa91f71a9900a9760e73ce67bf9064"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/beetle-saturn-libretro"
 PKG_URL="https://github.com/libretro/beetle-saturn-libretro/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="Standalone port of Mednafen Saturn to the libretro API."
 PKG_TOOLCHAIN="make"
 
