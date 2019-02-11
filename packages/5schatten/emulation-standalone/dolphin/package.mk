@@ -10,14 +10,16 @@ PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/dolphin-emu/dolphin"
 PKG_URL="https://github.com/dolphin-emu/dolphin/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain openal-soft libevdev ffmpeg zlib bluez pulseaudio alsa-lib libogg libvorbis libSM enet qt-everywhere"
+PKG_DEPENDS_TARGET="toolchain linux glibc systemd openal-soft libevdev curl ffmpeg libpng zlib bzip2 bluez pulseaudio alsa-lib libogg libvorbis libSM enet qt-everywhere"
 PKG_LONGDESC="Dolphin is a GameCube / Wii emulator, allowing you to play games for these two platforms on PC with improvements."
 
-PKG_CMAKE_OPTS_TARGET="-DENABLE_LTO=off \
-                       -DUSE_SHARED_ENET=on \
-                       -DUSE_DISCORD_PRESENCE=off \
-                       -DENABLE_ANALYTICS=off \
-                       -DDISTRIBUTOR=5schatten"
+pre_configure_target() {
+  PKG_CMAKE_OPTS_TARGET="-DENABLE_LTO=off \
+                         -DUSE_SHARED_ENET=on \
+                         -DUSE_DISCORD_PRESENCE=off \
+                         -DENABLE_ANALYTICS=off \
+                         -DDISTRIBUTOR=5schatten"
+}
 
 pre_make_target() {
   # fix cross compiling
