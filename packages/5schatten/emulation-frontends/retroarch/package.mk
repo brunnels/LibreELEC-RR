@@ -11,17 +11,7 @@ PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa fluidsynth-git freetype zlib ffm
 PKG_LONGDESC="Reference frontend for the libretro API."
 GET_HANDLER_SUPPORT="git"
 
-pre_configure_target() {
-  TARGET_CONFIGURE_OPTS=""
-  PKG_CONFIGURE_OPTS_TARGET="--disable-vg \
-                             --disable-sdl \
-                             --disable-xvideo \
-                             --disable-al \
-                             --disable-oss \
-                             --enable-zlib \
-                             --host=$TARGET_NAME \
-                             --enable-freetype"
-
+configure_package() {
   # SAMBA Support
   if [ "${SAMBA_SUPPORT}" = "yes" ]; then
     PKG_DEPENDS_TARGET+=" samba"
@@ -35,6 +25,37 @@ pre_configure_target() {
   # QT Support for WIMP GUI
   if [ "${PROJECT}" = "Generic" ]; then
     PKG_DEPENDS_TARGET+=" qt-everywhere"
+  fi
+
+  # Displayserver Support
+  if [ "${DISPLAYSERVER}" = "x11" ]; then
+    PKG_DEPENDS_TARGET+=" xorg-server"
+  fi
+
+  # OpenGL Support
+  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGL}"
+  fi
+
+  # OpenGLES Support
+  if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGLES}"
+  fi
+}
+
+pre_configure_target() {
+  TARGET_CONFIGURE_OPTS=""
+  PKG_CONFIGURE_OPTS_TARGET="--disable-vg \
+                             --disable-sdl \
+                             --disable-xvideo \
+                             --disable-al \
+                             --disable-oss \
+                             --enable-zlib \
+                             --host=$TARGET_NAME \
+                             --enable-freetype"
+
+  # QT Support for WIMP GUI
+  if [ "${PROJECT}" = "Generic" ]; then
     PKG_CONFIGURE_OPTS_TARGET+=" --enable-qt"
   else
     PKG_CONFIGURE_OPTS_TARGET+=" --disable-qt"
@@ -42,7 +63,6 @@ pre_configure_target() {
 
   # Displayserver Support
   if [ "${DISPLAYSERVER}" = "x11" ]; then
-    PKG_DEPENDS_TARGET+=" xorg-server"
     PKG_CONFIGURE_OPTS_TARGET+=" --enable-x11"
   else
     PKG_CONFIGURE_OPTS_TARGET+=" --disable-x11"
@@ -50,7 +70,6 @@ pre_configure_target() {
 
   # OpenGL Support
   if [ "${OPENGL_SUPPORT}" = "yes" ]; then
-    PKG_DEPENDS_TARGET+=" ${OPENGL}"
     PKG_CONFIGURE_OPTS_TARGET+=" --enable-opengl \
                                  --enable-kms"
   fi
@@ -62,7 +81,6 @@ pre_configure_target() {
 
   # OpenGLES Support
   if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
-    PKG_DEPENDS_TARGET+=" ${OPENGLES}"
     PKG_CONFIGURE_OPTS_TARGET+=" --enable-opengles \
                                  --disable-kms"
 
