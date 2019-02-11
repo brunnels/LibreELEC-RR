@@ -7,7 +7,7 @@ PKG_SHA256="cb19180f50b767866d5f1d77de15797dda999400d5175c70cd6c104cea497339"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/tyrquake"
 PKG_URL="https://github.com/libretro/tyrquake/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="Libretro port of Tyrquake (Quake 1 engine)"
 PKG_TOOLCHAIN="make"
 
