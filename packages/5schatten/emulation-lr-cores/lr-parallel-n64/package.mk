@@ -8,7 +8,7 @@ PKG_SHA256="5c9594b03fce30c549b8a5071413ac125f1a5a67259df25b89e9265a6d957850"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/parallel-n64"
 PKG_URL="https://github.com/libretro/parallel-n64/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="Optimized/rewritten Nintendo 64 emulator made specifically for Libretro. Originally based on Mupen64 Plus."
 PKG_TOOLCHAIN="make"
 
@@ -16,6 +16,18 @@ PKG_LIBNAME="parallel_n64_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
 
 PKG_MAKE_OPTS_TARGET="GIT_VERSION=${PKG_VERSION:0:7} WITH_DYNAREC=${ARCH}"
+
+configure_package() {
+  # Displayserver Support
+  if [ "${DISPLAYSERVER}" = "x11" ]; then
+    PKG_DEPENDS_TARGET+=" xorg-server"
+  fi
+
+  # OpenGL Support
+  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGL}"
+  fi
+}
 
 pre_make_target() {
   if [ "${ARCH}" = "arm" ]; then
