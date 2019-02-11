@@ -7,7 +7,7 @@ PKG_VERSION="9750719074041e0f1949cf9535d1e04945f6213b" #1.7.6
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="https://github.com/libretro/RetroArch.git"
-PKG_DEPENDS_TARGET="toolchain alsa-lib tinyalsa fluidsynth-git freetype zlib ffmpeg lr-common-overlays lr-common-shaders lr-core-info lr-database lr-glsl-shaders lr-overlay-borders lr-samples lr-slang-shaders retroarch-assets retroarch-joypad-autoconfig"
+PKG_DEPENDS_TARGET="toolchain linux glibc systemd dbus openssl expat alsa-lib libpng libusb libass speex tinyalsa fluidsynth-git freetype zlib bzip2 ffmpeg lr-common-overlays lr-common-shaders lr-core-info lr-database lr-glsl-shaders lr-overlay-borders lr-samples lr-slang-shaders retroarch-assets retroarch-joypad-autoconfig"
 PKG_LONGDESC="Reference frontend for the libretro API."
 GET_HANDLER_SUPPORT="git"
 
@@ -20,6 +20,11 @@ configure_package() {
   # AVAHI Support
   if [ "${AVAHI_DAEMON}" = "yes" ]; then
     PKG_DEPENDS_TARGET+=" avahi nss-mdns"
+  fi
+
+  # Pulseaudio Support
+  if [ "${PULSEAUDIO_SUPPORT}" = yes ]; then
+    PKG_DEPENDS_TARGET+=" pulseaudio"
   fi
 
   # QT Support for WIMP GUI
@@ -101,7 +106,7 @@ pre_configure_target() {
   if target_has_feature neon; then
     PKG_CONFIGURE_OPTS_TARGET+=" --enable-neon"
   fi
-  
+
   # Clean up & export env/version
   cd ..
   rm -rf .${TARGET_NAME}
