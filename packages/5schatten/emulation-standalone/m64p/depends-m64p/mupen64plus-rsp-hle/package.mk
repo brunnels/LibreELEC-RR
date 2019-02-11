@@ -7,7 +7,7 @@ PKG_SHA256="cb13f20be8cbe80965403c97bb06bef3c544a588b4e62fde56ef692d26aec6dc"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/mupen64plus/mupen64plus-rsp-hle"
 PKG_URL="https://github.com/mupen64plus/mupen64plus-rsp-hle/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain SDL2-git mupen64plus-core"
+PKG_DEPENDS_TARGET="toolchain linux glibc SDL2-git mupen64plus-core"
 PKG_LONGDESC="RSP processor plugin for the Mupen64Plus v2.0 project. This plugin is based on the Mupen64 HLE RSP plugin v0.2 with Azimers code by Hacktarux"
 PKG_TOOLCHAIN="make"
 
