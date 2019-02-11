@@ -9,10 +9,12 @@ PKG_DEPENDS_TARGET="toolchain mupen64plus-core mupen64plus-rsp-hle mupen64plus-r
 PKG_LONGDESC="mupen64plus + GLideN64 + a GUI"
 PKG_TOOLCHAIN="manual"
 
-# Build angrylion-rdp-plus & mupen64plus-gui for Generic
-if [ "${PROJECT}" = "Generic" ]; then
-  PKG_DEPENDS_TARGET+=" mupen64plus-gui angrylion-rdp-plus"
-fi
+configure_package() {
+  # Build angrylion-rdp-plus & mupen64plus-gui for Generic
+  if [ "${PROJECT}" = "Generic" ]; then
+    PKG_DEPENDS_TARGET+=" mupen64plus-gui angrylion-rdp-plus"
+  fi
+}
 
 makeinstall_target() {
   # Create directories
