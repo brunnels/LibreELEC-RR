@@ -7,7 +7,7 @@ PKG_SHA256="02a7fd65d30147842cd3c26f6304c2efebda0de513761f849d10c1fa63fe9319"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/desmume"
 PKG_URL="https://github.com/libretro/desmume/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch libpcap"
+PKG_DEPENDS_TARGET="toolchain linux glibc libpcap"
 PKG_LONGDESC="DeSmuME is a Nintendo DS emulator"
 PKG_TOOLCHAIN="make"
 
@@ -20,6 +20,18 @@ if [ ! $OPENGL_SUPPORT = "yes" ]; then
 fi
 
 PKG_MAKE_OPTS_TARGET="-C desmume/src/frontend/libretro -f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}"
+
+configure_package() {
+  # Displayserver Support
+  if [ "${DISPLAYSERVER}" = "x11" ]; then
+    PKG_DEPENDS_TARGET+=" xorg-server"
+  fi
+
+  # OpenGL Support
+  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGL}"
+  fi
+}
 
 pre_make_target() {
   case $TARGET_CPU in
