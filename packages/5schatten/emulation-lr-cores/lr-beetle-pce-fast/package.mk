@@ -7,7 +7,7 @@ PKG_SHA256="cccecf92082de0c7c2ea66b7b043b383098d7443db3b2a58c7186d0752e020bc"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/beetle-pce-fast-libretro"
 PKG_URL="https://github.com/libretro/beetle-pce-fast-libretro/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="Standalone port of Mednafen PCE Fast to libretro."
 PKG_TOOLCHAIN="make"
 
