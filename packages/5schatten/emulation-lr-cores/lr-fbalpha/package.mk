@@ -7,7 +7,7 @@ PKG_SHA256="97a59385b8df07bd1095e725499cd84d3955001304fed4cee2073316bec7811c"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/fbalpha"
 PKG_URL="https://github.com/libretro/fbalpha/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="Port of Final Burn Alpha to Libretro (v0.2.97.44)."
 PKG_TOOLCHAIN="make"
 
