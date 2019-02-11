@@ -7,12 +7,29 @@ PKG_SHA256="2bc4424ac80ee03d248d261908a857dc1e0ae919704830e1629cd111a9acc91e"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/mupen64plus-libretro"
 PKG_URL="https://github.com/libretro/mupen64plus-libretro/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc zlib"
 PKG_LONGDESC="Mupen64Plus uses GLideN64 (a graphics plugin that is not available in Parallel-N64). The emulator code itself is identical to standalone mupen64plus."
 PKG_TOOLCHAIN="manual"
 
 PKG_LIBNAME="mupen64plus_libretro.so"
 PKG_LIBPATH="$PKG_LIBNAME"
+
+configure_package() {
+  # Displayserver Support
+  if [ "${DISPLAYSERVER}" = "x11" ]; then
+    PKG_DEPENDS_TARGET+=" xorg-server"
+  fi
+
+  # OpenGL Support
+  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGL}"
+  fi
+
+  # OpenGLES Support
+  if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGLES}"
+  fi
+}
 
 pre_build_target() {
   export GIT_VERSION=${PKG_VERSION:0:7}
