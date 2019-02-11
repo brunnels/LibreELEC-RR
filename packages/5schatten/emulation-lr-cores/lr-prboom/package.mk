@@ -7,7 +7,7 @@ PKG_SHA256="bfecffeab27385ae3a0f4877ea6ce3f33bb5ec90667b95731c71477df88cbf8f"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/libretro-prboom"
 PKG_URL="https://github.com/libretro/libretro-prboom/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="Port of prboom to libretro - plays Doom, Doom II, Final Doom and other Doom IWAD mods."
 PKG_TOOLCHAIN="make"
 
