@@ -12,11 +12,13 @@ PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2-git SDL2_net SDL_sound libpng munt"
 PKG_LONGDESC="This is an enhanced SDL2 fork of DOSBox emulator by duganchen. It is currently in sync with revision 4006."
 PKG_TOOLCHAIN="autotools"
 
-pre_configure_target () {
+configure_package() {
   if [ "${OPENGL_SUPPORT}" = "yes" ]; then
     PKG_DEPENDS_TARGET+=" dosbox-sdl2-shaders glew"
   fi
+}
 
+pre_configure_target() {
   PKG_CONFIGURE_OPTS_TARGET="--prefix=/usr \
                              --enable-core-inline \
                              --enable-dynrec \
