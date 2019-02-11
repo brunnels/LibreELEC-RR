@@ -7,7 +7,7 @@ PKG_SHA256="d96baf687b1639b246a994c52aa76729df3cbebde61ce212aebbbeabcf803a64"
 PKG_LICENSE="MAME"
 PKG_SITE="https://github.com/ata4/angrylion-rdp-plus"
 PKG_URL="https://github.com/ata4/angrylion-rdp-plus/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain freetype zlib"
+PKG_DEPENDS_TARGET="toolchain linux glibc freetype zlib"
 PKG_LONGDESC="A low-level N64 video emulation plugin, based on the pixel-perfect angrylion RDP plugin with some improvements."
 
 makeinstall_target() {
