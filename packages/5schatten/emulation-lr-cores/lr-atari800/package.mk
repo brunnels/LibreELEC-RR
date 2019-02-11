@@ -7,7 +7,7 @@ PKG_SHA256="65ce8a34cd374c8accfca80f95de23a95b14644cbddc467ed9ea7f877175e59c"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/libretro-atari800"
 PKG_URL="https://github.com/libretro/libretro-atari800/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc zlib"
 PKG_LONGDESC="WIP Libretro port of Atari800 emulator version 3.1.0"
 PKG_TOOLCHAIN="make"
 
