@@ -7,7 +7,7 @@ PKG_SHA256="548f31f505b8dcb40b63586b9be897d76ad49bfd8a274c41528232c35189abd9"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/snes9x"
 PKG_URL="https://github.com/libretro/snes9x/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="Snes9x - Portable Super Nintendo Entertainment System (TM) emulator"
 PKG_TOOLCHAIN="make"
 
