@@ -7,7 +7,7 @@ PKG_SHA256="c000346a1db487d86acfe1c56a0803f035a9e66af3b42a991ebad8df836ceccd"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/mupen64plus/mupen64plus-ui-console"
 PKG_URL="https://github.com/mupen64plus/mupen64plus-ui-console/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain SDL2-git mupen64plus-core"
+PKG_DEPENDS_TARGET="toolchain linux glibc SDL2-git mupen64plus-core"
 PKG_LONGDESC="Console (command-line) front-end user interface for Mupen64Plus v2.0 project"
 PKG_TOOLCHAIN="make"
 
