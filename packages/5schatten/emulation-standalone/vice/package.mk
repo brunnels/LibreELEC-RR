@@ -9,7 +9,7 @@ PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv3"
 PKG_SITE="http://vice-emu.sourceforge.net/"
 PKG_URL="https://sourceforge.net/projects/vice-emu/files/releases/vice-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2-git libpng giflib zlib libvorbis libogg lame"
+PKG_DEPENDS_TARGET="toolchain linux glibc alsa-lib SDL2-git libpng giflib zlib portaudio libvorbis libogg lame flac"
 PKG_LONGDESC="VICE C64 emulator"
 PKG_TOOLCHAIN="configure"
 
