@@ -7,7 +7,7 @@ PKG_SHA256="0b8edf7284637a7552335b10dad0d6bf5895ca63b273b5a04a8fc88295777ad4"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/vice-libretro"
 PKG_URL="https://github.com/libretro/vice-libretro/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="Versatile Commodore 8-bit Emulator version 3.0 LIBRETRO WIP"
 PKG_TOOLCHAIN="make"
 
