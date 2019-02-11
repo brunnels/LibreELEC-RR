@@ -6,11 +6,16 @@ PKG_VERSION="d0f5f90dea8c703db9e1c899746f1d49dc1cac7e" #v2.4.7+
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/irtimmer/moonlight-embedded"
 PKG_URL="https://github.com/irtimmer/moonlight-embedded.git"
-PKG_DEPENDS_TARGET="toolchain alsa-lib avahi curl enet expat ffmpeg libcec libevdev pulseaudio openssl opus SDL2-git SDL_GameControllerDB systemd"
+PKG_DEPENDS_TARGET="toolchain alsa-lib avahi curl enet expat ffmpeg libcec libevdev pulseaudio openssl opus SDL2-git SDL_GameControllerDB systemd zlib speex"
 PKG_LONGDESC="Moonlight Embedded is an open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield, but built for Linux."
 GET_HANDLER_SUPPORT="git"
 
 configure_package() {
+  # Displayserver Support
+  if [ "${DISPLAYSERVER}" = "x11" ]; then
+    PKG_DEPENDS_TARGET+=" xorg-server"
+  fi
+
   if [ "${PROJECT}" = "RPi" ]; then
     PKG_DEPENDS_TARGET+=" bcm2835-driver"
   elif [ "${PROJECT}" = "Generic" ]; then
@@ -34,4 +39,4 @@ post_makeinstall_target() {
   # Clean up
   rm -rf $INSTALL/usr/share
   rm -rf $INSTALL/usr/etc
-}               
+}
