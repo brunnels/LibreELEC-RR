@@ -7,7 +7,7 @@ PKG_SHA256="e37374d092ed5e01d38fd442ed5d0788ff863c0f4adbd4b4a49bea3c60348145"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/stella-libretro"
 PKG_URL="https://github.com/libretro/stella-libretro/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="Port of Stella to libretro."
 PKG_TOOLCHAIN="make"
 
