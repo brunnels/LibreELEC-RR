@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="mupen64plus-input-sdl"
-PKG_VERSION="25c8ffc0c58e9c0d10b43f4f946f23166949ce1d"
-PKG_SHA256="3c3aa148e28fd81e1dfe8d19907ed0feee8d88711f9dce4d5eb583070b83ef3a"
+PKG_VERSION="2.5.9"
+PKG_SHA256="241b9391616288f6914d16826fbd94f990ab7ac8c217999b8cf19cf3a03f1afb"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/mupen64plus/mupen64plus-input-sdl"
 PKG_URL="https://github.com/mupen64plus/mupen64plus-input-sdl/archive/$PKG_VERSION.tar.gz"
