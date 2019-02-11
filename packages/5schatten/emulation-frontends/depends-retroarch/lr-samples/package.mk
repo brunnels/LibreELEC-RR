@@ -7,19 +7,34 @@ PKG_SHA256="0803a06c42acc78b12dd71183ffbed62ef3630cf82a3714ab1dd705467bb51ca"
 PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/libretro/libretro-samples"
 PKG_URL="https://github.com/libretro/libretro-samples/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="A set of samples to illustrate libretro API."
 PKG_TOOLCHAIN="manual"
+
+configure_package() {
+  # Displayserver Support
+  if [ "${DISPLAYSERVER}" = "x11" ]; then
+    PKG_DEPENDS_TARGET+=" xorg-server"
+  fi
+
+  # OpenGL Support
+  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGL}"
+  fi
+}
 
 make_target() {
  make -C input/button_test
  make -C midi/midi_test
  make -C tests/test
 
- if [ "$ARCH" == "x86_64" ]; then
+ if [ "${ARCH}" = "x86_64" ]; then
    make -C tests/test_advanced
    make -C video/opengl/libretro_test_gl_fixedfunction
    make -C video/opengl/libretro_test_gl_shaders
+ fi
+
+ if [ "${VULKAN_SUPPORT}" = "yes" ]; then
    make -C video/vulkan/vk_rendering
    make -C video/vulkan/vk_async_compute
  fi
@@ -32,10 +47,13 @@ makeinstall_target() {
   cp midi/midi_test/*.so $INSTALL/usr/lib/libretro/
   cp tests/test/*.so $INSTALL/usr/lib/libretro/
 
-  if [ "$ARCH" == "x86_64" ]; then
+  if [ "${ARCH}" = "x86_64" ]; then
     cp tests/test_advanced/*.so $INSTALL/usr/lib/libretro/
     cp video/opengl/libretro_test_gl_fixedfunction/*.so $INSTALL/usr/lib/libretro/
     cp video/opengl/libretro_test_gl_shaders/*.so $INSTALL/usr/lib/libretro/
+  fi
+
+  if [ "${VULKAN_SUPPORT}" = "yes" ]; then
     cp video/vulkan/vk_rendering/*.so $INSTALL/usr/lib/libretro/
     cp video/vulkan/vk_async_compute/*.so $INSTALL/usr/lib/libretro/
   fi
