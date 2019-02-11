@@ -7,7 +7,7 @@ PKG_SHA256="8c3d409e6f2e6b6eb1e7bec331149316ddb0205114f494fb7f90e3a7bd3ede9c"
 PKG_LICENSE="MPL 2.0"
 PKG_SITE="https://github.com/mgba-emu/mgba"
 PKG_URL="https://github.com/mgba-emu/mgba/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch zlib"
+PKG_DEPENDS_TARGET="toolchain linux glibc zlib"
 PKG_LONGDESC="mGBA is an emulator for running Game Boy Advance games."
 
 PKG_LIBNAME="mgba_libretro.so"
