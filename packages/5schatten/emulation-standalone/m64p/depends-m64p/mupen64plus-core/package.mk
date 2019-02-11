@@ -11,12 +11,14 @@ PKG_DEPENDS_TARGET="toolchain SDL2-git freetype libpng zlib"
 PKG_LONGDESC="Core module of the Mupen64Plus project"
 PKG_TOOLCHAIN="make"
 
-# Generic depends on nasm & glu
-if [ "${PROJECT}" = "Generic" ]; then
-  PKG_DEPENDS_TARGET+=" nasm:host glu"
-fi
-
 PKG_MAKE_OPTS_TARGET="-C projects/unix SRCDIR=../../src all NEW_DYNAREC=1 SHAREDIR=/usr/config/mupen64plus"
+
+configure_package() {
+  # Generic depends on nasm & glu
+  if [ "${PROJECT}" = "Generic" ]; then
+    PKG_DEPENDS_TARGET+=" nasm:host glu"
+  fi
+}
 
 pre_configure_target() {
   export SYSROOT_PREFIX=$SYSROOT_PREFIX
