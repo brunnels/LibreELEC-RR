@@ -10,11 +10,13 @@ PKG_DEPENDS_TARGET="toolchain alsa-lib avahi curl enet expat ffmpeg libcec libev
 PKG_LONGDESC="Moonlight Embedded is an open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield, but built for Linux."
 GET_HANDLER_SUPPORT="git"
 
-if [ "${PROJECT}" = "RPi" ]; then
-  PKG_DEPENDS_TARGET+=" bcm2835-driver"
-elif [ "${PROJECT}" = "Generic" ]; then
-  PKG_DEPENDS_TARGET+=" libvdpau libxcb"
-fi
+configure_package() {
+  if [ "${PROJECT}" = "RPi" ]; then
+    PKG_DEPENDS_TARGET+=" bcm2835-driver"
+  elif [ "${PROJECT}" = "Generic" ]; then
+    PKG_DEPENDS_TARGET+=" libvdpau libxcb"
+  fi
+}
 
 post_makeinstall_target() {
   # Create directories
