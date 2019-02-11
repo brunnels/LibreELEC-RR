@@ -7,7 +7,7 @@ PKG_SHA256="7417279134e71bd4d8dd0efc9e34c61e44dca46087c0167290815595eb1357f1"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/gonetz/GLideN64"
 PKG_URL="https://github.com/gonetz/GLideN64/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain freetype:host zlib"
+PKG_DEPENDS_TARGET="toolchain linux glibc freetype:host zlib bzip2 libpng"
 PKG_LONGDESC="A new generation, open-source graphics plugin for N64 emulators."
 PKG_TOOLCHAIN="cmake"
 
@@ -15,6 +15,23 @@ PKG_TOOLCHAIN="cmake"
 if [ "${PROJECT}" = "RPi" ]; then
   PKG_PATCH_DIRS="${PROJECT}"
 fi
+
+configure_package() {
+  # Displayserver Support
+  if [ "${DISPLAYSERVER}" = "x11" ]; then
+    PKG_DEPENDS_TARGET+=" xorg-server"
+  fi
+
+  # OpenGL Support
+  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGL}"
+  fi
+
+  # OpenGLES Support
+  if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGLES}"
+  fi
+}
 
 pre_configure_target() {
   PKG_CMAKE_SCRIPT="$PKG_BUILD/src/CMakeLists.txt"
