@@ -15,6 +15,33 @@ if [ ${PROJECT} = "Amlogic_Legacy" ]; then
   PKG_PATCH_DIRS="Amlogic_Legacy"
 fi
 
+configure_package() {
+    # Use ppc assembly only for x86_64
+  if [ "$TARGET_ARCH" = "x86_64" ]; then
+    PKG_DEPENDS_TARGET+=" nasm:host"
+  fi
+
+  # X11 Support
+  if [ "${DISPLAYSERVER}" = "x11" ]; then
+    PKG_DEPENDS_TARGET+=" libX11 libXrandr"
+  fi
+
+  # OpenGL Support
+  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" $OPENGL"
+  fi
+
+  # OpenGLES Support
+  if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" $OPENGLES"
+  fi
+
+  # Pulseaudio Support
+  if [ "${PULSEAUDIO_SUPPORT}" = yes ]; then
+    PKG_DEPENDS_TARGET+=" pulseaudio"
+  fi
+}
+
 pre_configure_target(){
   PKG_CMAKE_OPTS_TARGET="-DSDL_STATIC=OFF \
                          -DLIBC=ON \
@@ -59,7 +86,6 @@ pre_configure_target(){
 
   # Use ppc assembly only for x86_64
   if [ "$TARGET_ARCH" = "x86_64" ]; then
-    PKG_DEPENDS_TARGET+=" nasm:host"
     PKG_CMAKE_OPTS_TARGET+=" -DASSEMBLY=ON"
   else
     PKG_CMAKE_OPTS_TARGET+=" -DASSEMBLY=OFF"
@@ -67,7 +93,6 @@ pre_configure_target(){
 
   # X11 Support
   if [ "${DISPLAYSERVER}" = "x11" ]; then
-    PKG_DEPENDS_TARGET+=" libX11 libXrandr"
     PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_X11=ON \
                              -DX11_SHARED=ON \
                              -DVIDEO_X11_XCURSOR=OFF \
@@ -83,7 +108,6 @@ pre_configure_target(){
 
   # OpenGL Support
   if [ "${OPENGL_SUPPORT}" = "yes" ]; then
-    PKG_DEPENDS_TARGET+=" $OPENGL"
     PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_OPENGL=ON"
   else
     PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_OPENGL=OFF"
@@ -91,7 +115,6 @@ pre_configure_target(){
 
   # OpenGLES Support
   if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
-    PKG_DEPENDS_TARGET+=" $OPENGLES"
     PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_OPENGLES=ON"
   else
     PKG_CMAKE_OPTS_TARGET+=" -DVIDEO_OPENGLES=OFF"
@@ -117,7 +140,6 @@ pre_configure_target(){
 
   # Pulseaudio Support
   if [ "${PULSEAUDIO_SUPPORT}" = yes ]; then
-    PKG_DEPENDS_TARGET+=" pulseaudio"
     PKG_CMAKE_OPTS_TARGET+=" -DPULSEAUDIO=ON \
                              -DPULSEAUDIO_SHARED=ON"
   else
