@@ -7,7 +7,7 @@ PKG_SHA256="683d1fc76ccc78603c02a5c51bc6f633bae33d6f0ce1a4ffd8d4753de47f1edf"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/scummvm"
 PKG_URL="https://github.com/libretro/scummvm/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc"
 PKG_LONGDESC="ScummVM is an interpreter for point-and-click adventure games that can be used as a libretro core."
 PKG_TOOLCHAIN="make"
 
