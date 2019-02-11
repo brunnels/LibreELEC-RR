@@ -8,7 +8,7 @@ PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/FCare/Kronos"
 PKG_URL="https://github.com/FCare/Kronos/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain retroarch"
+PKG_DEPENDS_TARGET="toolchain linux glibc mesa xorg-server"
 PKG_LONGDESC="Kronos is a Sega Saturn emulator forked from uoYabause. "
 PKG_TOOLCHAIN="make"
 
