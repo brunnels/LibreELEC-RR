@@ -8,10 +8,27 @@ PKG_LICENSE="OSS"
 PKG_SITE="https://github.com/RetroPie/EmulationStation"
 PKG_URL="https://github.com/RetroPie/EmulationStation.git"
 PKG_GIT_CLONE_BRANCH="stable"
-PKG_DEPENDS_TARGET="toolchain SDL2-git freetype curl freeimage vlc emulationstation-theme-carbon emulationstation-theme-simple-dark "
+PKG_DEPENDS_TARGET="toolchain linux glibc systemd dbus openssl zlib libpng alsa-lib SDL2-git freetype curl freeimage bzip2 vlc emulationstation-theme-carbon emulationstation-theme-simple-dark "
 PKG_LONGDESC="A Fork of Emulation Station for RetroPie. Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
 PKG_BUILD_FLAGS="-gold"
 GET_HANDLER_SUPPORT="git"
+
+configure_package() {
+  # Displayserver Support
+  if [ "${DISPLAYSERVER}" = "x11" ]; then
+    PKG_DEPENDS_TARGET+=" xorg-server"
+  fi
+
+  # OpenGL Support
+  if [ "${OPENGL_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGL}"
+  fi
+
+  # OpenGLES Support
+  if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
+    PKG_DEPENDS_TARGET+=" ${OPENGLES}"
+  fi
+}
 
 post_makeinstall_target() {
   # Create directories
