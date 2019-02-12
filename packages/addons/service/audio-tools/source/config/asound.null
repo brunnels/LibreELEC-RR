@@ -1,0 +1,11 @@
+# @ASOUND_TAG@
+
+pcm.@ASOUND_NAME@ {
+  type null
+  hint {
+    description "@ASOUND_LABEL@"
+    show on
+  }
+}
+
+# @ASOUND_TAG@

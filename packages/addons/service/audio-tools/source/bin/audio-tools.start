@@ -1,0 +1,63 @@
+#!/bin/sh
+
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2019-present Team LibreELEC (https://libreelec.tv)
+
+. /etc/profile
+oe_setup_addon service.audio-tools
+
+ASOUND_CONF="/run/asound.conf"
+ASOUND_LABEL="Shared device"
+ASOUND_NAME="!shared"
+ASOUND_TAG="----- SHARED_ALSA -----"
+PULSE_NAME="shared_sink"
+
+# If RPi and no card is active then activate onboard audio
+if grep -q "RPi" /etc/release && [ ! -x /proc/asound ]; then
+  dtparam audio=on
+  dtparam -l
+fi
+
+# Remove ALSA configuration
+if [ -f "$ASOUND_CONF" ]; then
+  sed -i "/$ASOUND_TAG/,/$ASOUND_TAG/d" "$ASOUND_CONF"
+fi
+
+# Unload PulseAudio sink
+number="$(pactl list modules short | grep "name=$PULSE_NAME" | awk '{print $1;}')"
+if [ -n "$number" ]; then
+  pactl unload-module "$number"
+fi
+
+# If selected card is not active then pick first active card
+cards="$(aplay -L | grep "^[^ ]*:CARD=")"
+if ! echo "$cards" | grep -q "^$at_card$"; then
+  at_card="$(echo "$cards" | head -n 1)"
+fi
+
+if [ -z "$at_card" ]; then
+  # If no card found then use null device
+  asound="asound.null"
+
+else
+  # If RPi and card is onboard audio then set playback route
+  if grep -q "RPi" /etc/release && echo "$at_card" | grep -q "=ALSA$"; then
+    index="$(readlink /proc/asound/ALSA | grep -o "[0-9]*$")"
+    amixer -c "$index" cset numid=3 "${at_rpi_ppr:-0}"
+  fi
+
+  # If a card is found use PulseAudio sink
+  asound="asound.pulse"
+  pactl load-module module-alsa-sink device="$at_card" name="$PULSE_NAME" > /dev/null
+fi
+
+# Add ALSA configuration
+sed -e "s/@ASOUND_LABEL@/$ASOUND_LABEL/g" \
+    -e "s/@ASOUND_NAME@/$ASOUND_NAME/g" \
+    -e "s/@ASOUND_TAG@/$ASOUND_TAG/g" \
+    -e "s/@PULSE_NAME@/$PULSE_NAME/g" \
+    "$ADDON_DIR/config/$asound" >> "$ASOUND_CONF"
+
+# Output configuration
+pactl list sinks
+aplay -L

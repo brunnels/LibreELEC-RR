@@ -1,0 +1,21 @@
+# @ASOUND_TAG@
+
+pcm_type.pulse {
+  lib "/storage/.kodi/addons/service.audio-tools/lib/libasound_module_pcm_pulse.so"
+}
+
+pcm.@ASOUND_NAME@ {
+  type pulse
+  device "alsa_output.@PULSE_NAME@"
+  hint {
+    description "@ASOUND_LABEL@"
+    show on
+  }
+}
+
+ctl.@ASOUND_NAME@ {
+  type pulse
+  device "alsa_output.@PULSE_NAME@"
+}
+
+# @ASOUND_TAG@
