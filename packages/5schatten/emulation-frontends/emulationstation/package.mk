@@ -3,7 +3,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="emulationstation"
-PKG_VERSION="2af2ec5f125bbacfb8a23a38cd3a1d049fd4cdf3" #v2.8.0
+PKG_VERSION="10ed2f21915f7ec5dbe1101229e5c1bfbff669de" #v2.8.1
 PKG_LICENSE="OSS"
 PKG_SITE="https://github.com/RetroPie/EmulationStation"
 PKG_URL="https://github.com/RetroPie/EmulationStation.git"
