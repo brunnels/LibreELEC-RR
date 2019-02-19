@@ -75,9 +75,7 @@ update_spotify() {
 run_spotify() {
   kodifreeze.sh freeze_noPA
   systemctl stop pulseaudio
-
   ${SPOTIFY_HOME}/spotify "$@"
-
   systemctl start pulseaudio
   kodifreeze.sh unfreeze_noPA
 }
@@ -95,15 +93,6 @@ elif [ ! -x ${SPOTIFY_HOME} ] && [ -z "${SPOTIFY_URL_STATUS}" ]; then
 fi
 
 if [ -f ${SPOTIFY_HOME}/spotify ]; then
-  # Set ALSA output device
-  set_ALSA_output_device
-
-  # Inform about missing asound.conf
-  if [ ! -f /storage/.config/asound.conf ]; then
-    missing_asound_conf
-    usleep 21000000
-  fi
-
   run_spotify "$@" > ${SPOTIFY_LOG}.log 2>&1
 fi
 
