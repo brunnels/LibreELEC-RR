@@ -1,0 +1,101 @@
+# Kodi Media Center language file
+# Addon Name: service.rr-config-tool
+msgid ""
+msgstr ""
+
+msgctxt "#30000"
+msgid "Audio config"
+msgstr ""
+
+msgctxt "#30001"
+msgid "Select audio device"
+msgstr ""
+
+msgctxt "#30002"
+msgid "Current audio device"
+msgstr ""
+
+msgctxt "#30003"
+msgid "Select audio backend"
+msgstr ""
+
+msgctxt "#30004"
+msgid "Use module-udev-detect to set PulseAudio device"
+msgstr ""
+
+msgctxt "#30005"
+msgid "Enable PulseAudio timer-based scheduling (tsched)"
+msgstr ""
+
+msgctxt "#30010"
+msgid "Restart Kodi to enable shared device"
+msgstr ""
+
+msgctxt "#30020"
+msgid "No soundcard found"
+msgstr ""
+
+msgctxt "#30100"
+msgid "Video Config"
+msgstr ""
+
+msgctxt "#30101"
+msgid "Kernel Mode Setting (KMS)"
+msgstr ""
+
+msgctxt "#30102"
+msgid "Amiga emulator refresh rate"
+msgstr ""
+
+msgctxt "#30103"
+msgid "Atari emulator refresh rate"
+msgstr ""
+
+msgctxt "#30104"
+msgid "C64 emulator refresh rate"
+msgstr ""
+
+msgctxt "#30105"
+msgid "GC/Wii emulator refresh rate"
+msgstr ""
+
+msgctxt "#30200"
+msgid "Qt5 Config"
+msgstr ""
+
+msgctxt "#30201"
+msgid "Qt auto screen scale factor"
+msgstr ""
+
+msgctxt "#30202"
+msgid "Qt scale factor"
+msgstr ""
+
+msgctxt "#30203"
+msgid "Physical screen width in millimeters"
+msgstr ""
+
+msgctxt "#30204"
+msgid "Physical screen height in millimeters"
+msgstr ""
+
+msgctxt "#30300"
+msgid "Emulation Config"
+msgstr ""
+
+msgctxt "#30301"
+msgid "Enable Demos"
+msgstr ""
+
+msgctxt "#30302"
+msgid "Enable ID Games"
+msgstr ""
+
+msgctxt "#30400"
+msgid "Misc Config"
+msgstr ""
+
+msgctxt "#30401"
+msgid "Spotify branch"
+msgstr ""
+
