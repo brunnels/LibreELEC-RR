@@ -4,6 +4,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 . /etc/profile
+oe_setup_addon service.rr-config-tool
 
 DOCKER_PATH=/storage/.kodi/addons/service.system.docker/bin/docker
 DOCKER_IMAGE=5schatten/arch-pcsx2
@@ -32,13 +33,12 @@ if [ -x ${DOCKER_PATH} ]; then
     echo "##################" >> ${PCSX2_LOG} 2>&1
 
     # Stop FluidSynth / set audio driver to ALSA
-    RR_ADVANCED_CONF=/storage/.config/rr-config/advanced.conf
-    RR_AUDIO_BACKEND=$(cat ${RR_ADVANCED_CONF} | grep RR_AUDIO_BACKEND= | cut -f2- -d"=")
-
     if [ ${RR_AUDIO_BACKEND} = "PulseAudio" ] && [ -f /var/run/fluidsynth.run ]; then
-      unset_emulation_AUDIO_backend
-      export SDL_AUDIODRIVER=alsa
+      stop_FluidSynth_backend
       usleep 500000
+      unload_pulseaudio_sink
+      usleep 500000
+      export SDL_AUDIODRIVER=alsa
     fi
 
     DOCKER_ARGS=" \
@@ -61,7 +61,9 @@ if [ -x ${DOCKER_PATH} ]; then
     # Set audio driver to PulseAudio / start FluidSynth
     if [ ${RR_AUDIO_BACKEND} = "PulseAudio" ] && [ ! -f /var/run/fluidsynth.run ]; then
       export SDL_AUDIODRIVER=pulseaudio
-      set_emulation_AUDIO_backend
+      load_pulseaudio_sink
+      usleep 500000
+      start_FluidSynth_backend
       usleep 500000
     fi
 
