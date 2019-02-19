@@ -13,6 +13,7 @@ PKG_LONGDESC="OEM: Metapackage for various OEM packages"
 PKG_TOOLCHAIN="manual"
 
 OEM_APPS_COMMON=" \
+  rr-config-tool \
   ds4drv \
   htop \
   lm-sensors \
@@ -90,6 +91,7 @@ OEM_EMU_GENERIC=" \
   lr-kronos \
   lr-mame2016 \
   lr-mesen \
+  lr-mupen64plus-nx \
   lr-parallel-n64 \
   lr-ppsspp \
   lr-snes9x"
@@ -134,10 +136,8 @@ fi
 makeinstall_target() {
   # Create dirs
   mkdir -p $INSTALL
-  mkdir -p $INSTALL/usr/config/rr-config
 
   # Copy oem config files & scripts
-  cp -PR $PKG_DIR/files/common/* $INSTALL
+  cp -PR $PKG_DIR/files/common/*   $INSTALL
   cp -PR $PKG_DIR/files/$PROJECT/* $INSTALL
-  cp -rf $INSTALL/usr/share/* $INSTALL/usr/config
 }
