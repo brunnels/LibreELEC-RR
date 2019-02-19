@@ -80,22 +80,10 @@ else
 fi
 
 if [ -f /opt/google/chrome/chrome ]; then 
-  # Set ALSA output device
-  set_ALSA_output_device
-
-  # Inform about missing asound.conf
-  if [ ! -f /storage/.config/asound.conf ]; then
-    missing_asound_conf
-    usleep 21000000
-  fi  
-
   echo "Starting Google Chrome..." >> $CHROME_LOG 2>&1
-
   kodifreeze.sh freeze muteonly
   systemctl stop pulseaudio
-
   run_chrome "$@" >> $CHROME_LOG 2>&1
-
   systemctl start pulseaudio
   kodifreeze.sh unfreeze muteonly
 fi
