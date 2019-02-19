@@ -6,6 +6,7 @@
 # Script to suspend/resume audio and freeze/unfreeze the Kodi process
 
 . /etc/profile
+oe_setup_addon service.rr-config-tool
 
 kodi_freeze() {
   if [ "$1" = "muteonly" ]; then
@@ -13,7 +14,9 @@ kodi_freeze() {
   else
     systemctl stop kodi &
     usleep 500000
-    set_emulation_AUDIO_backend
+    load_pulseaudio_sink
+    usleep 500000
+    start_FluidSynth_backend
   fi
 }
 
@@ -31,7 +34,9 @@ kodi_unfreeze() {
   if [ "$1" = "muteonly" ]; then
     kodi-send --action="RunScript(/usr/bin/audio-resume.py)"
   else
-    unset_emulation_AUDIO_backend
+    stop_FluidSynth_backend
+    usleep 500000
+    unload_pulseaudio_sink
     usleep 500000
     systemctl start kodi
   fi
