@@ -4,6 +4,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 . /etc/profile
+oe_setup_addon service.rr-config-tool
 
 ICON=/usr/config/spotify/icon.png
 SPOTIFY_HOME=/storage/.cache/app.spotify
@@ -13,10 +14,8 @@ SPOTIFY_VERSION=$SPOTIFY_CONFIG_PATH/spotify.version
 SPOTIFY_LOG=/var/log/spotify
 SPOTIFY_BRANCH_DEV=https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=spotify
 SPOTIFY_BRANCH_STABLE=$SPOTIFY_BRANCH_DEV-stable
-RR_ADVANCED_CONF=/storage/.config/rr-config/advanced.conf
-SPOTIFY_BRANCH=$(cat ${RR_ADVANCED_CONF} | grep RR_SPOTIFY_BRANCH= | cut -f2- -d"=")
 
-if [ ${SPOTIFY_BRANCH} = "dev" ]; then
+if [ ${RR_SPOTIFY_BRANCH} = "dev" ]; then
   SPOTIFY_PKGVER=`curl -s "${SPOTIFY_BRANCH_DEV}" | grep -E '^pkgver=' | cut -c8-17`
   if [ -z "$1" ]; then
     export `curl -s "${SPOTIFY_BRANCH_DEV}" | grep -E '^pkgver='` || exit 1
