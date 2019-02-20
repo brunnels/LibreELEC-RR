@@ -33,7 +33,7 @@ configure_package() {
   fi
 }
 
-pre_configure_package() {
+pre_configure_target() {
   # OpenGLES Support
   if [ "${OPENGLES_SUPPORT}" = "yes" ]; then
     PKG_MAKE_OPTS_TARGET+=" FORCE_GLES=1"
