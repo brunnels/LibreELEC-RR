@@ -48,7 +48,7 @@ pre_configure_target() {
 
         ;;
       RPi2)
-        PKG_MAKE_OPTS_TARGET+=" platform=rp2"
+        PKG_MAKE_OPTS_TARGET+=" platform=rpi2"
         CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads \
                         -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux"
 
