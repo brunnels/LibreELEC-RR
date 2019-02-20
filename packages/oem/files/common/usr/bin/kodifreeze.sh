@@ -12,7 +12,8 @@ kodi_freeze() {
   if [ "$1" = "muteonly" ]; then
     kodi-send --action="RunScript(/usr/bin/audio-suspend.py)"
   else
-    systemctl stop kodi &
+    systemctl stop kodi
+    wait $(pidof kodi.bin)
     usleep 500000
     load_pulseaudio_sink
     usleep 500000
@@ -24,8 +25,8 @@ kodi_freeze_noPA() {
   if [ "$1" = "muteonly" ]; then
     kodi-send --action="RunScript(/usr/bin/audio-suspend.py)"
   else
-    systemctl stop kodi &
-    usleep 500000
+    systemctl stop kodi
+    wait $(pidof kodi.bin)
   fi
 }
 
@@ -37,6 +38,7 @@ kodi_unfreeze() {
     stop_FluidSynth_backend
     usleep 500000
     unload_pulseaudio_sink
+    wait $(pidof pactl)
     usleep 500000
     systemctl start kodi
   fi
