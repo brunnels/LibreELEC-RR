@@ -60,6 +60,7 @@ OEM_EMU_COMMON=" \
   lr-mgba \
   lr-mrboom \
   lr-mupen64plus \
+  lr-mupen64plus-nx \
   lr-nestopia \
   lr-pcsx-rearmed \
   lr-prboom \
@@ -91,7 +92,6 @@ OEM_EMU_GENERIC=" \
   lr-kronos \
   lr-mame2016 \
   lr-mesen \
-  lr-mupen64plus-nx \
   lr-parallel-n64 \
   lr-ppsspp \
   lr-snes9x"
