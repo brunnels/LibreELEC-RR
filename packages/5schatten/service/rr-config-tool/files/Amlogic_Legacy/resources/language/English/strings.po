@@ -52,7 +52,7 @@ msgid "Retroarch video context driver"
 msgstr ""
 
 msgctxt "#30102"
-msgid "Use Kernel Mode Setting (KMS)"
+msgid "Kernel Mode Setting (KMS)"
 msgstr ""
 
 msgctxt "#30103"
@@ -60,7 +60,7 @@ msgid "Emulator refresh rates [PAL 50Hz | NTSC 60Hz]"
 msgstr ""
 
 msgctxt "#30104"
-msgid "Amiga emulator (FS-UAE)"
+msgid "Amiga emulator (Amiberry)"
 msgstr ""
 
 msgctxt "#30105"
@@ -84,7 +84,7 @@ msgid "High DPI Support in Qt"
 msgstr ""
 
 msgctxt "#30202"
-msgid "Use automatic scaling, based on the TV pixel density"
+msgid "Enable automatic scaling, based on the TV pixel density"
 msgstr ""
 
 msgctxt "#30203"
