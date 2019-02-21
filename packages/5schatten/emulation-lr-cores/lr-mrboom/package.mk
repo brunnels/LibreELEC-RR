@@ -16,10 +16,10 @@ PKG_LIBPATH="$PKG_LIBNAME"
 
 PKG_MAKE_OPTS_TARGET="GIT_VERSION=${PKG_VERSION:0:7}"
 
-pre_make_target() {
+pre_configure_target() {
   # Disable NEON otherwise build fails
   if target_has_feature neon; then
-    CFLAGS+=" -DDONT_WANT_ARM_OPTIMIZATIONS" 
+    PKG_MAKE_OPTS_TARGET+=" HAVE_NEON=1"
   fi
 }
 
