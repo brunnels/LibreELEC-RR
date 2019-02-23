@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-reicast"
-PKG_VERSION="5b1fb54a49397283d7f09646f515f3fe7cd25886"
-PKG_SHA256="0d5f724f488ca186abb472a87fa1a565a4936f7f2fb3f73a6bea7e9f2d636147"
+PKG_VERSION="d88855a036ccf58c10dd788fe6c6a647fe739dcb"
+PKG_SHA256="b085440e829e658dc026259d22200fe3abf155bd57b51c1b94c1c20b94a69a96"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/reicast-emulator"
 PKG_URL="https://github.com/libretro/reicast-emulator/archive/$PKG_VERSION.tar.gz"
@@ -43,7 +43,7 @@ pre_make_target() {
 
   case $PROJECT in
     Amlogic_Legacy)
-      PKG_MAKE_OPTS_TARGET+=" platform=rpi3"
+      PKG_MAKE_OPTS_TARGET+=" platform=rpi"
       ;;
     RPi)
       PKG_MAKE_OPTS_TARGET+=" platform=rpi"
