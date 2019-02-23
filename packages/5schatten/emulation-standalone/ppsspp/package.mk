@@ -70,4 +70,7 @@ makeinstall_target() {
 
   # Install config
   cp $PKG_DIR/config/* $INSTALL/usr/config/ppsspp/PSP/SYSTEM
+  if [ "${PROJECT}" = "Generic" ]; then
+    sed -e "s/FullScreen = True/FullScreen = False/" -i ${INSTALL}/usr/config/ppsspp/PSP/SYSTEM/ppsspp.ini
+  fi
 }
