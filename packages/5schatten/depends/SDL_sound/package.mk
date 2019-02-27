@@ -25,5 +25,5 @@ pre_configure_target() {
 }
 
 post_makeinstall_target() {
-  ln -sf $SYSROOT_PREFIX/usr/include/SDL/SDL_sound.h $SYSROOT_PREFIX/usr/include/SDL2/SDL_sound.h
+  ln -sf ${PKG_ORIG_SYSROOT_PREFIX:-${SYSROOT_PREFIX}}/usr/include/SDL/SDL_sound.h ${PKG_ORIG_SYSROOT_PREFIX:-${SYSROOT_PREFIX}}/usr/include/SDL2/SDL_sound.h
 }
