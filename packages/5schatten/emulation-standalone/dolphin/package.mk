@@ -5,7 +5,7 @@
 PKG_NAME="dolphin"
 PKG_VERSION="de3c8fee223deed10eebc3d0949bb82da8e07f69"
 PKG_SHA256="1bdd77da93fc32358b6ec5949cffc369d9dadf795d4d90a04b30fe51c7426c7c"
-PKG_DOLPHIN_RELEASE="5.0-9630"
+PKG_DOLPHIN_RELEASE="5.0-9654"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/dolphin-emu/dolphin"
