@@ -4,7 +4,7 @@
 
 PKG_NAME="lr-mame2003-plus"
 PKG_VERSION="06ae8b9a7ca01ded8e60f3cec82920ade9576ec0"
-PKG_SHA256="6e908f760092c077344c6973ff25671054e0c3f0c3aec5b366a3d554d55ff8ec"
+PKG_SHA256="d920db76fa094302c74373373e94cbeb3938a044f8fb44ce5e422ec000f3cdc9"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/mame2003-plus-libretro"
 PKG_URL="https://github.com/libretro/mame2003-plus-libretro/archive/$PKG_VERSION.tar.gz"
