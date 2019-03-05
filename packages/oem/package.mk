@@ -87,6 +87,7 @@ OEM_EMU_GENERIC=" \
   lr-beetle-psx \
   lr-beetle-saturn \
   lr-bsnes-mercury-accuracy \
+  lr-bsnes-mercury-balanced \
   lr-citra \
   lr-dolphin \
   lr-kronos \
