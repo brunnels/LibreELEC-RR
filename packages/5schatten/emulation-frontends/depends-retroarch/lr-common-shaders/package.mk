@@ -16,7 +16,7 @@ makeinstall_target() {
   find . -type f -exec chmod 644 {} \;
   cd -
   mkdir -p $INSTALL/usr/share/retroarch/shaders
-  cp -R $PKG_BUILD/* $INSTALL/usr/share/retroarch/shaders
+  cp -rf $PKG_BUILD/* $INSTALL/usr/share/retroarch/shaders
   rm -r $INSTALL/usr/share/retroarch/shaders/configure
   rm -r $INSTALL/usr/share/retroarch/shaders/Makefile
 }
