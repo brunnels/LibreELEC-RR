@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-mupen64plus-nx"
-PKG_VERSION="504ec2cdeeca70c91ba99218e13be2dd6a14bf10"
-PKG_SHA256="4f42c3d9f2abe88c9371df4293ee25ae43b482091340480e9bccfec1e2041b77"
+PKG_VERSION="76612f10d5b1f94514ae65219466b5d6258aafd8"
+PKG_SHA256="c3d219177bb68d4fdda90ddbf1fc851f4c05ca84061dd724326aa56909f1cc5a"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/mupen64plus-libretro-nx"
 PKG_URL="https://github.com/libretro/mupen64plus-libretro-nx/archive/$PKG_VERSION.tar.gz"
