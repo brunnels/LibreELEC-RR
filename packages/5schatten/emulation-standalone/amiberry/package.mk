@@ -14,7 +14,7 @@ PKG_TOOLCHAIN="make"
 
 PKG_MAKE_OPTS_TARGET="all"
 
-pre_make_target() {
+pre_configure_target() {
   cd $PKG_BUILD
   export SYSROOT_PREFIX=$SYSROOT_PREFIX
 
