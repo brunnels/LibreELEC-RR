@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-fbalpha"
-PKG_VERSION="6386c6122dbb10de3c9598cf96d97b146f5de661"
-PKG_SHA256="455c4b238b5c118dadd9471362f68f162e80f85f34ac981340d6ea91941bf541"
+PKG_VERSION="2def8e5b4fda245588c790a9b6d13644c4849119"
+PKG_SHA256="98d0deb60528ef7873be1acc5a6e04c1071ae7b3555e78c52ea00d9706a974fc"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/fbalpha"
 PKG_URL="https://github.com/libretro/fbalpha/archive/$PKG_VERSION.tar.gz"
@@ -16,7 +16,7 @@ PKG_LIBPATH="$PKG_LIBNAME"
 
 PKG_MAKE_OPTS_TARGET="-f makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}"
 
-pre_make_target() {
+pre_configure_target() {
   if [ "$PROJECT" = "RPi" ]; then
     case $DEVICE in
       RPi)
