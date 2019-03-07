@@ -16,7 +16,7 @@ PKG_LIBPATH="$PKG_LIBNAME"
 
 PKG_MAKE_OPTS_TARGET="-f Makefile.libretro GIT_VERSION=${PKG_VERSION:0:7}"
 
-pre_make_target() {
+pre_configure_target() {
   if [ "${ARCH}" = "arm" ]; then
     CFLAGS+=" -DALIGN_LONG"
   fi
