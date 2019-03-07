@@ -16,7 +16,7 @@ PKG_LIBPATH="libretro/$PKG_LIBNAME"
 
 PKG_MAKE_OPTS_TARGET="-C libretro GIT_VERSION=${PKG_VERSION:0:7}"
 
-pre_make_target() {
+pre_configure_target() {
   if [ "${PROJECT}" = "RPi" ]; then
     PKG_MAKE_OPTS_TARGET+=" platform=rpi2"
   fi
