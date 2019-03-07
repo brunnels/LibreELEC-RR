@@ -16,7 +16,7 @@ PKG_LIBPATH="backends/platform/libretro/build/$PKG_LIBNAME"
 
 PKG_MAKE_OPTS_TARGET="-C backends/platform/libretro/build/ GIT_VERSION=${PKG_VERSION:0:7}"
 
-pre_make_target() {
+pre_configure_target() {
   cd $PKG_BUILD
   CXXFLAGS+=" -DHAVE_POSIX_MEMALIGN=1"
   export LD="$CC"
