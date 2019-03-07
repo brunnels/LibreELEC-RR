@@ -34,7 +34,7 @@ configure_package() {
   fi
 }
 
-pre_make_target() {
+pre_configure_target() {
   export BUILD_SYSROOT=$SYSROOT_PREFIX
 
   if [ "$OPENGLES_SUPPORT" = "yes" ]; then
