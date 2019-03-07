@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-mame2003-plus"
-PKG_VERSION="c6c9556c7050052445d023866803c13749459000"
-PKG_SHA256="490c747e71ff0845a63ac01bde69ff093ef9764d4caed97774bba7722c76a0e2"
+PKG_VERSION="48b3bb15c43cfd3020d203f5581a6279febf20e4"
+PKG_SHA256="fddfd41b351fd0ebbf50b2f4163c743e01a431b16f4d9203f1dc8484eaa9e183"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/mame2003-plus-libretro"
 PKG_URL="https://github.com/libretro/mame2003-plus-libretro/archive/$PKG_VERSION.tar.gz"
@@ -17,10 +17,23 @@ PKG_LIBPATH="$PKG_LIBNAME"
 
 PKG_MAKE_OPTS_TARGET="GIT_VERSION=${PKG_VERSION:0:7}"
 
-configure_target() {
+pre_configure_target() {
+  if [ "$ARCH" = "arm" ]; then
+    case $DEVICE in
+      RPi2)
+        PKG_MAKE_OPTS_TARGET+=" platform=rpi2"
+        ;;
+      *)
+        PKG_MAKE_OPTS_TARGET+=" platform=armv"
+        ;;
+    esac
+  fi
+  export LD="$CC"
+}
+
+pre_make_target() {
   # Set skip Disclaimer to enabled
   sed -e "s/\"Skip Disclaimer; disabled|enabled\"/\"Skip Disclaimer; enabled|disabled\"/" -i ${PKG_BUILD}/src/mame2003/mame2003.c
-  export LD="$CC"
 }
 
 makeinstall_target() {
