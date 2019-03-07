@@ -29,7 +29,7 @@ configure_package() {
   fi
 }
 
-pre_make_target() {
+pre_configure_target() {
   if [ "${ARCH}" = "arm" ]; then
     if [ "${PROJECT}" = "RPi" ]; then
       case ${DEVICE} in
