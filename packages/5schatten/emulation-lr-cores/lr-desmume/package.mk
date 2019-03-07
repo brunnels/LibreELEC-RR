@@ -33,7 +33,7 @@ configure_package() {
   fi
 }
 
-pre_make_target() {
+pre_configure_target() {
   case $TARGET_CPU in
     arm1176jzf-s)
       PKG_MAKE_OPTS_TARGET+=" platform=armv6-hardfloat-$TARGET_CPU"
