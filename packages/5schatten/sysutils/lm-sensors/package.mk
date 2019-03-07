@@ -13,7 +13,7 @@ PKG_LONGDESC="The lm-sensors package, version 3, provides user-space support for
 
 PKG_MAKEINSTALL_OPTS_TARGET="PREFIX=/usr"
 
-pre_make_target() {
+pre_configure_target() {
   PKG_MAKE_OPTS_TARGET="PREFIX=/usr CC=$CC AR=$AR"
 
   export CFLAGS="$TARGET_CFLAGS"
