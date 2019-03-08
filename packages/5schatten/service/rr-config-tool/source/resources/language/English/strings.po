@@ -35,6 +35,10 @@ msgctxt "#30007"
 msgid "Use PulseAudio timer-based scheduling (tsched)"
 msgstr ""
 
+msgctxt "#30008"
+msgid "PulseAudio volume control"
+msgstr ""
+
 msgctxt "#30010"
 msgid "Restart Kodi to enable shared device"
 msgstr ""
