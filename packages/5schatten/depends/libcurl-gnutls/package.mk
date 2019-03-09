@@ -7,7 +7,7 @@ PKG_SHA256="9bab7ed4ecff77020a312d84cc5fb7eb02d58419d218f267477a724a17fd8dd8"
 PKG_LICENSE="MIT"
 PKG_SITE="http://curl.haxx.se"
 PKG_URL="http://curl.haxx.se/download/curl-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain glibc zlib gnutls openssl rtmpdump nettle libidn2"
+PKG_DEPENDS_TARGET="toolchain glibc zlib gnutls rtmpdump nettle libidn2"
 PKG_LONGDESC="libcurl without versioned symbols"
 PKG_TOOLCHAIN="configure"
 
@@ -55,7 +55,7 @@ pre_configure_target() {
                              --enable-thread \
                              --with-random=/dev/urandom \
                              --with-gnutls=$SYSROOT_PREFIX/usr \
-                             --with-ssl \
+                             --without-ssl \
                              --without-polarssl \
                              --without-nss \
                              --with-ca-bundle=/etc/ssl/cert.pem \
