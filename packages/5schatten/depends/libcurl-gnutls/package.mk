@@ -54,7 +54,7 @@ pre_configure_target() {
                              --without-egd-socket \
                              --enable-thread \
                              --with-random=/dev/urandom \
-                             --with-gnutls=$SYSROOT_PREFIX/usr \
+                             --with-gnutls=${SYSROOT_PREFIX}/usr \
                              --without-ssl \
                              --without-polarssl \
                              --without-nss \
@@ -63,20 +63,20 @@ pre_configure_target() {
                              --without-libpsl \
                              --without-libmetalink \
                              --without-libssh2 \
-                             --with-librtmp=$SYSROOT_PREFIX/usr \
+                             --with-librtmp=${SYSROOT_PREFIX}/usr \
                              --without-libidn"
 
   # link against librt because of undefined reference to 'clock_gettime'
   export LIBS="-lrt -lm"
 }
 
-post_makeinstall_target() {
-  rm -rf $INSTALL/usr/bin/curl-config
-  rm -rf $INSTALL/usr/bin/curl
-  
-  mv $INSTALL/usr/lib/libcurl{,-gnutls}.so.4.5.0
-  rm $INSTALL/usr/lib/libcurl.*
+makeinstall_target() {
+  # Create lib directory & install lib as libcurl-gnutls.so.*
+  mkdir -p ${INSTALL}/usr/lib
+  cp -f ${PKG_BUILD}/.${TARGET_NAME}/lib/.libs/libcurl.so.4.5.0 ${INSTALL}/usr/lib/libcurl-gnutls.so.4.5.0
+
+  # Create symlinks to libcurl-gnutls.so.4.5.0
   for version in 3 4 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0; do
-    ln -s libcurl-gnutls.so.4.5.0 $INSTALL/usr/lib/libcurl-gnutls.so.${version}
+    ln -s libcurl-gnutls.so.4.5.0 ${INSTALL}/usr/lib/libcurl-gnutls.so.${version}
   done
 }
