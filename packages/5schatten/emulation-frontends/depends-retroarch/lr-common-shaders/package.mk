@@ -8,15 +8,10 @@ PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/libretro/common-shaders"
 PKG_URL="https://github.com/libretro/common-shaders/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_LONGDESC="Collection of commonly used Cg shaders. These shaders are usable by either HLSL and/or Cg runtime compilers. The cg2glsl script will translate most of these into GLSL shaders."
+PKG_LONGDESC="Collection of commonly used Cg shaders."
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-  cd $PKG_BUILD
-  find . -type f -exec chmod 644 {} \;
-  cd -
-  mkdir -p $INSTALL/usr/share/retroarch/shaders
-  cp -rf $PKG_BUILD/* $INSTALL/usr/share/retroarch/shaders
-  rm -r $INSTALL/usr/share/retroarch/shaders/configure
-  rm -r $INSTALL/usr/share/retroarch/shaders/Makefile
+  cd ${PKG_BUILD}
+  make install INSTALLDIR="$INSTALL/usr/share/retroarch/shaders/common"
 }
