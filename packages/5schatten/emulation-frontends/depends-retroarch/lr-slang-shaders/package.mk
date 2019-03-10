@@ -12,12 +12,6 @@ PKG_LONGDESC="Vulkan GLSL RetroArch shader system"
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-  cd $PKG_BUILD
-  find . -type f -exec chmod 644 {} \;
-  cd -
-  mkdir -p $INSTALL/usr/share/retroarch/shaders
-  cp -R $PKG_BUILD/* $INSTALL/usr/share/retroarch/shaders
-  rm -r $INSTALL/usr/share/retroarch/shaders/configure
-  rm -r $INSTALL/usr/share/retroarch/shaders/Makefile
-  rm -r $INSTALL/usr/share/retroarch/shaders/README.md
+  cd ${PKG_BUILD}
+  make install INSTALLDIR="$INSTALL/usr/share/retroarch/shaders/slang"
 }
