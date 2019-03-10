@@ -8,15 +8,10 @@ PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/libretro/glsl-shaders"
 PKG_URL="https://github.com/libretro/glsl-shaders/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_LONGDESC="This repo is for glsl shaders converted by hand from libretro's common-shaders repo, since some don't play nicely with the cg2glsl script."
+PKG_LONGDESC="GLSL shaders converted by hand from libretro's common-shaders repo."
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-  cd $PKG_BUILD
-  find . -type f -exec chmod 644 {} \;
-  cd -
-  mkdir -p $INSTALL/usr/share/retroarch/shaders
-  cp -R $PKG_BUILD/* $INSTALL/usr/share/retroarch/shaders
-  rm -r $INSTALL/usr/share/retroarch/shaders/configure
-  rm -r $INSTALL/usr/share/retroarch/shaders/Makefile
+  cd ${PKG_BUILD}
+  make install INSTALLDIR="$INSTALL/usr/share/retroarch/shaders/glsl"
 }
