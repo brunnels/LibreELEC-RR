@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="GLideN64"
-PKG_VERSION="04736b44c5b4299365e9bb331368ee1ac1a93ab7"
-PKG_SHA256="e26ba53d035a6c3cb46fc6c412b181af96a9fd6d0b6d9bae56292532fa4a5e24"
+PKG_VERSION="4456d09b5150da111d646129a9b748b42500195c"
+PKG_SHA256="9b866291b2e1a1b72401b06ececc7690947d5c16414044445689b82949b29e4c"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/gonetz/GLideN64"
 PKG_URL="https://github.com/gonetz/GLideN64/archive/$PKG_VERSION.tar.gz"
