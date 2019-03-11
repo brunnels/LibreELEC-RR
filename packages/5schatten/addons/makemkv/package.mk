@@ -5,7 +5,7 @@
 PKG_NAME="makemkv"
 PKG_VERSION="1.14.2"
 PKG_SHA256="82da3c03bcd458d60ec006d0eda506fe0d6d7e0c4c9f8757fbfb0f2da69404ca"
-PKG_REV="108"
+PKG_REV="109"
 PKG_ARCH="x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://makemkv.com/"
@@ -45,5 +45,5 @@ addon() {
   cp $PKG_BUILD/out/libmakemkv.so.? $ADDON_BUILD/$PKG_ADDON_ID/lib
   cp $PKG_BUILD/out/libdriveio.so.? $ADDON_BUILD/$PKG_ADDON_ID/lib
   cp $PKG_BUILD/out/libmmbd.so.? $ADDON_BUILD/$PKG_ADDON_ID/lib
-  cp -PL $(get_build_dir openssl)/.install_pkg/usr/lib/libcrypto.so.?.?.? $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp -PL $(get_build_dir openssl)/.install_pkg/usr/lib/libcrypto.so.?.? $ADDON_BUILD/$PKG_ADDON_ID/lib
 }
