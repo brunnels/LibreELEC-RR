@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-pcsx-rearmed"
-PKG_VERSION="e21479a6d304e6c3eed69e2b6385ed674500e8d4"
-PKG_SHA256="a039cbd1e3b58ef68c0c17d485b96df3a155c2c9f9c434ef91367c1f8333d5ec"
+PKG_VERSION="186cd6a4469c82d5e7be0cf919eec97c4f304432"
+PKG_SHA256="45374d3ad7729074671fa3011c21edf17c4ce00feccca81c1d5e2ceab08af33b"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/pcsx_rearmed"
 PKG_URL="https://github.com/libretro/pcsx_rearmed/archive/$PKG_VERSION.tar.gz"
