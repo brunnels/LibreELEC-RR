@@ -30,9 +30,9 @@
 
 * [LibreELEC 9.x-devel](https://github.com/LibreELEC/LibreELEC.tv) | 9.1
 * [Kodi 18](https://github.com/xbmc/xbmc) - v18.1
-* [Linux 4.19.26](https://www.kernel.org/) - generic x86-64 builds
+* [Linux 4.19.28](https://www.kernel.org/) - generic x86-64 builds
 * [Linux 3.14.29](https://www.kernel.org/) - Amlogic S905(X) builds
-* [Linux 4.19.25](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
+* [Linux 4.19.27](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
 ---
 **Addons & tools for generic builds**
 
@@ -46,11 +46,11 @@
 ---
 **Updated video driver versions**
 
-* [AMDGPU](https://cgit.freedesktop.org/xorg/driver/xf86-video-amdgpu/) - v18.1.0
-* [ATI](https://cgit.freedesktop.org/xorg/driver/xf86-video-ati) - v18.1.0
-* [Intel-video](https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/) - git 33ee0c3
+* [AMDGPU](https://cgit.freedesktop.org/xorg/driver/xf86-video-amdgpu/) - v19.0.0
+* [ATI](https://cgit.freedesktop.org/xorg/driver/xf86-video-ati) - v19.0.0
+* [Intel-video](https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/) - git 6afed33
 * [Intel](https://downloadcenter.intel.com/download/28087/Linux-Processor-Microcode-Data-File) - µcode 2018-08-07a
-* [Mesa 3D](https://www.mesa3d.org/) - v18.3.3
+* [Mesa 3D](https://www.mesa3d.org/) - v19.0.0-rc7
 * [Nvidia](https://www.nvidia.com/Download/driverResults.aspx/134859/en-us) - v418.43
 * [Nvidia-legacy](https://www.nvidia.com/Download/driverResults.aspx/135161/en-us) - v340.107
 ---
@@ -59,8 +59,8 @@
 * [GCC](https://gcc.gnu.org/gcc-8/changes.html) - v8.3
 * [glibc](https://sourceware.org/glibc/wiki/Release/2.28) - v2.29
 * [LLVM](https://llvm.org/) - v7.0.1
-* [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.101
-* [openssl](https://www.openssl.org/source/) - v1.0.2r
+* [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.102
+* [openssl](https://www.openssl.org/source/) - v1.1.1b
 * [PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) - 12.2
 * [Samba](https://www.samba.org/samba/history/samba-4.9.1.html) - v4.9.4
 * [SDL2](https://github.com/spurious/SDL-mirror) - git 678ba78 | v2.0.9-dev
@@ -73,13 +73,13 @@
 * [mesa-demos](https://cgit.freedesktop.org/mesa/demos/) - git 317f67f | 8.4.0
 * [sdl-jstest](https://gitlab.com/sdl-jstest/sdl-jstest) - git 53b89cc2 | v0.2.1
 * [spectre-meltdown-checker](https://github.com/speed47/spectre-meltdown-checker) - git c705afe | v0.40
-* [Skyscraper by Lars Muldjord](https://github.com/muldjord/skyscraper/releases) - v3.1.0
-* [vulkan-tools](https://github.com/KhronosGroup/Vulkan-Tools) -git 4951cdb | 1.1.101
+* [Skyscraper by Lars Muldjord](https://github.com/muldjord/skyscraper/releases) - v3.1.2
+* [vulkan-tools](https://github.com/KhronosGroup/Vulkan-Tools) -git 4951cdb | 1.1.102
 ---
 **Emulator Frontends**
 
 * [Emulationstation-Retropie](https://github.com/RetroPie/EmulationStation) - v2.8.2
-* [Pegasus-Frontend](http://pegasus-frontend.org/) - Alpha 10+
+* [Pegasus-Frontend](http://pegasus-frontend.org/) - Alpha 11
 * [RetroArch](https://github.com/libretro/RetroArch) - v1.7.6
 ---
 **Emulators included in all builds**
