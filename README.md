@@ -62,7 +62,7 @@
 * [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.102
 * [openssl](https://www.openssl.org/source/) - v1.1.1b
 * [PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) - 12.2
-* [Samba](https://www.samba.org/samba/history/samba-4.9.1.html) - v4.9.4
+* [Samba](https://www.samba.org/samba/history/samba-4.9.1.html) - v4.9.5
 * [SDL2](https://github.com/spurious/SDL-mirror) - git 678ba78 | v2.0.9-dev
 * [systemd](https://github.com/systemd/systemd) - v239
 * [Qt](https://wiki.qt.io/Qt_5.12_Release) - v5.12.0
