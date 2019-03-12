@@ -3,9 +3,9 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="makemkv"
-PKG_VERSION="1.14.2"
-PKG_SHA256="82da3c03bcd458d60ec006d0eda506fe0d6d7e0c4c9f8757fbfb0f2da69404ca"
-PKG_REV="109"
+PKG_VERSION="1.14.3"
+PKG_SHA256="222cf2dcfde7a84944353c7edd326e18e3d35b7a7e575484111f64a4b1b9fec9"
+PKG_REV="110"
 PKG_ARCH="x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://makemkv.com/"
