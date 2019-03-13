@@ -4,20 +4,25 @@
 
 . /etc/profile
 
-# Create basic links & files
-set_RR_environment
+# Check if Retroarch is already running
+if pidof "retroarch" >/dev/null; then
+    echo "Retroarch is already running!"
+else
+  # Create basic links & files
+  set_RR_environment
 
-# Freeze Kodi / stop audio
-kodifreeze.sh freeze
+  # Freeze Kodi / stop audio
+  kodifreeze.sh freeze
 
-# Change refresh rate to 60Hz
-set_refresh_rate_60
+  # Change refresh rate to 60Hz
+  set_refresh_rate_60
 
-# Set audio & midi driver
-set_RA_audiodriver
+  # Set audio & midi driver
+  set_RA_audiodriver
 
-# Launch RetroArch
-/usr/bin/retroarch -v "$@" > /var/log/retroarch.log 2>&1
+  # Run RetroArch
+  /usr/bin/retroarch -v "$@" > /var/log/retroarch.log 2>&1
 
-# Switch back to Frontends or unfreeze Kodi & start audio
-pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze
+  # Switch back to Frontends or unfreeze Kodi & start audio
+  pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze
+fi
