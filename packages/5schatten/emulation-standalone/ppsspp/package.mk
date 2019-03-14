@@ -2,13 +2,18 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="ppsspp"
-PKG_VERSION="74d87fa2b4a3c943c1df09cc26a8c70b1335fd30" #v1.7.5
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/hrydgard/ppsspp"
 PKG_URL="https://github.com/hrydgard/ppsspp.git"
 PKG_DEPENDS_TARGET="toolchain linux glibc SDL2-git zlib ffmpeg bzip2 openssl speex"
 PKG_LONGDESC="A PSP emulator for Android, Windows, Mac, Linux and Blackberry 10, written in C++."
 GET_HANDLER_SUPPORT="git"
+
+if [ "${PROJECT}" = "Amlogic_Legacy" ]; then
+  PKG_VERSION="74d87fa2b4a3c943c1df09cc26a8c70b1335fd30" #v1.7.5
+else
+  PKG_VERSION="d6d6dbb772ad71ced8ffb2f69f9e6e2af1b10414" #v1.8.0
+fi
 
 configure_package() {
   # Displayserver Support
