@@ -2,7 +2,7 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="lr-ppsspp"
-PKG_VERSION="74d87fa2b4a3c943c1df09cc26a8c70b1335fd30" #v1.7.5
+PKG_VERSION="d6d6dbb772ad71ced8ffb2f69f9e6e2af1b10414" #v1.8.0
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/hrydgard/ppsspp"
 PKG_URL="https://github.com/hrydgard/ppsspp.git"
@@ -33,7 +33,8 @@ configure_package() {
 pre_configure_target() {
   PKG_CMAKE_OPTS_TARGET="-DLIBRETRO=ON \
                          -DUSE_SYSTEM_FFMPEG=ON \
-                         -DUSING_X11_VULKAN=OFF"
+                         -DUSING_X11_VULKAN=OFF \
+                         -DUSE_DISCORD=OFF"
 
   if [ "${ARCH}" = "arm" ] && [ ! "${TARGET_CPU}" = "arm1176jzf-s" ]; then
     PKG_CMAKE_OPTS_TARGET+=" -DARMV7=ON"
