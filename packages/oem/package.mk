@@ -66,6 +66,7 @@ OEM_EMU_COMMON=" \
   lr-prboom \
   lr-reicast \
   lr-scummvm \
+  lr-snes9x \
   lr-stella \
   lr-tyrquake"
 
@@ -94,8 +95,7 @@ OEM_EMU_GENERIC=" \
   lr-mame2016 \
   lr-mesen \
   lr-parallel-n64 \
-  lr-ppsspp \
-  lr-snes9x"
+  lr-ppsspp"
 
 OEM_EMU_RPI=" \
   amiberry \
