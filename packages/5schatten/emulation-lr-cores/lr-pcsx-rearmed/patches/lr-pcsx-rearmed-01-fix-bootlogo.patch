@@ -1,0 +1,39 @@
+From 27cf7d3137fd718a1edca1a26b31c56954d771cf Mon Sep 17 00:00:00 2001
+From: retro-wertz <retro-wertz@users.noreply.github.com>
+Date: Mon, 25 Mar 2019 20:44:43 +0800
+Subject: [PATCH] Fix bootlogo showing only during reset when enabled
+
+---
+ frontend/libretro.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/frontend/libretro.c b/frontend/libretro.c
+index c4d61339..e5ce1941 100644
+--- a/frontend/libretro.c
++++ b/frontend/libretro.c
+@@ -1588,7 +1588,8 @@ static void update_variables(bool in_flight)
+ 
+       dfinput_activate();
+    }
+-   else{
++   else
++   {
+       //not yet running
+ 
+       //bootlogo display hack
+@@ -1597,10 +1598,13 @@ static void update_variables(bool in_flight)
+          var.key = "pcsx_rearmed_show_bios_bootlogo";
+          if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) || var.value)
+          {
++            Config.SlowBoot = 0;
++            rebootemu = 0;
+             if (strcmp(var.value, "enabled") == 0)
++            {
+                Config.SlowBoot = 1;
+-            else
+-               Config.SlowBoot = 0;
++               rebootemu = 1;
++            }
+          }
+       }
+ #ifndef DRC_DISABLE
