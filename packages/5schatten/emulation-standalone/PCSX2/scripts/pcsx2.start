@@ -116,7 +116,7 @@ if [ -x ${DOCKER_PATH} ]; then
 
   clean_docker_image
 
-  run_docker_image
+  run_docker_image "$@"
 
   # Switch back to Frontends or unfreeze Kodi & start audio
   pidof emulationstation > /dev/null 2>&1 || pidof pegasus-fe > /dev/null 2>&1 || kodifreeze.sh unfreeze
