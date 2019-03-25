@@ -2,8 +2,8 @@
 # Copyright (C) 2018-present 5schatten (https://github.com/5schatten)
 
 PKG_NAME="Skyscraper"
-PKG_VERSION="3.1.3"
-PKG_SHA256="8fd13549b9b9134555defb016261417384f1d3bf49127682dcd778d977c505be"
+PKG_VERSION="3.1.4"
+PKG_SHA256="1385f1b750146a0f1981188ed114f35b35e8d0d63bbeac8cf50c42e437502a56"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/muldjord/skyscraper"
 PKG_URL="https://github.com/muldjord/skyscraper/archive/$PKG_VERSION.tar.gz"
