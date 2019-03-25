@@ -1,14 +1,14 @@
-## LibreELEC 9.x Reborn Remix
+## LibreELEC 9.x RR
 ---
 **Project threads**
 
 *English*
 
-* [LibreELEC 9.0 Reborn Remix [ Emulationstation | Retroarch | DolphinQT | Moonlight | Chrome | Spotify | MakeMKV ]](https://forum.libreelec.tv/thread/12662-libreelec-9-0-reborn-remix-emulationstation-retroarch-dolphinqt-chrome-spotify-w/)
+* [LibreELEC 9.0 RR [ Emulationstation | Retroarch | DolphinQT | Moonlight | Chrome | Spotify | MakeMKV ]](https://forum.libreelec.tv/thread/12662-libreelec-9-0-reborn-remix-emulationstation-retroarch-dolphinqt-chrome-spotify-w/)
 
 *German*
 
-* [LibreELEC 9.0 Reborn Remix [ Emulationstation | Retroarch | DolphinQT | Moonlight | Chrome | Spotify | MakeMKV ]](https://www.kodinerds.net/index.php/Thread/62933-LibreELEC-9-0-Reborn-Remix-Emulationstation-Retroarch-DolphinQT-Moonlight-Chrome/)
+* [LibreELEC 9.0 RR [ Emulationstation | Retroarch | DolphinQT | Moonlight | Chrome | Spotify | MakeMKV ]](https://www.kodinerds.net/index.php/Thread/62933-LibreELEC-9-0-Reborn-Remix-Emulationstation-Retroarch-DolphinQT-Moonlight-Chrome/)
 
 ---
 **Currently supported & unsupported devices**
@@ -30,9 +30,9 @@
 
 * [LibreELEC 9.x-devel](https://github.com/LibreELEC/LibreELEC.tv) | 9.1
 * [Kodi 18](https://github.com/xbmc/xbmc) - v18.1
-* [Linux 4.19.28](https://www.kernel.org/) - generic x86-64 builds
+* [Linux 5.0.4](https://www.kernel.org/) - generic x86-64 builds
 * [Linux 3.14.29](https://www.kernel.org/) - Amlogic S905(X) builds
-* [Linux 4.19.27](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
+* [Linux 5.0.3](https://github.com/raspberrypi/linux) - RPi2 & RPi3 builds 
 ---
 **Addons & tools for generic builds**
 
@@ -46,20 +46,20 @@
 ---
 **Updated video driver versions**
 
-* [AMDGPU](https://cgit.freedesktop.org/xorg/driver/xf86-video-amdgpu/) - v19.0.0
-* [ATI](https://cgit.freedesktop.org/xorg/driver/xf86-video-ati) - v19.0.0
+* [AMDGPU](https://cgit.freedesktop.org/xorg/driver/xf86-video-amdgpu/) - v19.0.1
+* [ATI](https://cgit.freedesktop.org/xorg/driver/xf86-video-ati) - v19.0.1
 * [Intel-video](https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/) - git 6afed33
 * [Intel](https://downloadcenter.intel.com/download/28087/Linux-Processor-Microcode-Data-File) - µcode 2018-08-07a
-* [Mesa 3D](https://www.mesa3d.org/) - v19.0.0-rc7
-* [Nvidia](https://www.nvidia.com/Download/driverResults.aspx/134859/en-us) - v418.43
+* [Mesa 3D](https://www.mesa3d.org/) - v19.0.0
+* [Nvidia](https://www.nvidia.com/Download/driverResults.aspx/134859/en-us) - v418.56
 * [Nvidia-legacy](https://www.nvidia.com/Download/driverResults.aspx/135161/en-us) - v340.107
 ---
 **Updated daemons / backends**
 
 * [GCC](https://gcc.gnu.org/gcc-8/changes.html) - v8.3
 * [glibc](https://sourceware.org/glibc/wiki/Release/2.28) - v2.29
-* [LLVM](https://llvm.org/) - v7.0.1
-* [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.102
+* [LLVM](https://llvm.org/) - v8.0.0
+* [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader) - v1.1.103
 * [openssl](https://www.openssl.org/source/) - v1.1.1b
 * [PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) - 12.2
 * [Samba](https://www.samba.org/samba/history/samba-4.9.1.html) - v4.9.5
@@ -73,7 +73,7 @@
 * [mesa-demos](https://cgit.freedesktop.org/mesa/demos/) - git 317f67f | 8.4.0
 * [sdl-jstest](https://gitlab.com/sdl-jstest/sdl-jstest) - git 53b89cc2 | v0.2.1
 * [spectre-meltdown-checker](https://github.com/speed47/spectre-meltdown-checker) - git c705afe | v0.40
-* [Skyscraper by Lars Muldjord](https://github.com/muldjord/skyscraper/releases) - v3.1.2
+* [Skyscraper by Lars Muldjord](https://github.com/muldjord/skyscraper/releases) - v3.1.4
 * [vulkan-tools](https://github.com/KhronosGroup/Vulkan-Tools) -git 4951cdb | 1.1.102
 ---
 **Emulator Frontends**
@@ -111,21 +111,21 @@
 *  [libretro-prboom](https://github.com/libretro/libretro-prboom) - git e4acded | Doom Clone
 *  [libretro-reicast](https://github.com/libretro/reicast-emulator) - git 2abb342 | Sega Dreamcast
 *  [libretro-scummvm](https://github.com/libretro/scummvm) - git d6fb141 | Engine for LucasArts adventure games
+*  [libretro-snes9x](https://github.com/libretro/snes9x) - git 8652f54 | Nintendo Super Nintendo Entertainment System
 *  [libretro-stella](https://github.com/libretro/stella-libretro) - git 3ed8154 | Atari 2600
 *  [libretro-tyrquake](https://github.com/libretro/tyrquake) - git 7d18c40 | Quake Clone
 ---
 **Emulators included in generic x86-64 builds**
 
 *  [citra](https://github.com/citra-emu/citra) - git b326147 | QT GUI | Nintendo 3DS
-*  [Dolphin](https://de.dolphin-emu.org/?cr=de) - r5.0-9703 | [Qt GUI](https://de.dolphin-emu.org/blog/2018/02/03/dolphin-progress-report-january-2018/) | Nintendo Wii / Gamecube
+*  [Dolphin](https://de.dolphin-emu.org/?cr=de) - r5.0-9806 | [Qt GUI](https://de.dolphin-emu.org/blog/2018/02/03/dolphin-progress-report-january-2018/) | Nintendo Wii / Gamecube
 *  [fs-uae](https://fs-uae.net/) - git 3d6a8dc | 2.9.7dev4 | Commodore Amiga
 *  [m64p](https://m64p.github.io/) - git bcbef77 | Nintendo N64
 *  [PCSX2 ](https://github.com/PCSX2/pcsx2) - git 5b9e93c | v1.5.0-dev | Docker addon needed | Sony PlayStation 2
 *  [Vice](http://vice-emu.sourceforge.net/index.html#vice) - v3.3-release | Commodore C64
 *  [libretro-beetle-psx](https://github.com/libretro/beetle-psx-libretro) - git c20eac9 | Sony Playstation
 *  [libretro-beetle-saturn](https://github.com/libretro/beetle-saturn-libretro) - git 052f6d6 | Sega Saturn
-*  [libretro-bsnes-mercury](https://github.com/libretro/bsnes-mercury) git 4e221df | accuracy | Nintendo Super Nintendo Entertainment System
-*  [libretro-bsnes-mercury](https://github.com/libretro/bsnes-mercury) git 4e221df | balanced | Nintendo Super Nintendo Entertainment System
+*  [libretro-bsnes-mercury](https://github.com/libretro/bsnes-mercury) git 4e221df | balanced & accuracy | Nintendo Super Nintendo Entertainment System
 *  [libretro-citra](https://github.com/libretro/citra) - git a0c222c | Nintendo 3DS
 *  [libretro-dolphin](https://github.com/libretro/dolphin) - git 6fc5941 | Nintendo Wii / Gamecube
 *  [libretro-kronos](https://github.com/FCare/Kronos) - git 97f8a78 | Sega Saturn
@@ -133,7 +133,6 @@
 *  [libretro-mesen](https://github.com/SourMesen/Mesen) - git f2af2ba | v0.9.7 | Nintendo Entertainment System
 *  [libretro-parallel-n64](https://github.com/libretro/parallel-n64) - git 7e204b0 | Nintendo N64
 *  [libretro-ppsspp](https://github.com/hrydgard/ppsspp) - git 74d87fa | v1.7.5 | Sony PSP
-*  [libretro-snes9x](https://github.com/libretro/snes9x) - git 8652f54 | Nintendo Super Nintendo Entertainment System
 ---
 **Emulators included in Amlogic S905 | Khadas Vim | Odroid C2 builds**
 
@@ -195,23 +194,23 @@ PROJECT=RPi DEVICE=RPi2 ARCH=arm tools/dashboard
 
 For generic x86-64 Intel & AMD CPU use:
 ```
-PROJECT=Generic ARCH=x86_64 BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
+PROJECT=Generic ARCH=x86_64 BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=9.1 make image
 ```
 For Raspberry Pi (RPi2 & RPi3) use:
 ```
-PROJECT=RPi DEVICE=RPi2 ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
+PROJECT=RPi DEVICE=RPi2 ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=9.1 make image
 ```
 For Amlogic S905 use:
 ```
-PROJECT=Amlogic_Legacy DEVICE=S905 ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
+PROJECT=Amlogic_Legacy DEVICE=S905 ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=9.1 make image
 ```
 For Khadas VIM use:
 ```
-PROJECT=Amlogic_Legacy DEVICE=KVIM ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
+PROJECT=Amlogic_Legacy DEVICE=KVIM ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=9.1 make image
 ```
 For Odroid C2 use:
 ```
-PROJECT=Amlogic_Legacy DEVICE=Odroid_C2 ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=XXX make image
+PROJECT=Amlogic_Legacy DEVICE=Odroid_C2 ARCH=arm BUILD_PERIODIC=RR BUILDER_NAME=5schatten BUILDER_VERSION=9.1 make image
 ```
 To build single packages use:
 ```
