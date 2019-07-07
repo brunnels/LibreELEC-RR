@@ -18,6 +18,10 @@ mkdir -p "$DSTDIR/dtb"
       cp -a "$SRCDIR"/*gxl*.dtb "$DSTDIR/dtb"
       cp -a "$SRCDIR"/*gxm*.dtb "$DSTDIR/dtb"
       ;;
+    AMLGXL)
+      cp -a $(get_build_dir linux)/arch/$TARGET_KERNEL_ARCH/boot/dts/amlogic/*gxbb*.dtb $RELEASE_DIR/3rdparty/bootloader/dtb
+      cp -a $(get_build_dir linux)/arch/$TARGET_KERNEL_ARCH/boot/dts/amlogic/*gxl*.dtb $RELEASE_DIR/3rdparty/bootloader/dtb
+      ;;
     AMLG12)
       cp -a "$SRCDIR"/*g12a*.dtb "$DSTDIR/dtb"
       cp -a "$SRCDIR"/*g12b*.dtb "$DSTDIR/dtb"
