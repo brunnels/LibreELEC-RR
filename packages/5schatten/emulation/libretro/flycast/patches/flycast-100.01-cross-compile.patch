@@ -11,7 +11,7 @@ diff --git a/Makefile b/Makefile
 index f64cb0599..990ea8768 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -23,25 +23,11 @@ THREADED_RENDERING_DEFAULT := 0
+@@ -23,29 +23,15 @@
  
  TARGET_NAME   := flycast
  
@@ -24,6 +24,10 @@ index f64cb0599..990ea8768 100644
 -	CC       ?= ${CC_PREFIX}gcc
 -	SHARED   :=
 -endif
+ ifeq ($(HAVE_LTCG),1)
+ 	SHARED   += -flto
+ endif
+ 
 -CC_AS    ?= ${CC_PREFIX}as
 -
  MFLAGS   := 
@@ -37,7 +41,7 @@ index f64cb0599..990ea8768 100644
  
  GIT_VERSION := " $(shell git rev-parse --short HEAD || echo unknown)"
  ifneq ($(GIT_VERSION)," unknown")
-@@ -984,7 +970,7 @@ LIBS     += -lm
+@@ -994,7 +980,7 @@
  PREFIX        ?= /usr/local
  
  ifneq (,$(findstring arm, $(ARCH)))
@@ -46,3 +50,4 @@ index f64cb0599..990ea8768 100644
  	ASFLAGS  += $(CFLAGS)
  endif
  
+
