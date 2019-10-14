@@ -2,8 +2,8 @@
 # Copyright (C) 2019-present Frank Hartung (supervisedthinking (@) gmail.com)
 
 PKG_NAME="bsnes"
-PKG_VERSION="95addddc462b9c680b5ffceadc1c8b622f18b54d"
-PKG_SHA256="53afab8f44274b33decda1f971a4d3ce3f8a6e2aa3afa366ff5ac4e4706cd208"
+PKG_VERSION="99fd15a88611eb6f16729ae78bbb971de3798e62"
+PKG_SHA256="b8e4b2f07862c5e4566965e9db3ec98029b74df3b48c944c7ff31d5946bada63"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/bsnes"
 PKG_URL="https://github.com/libretro/bsnes/archive/${PKG_VERSION}.tar.gz"
