@@ -1,0 +1,37 @@
+From 275772b22bcb05196cedd64a5294ba7fbd8eafde Mon Sep 17 00:00:00 2001
+From: wsnipex <wsnipex@a1.net>
+Date: Sat, 20 Jul 2019 10:02:26 +0200
+Subject: [PATCH] [cmake] fix generating addon.xmls
+
+get rid of double copying addons
+---
+ CMakeLists.txt                                    | 1 +
+ cmake/scripts/common/GenerateVersionedFiles.cmake | 3 ---
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 72118d34281f..bf3a97474902 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -223,6 +223,7 @@ add_custom_command(OUTPUT ${CORE_BUILD_DIR}/xbmc/CompileInfo.cpp
+                                             -Dprefix=${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}
+                                             -P ${CMAKE_SOURCE_DIR}/cmake/scripts/common/GenerateVersionedFiles.cmake
+                    DEPENDS ${CMAKE_SOURCE_DIR}/version.txt
++                           export-files
+                            ${ADDON_XML_DEPENDS}
+                            ${CMAKE_SOURCE_DIR}/xbmc/CompileInfo.cpp.in)
+ list(APPEND install_data ${ADDON_INSTALL_DATA})
+diff --git a/cmake/scripts/common/GenerateVersionedFiles.cmake b/cmake/scripts/common/GenerateVersionedFiles.cmake
+index 1d324db9c57a..d54b5242197f 100644
+--- a/cmake/scripts/common/GenerateVersionedFiles.cmake
++++ b/cmake/scripts/common/GenerateVersionedFiles.cmake
+@@ -24,9 +24,6 @@ foreach(loop_var ${ADDON_XML_IN_FILE})
+   string(REPLACE ${CORE_SOURCE_DIR} ${CMAKE_BINARY_DIR} dest_dir ${source_dir})
+   file(MAKE_DIRECTORY ${dest_dir})
+ 
+-  # copy everything except addon.xml.in to build folder
+-  file(COPY "${source_dir}" DESTINATION "${CMAKE_BINARY_DIR}/addons" REGEX ".xml.in" EXCLUDE)
+-
+   configure_file(${source_dir}/addon.xml.in ${dest_dir}/addon.xml @ONLY)
+ 
+   unset(source_dir)
