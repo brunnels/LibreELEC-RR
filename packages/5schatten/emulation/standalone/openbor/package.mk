@@ -2,7 +2,7 @@
 # Copyright (C) 2019-present Frank Hartung (supervisedthinking (@) gmail.com)
 
 PKG_NAME="openbor"
-PKG_VERSION="093900a52fb913feabc64cac29229bf865a8a14c"
+PKG_VERSION="20488fbe6d0536cc790a6fae9483e50da53a6f59"
 PKG_LICENSE="BSD-3-Clause"
 PKG_SITE="https://github.com/DCurrent/openbor"
 PKG_URL="https://github.com/DCurrent/openbor.git"
@@ -11,7 +11,6 @@ PKG_LONGDESC="OpenBOR is the ultimate 2D side scrolling engine for beat em' ups,
 GET_HANDLER_SUPPORT="git"
 PKG_GIT_CLONE_BRANCH="master"
 PKG_GIT_CLONE_SINGLE="yes"
-PKG_GIT_CLONE_DEPTH="1"
 PKG_TOOLCHAIN="make"
 
 pre_configure_target() {
