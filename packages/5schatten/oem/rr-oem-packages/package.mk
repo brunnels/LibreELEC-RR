@@ -203,10 +203,19 @@ OEM_EMULATORS_RPI=" \
 OEM_FRONTENDS_EXTRA_RPI=""
 
 # Libretro cores
-OEM_LIBRETRO_RPI=" \
+OEM_LIBRETRO_RPI=""
+
+# Libretro cores
+OEM_LIBRETRO_RPI2=" \
   mame2010 \
   snes9x2010 \
   yabause"
+
+# Libretro cores
+OEM_LIBRETRO_RPI4=" \
+  mame2016 \
+  mesen \
+  yabasanshiro"
 
 # Tools
 OEM_TOOLS_RPI=""
@@ -299,13 +308,21 @@ configure_package() {
         Rockchip)
           PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_ROCKCHIP}"
           case ${DEVICE} in
-           RK3399)
-             PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_RK3399}"
-           ;;
+            RK3399)
+              PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_RK3399}"
+            ;;
           esac
           ;;
         RPi)
           PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_RPI}"
+          case ${DEVICE} in
+            RPi2)
+              PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_RPI2}"
+            ;;
+            RPi4)
+              PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_RPI4}"
+            ;;
+          esac
           ;;
       esac
     fi
