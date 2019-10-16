@@ -16,7 +16,7 @@ configure_package() {
     PKG_DEPENDS_TARGET+=" xorg-server unclutter-xfixes"
   fi
 
-  if [ "${PROJECT}" = "RPi" ]; then
+  if [ "${OPENGLES}" = "bcm2835-driver" ]; then
     PKG_DEPENDS_TARGET+=" bcm2835-driver"
   elif [ "${PROJECT}" = "Generic" ]; then
     PKG_DEPENDS_TARGET+=" libvdpau libxcb"
