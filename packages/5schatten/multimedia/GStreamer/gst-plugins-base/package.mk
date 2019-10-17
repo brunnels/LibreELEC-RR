@@ -20,6 +20,8 @@ pre_configure_target() {
   # Fix undefined symbol glPointSizePointerOES
   if [ "${OPENGLES}" = "bcm2835-driver" ]; then
     TARGET_LDFLAGS+=" -lEGL -lGLESv2"
+  elif [ "${DEVICE}" = "RPi4" ]; then
+    PKG_MESON_OPTS_TARGET+=" -Dgl_winsys="""
   fi
 }
 
