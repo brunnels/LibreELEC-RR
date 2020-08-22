@@ -222,6 +222,9 @@ configure_package() {
     if [ "${OEM_APPLICATIONS}" = "yes" ]; then
       PKG_DEPENDS_TARGET+=" ${OEM_APPLICATIONS_COMMON}"
       case ${PROJECT} in
+        Allwinner)
+          PKG_DEPENDS_TARGET+=" ${OEM_APPLICATIONS_ROCKCHIP}"
+          ;;
         Amlogic)
           PKG_DEPENDS_TARGET+=" ${OEM_APPLICATIONS_AMLOGIC}"
           ;;
@@ -241,6 +244,9 @@ configure_package() {
     if [ "${OEM_EMULATORS}" = "yes" ]; then
       PKG_DEPENDS_TARGET+=" ${OEM_EMULATORS_COMMON}"
       case ${PROJECT} in
+        Allwinner)
+          PKG_DEPENDS_TARGET+=" ${OEM_EMULATORS_ROCKCHIP}"
+          ;;
         Amlogic)
           PKG_DEPENDS_TARGET+=" ${OEM_EMULATORS_AMLOGIC}"
           ;;
@@ -260,6 +266,9 @@ configure_package() {
     if [ "${OEM_FRONTENDS_EXTRA}" = "yes" ]; then
       PKG_DEPENDS_TARGET+=" ${OEM_FRONTENDS_EXTRA_COMMON}"
       case ${PROJECT} in
+        Allwinner)
+          PKG_DEPENDS_TARGET+=" ${OEM_FRONTENDS_EXTRA_ROCKCHIP}"
+          ;;
         Amlogic)
           PKG_DEPENDS_TARGET+=" ${OEM_FRONTENDS_EXTRA_AMLOGIC}"
           ;;
@@ -277,8 +286,12 @@ configure_package() {
 
     # Add Retroarch frontend & libretro core packages 
     if [ "${OEM_LIBRETRO}" = "yes" ]; then
-      PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_COMMON}"
+      PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_ROCKCHIP}"
       case ${PROJECT} in
+        Allwinner)
+            PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_ROCKCHIP}"
+            PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_RK3399}"
+            ;;
         Amlogic)
           PKG_DEPENDS_TARGET+=" ${OEM_LIBRETRO_AMLOGIC}"
           case ${DEVICE} in
@@ -314,6 +327,9 @@ configure_package() {
     if [ "${OEM_TOOLS}" = "yes" ]; then
       PKG_DEPENDS_TARGET+=" ${OEM_TOOLS_COMMON}"
       case ${PROJECT} in
+        Allwinner)
+          PKG_DEPENDS_TARGET+=" ${OEM_TOOLS_ROCKCHIP}"
+          ;;
         Amlogic)
           PKG_DEPENDS_TARGET+=" ${OEM_TOOLS_AMLOGIC}"
           ;;
